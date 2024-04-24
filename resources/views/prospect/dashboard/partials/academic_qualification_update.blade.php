@@ -49,7 +49,7 @@
             <input type="text" name="passing_year[]" value="{{$qualification->passing_year}}" class="form-control" required >
         </div>
         <div class="form-group col-md-1">
-            <input type="text" name="total_marks[]" value="{{$qualification->total_marks}}" class="form-control" value="0" required>
+            <input type="text" name="total_marks[]" value="{{$qualification->total_marks}}" class="form-control" required>
 
         </div>
         <div class="form-group col-md-1">
