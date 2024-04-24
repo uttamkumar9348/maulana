@@ -79,13 +79,13 @@
             <input type="hidden" name="type[]" value="Temparory">
             <div class="form-group">
                 <label>Holding No. / Premise's Name</label>
-                <input type="text" required value="" name="premise_name[]" id="temparory_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                <input type="text"  value="" name="premise_name[]" id="temparory_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Plot No.</label>
-                <input type="text" required name="plot_no[]" value="" id="temparory_plot_no" class="form-control" placeholder="Plot No.">
+                <input type="text"  name="plot_no[]" value="" id="temparory_plot_no" class="form-control" placeholder="Plot No.">
             </div>
         </div>
         <div class="col-md-4">
@@ -97,19 +97,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Sub Locality</label>
-                <input type="text" required name="sub_locality[]" value="" id="temparory_sub_locality" class="form-control" placeholder="Sub Locality">
+                <input type="text"  name="sub_locality[]" value="" id="temparory_sub_locality" class="form-control" placeholder="Sub Locality">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Land Mark</label>
-                <input type="text" required name="landmark[]" value="" id="temparory_land_mark"  class="form-control" placeholder="Land Mark">
+                <input type="text"  name="landmark[]" value="" id="temparory_land_mark"  class="form-control" placeholder="Land Mark">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Village</label>
-                <input type="text" required name="village[]"  value="" id="temparory_village"  class="form-control" placeholder="Village">
+                <input type="text"  name="village[]"  value="" id="temparory_village"  class="form-control" placeholder="Village">
             </div>
         </div>
         <div class="col-md-4">
@@ -164,13 +164,13 @@
             <div class="form-group">
                 <input type="hidden" name="type[]" value="Permenant">
                 <label>Holding No. / Premise's Name</label>
-                <input type="text" required name="premise_name[]" value="" id="permenant_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
+                <input type="text"  name="premise_name[]" value="" id="permenant_premise_name" class="form-control" placeholder="Holding No. / Premise's Name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Plot No.</label>
-                <input type="text" required name="plot_no[]" value="" id="permenant_plot_no" class="form-control" placeholder="Plot No.">
+                <input type="text"  name="plot_no[]" value="" id="permenant_plot_no" class="form-control" placeholder="Plot No.">
             </div>
         </div>
         <div class="col-md-4">
@@ -182,19 +182,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Sub Locality</label>
-                <input type="text" required name="sub_locality[]" value="" id="permenant_sub_locality" class="form-control" placeholder="Sub Locality">
+                <input type="text"  name="sub_locality[]" value="" id="permenant_sub_locality" class="form-control" placeholder="Sub Locality">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Land Mark</label>
-                <input type="text" required name="landmark[]"  value="" id="permenant_land_mark"  class="form-control" placeholder="Land Mark">
+                <input type="text"  name="landmark[]"  value="" id="permenant_land_mark"  class="form-control" placeholder="Land Mark">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Village</label>
-                <input type="text" required name="village[]"  value="" id="permenant_village"  class="form-control" placeholder="Village">
+                <input type="text"  name="village[]"  value="" id="permenant_village"  class="form-control" placeholder="Village">
             </div>
         </div>
         <div class="col-md-4">
