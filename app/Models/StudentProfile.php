@@ -23,16 +23,16 @@ class StudentProfile extends Model
         'blood_group',
         'date_of_birth',
         'first_name',
-        'middle_name',
+
         'last_name',
         'guardian_first_name',
-        'guardian_middle_name',
+
         'guardian_last_name',
         'mother_first_name',
-        'mother_middle_name',
+
         'mother_last_name',
         'father_first_name',
-        'father_middle_name',
+
         'father_last_name',
         'day',
         'month',
