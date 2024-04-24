@@ -7,19 +7,19 @@
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" required name="first_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="first_name" value="" class="form-control" placeholder="first name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text"  name="middle_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text"  name="middle_name" value="" class="form-control" placeholder="middle name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text"  name="last_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text"  name="last_name" value="" class="form-control" placeholder="last name">
             </div>
         </div>
     </div>
@@ -28,19 +28,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" required value="" name="father_first_name" class="form-control" placeholder="John Doe">
+                <input type="text" required value="" name="father_first_name" class="form-control" placeholder="first name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text"  value="" name="father_middle_name" class="form-control" placeholder="John Doe">
+                <input type="text"  value="" name="father_middle_name" class="form-control" placeholder="middle name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text"  value="" name="father_last_name" class="form-control" placeholder="John Doe">
+                <input type="text"  value="" name="father_last_name" class="form-control" placeholder="last name">
             </div>
         </div>
     </div>
@@ -49,19 +49,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" required name="mother_first_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text" required name="mother_first_name" value="" class="form-control" placeholder="first name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text"  name="mother_middle_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text"  name="mother_middle_name" value="" class="form-control" placeholder="middle name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text"  name="mother_last_name" value="" class="form-control" placeholder="John Doe">
+                <input type="text"  name="mother_last_name" value="" class="form-control" placeholder="last name">
             </div>
         </div>
     </div>
@@ -70,19 +70,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" value="" name="guardian_first_name" class="form-control" placeholder="John Doe">
+                <input type="text" value="" name="guardian_first_name" class="form-control" placeholder="first name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Middle Name</label>
-                <input type="text" value="" name="guardian_middle_name" class="form-control" placeholder="John Doe">
+                <input type="text" value="" name="guardian_middle_name" class="form-control" placeholder="middle name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" value="" name="guardian_last_name" class="form-control" placeholder="John Doe">
+                <input type="text" value="" name="guardian_last_name" class="form-control" placeholder="last name">
             </div>
         </div>
     </div>
