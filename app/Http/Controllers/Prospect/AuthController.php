@@ -17,7 +17,6 @@ class AuthController extends Controller
             $this->validate($request,[
                 'name' => 'required',
                 'email' => 'required',
-                'image' => 'required',
                 'password' => 'required',
                 'role_id' => 'required',
                 'entrance_fee_id' => 'required',
