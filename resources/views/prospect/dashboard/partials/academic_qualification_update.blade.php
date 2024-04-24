@@ -25,7 +25,7 @@
             Total Marks
         </div>
         <div class="form-group col-md-1">
-            Marks
+            Secured Marks
         </div>
         <div class="form-group col-md-1">
             Percentage
