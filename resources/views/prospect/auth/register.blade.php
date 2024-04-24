@@ -84,7 +84,17 @@
 												</div>
 											</div>
 										</div>
-
+                                        <div class="col-md-4">
+											<label>Select Course</label>
+											<div class="form-group form-group-feedback form-group-feedback-left">
+												<select name="entrance_fee_id" class="form-control select-search" required>
+													<option>Select</option>
+													@foreach(App\Models\EntranceFee::all() as $entrance_fee)
+													<option value="{{$entrance_fee->id}}">{{$entrance_fee->exam_name}}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-4">
@@ -107,17 +117,7 @@
 												<span id="confirmmsg"></span>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<label>Entrance Fee</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<select name="entrance_fee_id" class="form-control select-search" required>
-													<option>Select</option>
-													@foreach(App\Models\EntranceFee::all() as $entrance_fee)
-													<option value="{{$entrance_fee->id}}">{{$entrance_fee->exam_name}}</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
+										
 										<input type="hidden" name="role_id" value="{{App\Models\Role::where('name','Prospect')->first()?App\Models\Role::where('name','Prospect')->first()->id:''}}">
 
 									</div>
