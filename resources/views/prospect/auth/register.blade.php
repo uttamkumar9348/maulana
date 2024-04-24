@@ -69,7 +69,7 @@
 										<div class="col-md-4">
 											<label>Name</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input type="text" id="name" class="form-control" value="{{old('name')}}" placeholder="username" name="name" required>
+												<input type="text" id="name" class="form-control" value="{{old('name')}}" placeholder="Name" name="name" required>
 												<div class="form-control-feedback">
 													<i class="icon-user text-muted"></i>
 												</div>
@@ -81,15 +81,6 @@
 												<input type="text" id="email" class="form-control"  value="{{old('email')}}" placeholder="Enter your email" name="email" required>
 												<div class="form-control-feedback">
 													<i class="icon-mail5 text-muted"></i>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<label>Profile Image</label>
-											<div class="form-group form-group-feedback form-group-feedback-left">
-												<input class="form-control" type="file" name="image" placeholder="Enter password" required>
-												<div class="form-control-feedback">
-													<i class="icon-file-picture text-muted"></i>
 												</div>
 											</div>
 										</div>
