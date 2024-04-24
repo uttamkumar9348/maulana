@@ -170,7 +170,7 @@
 								<li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link {{Request::is('admin/teacher')?'active':''}}">Teacher</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/prospect*') ?'nav-item-open':''}}">
+						<li class="nav-item nav-item-submenu {{Request::is('admin/prospect*')  || Request::is('admin/entrance_fee*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Entrance</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/prospect*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.prospect.index')}}" class="nav-link {{Request::is('admin/prospect')?'active':''}}">Applicants</a></li>
@@ -192,7 +192,7 @@
 								<span>Student Attendance</span>
 							</a>
 						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('admin/exam*') || Request::is('admin/grade*') || Request::is('admin/grade_category*')  || Request::is('admin/entrance_fee*')  ?'nav-item-open':''}}">
+						<li class="nav-item nav-item-submenu {{Request::is('admin/exam*') || Request::is('admin/grade*') || Request::is('admin/grade_category*')  ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-compose"></i> <span>Exam</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/exam*') || Request::is('admin/entrance_fee*')?'display:block':''}}">
