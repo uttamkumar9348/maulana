@@ -8,7 +8,7 @@
                 <br>
                 <input type="radio" checked  name="gender"  value="Male" class=""> Male 
                 <input type="radio" name="gender" value="Female" class=""> Female 
-                <input type="radio" name="gender" value="Sehmale" class=""> Sehmale 
+                <input type="radio" name="gender" value="Sehmale" class=""> Others 
             
             </div>
         </div>
@@ -21,7 +21,6 @@
                 <input type="radio" name="caste" value="ST" class=""> ST 
                 <input type="radio" name="caste" value="OBC" class=""> OBC 
                 <input type="radio" name="caste" value="SEBC" class=""> SEBC 
-                <input type="radio" name="caste" value="EWS" class=""> EWS 
             </div>
         </div>
         <div class="col-md-3">
@@ -63,7 +62,7 @@
         </div>
         <div class="col-md-2 other_nationality" style="display:none;">
             <div class="form-group">
-                <label>Other Nationality 1</label>
+                <label>Other Nationality</label>
                 <input type="text" value="" name="other_nationality_1" class="form-control" placeholder="Other Nationality" class="">  
             </div>
         </div>
