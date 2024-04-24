@@ -172,7 +172,7 @@
 						</li>
 						<li class="nav-item nav-item-submenu {{Request::is('admin/prospect*')  || Request::is('admin/entrance_fee*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Entrance</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/prospect*')?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/prospect*') || Request::is('admin/entrance_fee*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.prospect.index')}}" class="nav-link {{Request::is('admin/prospect')?'active':''}}">Applicants</a></li>
 								<li class="nav-item"><a href="{{route('admin.entrance_fee.index')}}" class="nav-link {{Request::is('admin/entrance_fee')?'active':''}}">Entrance Exams</a></li>
 								</ul>
@@ -195,7 +195,7 @@
 						<li class="nav-item nav-item-submenu {{Request::is('admin/exam*') || Request::is('admin/grade*') || Request::is('admin/grade_category*')  ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-compose"></i> <span>Exam</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/exam*') || Request::is('admin/entrance_fee*')?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/exam*') ?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.exam.index')}}" class="nav-link {{Request::is('admin/exam')?'active':''}}">Exam</a></li>
 								<li class="nav-item"><a href="{{route('admin.grade_category.index')}}" class="nav-link {{Request::is('admin/grade_category')?'active':''}}">Grade Category</a></li>
 								<li class="nav-item"><a href="{{route('admin.grade.index')}}" class="nav-link {{Request::is('admin/grade')?'active':''}}">Grade</a></li>
