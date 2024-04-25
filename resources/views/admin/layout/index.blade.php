@@ -216,19 +216,19 @@
         <li class="nav-item nav-item-submenu {{ Request::is('admin/web*') ?'nav-item-open':''}}">
         <a href="#" class="nav-link"><i class="icon-map"></i> <span>{{ trans_choice('module_front_web', 2) }}</span></a>
             <ul class="nav nav-group-sub">
-                <li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.social-setting.index') }}" class="">{{ trans_choice('module_social_setting', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.slider.index') }}" class="">{{ trans_choice('module_slider', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.about-us.index') }}" class="">{{ trans_choice('module_about_us', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.feature.index') }}" class="">{{ trans_choice('module_feature', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.course.index') }}" class="">{{ trans_choice('module_course', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.web-event.index') }}" class="">{{ trans_choice('module_event', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.news.index') }}" class="">{{ trans_choice('module_news', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.faq.index') }}" class="">{{ trans_choice('module_faq', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.gallery.index') }}" class="">{{ trans_choice('module_gallery', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.testimonial.index') }}" class="">{{ trans_choice('module_testimonial', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.page.index') }}" class="">{{ trans_choice('module_footer_page', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.call-to-action.index') }}" class="">{{ trans_choice('module_call_to_action', 1) }}</a></li>
+                <li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="nav-link">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.social-setting.index') }}" class="nav-link">{{ trans_choice('module_social_setting', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.slider.index') }}" class="nav-link">{{ trans_choice('module_slider', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.about-us.index') }}" class="nav-link">{{ trans_choice('module_about_us', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.feature.index') }}" class="nav-link">{{ trans_choice('module_feature', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.course.index') }}" class="nav-link">{{ trans_choice('module_course', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.web-event.index') }}" class="nav-link">{{ trans_choice('module_event', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.news.index') }}" class="nav-link">{{ trans_choice('module_news', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.faq.index') }}" class="nav-link">{{ trans_choice('module_faq', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.gallery.index') }}" class="nav-link">{{ trans_choice('module_gallery', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.testimonial.index') }}" class="nav-link">{{ trans_choice('module_testimonial', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.page.index') }}" class="nav-link">{{ trans_choice('module_footer_page', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.call-to-action.index') }}" class="nav-link">{{ trans_choice('module_call_to_action', 1) }}</a></li>
             </ul>
         </li>
 					</ul>
