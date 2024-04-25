@@ -21,6 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+        \App\Http\Middleware\CheckForMaintenanceMode::class,
     ];
 
     /**
@@ -36,6 +38,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            \App\Http\Middleware\Localization::class,
+            \App\Http\Middleware\IsUserBanned::class,
         ],
 
         'api' => [
@@ -68,5 +73,8 @@ class Kernel extends HttpKernel
         'college' => \App\Http\Middleware\College::class,
         'teacher' => \App\Http\Middleware\Teacher::class,
         'prospect' => \App\Http\Middleware\Prospect::class,
+
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'XSS' => \App\Http\Middleware\XSSProtection::class,
     ];
 }

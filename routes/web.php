@@ -1,7 +1,14 @@
 <?php
 
 use App\Helpers\PaymentGateway;
+use App\Http\Controllers\web\CourseController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Web\EventController;
+use App\Http\Controllers\Web\FaqController;
+use App\Http\Controllers\Web\GalleryController;
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\NewsController;
+use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +25,50 @@ use Illuminate\Support\Facades\Route;
 */
 
 /******************LOGIN PAGE ROUTES START****************/
-Route::view('/','auth.login');
+
+// Web Routes
+Route::middleware(['XSS'])->namespace('Web')->group(function () {
+
+  // Home Route
+  Route::get('/', [HomeController::class,'index'])->name('home');
+  // Course Route
+  Route::get('/course', [CourseController::class, 'index'])->name('course');
+  Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.single');
+  // Event Route
+  Route::get('/event', [EventController::class, 'index'])->name('event');
+  Route::get('/event/{id}/{slug}', [EventController::class, 'show'])->name('event.single');
+  // Faq Route
+  Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+  // Gallery Route
+  Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+  // News Route
+  Route::get('/news', [NewsController::class, 'index'])->name('news');
+  Route::get('/news/{id}/{slug}', [NewsController::class, 'show'])->name('news.single');
+  // Page Route
+  Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.single');
+
+  // Application Route
+  Route::resource('application', 'ApplicationController');
+
+
+  // SetCookie Route
+  Route::get('/set-cookie', [HomeController::class, 'setCookie'])->name('setCookie');
+});
+
+// Set Lang Version
+Route::get('locale/language/{locale}', function ($locale){
+
+  \Session::put('locale', $locale);
+
+  \App::setLocale($locale);
+
+  return redirect()->back();
+  
+})->name('version');
+
+
+
+//Admin Routes
 Route::view('login','auth.login');
 Route::post('login',[AuthController::class,'login'])->name('login');
 /******************LOGIN PAGE ROUTES END****************/
