@@ -219,19 +219,19 @@
                 <span class="pcoded-mtext">{{ trans_choice('module_front_web', 2) }}</span>
             </a>
             <ul class="nav nav-group-sub">
-                <li class="{{ Request::is('admin/web/topbar-setting*') ? 'active' : '' }}"><a href="{{ route('admin.topbar-setting.index') }}" class="">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
-                <li class="{{ Request::is('admin/web/social-setting*') ? 'active' : '' }}"><a href="{{ route('admin.social-setting.index') }}" class="">{{ trans_choice('module_social_setting', 1) }}</a></li>
-                <li class="{{ Request::is('admin/web/slider*') ? 'active' : '' }}"><a href="{{ route('admin.slider.index') }}" class="">{{ trans_choice('module_slider', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/about-us*') ? 'active' : '' }}"><a href="{{ route('admin.about-us.index') }}" class="">{{ trans_choice('module_about_us', 1) }}</a></li>
-                <li class="{{ Request::is('admin/web/feature*') ? 'active' : '' }}"><a href="{{ route('admin.feature.index') }}" class="">{{ trans_choice('module_feature', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/course*') ? 'active' : '' }}"><a href="{{ route('admin.course.index') }}" class="">{{ trans_choice('module_course', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/web-event*') ? 'active' : '' }}"><a href="{{ route('admin.web-event.index') }}" class="">{{ trans_choice('module_event', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/news*') ? 'active' : '' }}"><a href="{{ route('admin.news.index') }}" class="">{{ trans_choice('module_news', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/faq*') ? 'active' : '' }}"><a href="{{ route('admin.faq.index') }}" class="">{{ trans_choice('module_faq', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/gallery*') ? 'active' : '' }}"><a href="{{ route('admin.gallery.index') }}" class="">{{ trans_choice('module_gallery', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/testimonial*') ? 'active' : '' }}"><a href="{{ route('admin.testimonial.index') }}" class="">{{ trans_choice('module_testimonial', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/page*') ? 'active' : '' }}"><a href="{{ route('admin.page.index') }}" class="">{{ trans_choice('module_footer_page', 2) }}</a></li>
-                <li class="{{ Request::is('admin/web/call-to-action*') ? 'active' : '' }}"><a href="{{ route('admin.call-to-action.index') }}" class="">{{ trans_choice('module_call_to_action', 1) }}</a></li>
+                <li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.social-setting.index') }}" class="">{{ trans_choice('module_social_setting', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.slider.index') }}" class="">{{ trans_choice('module_slider', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.about-us.index') }}" class="">{{ trans_choice('module_about_us', 1) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.feature.index') }}" class="">{{ trans_choice('module_feature', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.course.index') }}" class="">{{ trans_choice('module_course', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.web-event.index') }}" class="">{{ trans_choice('module_event', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.news.index') }}" class="">{{ trans_choice('module_news', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.faq.index') }}" class="">{{ trans_choice('module_faq', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.gallery.index') }}" class="">{{ trans_choice('module_gallery', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.testimonial.index') }}" class="">{{ trans_choice('module_testimonial', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.page.index') }}" class="">{{ trans_choice('module_footer_page', 2) }}</a></li>
+                <li class="nav-item'' }}"><a href="{{ route('admin.call-to-action.index') }}" class="">{{ trans_choice('module_call_to_action', 1) }}</a></li>
             </ul>
         </li>
 					</ul>
