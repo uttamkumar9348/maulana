@@ -213,11 +213,8 @@
 						</li>
 						
 					
-        <li class="nav-item nav-item-submenu {{ Request::is('admin/web*') ? 'pcoded-trigger active' : '' }}">
-            <a href="#!" class="nav-link">
-                <span class="pcoded-micon"><i class="fas fa-globe"></i></span>
-                <span class="pcoded-mtext">{{ trans_choice('module_front_web', 2) }}</span>
-            </a>
+        <li class="nav-item nav-item-submenu {{ Request::is('admin/web*') ?'nav-item-open':''}}">
+        <a href="#" class="nav-link"><i class="icon-map"></i> <span>{{ trans_choice('module_front_web', 2) }}</span></a>
             <ul class="nav nav-group-sub">
                 <li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
                 <li class="nav-item'' }}"><a href="{{ route('admin.social-setting.index') }}" class="">{{ trans_choice('module_social_setting', 1) }}</a></li>
