@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\PaymentGateway;
-use App\Http\Controllers\web\CourseController;
+use App\Http\Controllers\Web\CourseController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\FaqController;
