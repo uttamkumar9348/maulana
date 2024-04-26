@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
 
             \App\Http\Middleware\Localization::class,
             \App\Http\Middleware\IsUserBanned::class,
+            \App\Http\Middleware\XSSProtection::class,
         ],
 
         'api' => [
@@ -76,5 +77,8 @@ class Kernel extends HttpKernel
 
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'XSS' => \App\Http\Middleware\XSSProtection::class,
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
     ];
 }

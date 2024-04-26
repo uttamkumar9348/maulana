@@ -1,8 +1,10 @@
 <?php
 
 use App\Helpers\PaymentGateway;
-use App\Http\Controllers\Web\CourseController;
+
+use App\Http\Controllers\web\CourseController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Web\ApplicationController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\FaqController;
 use App\Http\Controllers\Web\GalleryController;
@@ -12,6 +14,7 @@ use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +51,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.single');
 
   // Application Route
-  Route::resource('application', 'ApplicationController');
+  Route::resource('application', ApplicationController::class);
 
 
   // SetCookie Route
@@ -149,23 +152,4 @@ Route::get('add_categories', function () {
   ]);
 });
 
-Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->prefix('admin')->group(function () {
 
-  // Front Web Routes
-  Route::prefix('web')->namespace('Web')->group(function () {
-
-    Route::resource('slider', 'SliderController');
-    Route::resource('feature', 'FeatureController');
-    Route::resource('about-us', 'AboutUsController');
-    Route::resource('course', 'CourseController');
-    Route::resource('web-event', 'WebEventController');
-    Route::resource('news', 'NewsController');
-    Route::resource('gallery', 'GalleryController');
-    Route::resource('faq', 'FaqController');
-    Route::resource('testimonial', 'TestimonialController');
-    Route::resource('page', 'PageController');
-    Route::resource('call-to-action', 'CallToActionController');
-    Route::resource('social-setting', 'SocialSettingController');
-    Route::resource('topbar-setting', 'TopbarSettingController');
-  });
-});

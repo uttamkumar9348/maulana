@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,8 +32,8 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_select2.js')}}"></script>
 
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
-    <script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
-    
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3.min.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
@@ -45,12 +46,30 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_layouts.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<!-- /theme JS files -->
-	
+
 	<!-- Theme JS files -->
 
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/job_list.js')}}"></script>
 	<!-- /theme JS files -->
 
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="{{ asset('dashboard/fonts/fontawesome/css/fontawesome-all.min.css') }}">
+	<!-- data tables css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/plugins/data-tables/css/datatables.min.css') }}">
+	<!-- select2 css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/plugins/select2/css/select2.min.css') }}">
+	<!-- material datetimepicker css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/plugins/material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}">
+	<!-- minicolors css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/plugins/mini-color/css/jquery.minicolors.css') }}">
+	<!-- toastr css -->
+	<link rel="stylesheet" href="{{ asset('dashboard/plugins/toastr/css/toastr.min.css') }}">
+
+	<style>
+		.pdng{
+			padding: .9375rem 1.25rem;
+		}
+	</style>
 	@yield('styles')
 </head>
 
@@ -132,7 +151,7 @@
 					<div class="card-body">
 						<div class="media">
 							<div class="mr-3">
-								{{--  <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a>  --}}
+								{{-- <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a> --}}
 							</div>
 
 							<div class="media-body">
@@ -153,8 +172,10 @@
 				<!-- Main navigation -->
 				<div class="card card-sidebar-mobile">
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
-							<!-- Main -->
-						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Admin Panel</div> <i class="icon-menu" title="Main"></i></li>
+						<!-- Main -->
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Admin Panel</div> <i class="icon-menu" title="Main"></i>
+						</li>
 						<li class="nav-item">
 							<a href="{{route('admin.dashboard.index')}}" class="nav-link {{Request::is('admin/dashboard')?'active':''}}">
 								<i class="icon-home4"></i>
@@ -175,7 +196,7 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/prospect*') || Request::is('admin/entrance_fee*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('admin.prospect.index')}}" class="nav-link {{Request::is('admin/prospect')?'active':''}}">Applicants</a></li>
 								<li class="nav-item"><a href="{{route('admin.entrance_fee.index')}}" class="nav-link {{Request::is('admin/entrance_fee')?'active':''}}">Entrance Exams</a></li>
-								</ul>
+							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu {{Request::is('admin/course*') || Request::is('admin/semester*') || Request::is('admin/subject*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-books"></i> <span>Academics</span></a>
@@ -211,33 +232,36 @@
 								<li class="nav-item"><a href="{{route('admin.police_station.index')}}" class="nav-link {{Request::is('admin/police_station')?'active':''}}">Police Station</a></li>
 							</ul>
 						</li>
-						
-					
-        <li class="nav-item nav-item-submenu {{ Request::is('admin/web*') ?'nav-item-open':''}}">
-        <a href="#" class="nav-link"><i class="icon-map"></i> <span>{{ trans_choice('module_front_web', 2) }}</span></a>
-            <ul class="nav nav-group-sub">
-                <li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="nav-link">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.social-setting.index') }}" class="nav-link">{{ trans_choice('module_social_setting', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.slider.index') }}" class="nav-link">{{ trans_choice('module_slider', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.about-us.index') }}" class="nav-link">{{ trans_choice('module_about_us', 1) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.feature.index') }}" class="nav-link">{{ trans_choice('module_feature', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.course.index') }}" class="nav-link">{{ trans_choice('module_course', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.web-event.index') }}" class="nav-link">{{ trans_choice('module_event', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.news.index') }}" class="nav-link">{{ trans_choice('module_news', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.faq.index') }}" class="nav-link">{{ trans_choice('module_faq', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.gallery.index') }}" class="nav-link">{{ trans_choice('module_gallery', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.testimonial.index') }}" class="nav-link">{{ trans_choice('module_testimonial', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.page.index') }}" class="nav-link">{{ trans_choice('module_footer_page', 2) }}</a></li>
-                <li class="nav-item'' }}"><a href="{{ route('admin.call-to-action.index') }}" class="nav-link">{{ trans_choice('module_call_to_action', 1) }}</a></li>
-            </ul>
-        </li>
+
+
+						<li class="nav-item nav-item-submenu {{ Request::is('admin/web*') ? 'nav-item-open':'' }}">
+							<a href="#!" class="nav-link">
+								<span class="pcoded-micon"><i class="fas fa-globe"></i></span>
+								<span class="pcoded-mtext">{{ trans_choice('module_front_web', 2) }}</span>
+							</a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/web/topbar-setting*') || Request::is('admin/web/social-setting*') || Request::is('admin/web/slider*') || Request::is('admin/web/about-us*') || Request::is('admin/web/feature*') || Request::is('admin/web/course*') || Request::is('admin/web/web-event*') || Request::is('admin/web/news*') || Request::is('admin/web/faq*') || Request::is('admin/web/gallery*') || Request::is('admin/web/testimonial*') || Request::is('admin/web/page*') || Request::is('admin/web/call-to-action*') ?'display:block':''}}">
+								<li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="nav-link {{Request::is('admin/web/topbar-setting')?'active':''}}">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.social-setting.index') }}" class="nav-link {{Request::is('admin/web/social-setting')?'active':''}}">{{ trans_choice('module_social_setting', 1) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.slider.index') }}" class="nav-link {{Request::is('admin/web/slider')?'active':''}}">{{ trans_choice('module_slider', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.about-us.index') }}" class="nav-link {{Request::is('admin/web/about-us')?'active':''}}">{{ trans_choice('module_about_us', 1) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.feature.index') }}" class="nav-link {{Request::is('admin/web/feature')?'active':''}}">{{ trans_choice('module_feature', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.course.index') }}" class="nav-link {{Request::is('admin/web/course')?'active':''}}">{{ trans_choice('module_course', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.web-event.index') }}" class="nav-link {{Request::is('admin/web/web-event')?'active':''}}">{{ trans_choice('module_event', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.news.index') }}" class="nav-link {{Request::is('admin/web/news')?'active':''}}">{{ trans_choice('module_news', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.faq.index') }}" class="nav-link {{Request::is('admin/web/faq')?'active':''}}">{{ trans_choice('module_faq', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.gallery.index') }}" class="nav-link {{Request::is('admin/web/gallery')?'active':''}}">{{ trans_choice('module_gallery', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.testimonial.index') }}" class="nav-link {{Request::is('admin/web/testimonial')?'active':''}}">{{ trans_choice('module_testimonial', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.page.index') }}" class="nav-link {{Request::is('admin/web/page')?'active':''}}">{{ trans_choice('module_footer_page', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.call-to-action.index') }}" class="nav-link {{Request::is('admin/web/call-to-action')?'active':''}}">{{ trans_choice('module_call_to_action', 1) }}</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<!-- /main navigation -->
 
 			</div>
 			<!-- /sidebar content -->
-			
+
 		</div>
 		<!-- /main sidebar -->
 
@@ -286,7 +310,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text ml-lg-auto">
-						
+
 					</span>
 				</div>
 			</div>
@@ -297,6 +321,272 @@
 
 	</div>
 	<!-- /page content -->
+	<!-- Required Js -->
+	<script src="{{ asset('dashboard/plugins/jquery/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('dashboard/plugins/popper/js/popper.min.js') }}"></script>
+	<script src="{{ asset('dashboard/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('dashboard/plugins/jquery-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
+	<script src="{{ asset('dashboard/js/pcoded.min.js') }}"></script>
 
+	<!-- datatable Js -->
+	<script src="{{ asset('dashboard/plugins/data-tables/js/datatables.min.js') }}"></script>
+
+	<!-- form-validation Js -->
+	<script src="{{ asset('dashboard/js/pages/form-validation.js') }}"></script>
+
+	<!-- select2 Js -->
+	<script src="{{ asset('dashboard/plugins/select2/js/select2.full.min.js') }}"></script>
+
+	<!-- material datetimepicker Js -->
+	<script src="{{ asset('dashboard/plugins/moment/js/moment-with-locales.min.js') }}"></script>
+	<script src="{{ asset('dashboard/plugins/material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+
+	<!-- Input mask Js -->
+	<script src="{{ asset('dashboard/plugins/inputmask/js/autoNumeric.js') }}"></script>
+
+	<!-- minicolors Js -->
+	<script src="{{ asset('dashboard/plugins/mini-color/js/jquery.minicolors.min.js') }}"></script>
+
+	<!-- toastr Js -->
+	<script src="{{ asset('dashboard/plugins/toastr/js/toastr.min.js') }}"></script>
+	@toastr_render
+
+	<script type="text/javascript">
+		@if($errors -> any())
+		@foreach($errors -> all() as $error)
+		toastr["error"]("{{ $error }}");
+		@endforeach
+		@endif
+	</script>
+
+	<!-- Print Js -->
+	<script src="{{ asset('dashboard/plugins/print/js/jQuery.print.min.js') }}"></script>
+	<script type="text/javascript">
+		$(function() {
+			"use strict";
+			$("html").find('.btn-print').on('click', function() {
+				$.print(".printable");
+			});
+		});
+	</script>
+
+	<!-- Popup Window Js -->
+	<script type="text/javascript">
+		"use strict";
+
+		function PopupWin(pageURL, pageTitle, popupWinWidth, popupWinHeight) {
+			var left = (screen.width - popupWinWidth) / 2;
+			var top = (screen.height - popupWinHeight) / 4;
+
+			var myWindow = window.open(pageURL, pageTitle, 'resizable=yes, width=' + popupWinWidth + ', height=' + popupWinHeight + ', top=' + top + ', left=' + left);
+		};
+	</script>
+
+
+	<!-- page js -->
+	@yield('page_js')
+
+
+	<script type="text/javascript">
+		'use strict';
+		$(document).ready(function() {
+			// [ Single Select ] start
+			$(".select2").select2();
+
+			// [ Multi Select ] start
+			$(".select2-multiple").select2({
+				placeholder: "{{ __('select') }}"
+			});
+
+			// Date Picker
+			$('.date').bootstrapMaterialDatePicker({
+				setDate: new Date(),
+				weekStart: 0,
+				time: false
+			});
+
+			// Time Picker
+			$('.time').bootstrapMaterialDatePicker({
+				date: false,
+				shortTime: true,
+				format: 'HH:mm'
+			});
+
+			// Color Picker
+			$('.color_picker').each(function() {
+				$(this).minicolors({
+					control: $(this).attr('data-control') || 'hue',
+					defaultValue: $(this).attr('data-defaultValue') || '',
+					format: $(this).attr('data-format') || 'hex',
+					keywords: $(this).attr('data-keywords') || '',
+					inline: $(this).attr('data-inline') === 'true',
+					letterCase: $(this).attr('data-letterCase') || 'lowercase',
+					opacity: $(this).attr('data-opacity'),
+					position: $(this).attr('data-position') || 'bottom',
+					swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+					change: function(value, opacity) {
+						if (!value) return;
+						if (opacity) value += ', ' + opacity;
+						if (typeof console === 'object') {}
+					},
+					theme: 'bootstrap'
+				});
+			});
+
+			// Number Musk
+			// $('.autonumber').autoNumeric('init');
+			new AutoNumeric('.autonumber', {
+				minimumValue: '0',
+				maximumValue: '999999999',
+				decimalPlaces: 0,
+				decimalCharacter: '.',
+				digitGroupSeparator: '',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		'use strict';
+		$(document).ready(function() {
+			// [ Zero-configuration ] start
+			$('#basic-table').DataTable();
+			$('#basic-table2').DataTable();
+
+			// [ HTML5-Export ] start
+			$('#export-table').DataTable({
+				dom: 'Bfrtip',
+				buttons: [{
+						extend: 'copyHtml5',
+						text: '<i class="fas fa-copy"></i>',
+						footer: true,
+						exportOptions: {
+							columns: ':not(:last-child)',
+						}
+					},
+					{
+						extend: 'excelHtml5',
+						text: '<i class="fas fa-file-excel"></i>',
+						footer: true,
+						exportOptions: {
+							columns: ':not(:last-child)',
+						}
+					},
+					{
+						extend: 'csvHtml5',
+						text: '<i class="fas fa-file"></i>',
+						footer: true,
+						exportOptions: {
+							columns: ':not(:last-child)',
+						}
+					},
+					{
+						extend: 'pdfHtml5',
+						text: '<i class="fas fa-file-pdf"></i>',
+						footer: true,
+						exportOptions: {
+							columns: ':not(:last-child)',
+						}
+					},
+					{
+						extend: 'print',
+						text: '<i class="fas fa-print"></i>',
+						autoPrint: true,
+						// title: '',
+						footer: true,
+						exportOptions: {
+							columns: ':not(:last-child)',
+						},
+						customize: function(win) {
+							$(win.document.body)
+								.css('font-size', '10pt')
+							/*.prepend(
+								'<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
+							);*/
+
+							$(win.document.body).find('table')
+								.addClass('compact')
+								.css('font-size', 'inherit');
+
+							$(win.document.body).find('caption')
+								.css('font-size', '10px');
+
+							$(win.document.body).find('h1')
+								.css({
+									"text-align": "center",
+									"font-size": "16pt"
+								});
+						}
+					}
+				]
+			});
+		});
+	</script>
+
+	{{-- Set Cookie --}}
+	<script type="text/javascript">
+		"use strict";
+		$(document).ready(function() {
+			$("#mobile-collapse").on("click", function(e) {
+				e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+					}
+				});
+				$.ajax({
+					url: "{{ route('setCookie') }}",
+					method: 'get',
+					data: {},
+					success: function(result) {
+						console.log(result.data);
+					}
+				});
+			});
+		});
+	</script>
+
+
+	{{-- Text Editors --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.3/tinymce.min.js"></script>
+
+	@php
+	$version = App\Models\Language::version();
+	@endphp
+	@if($version->direction == 1)
+	<script type="text/javascript">
+		"use strict";
+		tinymce.init({
+			selector: '.texteditor',
+
+			height: 200,
+			setup: function(editor) {
+				editor.on('init change', function() {
+					editor.save();
+				});
+			},
+
+			directionality: 'rtl',
+			language: '{{ $version->code }}',
+		});
+	</script>
+	@else
+	<script type="text/javascript">
+		"use strict";
+		tinymce.init({
+			selector: '.texteditor',
+
+			height: 200,
+			setup: function(editor) {
+				editor.on('init change', function() {
+					editor.save();
+				});
+			},
+
+			directionality: 'ltr',
+			language: '{{ $version->code }}',
+		});
+	</script>
+	@endif
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layout.index')
 @section('title', $title)
 @section('content')
 
@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <h5>{{ __('btn_create') }} {{ $title }}</h5>
                         </div>
-                        <div class="card-block">
+                        <div class="card-block pdng">
                             <!-- Form Start -->
                             <div class="form-group">
                                 <label for="title" class="form-label">{{ __('field_title') }} <span>*</span></label>
@@ -57,7 +57,7 @@
                     <div class="card-header">
                         <h5>{{ $title }} {{ __('list') }}</h5>
                     </div>
-                    <div class="card-block">
+                    <div class="card-block pdng">
                         <!-- [ Data table ] start -->
                         <div class="table-responsive">
                             <table id="basic-table" class="display table nowrap table-striped table-hover" style="width:100%">
@@ -73,7 +73,7 @@
                                   @foreach( $rows as $key => $row )
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{!! str_limit($row->title, 50, ' ...') !!}</td>
+                                        <td>{!! Str::limit($row->title, 50, ' ...') !!}</td>
                                         <td>
                                             @if( $row->status == 1 )
                                             <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
@@ -101,7 +101,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <!-- Include Delete modal -->
-                                            @include('admin.layouts.inc.delete')
+                                            @include('admin.layout.inc.delete')
                                             @endcan
                                         </td>
                                     </tr>

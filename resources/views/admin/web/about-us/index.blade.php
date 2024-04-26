@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layout.index')
 @section('title', $title)
 @section('content')
 
@@ -14,7 +14,7 @@
                     <div class="card-header">
                         <h5>{{ __('btn_update') }} {{ $title }}</h5>
                     </div>
-                    <div class="card-block">
+                    <div class="card-block pdng">
                       <div class="row">
                         <!-- Form Start -->
                         <input name="id" type="hidden" value="{{ (isset($row->id))?$row->id:-1 }}">
