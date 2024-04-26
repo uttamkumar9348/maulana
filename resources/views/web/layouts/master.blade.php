@@ -99,7 +99,7 @@
                                         <img src="{{ asset('web/img/icon/phone-call.png') }}" alt="img">
                                      </div>
                                      <div class="text">
-                                        <strong><a href="tel:{{ str_replace(' ', '', $topbarSetting->phone ?? '') }}">{{ $topbarSetting->phone ?? '' }}</a></strong>
+                                        <a href="tel:{{ str_replace(' ', '', $topbarSetting->phone ?? '') }}">{{ $topbarSetting->phone ?? '' }}</a>
                                      </div>
                                   </div>
                                </li>
@@ -111,7 +111,17 @@
                                         <img src="{{ asset('web/img/icon/mailing.png') }}" alt="img">
                                      </div>
                                      <div class="text">
-                                        <strong><a href="mailto:{{ $topbarSetting->email ?? '' }}">{{ $topbarSetting->email ?? '' }}</a></strong>
+                                        <a href="mailto:{{ $topbarSetting->email ?? '' }}">{{ $topbarSetting->email ?? '' }}</a>
+                                     </div>
+                                  </div>
+                               </li>
+                               <li>
+                                  <div class="call-box">
+                                     <div class="icon">
+                                        <img src="{{ asset('web/img/icon/login_home.png') }}" alt="img">
+                                     </div>
+                                     <div class="text">
+                                        <a href="{{ route('login') }}">Login / Register</a>
                                      </div>
                                   </div>
                                </li>
@@ -137,22 +147,24 @@
                             @endif
                         </div>
 
-                        <div class="col-xl-6 col-lg-6">
+                        <div class="col-xl-7 col-lg-7">
                             <div class="main-menu text-right text-xl-right">
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ __('navbar_home') }}</a></li>
+                                        <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">About</a></li>
+                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="{{ route('faq') }}">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
-                                        <li class="{{ Request::is('event*') ? 'current' : '' }}"><a href="{{ route('event') }}">{{ __('navbar_event') }}</a></li>
-                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="{{ route('faq') }}">{{ __('navbar_faqs') }}</a></li>
+                                        
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
+                                       <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
+                        <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block text-right text-xl-right">
                             @php 
                             $application = App\Models\ApplicationSetting::status(); 
                             @endphp

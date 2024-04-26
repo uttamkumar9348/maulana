@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LOGIN | EXAM SYSTEM </title>
+    <title>LOGIN | Madhusudan Law University </title>
 
 	<!-- Global stylesheets -->
     <link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">
@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="bg-slate-800">
+<body class="bg-slate-900">
 
 	<!-- Page content -->
 	<div class="page-content">
@@ -50,7 +50,7 @@
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
-								<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
+								<img src="uploads/logo/logo.png" style="width:100px">
 								<h5 class="mb-0">Madhusudan Law University</h5>
 								<span class="d-block text-muted">Login to your account</span>
 							</div>
@@ -71,10 +71,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
-							<p  class="text-center">Want To Register with the University?</p>
-							<a href="{{url('register')}}"><button type="button" class="btn btn-primary btn-block">Register Now <i class="icon-circle-right2 ml-2"></i></button></a>	
-							<p  class="text-center">Register as Prospect?</p>
-							<a href="{{url('prospect/register')}}"><button type="button" class="btn btn-primary btn-block">Register Prospect Now <i class="icon-circle-right2 ml-2"></i></button></a>							
+										
 						</div>
 					</div>
 				</form>
