@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class IsUserBanned
 {
@@ -25,7 +25,7 @@ class IsUserBanned
         //         return redirect()->route('student.login')->with('error', $message);
         //     }
         // }
-
+        // dd(Auth::guard('web')->check());
         if (Auth::guard('web')->check()) {
 
             if (Auth::guard('web')->user()->login == 0) {

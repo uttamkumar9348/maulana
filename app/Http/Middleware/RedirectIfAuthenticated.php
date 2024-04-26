@@ -19,12 +19,30 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        // $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect(RouteServiceProvider::HOME);
+        //     }
+        // }
+
+        if (Auth::guard($guards)->check()) {
+
+            if($guards == "student"){
+
+                //student was authenticated with student guard.
+                return redirect()->route('student.dashboard.index');
+            } elseif($guards == "web"){
+
+                //staff was authenticated with web guard.
+                return redirect()->route('admin.dashboard.index');
+            } else {
+                
+                //default guard.
+                return redirect()->route('admin.dashboard.index');
             }
+
         }
 
         return $next($request);

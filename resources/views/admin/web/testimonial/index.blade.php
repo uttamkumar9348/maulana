@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layout.index')
 @section('title', $title)
 @section('content')
 
@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <h5>{{ __('btn_create') }} {{ $title }}</h5>
                         </div>
-                        <div class="card-block">
+                        <div class="card-block pdng">
                             <!-- Form Start -->
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ __('field_name') }} <span>*</span></label>
@@ -66,7 +66,7 @@
                     <div class="card-header">
                         <h5>{{ $title }} {{ __('list') }}</h5>
                     </div>
-                    <div class="card-block">
+                    <div class="card-block pdng">
                         <!-- [ Data table ] start -->
                         <div class="table-responsive">
                             <table id="basic-table" class="display table nowrap table-striped table-hover" style="width:100%">
@@ -116,7 +116,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <!-- Include Delete modal -->
-                                            @include('admin.layouts.inc.delete')
+                                            @include('admin.layout.inc.delete')
                                             @endcan
                                         </td>
                                     </tr>

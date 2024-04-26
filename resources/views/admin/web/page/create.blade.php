@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layout.index')
 @section('title', $title)
 @section('content')
 
@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <h5>{{ __('modal_add') }} {{ $title }}</h5>
                     </div>
-                    <div class="card-block">
+                    <div class="card-block pdng">
                         <a href="{{ route($route.'.index') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> {{ __('btn_back') }}</a>
 
                         <a href="{{ route($route.'.create') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i> {{ __('btn_refresh') }}</a>
@@ -21,7 +21,7 @@
 
                     <form class="needs-validation" novalidate action="{{ route($route.'.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="card-block">
+                    <div class="card-block pdng">
                       <div class="row">
                         <!-- Form Start -->
                         <div class="form-group col-md-12">
