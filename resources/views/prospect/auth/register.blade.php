@@ -1,3 +1,10 @@
+
+@extends('prospect.layout.master')
+@section('title')
+    Dashboard
+@endsection
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,9 +48,7 @@
 		}
 	</style>
 </head>
-
-<body class="bg-slate-800">
-
+@section('content')
 	<!-- Page content -->
 	<div class="page-content">
 
@@ -62,7 +67,6 @@
 							<div class="card mb-0">
 								<div class="card-body">
 									<div class="text-center mb-3">
-										<i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
 										<h5 class="mb-0">Register Yourself</h5>
 									</div>
 									<div class="row">
@@ -124,12 +128,10 @@
 									<div class="form-group">
 										<input class="" type="checkbox" name="terms_condiition" required> I accept <a href="{{url('terms_&_condition')}}"> terms and condition policy </a>of the University.
 									</div>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>
+									<div class="form-group" style="text-align:center;">
+										<button type="submit" class="">Sign Up <i class="icon-circle-right2 ml-2"></i></button> Or <a href="{{url('/login')}}"><button type="button" class="">Sign In <i class="icon-circle-right2 ml-2"></i></button></a>
 									</div>
-									<p  class="text-center">OR</p>
 									
-									<a href="{{url('/')}}"><button type="button" class="btn btn-primary btn-block">Sign In <i class="icon-circle-right2 ml-2"></i></button></a>
 								</div>
 							</div>
 						</div>
@@ -143,7 +145,7 @@
 		</div>
 		<!-- /main content -->
 
-	</div>
+
 	<div id="course_fields_for_html" style="display:none;">
 		<div class="row">
 			<div class="col-md-6">
@@ -169,10 +171,11 @@
 
 		</div>
 	</div>
+
 	<!-- /page content -->
-    <script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
+
 	@include('auth.partials.js')
-	@toastr_render
+
     <script>
         function validatePassword(password) {
             
@@ -293,5 +296,6 @@
 			}
         });
     </script>
+    	@endsection
 </body>
 </html>
