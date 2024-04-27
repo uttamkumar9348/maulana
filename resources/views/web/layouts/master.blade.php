@@ -152,13 +152,13 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ __('navbar_home') }}</a></li>
-                                        <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">About</a></li>
-                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="{{ route('faq') }}">Academics</a></li>
+                                        <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
+                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
                                         
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                                       <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">Contact</a></li>
+                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
