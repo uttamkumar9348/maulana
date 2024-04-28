@@ -51,6 +51,40 @@
     <!-- RTL css -->
     <link rel="stylesheet" href="{{ asset('web/css/rtl.css') }}">
     @endif
+    <style>
+            .dropdown {
+                display: none; /* Hide dropdown by default */
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                left: 0; /* Align dropdown to the left */
+            }
+
+            .dropdown li {
+                display: block;
+            }
+
+            .dropdown li a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left; /* Align text to the left */
+            }
+
+            .dropdown li a:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Show dropdown when hovering over the parent item */
+            ul li:hover > .dropdown {
+                display: block;
+            }
+
+
+    </style>
  </head>
 
  <body>
@@ -151,14 +185,32 @@
                             <div class="main-menu text-right text-xl-right">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ __('navbar_home') }}</a></li>
-                                        <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
+                                        @foreach(App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
+                                        @php 
+                                            $url  = $menu->url.'*';
+                                                $isRequest = Request::path() == $url ? 'current' : '';
+                                                // dd($url);
+                                        @endphp
+                                        @if($menu->childMenu->count() > 0)
+                                        <li class="{{ $isRequest }}">
+                                            <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
+                                            <ul class="dropdown">
+                                                @foreach($menu->childMenu as $childMenu)
+                                                <li><a href="{{$childMenu->url}}">{{$childMenu->name}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @else 
+                                        <li class="{{ $isRequest }}"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
+                                        @endif
+                                        @endforeach
+                                        {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
                                         
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li>
+                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
@@ -238,7 +290,10 @@
                             </div>
                             <div class="footer-link">
                                 <ul>
-                                    @if (Route::has('student.login'))
+                                    @foreach(App\Models\Menu::where('is_footer',1)->orderBy('display_order')->get() as $menu)
+                                    <li><a href="{{ url($menu->url) }}" target="_blank">{{$menu->name}}</a></li>
+                                    @endforeach
+                                    {{-- @if (Route::has('student.login'))
                                     <li><a href="{{ route('student.login') }}" target="_blank">{{ __('field_student') }} {{ __('field_login') }}</a></li>
                                     @endif
                                     @if (Route::has('login'))
@@ -254,7 +309,7 @@
 
                                     @foreach($footer_pages as $footer_page)
                                     <li><a href="{{ route('page.single', ['slug' => $footer_page->slug]) }}">{{ $footer_page->title }}</a></li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

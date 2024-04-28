@@ -253,6 +253,7 @@
 								<li class="nav-item"><a href="{{ route('admin.testimonial.index') }}" class="nav-link {{Request::is('admin/web/testimonial')?'active':''}}">{{ trans_choice('module_testimonial', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.page.index') }}" class="nav-link {{Request::is('admin/web/page')?'active':''}}">{{ trans_choice('module_footer_page', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.call-to-action.index') }}" class="nav-link {{Request::is('admin/web/call-to-action')?'active':''}}">{{ trans_choice('module_call_to_action', 1) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.menu.index') }}" class="nav-link {{Request::is('admin/web/menu')?'active':''}}">Menu</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -385,6 +386,7 @@
 
 	<!-- page js -->
 	@yield('page_js')
+	@yield('scripts')
 
 
 	<script type="text/javascript">
