@@ -10,7 +10,7 @@ class Page extends Model
     use HasFactory;
 
     protected $fillable = [
-        'language_id', 'title', 'slug', 'description', 'meta_title', 'meta_description', 'attach', 'status',
+        'language_id', 'title', 'slug', 'description', 'meta_title', 'meta_description', 'attach', 'status', 'is_footer',
     ];
 
     public function language()
