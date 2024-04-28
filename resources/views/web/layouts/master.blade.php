@@ -252,7 +252,7 @@
                                     <li><a href="{{ route('application.index') }}" target="_blank">{{ __('navbar_admission') }}</a></li>
                                     @endisset
 
-                                    @foreach($footer_pages as $footer_page)
+                                   @foreach ($footer_pages->where('is_footer', '0') as $footer_page)
                                     <li><a href="{{ route('page.single', ['slug' => $footer_page->slug]) }}">{{ $footer_page->title }}</a></li>
                                     @endforeach
                                 </ul>

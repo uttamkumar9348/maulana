@@ -20,6 +20,7 @@ class PageController extends Controller
         // Page                                
         $data['page'] = Page::where('slug', $slug)
                             ->where('status', '1')
+                            ->where('is_footer', '0')
                             ->firstOrFail();
 
         return view('web.page', $data);
