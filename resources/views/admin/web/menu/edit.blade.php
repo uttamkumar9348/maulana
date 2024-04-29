@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    Edit {{$subject->name}} Subject
+    Edit {{$menu->name}} Menu
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <!-- Basic layout-->
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title">Edit {{$subject->name}} Subject</h5>
+                <h5 class="card-title">Edit {{$menu->name}} Menu</h5>
                 <div class="header-elements">
                     <div class="list-icons">
                         <a class="list-icons-item" data-action="collapse"></a>
@@ -21,38 +21,51 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('admin.subject.update',$subject->id)}}" method="post" enctype="multipart/form-data" >
+                <form action="{{route('admin.menu.update',$menu->id)}}" method="post" enctype="multipart/form-data" >
                     @method('PUT')
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label>Subject Name</label>
-                            <input name="name" type="text" value="{{$subject->name}}" class="form-control" placeholder="Enter Subject Name" required>
+                            <label>Menu Name</label>
+                            <input name="name" value="{{$menu->name}}" type="text" class="form-control" placeholder="Enter Menu Name" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Subject Code</label>
-                            <input name="code" type="text" value="{{$subject->code}}" class="form-control" placeholder="Enter Subject Code" required>
+                            <label>Menu Url Name<small>(Example : /home)</small></label>
+                            <input name="url" value="{{$menu->url}}" type="text" class="form-control" placeholder="E.g. /url-name" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Subject Type</label>
-                            <input name="type" type="text" value="{{$subject->type}}" class="form-control" placeholder="Enter Subject Type" required>
+                            <label>Meta Title</label>
+                            <input name="meta_title" value="{{$menu->meta_title}}" type="text" class="form-control" placeholder="Enter Meta Title" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Select Course</label>
-                            <select name="course_id" class="form-control" id="course_id" required>
-                                <option value="">Select</option>
-                                @foreach (App\Models\Course::all() as $course)
-                                <option @if($subject->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->name}}</option>
+                            <label>Display Order</label>
+                            <input name="display_order" value="{{$menu->display_order}}" type="number" min="1" class="form-control" placeholder="Enter Display Order" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Is Show on Footer ?
+                            </label><br>
+                            <input type="radio" {{$menu->is_footer ? 'checked' : ''}} name="is_footer" class="" value="1"> Yes 
+                            <input type="radio" {{!$menu->is_footer ? 'checked' : ''}} name="is_footer" class="" value="0"> No 
+                        </div>
+                        <div class="form-group col-md-6">                        
+                            <label>Choose Parent Menu</label>
+                            <select name="menu_id" class="form-control ">
+                                <option value="">Select Menu</option>
+                                @foreach( App\Models\Menu::whereNull('menu_id')->get() as $parentMenu)
+                                @if($parentMenu->id != $menu->id )
+                                <option {{$parentMenu->id == $menu->menu_id ? 'selected' : ''}} value="{{$parentMenu->id}}">{{$parentMenu->name}}</option>
+                                @endif
                                 @endforeach
-                            </select> 
+                            </select>
                         </div>   
                         <div class="form-group col-md-6">
-                            <label>Select Semester</label>
-                            <select name="semester_id" id="semester_id" class="form-control" required>
-                                <option selected value="{{$subject->semester_id}}">{{$subject->semester->name}}</option>
-                            </select> 
-                        </div>   
-                   
+                            <label>Meta Tags</label>
+                            <textarea name="meta_tags" class="form-control">{{$menu->meta_tags}}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Meta Description</label>
+                            <textarea name="meta_description" class="form-control" >{{$menu->meta_description}}</textarea>
+                        </div>
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Edit <i class="icon-paperplane ml-2"></i></button>

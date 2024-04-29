@@ -79,10 +79,12 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        return view('admin.web.menu.edit',compact('menu'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -91,9 +93,12 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request,$id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->update($request->all());
+        toastr()->success('Menu Updated successfully');
+        return redirect()->back(); 
     }
 
     /**
@@ -102,8 +107,11 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+        toastr()->success('Menu Deleted successfully');
+        return redirect()->back();
     }
 }
