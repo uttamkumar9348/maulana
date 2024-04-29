@@ -12,7 +12,7 @@
                 <hr/>
                 <div class="">
                     <div class="row">
-                        <div class="col-md-12">
+                       <div class="col-md-12" style="white-space:normal;!important">
                             {{-- <p><mark class="text-primary">{{ __('field_icon') }}:</mark> {!! $row->icon !!}</p><hr/> --}}
 
                             <p><mark class="text-primary">{{ __('field_description') }}:</mark> {{ $row->description }}</p><hr/>

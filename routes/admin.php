@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\EntranceFeeController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeCategoryController;
 use App\Http\Controllers\Admin\GradeController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PoliceStationController;
 use App\Http\Controllers\Admin\ProspectController;
 use App\Http\Controllers\Admin\SemesterController;
@@ -111,6 +112,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::resource('entrance_fee', EntranceFeeController::class);
     /*******************ENTRANCE FEE ROUTE END*************/
     Route::prefix('web')->group(function () {
+        Route::resource('menu', MenuController::class);
         Route::resource('slider', SliderController::class);
         Route::resource('feature', FeatureController::class);
         Route::resource('about-us', AboutUsController::class);

@@ -10,9 +10,6 @@
     <!-- App Title -->
     <title>@yield('title') | {{ $setting->meta_title ?? '' }}</title>
 
-    <meta name="description" content="{!! Str::limit(strip_tags($setting->meta_description), 160, ' ...') !!}">
-    <meta name="keywords" content="{!! strip_tags($setting->meta_keywords) !!}">
-
     <!-- App favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/uploads/setting/'.$setting->favicon_path) }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('/uploads/setting/'.$setting->favicon_path) }}" type="image/x-icon">
@@ -51,40 +48,6 @@
     <!-- RTL css -->
     <link rel="stylesheet" href="{{ asset('web/css/rtl.css') }}">
     @endif
-    <style>
-            .dropdown {
-                display: none; /* Hide dropdown by default */
-                position: absolute;
-                background-color: #f9f9f9;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-                left: 0; /* Align dropdown to the left */
-            }
-
-            .dropdown li {
-                display: block;
-            }
-
-            .dropdown li a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left; /* Align text to the left */
-            }
-
-            .dropdown li a:hover {
-                background-color: #f1f1f1;
-            }
-
-            /* Show dropdown when hovering over the parent item */
-            ul li:hover > .dropdown {
-                display: block;
-            }
-
-
-    </style>
  </head>
 
  <body>
@@ -133,7 +96,7 @@
                                         <img src="{{ asset('web/img/icon/phone-call.png') }}" alt="img">
                                      </div>
                                      <div class="text">
-                                        <a href="tel:{{ str_replace(' ', '', $topbarSetting->phone ?? '') }}">{{ $topbarSetting->phone ?? '' }}</a>
+                                        <strong><a href="tel:{{ str_replace(' ', '', $topbarSetting->phone ?? '') }}">{{ $topbarSetting->phone ?? '' }}</a></strong>
                                      </div>
                                   </div>
                                </li>
@@ -145,17 +108,7 @@
                                         <img src="{{ asset('web/img/icon/mailing.png') }}" alt="img">
                                      </div>
                                      <div class="text">
-                                        <a href="mailto:{{ $topbarSetting->email ?? '' }}">{{ $topbarSetting->email ?? '' }}</a>
-                                     </div>
-                                  </div>
-                               </li>
-                               <li>
-                                  <div class="call-box">
-                                     <div class="icon">
-                                        <img src="{{ asset('web/img/icon/login_home.png') }}" alt="img">
-                                     </div>
-                                     <div class="text">
-                                        <a href="{{ route('login') }}">Login / Register</a>
+                                        <strong><a href="mailto:{{ $topbarSetting->email ?? '' }}">{{ $topbarSetting->email ?? '' }}</a></strong>
                                      </div>
                                   </div>
                                </li>
@@ -181,42 +134,22 @@
                             @endif
                         </div>
 
-                        <div class="col-xl-7 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="main-menu text-right text-xl-right">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        @foreach(App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
-                                        @php 
-                                            $url  = $menu->url.'*';
-                                                $isRequest = Request::path() == $url ? 'current' : '';
-                                                // dd($url);
-                                        @endphp
-                                        @if($menu->childMenu->count() > 0)
-                                        <li class="{{ $isRequest }}">
-                                            <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
-                                            <ul class="dropdown">
-                                                @foreach($menu->childMenu as $childMenu)
-                                                <li><a href="{{$childMenu->url}}">{{$childMenu->name}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                        @else 
-                                        <li class="{{ $isRequest }}"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
-                                        @endif
-                                        @endforeach
-                                        {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
-                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
+                                        <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ __('navbar_home') }}</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
-                                        
+                                        <li class="{{ Request::is('event*') ? 'current' : '' }}"><a href="{{ route('event') }}">{{ __('navbar_event') }}</a></li>
+                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="{{ route('faq') }}">{{ __('navbar_faqs') }}</a></li>
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
                         </div>
 
-                        <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block text-right text-xl-right">
+                        <div class="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
                             @php 
                             $application = App\Models\ApplicationSetting::status(); 
                             @endphp
@@ -225,7 +158,7 @@
                                 <ul>
                                     <li>
                                         <div class="second-header-btn">
-                                           <a href="{{ route('prospect.register') }}" class="btn">{{ __('navbar_admission') }}</a>
+                                           <a href="{{ route('application.index') }}" target="_blank" class="btn">{{ __('navbar_admission') }}</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -245,7 +178,11 @@
 
  	
     <!-- Content Start -->
-    @yield('content')
+    			<div class="content">
+
+				@yield('content')
+
+			</div>
     <!-- Content End -->
 
 
@@ -290,10 +227,7 @@
                             </div>
                             <div class="footer-link">
                                 <ul>
-                                    @foreach(App\Models\Menu::where('is_footer',1)->orderBy('display_order')->get() as $menu)
-                                    <li><a href="{{ url($menu->url) }}" target="_blank">{{$menu->name}}</a></li>
-                                    @endforeach
-                                    {{-- @if (Route::has('student.login'))
+                                    @if (Route::has('student.login'))
                                     <li><a href="{{ route('student.login') }}" target="_blank">{{ __('field_student') }} {{ __('field_login') }}</a></li>
                                     @endif
                                     @if (Route::has('login'))
@@ -307,9 +241,9 @@
                                     <li><a href="{{ route('application.index') }}" target="_blank">{{ __('navbar_admission') }}</a></li>
                                     @endisset
 
-                                   @foreach ($footer_pages->where('is_footer', '0') as $footer_page)
+                                    @foreach($footer_pages as $footer_page)
                                     <li><a href="{{ route('page.single', ['slug' => $footer_page->slug]) }}">{{ $footer_page->title }}</a></li>
-                                    @endforeach --}}
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

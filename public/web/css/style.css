@@ -773,7 +773,8 @@ font-size: 16px;
 color: #fff;
 padding: 15px 30px;
 position: relative;
-border-radius: 0;
+border-radius: 12px;
+margin-left:50px;
 }
 .second-header-btn .btn:hover {
 color: #fff;
@@ -2150,7 +2151,7 @@ section:hover .section-title h2::before{width: 100px;}
 }
 .about-content3 li::before {
     font-family: "Font Awesome 5 Pro";
-    content: "";
+    content: "?";
     margin-right: 10px;
     color: #ff7350;
 }
@@ -2323,7 +2324,7 @@ padding: 25px;
 }
 .services-two ul li::before {
    font-family: "Font Awesome 5 Pro";
-    content: "ï€Œ";
+    content: "";
    margin-right: 10px;
 color: #ff7350;
 }
@@ -2378,7 +2379,7 @@ margin-bottom: 30px;
 }
 .services-three ul li::before {
    font-family: "Font Awesome 5 Pro";
-    content: "ï€Œ";
+    content: "";
    margin-right: 10px;
 color: #ff7350;
 }
@@ -2741,7 +2742,7 @@ transform: scale(1.08);
 }
 .services-box-04 .services-content-02 li::before {
     font-family: "Font Awesome 5 Pro";
-    content: "ï€Œ";
+    content: "";
     margin-right: 10px;
     color: #ff7350;
 }
@@ -5740,7 +5741,7 @@ margin-left: -10px;
     margin-top: 0;
 }
 .pricing-body li::before{
-content: '';
+content: '?';
 font-family: "Font Awesome 5 Pro";
 color: #777;
 position: relative;
@@ -6183,7 +6184,7 @@ margin-bottom: 10px;
     font-size: 15px;
 }
 .copyright-wrap .container{
-   padding: 20px 0;
+   padding: 5px 0;
 }
 .copyright-wrap li {
     display: inline;
@@ -11411,8 +11412,8 @@ padding-left: 0;
     color: #fff;
 }
 .logo a img {
-	max-height: 80px;
-	max-width: 200px;
+	max-height: 130px;
+	max-width: 330px;
 }
 blockquote a ,blockquote cite{
     color: #bacdff;

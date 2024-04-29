@@ -35,7 +35,7 @@ class AuthController extends Controller
             }
             User::create($request->all());
             toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
-            return redirect(url('/'));
+            return redirect(url('/login'));
         }catch (Exception $e)
         {
             toastr()->error($e->getMessage());
