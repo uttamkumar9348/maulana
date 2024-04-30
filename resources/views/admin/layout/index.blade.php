@@ -251,7 +251,7 @@
 								<li class="nav-item"><a href="{{ route('admin.faq.index') }}" class="nav-link {{Request::is('admin/web/faq')?'active':''}}">{{ trans_choice('module_faq', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.gallery.index') }}" class="nav-link {{Request::is('admin/web/gallery')?'active':''}}">{{ trans_choice('module_gallery', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.testimonial.index') }}" class="nav-link {{Request::is('admin/web/testimonial')?'active':''}}">{{ trans_choice('module_testimonial', 2) }}</a></li>
-								<li class="nav-item"><a href="{{ route('admin.page.index') }}" class="nav-link {{Request::is('admin/web/page')?'active':''}}">{{ trans_choice('module_footer_page', 2) }}</a></li>
+								<li class="nav-item"><a href="{{ route('admin.page.index') }}" class="nav-link {{Request::is('admin/web/page')?'active':''}}">Pages</a></li>
 								<li class="nav-item"><a href="{{ route('admin.call-to-action.index') }}" class="nav-link {{Request::is('admin/web/call-to-action')?'active':''}}">{{ trans_choice('module_call_to_action', 1) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.menu.index') }}" class="nav-link {{Request::is('admin/web/menu')?'active':''}}">Menu</a></li>
 							</ul>
