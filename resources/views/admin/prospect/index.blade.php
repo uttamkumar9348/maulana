@@ -28,7 +28,7 @@ Prospects
                     <td>{{$key+1}}</td>
                     <td>{{$prospect->name}}</td>
                     <td>{{$prospect->email}}</td>
-                    <td>{{ $prospect->entrance_fee?$prospect->entrance_fee->exam_name:'' }}</td>
+                    <td>{{ $prospect->entrance_fee?$prospect->entrance_fee->course->title:'' }}</td>
                     <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->status:'' }}</td>
                     <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->track_id:'' }}</td>
            
@@ -55,7 +55,7 @@ Prospects
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title mt-0" id="myModalLabel">Student Approval</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
