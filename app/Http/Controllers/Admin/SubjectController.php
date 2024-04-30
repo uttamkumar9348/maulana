@@ -109,7 +109,8 @@ class SubjectController extends Controller
     }
     public function getCourseSemsters(Request $request)
     {
-        $semesters = Course::find($request->id)->semesters;        
+        $semesters = Course::find($request->id)->semesters;   
+        dd($semesters);     
         return response()->json($semesters);
     }
 }

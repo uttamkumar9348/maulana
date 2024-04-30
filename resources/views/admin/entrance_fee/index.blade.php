@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    Add Entrance Exam
+Add Entrance Exam
 @endsection
 
 @section('content')
@@ -21,12 +21,18 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('admin.entrance_fee.store')}}" method="post" enctype="multipart/form-data" >
+                <form action="{{route('admin.entrance_fee.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label>Exam Name</label>
-                            <input name="exam_name" type="text" class="form-control" placeholder="Enter Exam Name" required>
+                            <label>Course Name</label>
+                            <!-- <input name="exam_name" type="text" class="form-control" placeholder="Enter Exam Name" required> -->
+                            <select name="course_id" id="course_id" class="form-control">
+                                <option value="">Select</option>
+                                @foreach($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Exam Fee</label>
@@ -36,7 +42,7 @@
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Create <i class="icon-paperplane ml-2"></i></button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -51,28 +57,27 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Exam Name</th>
+                <th>Course Name</th>
                 <th>Exam Fee</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\EntranceFee::all()  as $key => $entrance_fee)
+            @foreach (App\Models\EntranceFee::all() as $key => $entrance_fee)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$entrance_fee->exam_name}}</td>
+                <td>{{$entrance_fee->course->title}}</td>
                 <td>{{$entrance_fee->exam_fee}}</td>
-                
+
                 <td>
-                    <button data-toggle="modal" data-target="#edit_modal" exam_name="{{$entrance_fee->exam_name}}" 
-                        exam_fee="{{$entrance_fee->exam_fee}}" id="{{$entrance_fee->id}}" class="edit-btn btn btn-primary">Edit</button>
+                    <button data-toggle="modal" data-target="#edit_modal" course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}" id="{{$entrance_fee->id}}" class="edit-btn btn btn-primary">Edit</button>
                 </td>
                 <td>
                     <form action="{{route('admin.entrance_fee.destroy',$entrance_fee->id)}}" method="POST">
                         @method('DELETE')
                         @csrf
-                    <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -93,8 +98,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Exam Name</label>
-                        <input name="exam_name" id="exam_name" type="text" class="form-control" placeholder="Enter Exam Name" required>
+                        <label>Course Name</label>
+                        <!-- <input name="exam_name" id="exam_name" type="text" class="form-control" placeholder="Enter Exam Name" required> -->
+                        <select name="course_id" id="course_id" class="form-control">
+                            <option value="">Select</option>
+                            @foreach($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->title }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Exam Fee</label>
@@ -113,12 +124,13 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function(){
-        $('.edit-btn').click(function(){
-            let exam_name = $(this).attr('exam_name');
+    $(document).ready(function() {
+        $('.edit-btn').click(function() {
+            let course_id = $(this).attr('course_id');
             let exam_fee = $(this).attr('exam_fee');
             let id = $(this).attr('id');
-            $('#exam_name').val(exam_name);
+
+            $("#course_id option[value='" + course_id + "']").prop("selected", true);
             $('#exam_fee').val(exam_fee);
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('admin.entrance_fee.update','')}}' +'/'+id);

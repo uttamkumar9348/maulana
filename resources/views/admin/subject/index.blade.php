@@ -84,7 +84,7 @@ Manage Subjects
                         <select name="course_id" class="form-control" id="course_id" required>
                             <option value="">Select</option>
                             @foreach (App\Models\Course::all() as $course)
-                            <option value="{{$course->id}}">{{$course->name}}</option>
+                            <option value="{{$course->id}}">{{$course->title}}</option>
                             @endforeach
                         </select> 
                     </div>   

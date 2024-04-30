@@ -73,7 +73,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::resource('teacher', TeacherController::class);
     /*******************TEACHER ROUTE END*************/
     /*******************COURSE ROUTE START*************/
-    Route::resource('course', CourseController::class);
+    // Route::resource('course', CourseController::class);
+    Route::resource('course', WebCourseController::class);
     /*******************COURSE ROUTE END*************/
     /*******************SEMESTER ROUTE START*************/
     Route::resource('semester', SemesterController::class);
@@ -116,7 +117,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::resource('slider', SliderController::class);
         Route::resource('feature', FeatureController::class);
         Route::resource('about-us', AboutUsController::class);
-        Route::resource('course', WebCourseController::class);
+        // Route::resource('course', WebCourseController::class);
         Route::resource('web-event', WebEventController::class);
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

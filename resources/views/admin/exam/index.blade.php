@@ -7,7 +7,7 @@ Manage Exams
 @section('content')
 
 <div class="card">
-    
+
     <div class="card-header header-elements-inline">
         <h5 class="card-title">Manage Exams</h5>
         <div class="header-elements">
@@ -33,7 +33,7 @@ Manage Exams
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\Exam::all()  as $key => $exam)
+            @foreach (App\Models\Exam::all() as $key => $exam)
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$exam->name}}</td>
@@ -48,7 +48,7 @@ Manage Exams
                     <form action="{{route('admin.exam.destroy',$exam->id)}}" method="POST">
                         @method('DELETE')
                         @csrf
-                    <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -59,7 +59,7 @@ Manage Exams
 
 <div id="add_exam_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
-        <form action="{{route('admin.exam.store')}}" method="post" enctype="multipart/form-data" >
+        <form action="{{route('admin.exam.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -74,61 +74,61 @@ Manage Exams
                         </div>
                         <div class="form-group col-md-4">
                             <label>Select Course</label>
-                            <select name="course_id" class="form-control select-search" id="course_id" required>
+                            <select name="course_id" class="form-control" id="course_id" required>
                                 <option value="">Select</option>
                                 @foreach (App\Models\Course::all() as $course)
-                                <option value="{{$course->id}}">{{$course->name}}</option>
+                                <option value="{{$course->id}}">{{$course->title}}</option>
                                 @endforeach
-                            </select> 
-                        </div>   
+                            </select>
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Select Semester</label>
-                            <select name="semester_id" id="semester_id" class="form-control select-search" required>
-                                <option >Choose Semester</option>
-                            </select> 
-                        </div>   
+                            <select name="semester_id" id="semester_id" class="form-control" required>
+                                <option>Choose Semester</option>
+                            </select>
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Term</label>
                             <br>
                             <input type="radio" class="" name="term" value="MS" required> MS
                             <input type="radio" class="" name="term" value="ES" required> ES
-                        </div>  
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Type</label>
                             <br>
-                            <input type="radio" class="" name="type"  value="Theory" required> Theory
-                            <input type="radio" class="" name="type"  value="Practical" required> Practical
-                        </div>  
+                            <input type="radio" class="" name="type" value="Theory" required> Theory
+                            <input type="radio" class="" name="type" value="Practical" required> Practical
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Back Paper</label>
                             <br>
                             <input type="radio" class="" name="is_back_paper" value="1" required> Yes
                             <input type="radio" class="" name="is_back_paper" value="0" required> No
-                        </div>   
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Attendance Required <small>(In Percentage)</small></label>
                             <input type="number" class="form-control" name="attendance_required" required>
-                        </div>    
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Exam Date</label>
                             <input type="date" class="form-control" name="date" required>
-                        </div>  
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Form Start Date</label>
                             <input type="date" class="form-control" name="form_start_date" required>
-                        </div>  
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Form End Date</label>
                             <input type="date" class="form-control" name="form_last_date" required>
-                        </div>  
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Form Fee</label>
                             <input type="number" class="form-control" name="form_fee" required>
-                        </div>  
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Late Fee</label>
                             <input type="number" class="form-control" name="late_fee" required>
-                        </div>  
+                        </div>
 
                     </div>
                 </div>
@@ -144,8 +144,8 @@ Manage Exams
 
 @section('scripts')
 <script>
-    $(document).ready(function(){
-        $('#course_id').on('change',function(){
+    $(document).ready(function() {
+        $('#course_id').on('change', function() {
             let id = this.value;
             $.ajax({
                 url: "{{route('admin.subject.get_course_semsters')}}",
@@ -156,11 +156,11 @@ Manage Exams
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
                 },
-                success: function(result){
+                success: function(result) {
                     $('#semester_id').empty();
                     $('#semester_id').append('<option disabled>Select Semester</option>');
-                    for (i=0;i<result.length;i++){
-                        $('#semester_id').append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
+                    for (i = 0; i < result.length; i++) {
+                        $('#semester_id').append('<option value="' + result[i].id + '">' + result[i].name + '</option>');
                     }
                 }
             });

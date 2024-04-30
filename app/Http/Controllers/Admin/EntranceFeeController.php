@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EntranceFee;
+use App\Models\Web\Course;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,9 @@ class EntranceFeeController extends Controller
      */
     public function index()
     {
-        return view('admin.entrance_fee.index');
+        $courses = Course::all();
+
+        return view('admin.entrance_fee.index', compact('courses'));
     }
 
     /**
@@ -39,7 +42,7 @@ class EntranceFeeController extends Controller
     {
         try{
             $this->validate($request,[
-                'exam_name' => 'required',
+                'course_id' => 'required',
                 'exam_fee' => 'required',
             ]);
             EntranceFee::create($request->all());
