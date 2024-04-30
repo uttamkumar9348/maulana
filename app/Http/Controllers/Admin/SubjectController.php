@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
 use App\Models\Subject;
+use App\Models\Web\Course;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -110,7 +110,7 @@ class SubjectController extends Controller
     public function getCourseSemsters(Request $request)
     {
         $semesters = Course::find($request->id)->semesters;   
-        dd($semesters);     
+        // dd($semesters);     
         return response()->json($semesters);
     }
 }

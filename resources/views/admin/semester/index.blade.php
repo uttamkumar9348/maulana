@@ -32,7 +32,7 @@ Manage Semester
                             <label>Select Course</label>
                             <select name="course_id" class="form-control" required>
                                 <option value="">Select</option>
-                                @foreach (App\Models\Course::all() as $course)
+                                @foreach (App\Models\Web\Course::all() as $course)
                                 <option value="{{$course->id}}">{{$course->title}}</option>
                                 @endforeach
                             </select> 
@@ -105,7 +105,7 @@ Manage Semester
                         <label>Select Course</label>
                         <select name="course_id" class="form-control" id="course_id">
                             <option value="">Select</option>
-                            @foreach (App\Models\Course::all() as $course)
+                            @foreach (App\Models\Web\Course::all() as $course)
                             <option value="{{$course->id}}">{{$course->name}}</option>
                             @endforeach
                         </select> 
