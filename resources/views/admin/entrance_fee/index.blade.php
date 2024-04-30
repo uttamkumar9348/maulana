@@ -38,6 +38,19 @@ Add Entrance Exam
                             <label>Exam Fee</label>
                             <input name="exam_fee" type="text" class="form-control" placeholder="Enter Exam Fee" required>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label>Download Start Date</label>
+                            <input name="download_start_date" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Download End Date</label>
+                            <input name="download_end_date" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Exam Status</label>
+                            <input type="radio" name="exam_status" value="1"> Yes
+                            <input type="radio" name="exam_status" checked value="0"> No
+                        </div>
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Create <i class="icon-paperplane ml-2"></i></button>
@@ -59,6 +72,9 @@ Add Entrance Exam
                 <th>#</th>
                 <th>Course Name</th>
                 <th>Exam Fee</th>
+                <th>Download Start Date</th>
+                <th>Download End Date</th>
+                <th>Exam Status</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
@@ -67,11 +83,18 @@ Add Entrance Exam
             @foreach (App\Models\EntranceFee::all() as $key => $entrance_fee)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$entrance_fee->course->title}}</td>
+                <td>{{@$entrance_fee->course ? @$entrance_fee->course->title : ''}}</td>
                 <td>{{$entrance_fee->exam_fee}}</td>
+                <td>{{$entrance_fee->download_start_date}}</td>
+                <td>{{$entrance_fee->download_end_date}}</td>
+                <td>{{$entrance_fee->exam_status ? 'Active' : 'Inactive'}}</td>
 
                 <td>
-                    <button data-toggle="modal" data-target="#edit_modal" course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}" id="{{$entrance_fee->id}}" class="edit-btn btn btn-primary">Edit</button>
+                    <button data-toggle="modal" data-target="#edit_modal" 
+                    course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}"
+                    download_start_date="{{$entrance_fee->download_start_date}}" download_end_date="{{$entrance_fee->download_end_date}}"
+                    exam_status="{{$entrance_fee->exam_status}}"
+                     id="{{$entrance_fee->id}}" class="edit-btn btn btn-primary">Edit</button>
                 </td>
                 <td>
                     <form action="{{route('admin.entrance_fee.destroy',$entrance_fee->id)}}" method="POST">
@@ -111,6 +134,18 @@ Add Entrance Exam
                         <label>Exam Fee</label>
                         <input name="exam_fee" id="exam_fee" type="text" class="form-control" placeholder="Enter Exam Fee" required>
                     </div>
+                    <div class="form-group">
+                        <label>Download Start Date</label>
+                        <input name="download_start_date" id="download_start_date" type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group ">
+                        <label>Download End Date</label>
+                        <input name="download_end_date" id="download_end_date" type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Exam Status</label>
+                        <select name="exam_status"  id="exam_status" class="form-control"></select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
@@ -128,9 +163,15 @@ Add Entrance Exam
         $('.edit-btn').click(function() {
             let course_id = $(this).attr('course_id');
             let exam_fee = $(this).attr('exam_fee');
+            let download_start_date = $(this).attr('download_start_date');
+            let download_end_date = $(this).attr('download_end_date');
+            let exam_status = $(this).attr('exam_status');
             let id = $(this).attr('id');
 
             $("#course_id option[value='" + course_id + "']").prop("selected", true);
+            $('#download_start_date').val(download_start_date);
+            $('#download_end_date').val(download_end_date);
+            $('#exam_status').val(exam_status);
             $('#exam_fee').val(exam_fee);
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('admin.entrance_fee.update','')}}' +'/'+id);

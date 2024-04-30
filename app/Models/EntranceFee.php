@@ -10,7 +10,14 @@ class EntranceFee extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['course_id','exam_fee'];
+    protected $fillable = [
+        'course_id',
+        'exam_fee',
+        'download_start_date',
+        'download_end_date',
+        'exam_status'
+    ];
+
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
     }
