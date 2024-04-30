@@ -43,7 +43,6 @@ class SemesterController extends Controller
                 'course_id' => 'required',
             ]);
             Semester::create($request->all());
-            dd($request->all());
             toastr()->success('Semester Added Successfully');
             return redirect()->back();
         }catch (Exception $e)

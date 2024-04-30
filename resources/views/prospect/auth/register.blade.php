@@ -94,7 +94,7 @@
 												<select name="entrance_fee_id" class="form-control select-search" required>
 													<option>Select</option>
 													@foreach(App\Models\EntranceFee::all() as $entrance_fee)
-													<option value="{{$entrance_fee->id}}">{{$entrance_fee->exam_name}}</option>
+													<option value="{{$entrance_fee->id}}">{{$entrance_fee->course->title}}</option>
 													@endforeach
 												</select>
 											</div>
@@ -153,7 +153,7 @@
 				<div class="form-group form-group-feedback form-group-feedback-left">
 					<select  name="course_ids[]"  class="form-control select-2">
 						<option selected disabled>Select Course</option>
-						@foreach(App\Models\Course::all() as $course)
+						@foreach(App\Models\Web\Course::all() as $course)
 						<option value="{{$course->id}}">{{$course->name}}</option>
 						@endforeach
 					</select>
