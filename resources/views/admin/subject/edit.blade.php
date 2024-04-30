@@ -41,8 +41,8 @@
                             <label>Select Course</label>
                             <select name="course_id" class="form-control" id="course_id" required>
                                 <option value="">Select</option>
-                                @foreach (App\Models\Course::all() as $course)
-                                <option @if($subject->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->name}}</option>
+                                @foreach (App\Models\Web\Course::all() as $course)
+                                <option @if($subject->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->title}}</option>
                                 @endforeach
                             </select> 
                         </div>   

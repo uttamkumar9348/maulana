@@ -2,6 +2,8 @@
 
 namespace App\Models\Web;
 
+use App\Models\Language;
+use App\Models\Semester;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

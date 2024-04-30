@@ -169,8 +169,8 @@
 				<div class="form-group form-group-feedback form-group-feedback-left">
 					<select  name="course_ids[]"  class="form-control select-2">
 						<option selected disabled>Select Course</option>
-						@foreach(App\Models\Course::all() as $course)
-						<option value="{{$course->id}}">{{$course->name}}</option>
+						@foreach(App\Models\Web\Course::all() as $course)
+						<option value="{{$course->id}}">{{$course->title}}</option>
 						@endforeach
 					</select>
 				</div>

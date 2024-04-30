@@ -26,7 +26,7 @@ Manage Subjects
                 <th>Subject Name</th>
                 <th>Subject Code</th>
                 <th>Subject Type</th>
-                <th>Semster Name</th>
+                <th>Semester Name</th>
                 <th>Course Name</th>
                 <th>Action</th>
                 <th>Action</th>
@@ -39,8 +39,8 @@ Manage Subjects
                 <td>{{$subject->name}}</td>
                 <td>{{$subject->code}}</td>
                 <td>{{$subject->type}}</td>
-                <td>{{@$subject->course->name}}</td>
                 <td>{{@$subject->semester->name}}</td>
+                <td>{{@$subject->course->title}}</td>
                 <td>
                     <a href="{{route('admin.subject.edit',$subject->id)}}" class="btn btn-primary btn-sm">Edit</a>
                 </td>
@@ -83,7 +83,7 @@ Manage Subjects
                         <label>Select Course</label>
                         <select name="course_id" class="form-control" id="course_id" required>
                             <option value="">Select</option>
-                            @foreach (App\Models\Course::all() as $course)
+                            @foreach (App\Models\Web\Course::all() as $course)
                             <option value="{{$course->id}}">{{$course->title}}</option>
                             @endforeach
                         </select> 

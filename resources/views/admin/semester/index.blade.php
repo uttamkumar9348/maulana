@@ -67,7 +67,7 @@ Manage Semester
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$semester->name}}</td>
-                <td>{{@$semester->course->name}}</td>
+                <td>{{@$semester->course->title}}</td>
                 
                 <td>
                     <button data-toggle="modal" data-target="#edit_modal" name="{{$semester->name}}" 
@@ -106,7 +106,7 @@ Manage Semester
                         <select name="course_id" class="form-control" id="course_id">
                             <option value="">Select</option>
                             @foreach (App\Models\Web\Course::all() as $course)
-                            <option value="{{$course->id}}">{{$course->name}}</option>
+                            <option value="{{$course->id}}">{{$course->title}}</option>
                             @endforeach
                         </select> 
 
@@ -127,9 +127,10 @@ Manage Semester
     $(document).ready(function(){
         $('.edit-btn').click(function(){
             let name = this.name;
-            let course_id = this.course_id;
+            let course_id = $(this).attr('course_id');
             let id = $(this).attr('id');
-            $('#course_id').val(course_id);
+
+            $("#course_id option[value='" + course_id + "']").prop("selected", true);
             $('#name').val(name);
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('admin.semester.update','')}}' +'/'+id);

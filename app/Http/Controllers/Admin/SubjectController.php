@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Semester;
 use App\Models\Subject;
 use App\Models\Web\Course;
 use Exception;
@@ -38,8 +39,8 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $this->validate($request,[
+        try {
+            $this->validate($request, [
                 'name' => 'required',
                 'course_id' => 'required',
                 'code' => 'required',
@@ -49,8 +50,7 @@ class SubjectController extends Controller
             Subject::create($request->all());
             toastr()->success('Subject Added Successfully');
             return redirect()->back();
-        }catch (Exception $e)
-        {
+        } catch (Exception $e) {
             toastr()->error($e->getMessage());
             return redirect()->back();
         }
@@ -76,7 +76,7 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $subject = Subject::find($id);
-        return view('admin.subject.edit',compact('subject'));
+        return view('admin.subject.edit', compact('subject'));
     }
 
     /**
@@ -86,12 +86,12 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $subject = Subject::find($id);
         $subject->update($request->all());
         toastr()->success('Subject Updated successfully');
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
     /**
@@ -109,8 +109,8 @@ class SubjectController extends Controller
     }
     public function getCourseSemsters(Request $request)
     {
-        $semesters = Course::find($request->id)->semesters;   
-        // dd($semesters);     
+        $semesters = Semester::where('course_id', $request->id)->get();
+
         return response()->json($semesters);
     }
 }

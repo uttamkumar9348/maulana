@@ -50,13 +50,13 @@ Manage Course
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\Course::all()  as $key => $course)
+            @foreach (App\Models\Web\Course::all()  as $key => $course)
             <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$course->name}}</td>
+                <td>{{$course->title}}</td>
                 
                 <td>
-                    <button data-toggle="modal" data-target="#edit_modal" name="{{$course->name}}" 
+                    <button data-toggle="modal" data-target="#edit_modal" name="{{$course->title}}" 
                     id="{{$course->id}}" class="edit-btn btn btn-primary">Edit</button>
                 </td>
                 <td>
