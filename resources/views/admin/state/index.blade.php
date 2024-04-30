@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Choose Country</label>
-                            <select  name="country_id"  class="form-control select-search" data-fouc>
+                            <select  name="country_id"  class="form-control">
                                 <option selected disabled>Select Country</option>
                                 @foreach(App\Models\Country::all() as $country)
                                 <option value="{{$country->id}}">{{$country->name}}</option>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="form-group">
                         <label>Choose Country</label>
-                        <select  name="country_id" id="country_id" class="form-control select-search" data-fouc>
+                        <select  name="country_id" id="country_id" class="form-control">
                             <option selected disabled>Select Country</option>
                             @foreach(App\Models\Country::all() as $country)
                             <option value="{{$country->id}}">{{$country->name}}</option>
@@ -125,9 +125,9 @@
     $(document).ready(function(){
         $('.edit-btn').click(function(){
             let name = this.name;
-            let country_id = this.country_id;
+            let country_id = $(this).attr('country_id');
             let id = $(this).attr('id');
-            $('#country_id').val(country_id);
+            $("#country_id option[value='" + country_id + "']").prop("selected", true);
             $('#name').val(name);
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('admin.state.update','')}}' +'/'+id);

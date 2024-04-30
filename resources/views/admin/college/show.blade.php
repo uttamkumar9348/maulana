@@ -208,7 +208,7 @@
 											<div class="row">
 												<div class="col-md-4">
 													<label>State</label>
-													<select  name="state_id" id="college_state_id"  class="form-control select-search" data-fouc>
+													<select  name="state_id" id="college_state_id"  class="form-control">
 														<option selected disabled>Select State</option>
 														@foreach(App\Models\State::all() as $state)
 														<option @if($college->collegeProfile->state_id == $state->id) selected @endif value="{{$state->id}}">{{$state->name}}</option>
@@ -216,8 +216,8 @@
 													</select>
 												</div>
 												<div class="col-md-4">
-													<label>City</label>
-													<select  name="city_id" id="college_city_id"  class="form-control select-search" data-fouc>
+													<label>District</label>
+													<select  name="city_id" id="college_city_id"  class="form-control">
 														<option selected disabled>Select City</option>
 														@foreach($college->collegeProfile->state->cities as $city)
 														<option @if($college->collegeProfile->city_id == $city->id) selected @endif value="{{$city->id}}">{{$city->name}}</option>
@@ -225,7 +225,7 @@
 													</select>
 												</div>
 												<div class="col-md-4">
-													<label>District</label>
+													<label>City</label>
 													<input type="text" name="district" value="{{@$college->collegeProfile->district}}" class="form-control">
 												</div>
 											</div>
@@ -278,7 +278,7 @@
 										@foreach ($college->collegeCourses  as $key => $course)
 										<tr>
 											<td>{{$key+1}}</td>
-											<td>{{@$course->course->name}}</td>
+											<td>{{@$course->course->title}}</td>
 											<td>{{$course->seats}}</td>
 										</tr>
 										@endforeach

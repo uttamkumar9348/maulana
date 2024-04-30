@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Choose State</label>
-                            <select  name="state_id"  class="form-control select-search" data-fouc required>
+                            <select  name="state_id"  class="form-control" required>
                                 <option selected disabled>Select State</option>
                                 @foreach(App\Models\State::all() as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>
@@ -65,7 +65,7 @@
             <tr>
                 <th>#</th>
                 <th>City Name</th>
-                <th>City State Name</th>
+                <th>State Name</th>
                 <th>City Slug</th>
                 <th>City Code</th>
                 <th>Action</th>
@@ -122,10 +122,10 @@
                     </div>
                     <div class="form-group">
                         <label>Choose State</label>
-                        <select  name="state_id" id="state_id" class="form-control select-search" data-fouc required>
+                        <select  name="state_id" id="state_id" class="form-control" required>
                             <option selected disabled>Select State</option>
                             @foreach(App\Models\State::all() as $state)
-                            <option value="{{$state->name}}">{{$state->name}}</option>
+                            <option value="{{$state->id}}">{{$state->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -145,13 +145,14 @@
     $(document).ready(function(){
         $('.edit-btn').click(function(){
             let name = this.name;
-            let state_id = this.state_id;
-            let code = this.code;
-            let slug = this.slug;
             let id = $(this).attr('id');
+            let slug = $(this).attr('slug');
+            let code = $(this).attr('code');
+            let state_id = $(this).attr('state_id');
+
             $('#slug').val(slug);
             $('#code').val(code);
-            $('#state_id').val(state_id);
+            $("#state_id option[value='" + state_id + "']").prop("selected", true);
             $('#name').val(name);
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('admin.city.update','')}}' +'/'+id);
