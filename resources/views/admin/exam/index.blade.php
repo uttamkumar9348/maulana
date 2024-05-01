@@ -37,7 +37,7 @@ Manage Exams
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$exam->name}}</td>
-                <td>{{@$exam->course->name}}</td>
+                <td>{{@$exam->course->title}}</td>
                 <td>{{@$exam->semester->name}}</td>
                 <td>{{@$exam->date->format('d M, Y')}}</td>
                 <td>100</td>

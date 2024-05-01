@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Select Course</label>
-                            <select name="course_id" class="form-control select-search" id="course_id" required>
+                            <select name="course_id" class="form-control" id="course_id" required>
                                 <option value="">Select</option>
                                 @foreach (App\Models\Web\Course::all() as $course)
                                 <option @if($exam->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->title}}</option>
@@ -43,7 +43,7 @@
                         </div>   
                         <div class="form-group col-md-4">
                             <label>Select Semester</label>
-                            <select name="semester_id" id="semester_id" class="form-control select-search" required>
+                            <select name="semester_id" id="semester_id" class="form-control" required>
                                 <option selected value="{{$exam->semester_id}}">{{$exam->semester->name}}</option>
                             </select> 
                         </div>   
