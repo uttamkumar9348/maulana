@@ -21,4 +21,7 @@ class EntranceFee extends Model
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
     }
+    public function documentCategories(){
+        return $this->hasMany(DocumentCategoryEntranceFee::class,'entrance_fee_id');
+    }
 }

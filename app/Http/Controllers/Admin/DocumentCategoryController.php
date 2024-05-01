@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\EntranceFee;
-use App\Models\Web\Course;
+use App\Models\DocumentCategory;
 use Exception;
 use Illuminate\Http\Request;
 
-class EntranceFeeController extends Controller
+class DocumentCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,7 @@ class EntranceFeeController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-
-        return view('admin.entrance_fee.index', compact('courses'));
+        return view('admin.document_category.index');
     }
 
     /**
@@ -42,11 +39,11 @@ class EntranceFeeController extends Controller
     {
         try{
             $this->validate($request,[
-                'course_id' => 'required',
-                'exam_fee' => 'required',
+                'name' => 'required',
+                'file_type' => 'required',
             ]);
-            EntranceFee::create($request->all());
-            toastr()->success('Entrance Fee Added Successfully');
+            DocumentCategory::create($request->all());
+            toastr()->success('Document Category Added Successfully');
             return redirect()->back();
         }catch (Exception $e)
         {
@@ -58,22 +55,21 @@ class EntranceFeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EntranceFee  $entranceFee
+     * @param  \App\Models\DocumentCategory  $documentCategory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DocumentCategory $documentCategory)
     {
-        $entranceFee = EntranceFee::find($id);
-        return view('admin.entrance_fee.show', compact('entranceFee'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EntranceFee  $entranceFee
+     * @param  \App\Models\DocumentCategory  $documentCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(EntranceFee $entranceFee)
+    public function edit(DocumentCategory $documentCategory)
     {
         //
     }
@@ -82,28 +78,28 @@ class EntranceFeeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EntranceFee  $entranceFee
+     * @param  \App\Models\City  $documentCategory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {
-        $entranceFee = EntranceFee::find($id);
-        $entranceFee->update($request->all());
-        toastr()->success('Entrance Fee Updated successfully');
+        $documentCategory = DocumentCategory::find($id);
+        $documentCategory->update($request->all());
+        toastr()->success('Document Category Updated successfully');
         return redirect()->back(); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EntranceFee  $entranceFee
+     * @param  \App\Models\DocumentCategory  $documentCategory
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $entranceFee = EntranceFee::find($id);
-        $entranceFee->delete();
-        toastr()->success('Entrance Fee Deleted successfully');
+        $documentCategory = DocumentCategory::find($id);
+        $documentCategory->delete();
+        toastr()->success('Document Category Deleted successfully');
         return redirect()->back();
     }
 }

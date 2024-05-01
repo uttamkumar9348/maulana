@@ -75,6 +75,8 @@ Add Entrance Exam
                 <th>Download Start Date</th>
                 <th>Download End Date</th>
                 <th>Exam Status</th>
+                <th>Document Category</th>
+                <th>Action</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
@@ -88,7 +90,8 @@ Add Entrance Exam
                 <td>{{$entrance_fee->download_start_date}}</td>
                 <td>{{$entrance_fee->download_end_date}}</td>
                 <td>{{$entrance_fee->exam_status ? 'Active' : 'Inactive'}}</td>
-
+                <td>{{$entrance_fee->documentCategories->count()}}</td>
+                <td><a href="{{route('admin.entrance_fee.show',$entrance_fee->id)}}" class="btn btn-success btn-sm">Add Document Category</a></td>
                 <td>
                     <button data-toggle="modal" data-target="#edit_modal" 
                     course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}"
