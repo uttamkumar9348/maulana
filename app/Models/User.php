@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Helpers\ImageHelper;
+use App\Models\Web\Course;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -122,5 +123,16 @@ class User extends Authenticatable
     }
     public function setImageAttribute($value){
         $this->attributes['image'] = ImageHelper::saveImage($value,'/uploaded_images/profiles/');
+    }
+
+    public function getDocumentCategories()
+    {
+        $documentCategoryIds = DocumentCategoryEntranceFee::where('entrance_fee_id',$this->entrance_fee_id)
+                        ->get()
+                        ->pluck('document_category_id')->toArray();
+        
+        $documentCategories = DocumentCategory::whereIn('id',$documentCategoryIds)->get();
+        return $documentCategories;
+
     }
 }
