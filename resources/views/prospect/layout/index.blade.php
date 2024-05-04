@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,8 +32,8 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_select2.js')}}"></script>
 
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
-    <script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
-    
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3.min.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
@@ -49,7 +50,7 @@
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/validation/validate.min.js')}}"></script>
 
 	<!-- /theme JS files -->
-	
+
 	<!-- Theme JS files -->
 
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/job_list.js')}}"></script>
@@ -89,9 +90,6 @@
 			<span class="badge bg-success ml-md-3 mr-md-auto">Online</span>
 
 			<ul class="navbar-nav">
-
-
-
 				<li class="nav-item dropdown dropdown-user">
 					<a href="" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
 						<img src="" class="rounded-circle mr-2" height="34" alt="">
@@ -136,7 +134,7 @@
 					<div class="card-body">
 						<div class="media">
 							<div class="mr-3">
-								 <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a> 
+								<a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a>
 							</div>
 
 							<div class="media-body">
@@ -157,22 +155,24 @@
 				<!-- Main navigation -->
 				<div class="card card-sidebar-mobile">
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
-							<!-- Main -->
-						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Prospect Panel</div> <i class="icon-menu" title="Main"></i></li>
+						<!-- Main -->
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Prospect Panel</div> <i class="icon-menu" title="Main"></i>
+						</li>
 						<li class="nav-item">
 							<a href="{{route('prospect.dashboard.index')}}" class="nav-link {{Request::is('prospect/dashboard')?'active':''}}">
 								<i class="icon-home4"></i>
 								<span>Dashboard</span>
 							</a>
 						</li>
-						
+
 					</ul>
 				</div>
 				<!-- /main navigation -->
 
 			</div>
 			<!-- /sidebar content -->
-			
+
 		</div>
 		<!-- /main sidebar -->
 
@@ -221,7 +221,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text ml-lg-auto">
-						
+
 					</span>
 				</div>
 			</div>
@@ -238,4 +238,5 @@
 	@toastr_render
 	@yield('scripts')
 </body>
+
 </html>
