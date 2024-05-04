@@ -39,6 +39,8 @@ use App\Http\Controllers\Admin\Web\SocialSettingController;
 use App\Http\Controllers\Admin\Web\TestimonialController;
 use App\Http\Controllers\Admin\Web\TopbarSettingController;
 use App\Http\Controllers\Admin\Web\WebEventController;
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\PassedexamController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user', 'admin'], function () {
     /*******************DASHBOARD ROUTE START*************/
@@ -108,6 +110,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************GRADE ROUTE START*************/
     Route::resource('grade', GradeController::class);
     /*******************GRADE  ROUTE END*************/
+    /*******************Passed Exam ROUTE START*************/
+    Route::resource('passed_exam', PassedexamController::class);
+    /*******************Passed Exam ROUTE END*************/
+    /*******************Board ROUTE START*************/
+    Route::resource('board', BoardController::class);
+    /*******************Board  ROUTE END*************/
     /*******************POLICE STATION ROUTE START*************/
     Route::resource('police_station', PoliceStationController::class);
     /*******************POLICE STATION  ROUTE END*************/

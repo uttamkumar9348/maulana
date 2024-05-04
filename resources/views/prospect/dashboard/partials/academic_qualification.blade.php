@@ -35,11 +35,23 @@
         <div class="form-group col-md-1">
         </div>
         <div class="form-group col-md-2">
-            <input type="text" name="name_of_exam[]" class="form-control" required >
-        </div>
-        <div class="form-group col-md-2">
-            <input type="text" name="name_of_board[]" class="form-control" required >
-        </div>
+        <!-- <input type="text" name="" class="form-control"  > -->
+        <select name="name_of_exam[]" id="" class="form-control" required>
+            <option value="">Select Exam</option>
+            @foreach (App\Models\Passed_exam::all() as $exam)
+            <option value="{{ $exam->id }}">{{ $exam->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group col-md-2">
+        <!-- <input type="text" name="" class="form-control"  > -->
+        <select name="name_of_board[]" id="" class="form-control" required>
+            <option value="">Select Board</option>
+            @foreach (App\Models\Board::all() as $board)
+            <option value="{{ $board->id }}">{{ $board->name }}</option>
+            @endforeach
+        </select>
+    </div>
         <div class="form-group col-md-2">
             <input type="text" name="attended_school[]" class="form-control" required >
         </div>
