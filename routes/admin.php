@@ -20,11 +20,16 @@ use App\Http\Controllers\Admin\ProspectController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\StudentAttendanceController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\NoticeTypeController;
+use App\Http\Controllers\Admin\noticeController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 use App\Http\Controllers\Admin\Web\AboutUsController;
 use App\Http\Controllers\Admin\Web\CallToActionController;
@@ -101,6 +106,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::post('force_allowed', [StudentAttendanceController::class, 'forceAllowed'])->name('student_attendance.force_allowed');
     Route::resource('student_attendance', StudentAttendanceController::class);
     /*******************STUDENT ATTENDANCE ROUTE END*************/
+    /*******************ROLE START*************/
+    Route::resource('roles', RolesController::class);
+    /*******************ROLE END*************/
+    /*******************Notice Type Start*************/
+    Route::get('/noticetype/list',[NoticeTypeController::class,'list'])->name('NoticeType.list');
+    Route::get('/noticetype/add',[NoticeTypeController::class,'add'])->name('NoticeType.add');
+    Route::post('/noticetype/add',[NoticeTypeController::class,'store'])->name('NoticeType.store');
+    Route::get('/noticetype/edit{id}',[NoticeTypeController::class,'edit'])->name('NoticeType.edit');
+    Route::post('/noticetype/update',[NoticeTypeController::class,'update'])->name('NoticeType.update');
+    Route::get('/noticetype/delete{id}',[NoticeTypeController::class,'delete'])->name('NoticeType.delete');
+    /*******************Notice Type END*************/
+    /*******************Notice  Start*************/
+    Route::get('/notice/list',[noticeController::class,'list'])->name('Notice.list');
+    Route::get('/notice/add',[noticeController::class,'add'])->name('Notice.add');
+    Route::post('/notice/add',[noticeController::class,'store'])->name('Notice.store');
+    Route::get('/notice/edit{id}',[noticeController::class,'edit'])->name('Notice.edit');
+    Route::post('/notice/update',[noticeController::class,'update'])->name('Notice.update');
+    Route::get('/notice/delete{id}',[noticeController::class,'delete'])->name('Notice.delete');
+    
+    /*******************Notice END*************/
+    // Route::resource('team', TeamController::class);
+
+    /*******************Notice END*************/
+
     /*******************EXAM ROUTE START*************/
     Route::resource('exam', ExamController::class);
     /*******************EXAM ROUTE END*************/
@@ -135,6 +164,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::resource('about-us', AboutUsController::class);
         // Route::resource('course', WebCourseController::class);
         Route::resource('web-event', WebEventController::class);
+
+        //team
+        Route::get('/team/list',[TeamController::class,'list'])->name('Team.list');
+        Route::get('/team/add',[TeamController::class,'add'])->name('Team.add');
+        Route::post('/team/add',[TeamController::class,'store'])->name('Team.store');
+        Route::get('/team/edit{id}',[TeamController::class,'edit'])->name('Team.edit');
+        Route::post('/team/update',[TeamController::class,'update'])->name('Team.update');
+        Route::get('/team/delete{id}',[TeamController::class,'delete'])->name('Team.delete');
+
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);
         Route::resource('faq', WebFaqController::class);

@@ -214,6 +214,30 @@
 								<span>Student Attendance</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.roles.index')}}" class="nav-link {{Request::is('admin/roles')?'active':''}}">
+								<i class="icon-person"></i>
+								<span>Roles</span>
+							</a>
+						</li>
+                        {{-- <li class="nav-item">
+							<a href="{{route('admin.Team.list')}}" class="nav-link {{Request::is('admin/team/list')?'active':''}}">
+								<i class="fas fa-users"></i>
+								<span>Team</span>
+							</a>
+						</li> --}}
+
+                        <li class="nav-item nav-item-submenu {{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="fas fa-bullhorn"></i> <span>Notice Board</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'display:block':''}}">
+
+								<li class="nav-item"><a href="{{route('admin.NoticeType.list')}}" class="nav-link {{Request::is('admin/noticetype*')?'active':''}}">Notice Type</a></li>
+
+								<li class="nav-item"><a href="{{route('admin.Notice.list')}}" class="nav-link {{Request::is('admin/notice*')?'active':''}}">Notice</a></li>
+							</ul>
+						</li>
+                        
 						<li class="nav-item nav-item-submenu {{Request::is('admin/exam*') || Request::is('admin/grade*') || Request::is('admin/grade_category*') || Request::is('admin/passed_exam*') || Request::is('admin/board*')  ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-compose"></i> <span>Exam</span></a>
 
@@ -242,7 +266,7 @@
 								<span class="pcoded-micon"><i class="fas fa-globe"></i></span>
 								<span class="pcoded-mtext">{{ trans_choice('module_front_web', 2) }}</span>
 							</a>
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/web/topbar-setting*') || Request::is('admin/web/social-setting*') || Request::is('admin/web/slider*') || Request::is('admin/web/about-us*') || Request::is('admin/web/feature*') || Request::is('admin/web/web-event*') || Request::is('admin/web/news*') || Request::is('admin/web/faq*') || Request::is('admin/web/gallery*') || Request::is('admin/web/testimonial*') || Request::is('admin/web/page*') || Request::is('admin/web/call-to-action*') ?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/web/topbar-setting*') || Request::is('admin/web/social-setting*') || Request::is('admin/web/slider*') || Request::is('admin/web/about-us*') || Request::is('admin/web/feature*') || Request::is('admin/web/web-event*') || Request::is('admin/web/news*') || Request::is('admin/web/faq*') || Request::is('admin/web/gallery*') || Request::is('admin/web/testimonial*') || Request::is('admin/web/page*') || Request::is('admin/web/call-to-action*') || Request::is('admin/web/team*') ?'display:block':''}}">
 								<li class="nav-item"><a href="{{ route('admin.topbar-setting.index') }}" class="nav-link {{Request::is('admin/web/topbar-setting')?'active':''}}">{{ trans_choice('module_topbar_setting', 1) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.social-setting.index') }}" class="nav-link {{Request::is('admin/web/social-setting')?'active':''}}">{{ trans_choice('module_social_setting', 1) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.slider.index') }}" class="nav-link {{Request::is('admin/web/slider')?'active':''}}">{{ trans_choice('module_slider', 2) }}</a></li>
@@ -250,6 +274,9 @@
 								<li class="nav-item"><a href="{{ route('admin.feature.index') }}" class="nav-link {{Request::is('admin/web/feature')?'active':''}}">{{ trans_choice('module_feature', 2) }}</a></li>
 								<!-- <li class="nav-item"><a href="{{ route('admin.course.index') }}" class="nav-link {{Request::is('admin/web/course')?'active':''}}">{{ trans_choice('module_course', 2) }}</a></li> -->
 								<li class="nav-item"><a href="{{ route('admin.web-event.index') }}" class="nav-link {{Request::is('admin/web/web-event')?'active':''}}">{{ trans_choice('module_event', 2) }}</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.Team.list') }}" class="nav-link {{Request::is('admin/web/team/list')?'active':''}}">{{ trans_choice('Team', 2) }}</a></li>
+
 								<li class="nav-item"><a href="{{ route('admin.news.index') }}" class="nav-link {{Request::is('admin/web/news')?'active':''}}">{{ trans_choice('module_news', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.faq.index') }}" class="nav-link {{Request::is('admin/web/faq')?'active':''}}">{{ trans_choice('module_faq', 2) }}</a></li>
 								<li class="nav-item"><a href="{{ route('admin.gallery.index') }}" class="nav-link {{Request::is('admin/web/gallery')?'active':''}}">{{ trans_choice('module_gallery', 2) }}</a></li>

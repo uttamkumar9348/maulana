@@ -10,15 +10,16 @@ use Illuminate\Http\Request;
 use App\Models\Web\AboutUs;
 use App\Models\Web\Feature;
 use App\Models\Web\Slider;
+use App\Models\notice;
 use App\Models\Language;
 
 class HomeController extends Controller
-{   
+{
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         // Sliders
         $data['sliders'] = Slider::where('language_id', Language::version()->id)
                             ->where('status', '1')
@@ -30,6 +31,8 @@ class HomeController extends Controller
                             ->where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
+        //Notice
+        $notices = notice::all();
 
         // About Us
         $data['about'] = AboutUs::where('language_id', Language::version()->id)
@@ -41,14 +44,14 @@ class HomeController extends Controller
                             ->where('status', '1')
                             ->first();
 
-        // Testimonials                                
+        // Testimonials
         $data['testimonials'] = Testimonial::where('language_id', Language::version()->id)
                             ->where('status', '1')
                             ->orderBy('id', 'desc')
                             ->get();
 
 
-        return view('web.index', $data);
+        return view('web.index', $data, compact('notices'));
     }
 
     /**
