@@ -60,6 +60,53 @@
     .fab {
         line-height: unset !important;
     }
+
+    .testi-author1 {
+    width: 100%;
+    float: left;
+    text-align: center;
+    }
+.testi-author1 img{
+    display: inline-block;
+    /* margin-top: 15px; */
+    width: 22rem;
+    height: 15rem;
+    border-radius: 5%;
+}
+.team-cont{
+    height: 35rem;
+}
+.team-sdisc{
+    max-height: 8rem;
+    overflow: hidden;
+}
+.para{
+    text-align: justify;
+    color: black;
+}
+.social li {
+  display: inline-block;
+  margin-right: 5px;
+}
+.social li a {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: #60c5a8;
+  border: 1px solid #60c5a8;
+  transition: all 0.5s ease 0s;
+}
+.social li a:hover {
+  background-color: #025784 !important;
+  border: none;
+  text-decoration: none;
+}
+.team{
+    text-align: center
+}
 </style>
 
 
@@ -75,7 +122,7 @@
                 @foreach ($sliders as $slider)
                     <div class="single-slider slider-bg"
                         style="background-image: url({{ asset('uploads/slider/' . $slider->attach) }}); background-size: cover;">
-                        
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7 col-md-7">
@@ -160,7 +207,7 @@
 
         @isset($about)
             <!-- about-area -->
-            <section class="about-area about-p pt-40 pb-120 p-relative fix" style="background: #eff7ff;">
+            <section class="about-area about-p pt-40 pb-40 p-relative fix" style="background: #eff7ff;">
                 <div class="animations-02"><img src="{{ asset('web/img/bg/an-img-02.png') }}" alt="About"></div>
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
@@ -219,42 +266,49 @@
             <!-- about-area-end -->
         @endisset
 
-        {{-- <section class="testimonial-area pt-40 p-relative fix">
+        <section class="testimonial-area pt-50 pb-100 p-relative fix">
             <div class="container">
                 <div class="row">
-                    <div>
-                        <h2>The Team</h2>
-                    </div>
+                    <h2 class="team pb-5">UNIVERSITY ADMINISTRATION</h2>
                     <div class="col-lg-12">
-                        <div class="testimonial-active wow fadeInUp animated" data-animation="fadeInUp"
-                            data-delay=".4s">
+                        <div class="team-cont testimonial-active wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
 
-                                <div class="single-testimonial text-center">
-                                    <div class="qt-img" style="border-radius: 50%">
-                                        <img src="{{ asset('web/img/testimonial/qt-icon.png') }}" alt="img">
-
-                                    </div>
-                                    <h3>Satyam Routray</h3>
-                                    <div class="testi-author">
-                                        <img src="{{asset('uploaded_images/profiles/191681005001.jfif')}}" alt="">
-                                    </div>
-                                    <div class="ta-info">
-                                        <h4>Web Developer</h4>
-                                        <span>Nothing djnsdsf ncsiudhso nchsiuhf csouhnd l;mof mjdjdpn vpdn kmf kfmdop mpdmg dvkfmpd fkmd  dkipnmp pnd mdopns kdspns dsp</span>
-                                    </div>
-                                    <div class="media-icon">
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-
-                                        <i class="fab fa-instagram"></i>
-                                        <i class="fab fa-twitter"></i>
-                                    </div>
+                            @foreach($teams as $team)
+                            <div class="single-testimonial text-center">
+                                <div class="testi-author1">
+                                    <img src="{{asset('Team/'.$team->photo)}}" alt="">
+                                    {{-- <img src="{{ asset('uploads/testimonial/'.$testimonial->attach) }}" alt="img"> --}}
                                 </div>
+                                {{-- <div class="qt-img">
+                                    <img src="{{ asset('web/img/testimonial/qt-icon.png') }}" alt="img">
+                                </div> --}}
+
+
+                                <div class="ta-info">
+                                    <h3>{{ $team->name}}</h3>
+                                    <h5>{{ $team->designation }}</h5>
+                                </div>
+                                <div class="team-sdisc">
+                                    <p class="para mt-3">{{ $team->s_description }}</p>
+                                </div>
+                                {{-- <ul class="social mt-3">
+                                    <li><a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a></li>
+                                    <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
+                                    <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
+                                </ul> --}}
+                                <div class="social mt-4">
+                                    <a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a>
+                                    <a style="padding: 10px" target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a>
+                                    <a target="blank" href="{{$team->x}}" class="fab fa-twitter"></a>
+                                </div>
+                            </div>
+                            @endforeach
 
                         </div>
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
 
         @isset($callToAction)
             <!-- cta-area -->

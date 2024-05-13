@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class noticeController extends Controller
 {
     public function list(){
-        $all_notice = notice::all();
+        $all_notice = notice::orderBy('id', 'desc')->get();
         return view('admin.noticeboard.notice.list',compact('all_notice'));
     }
     public function add(){

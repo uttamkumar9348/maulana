@@ -28,15 +28,15 @@ TEAM
             </div>
             <div class="col-lg-6 mb-3">
                 <label for="notice_type" class="form-label">Facebook ID<span style="color: red">*</span></label>
-                <input type="text" class="form-control" name="facebook" placeholder="Enter Facebook ID" required>
+                <input type="text" class="form-control" name="facebook" placeholder="Enter Facebook ID URL" required>
             </div>
             <div class="col-lg-6 mb-3">
                 <label for="notice_type" class="form-label">Instagram ID<span style="color: red">*</span></label>
-                <input type="text" class="form-control" name="instagram" placeholder="Enter Instagram ID">
+                <input type="text" class="form-control" name="instagram" placeholder="Enter Instagram ID URL">
             </div>
             <div class="col-lg-6 mb-3">
                 <label for="notice_type" class="form-label">X ID<span style="color: red">*</span></label>
-                <input type="text" class="form-control" name="x" placeholder="Enter X ID">
+                <input type="text" class="form-control" name="x" placeholder="Enter X ID URL">
             </div>
             <div class="col-lg-12 mb-3">
                 <label for="notice_type" class="form-label">Short description<span style="color: red">*</span></label>

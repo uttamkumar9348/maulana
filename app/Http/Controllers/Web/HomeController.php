@@ -11,6 +11,7 @@ use App\Models\Web\AboutUs;
 use App\Models\Web\Feature;
 use App\Models\Web\Slider;
 use App\Models\notice;
+use App\Models\Team;
 use App\Models\Language;
 
 class HomeController extends Controller
@@ -32,12 +33,15 @@ class HomeController extends Controller
                             ->orderBy('id', 'asc')
                             ->get();
         //Notice
-        $notices = notice::all();
+        $notices = notice::orderBy('id', 'desc')->get();
 
         // About Us
         $data['about'] = AboutUs::where('language_id', Language::version()->id)
                             ->where('status', '1')
                             ->first();
+
+        //team
+        $teams = Team::all();
 
         // Call To Action
         $data['callToAction'] = CallToAction::where('language_id', Language::version()->id)
@@ -51,7 +55,7 @@ class HomeController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices'));
+        return view('web.index', $data, compact('notices','teams'));
     }
 
     /**
