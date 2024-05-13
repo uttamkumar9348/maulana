@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\FaqController;
 use App\Http\Controllers\Web\GalleryController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\NewsController;
+use App\Http\Controllers\Web\TeamController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   // Application Route
   Route::resource('application', ApplicationController::class);
+
+  //Team
+  Route::get('/view-team{id}',[TeamController::class,'team'])->name('web.team');
 
 
   // SetCookie Route
@@ -132,7 +136,7 @@ Route::get('cache_clear', function () {
 });
 Route::get('test', function () {
   dd(config('services.razor_pay'));
-  // PaymentGateway::proccess();		
+  // PaymentGateway::proccess();
 });
 Route::get('add_categories', function () {
 

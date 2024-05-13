@@ -285,7 +285,7 @@
 
 
                                 <div class="ta-info">
-                                    <h3>{{ $team->name}}</h3>
+                                    <a href="{{route('web.team',$team->id)}}"><h3>{{ $team->name}}</h3></a>
                                     <h5>{{ $team->designation }}</h5>
                                 </div>
                                 <div class="team-sdisc">
