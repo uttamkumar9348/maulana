@@ -266,7 +266,7 @@
             <!-- about-area-end -->
         @endisset
 
-        <section class="testimonial-area pt-50 pb-100 p-relative fix">
+        <section class="testimonial-area pt-50 pb-100 p-relative fix" style="background:#FBFAFA; padding-bottom:0px; padding-top:20px">
             <div class="container">
                 <div class="row">
                     <h2 class="team pb-5">UNIVERSITY ADMINISTRATION</h2>
@@ -274,7 +274,7 @@
                         <div class="team-cont testimonial-active wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
 
                             @foreach($teams as $team)
-                            <div class="single-testimonial text-center">
+                            <div class="single-testimonial text-center" style="height:450px">
                                 <div class="testi-author1">
                                     <img src="{{asset('Team/'.$team->photo)}}" alt="">
                                     {{-- <img src="{{ asset('uploads/testimonial/'.$testimonial->attach) }}" alt="img"> --}}
@@ -296,7 +296,7 @@
                                     <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
                                     <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
                                 </ul> --}}
-                                <div class="social mt-4">
+                                <div class="social mt-4" style="margin-top:0px !important">
                                     <a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a>
                                     <a style="padding: 10px" target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a>
                                     <a target="blank" href="{{$team->x}}" class="fab fa-twitter"></a>

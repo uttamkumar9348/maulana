@@ -28,6 +28,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>{{ __('field_title') }}</th>
+                                        <th>Path</th>
                                         <th>{{ __('field_thumbnail') }}</th>
                                         <th>{{ __('field_status') }}</th>
                                         <th>{{ __('field_action') }}</th>
@@ -38,6 +39,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{!! Str::limit($row->title, 50, ' ...') !!}</td>
+                                        <td>{!! Str::limit($row->slug, 50, ' ...') !!}</td>
                                         <td>
                                             @if(is_file('uploads/'.$path.'/'.$row->attach))
                                             <img style="width:150px; height:150" src="{{asset('uploads/'.$path.'/'.$row->attach)}}" alt="" srcset="">
