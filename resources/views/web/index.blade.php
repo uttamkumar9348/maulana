@@ -266,7 +266,7 @@
             <!-- about-area-end -->
         @endisset
 
-        <section class="testimonial-area pt-50 pb-100 p-relative fix" style="background:#FBFAFA">
+        <section class="testimonial-area pt-50 pb-100 p-relative fix" style="background:#FBFAFA; padding-bottom:0px; padding-top:20px">
             <div class="container">
                 <div class="row">
                     <h2 class="team pb-5">UNIVERSITY ADMINISTRATION</h2>
