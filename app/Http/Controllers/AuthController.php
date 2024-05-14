@@ -35,6 +35,7 @@ class AuthController extends Controller
         }
         //Checking User Registeration Code End
         //User Authentication Code Start
+
         if(Auth::guard('user')->attempt($creds))
         {
             if($user->role->name == 'Admin')
@@ -47,16 +48,25 @@ class AuthController extends Controller
                 toastr()->success('You Login Successfully');
                 return redirect()->intended(route('prospect.dashboard.index'));
             }
+            else if($user->role->name == 'Front Web User')
+            {
+                toastr()->success('You Login Successfully');
+                return redirect()->intended(route('frontwebuser.dashboard.index'));
+            }
             else  if($user->is_verified && $user->is_active)
             {
                 toastr()->success('You Login Successfully');
                 if($user->role->name == 'Student')
                 {
-                    return redirect()->intended(route('student.dashboard.index')); 
+                    return redirect()->intended(route('student.dashboard.index'));
                 }
                 else if($user->role->name == 'College')
                 {
                     return redirect()->intended(route('college.dashboard.index'));
+                }
+                else if($user->role->name == 'Front Web User')
+                {
+                    return redirect()->intended(route('frontwebuser.dashboard.index'));
                 }
                 else
                 {
@@ -70,14 +80,15 @@ class AuthController extends Controller
 
             }
         } else {
+            // dd(5);
             toastr()->error('Wrong Password.');
             return redirect()->back();
         }
         //User Authentication Code End
     }
-    
+
     public function logout()
-    {        
+    {
         Auth::logout();
         toastr()->success('You Logout Successfully');
         return redirect('/');
@@ -208,23 +219,23 @@ class AuthController extends Controller
             toastr()->error($e->getMessage());
             return back();
         }
-    
+
     }
     public function getCityAgainstStates(Request $request)
     {
-        $cities = City::where('state_id',$request->state_id)->get();        
+        $cities = City::where('state_id',$request->state_id)->get();
         return response()->json($cities);
 
     }
     public function getStateAgainstCountries(Request $request)
     {
-        $states = State::where('country_id',$request->country_id)->get();        
+        $states = State::where('country_id',$request->country_id)->get();
         return response()->json($states);
 
     }
     public function getCourseAganistCollege(Request $request)
     {
-        $courses = CollegeCourse::where('user_id',$request->college_id)->get();  
+        $courses = CollegeCourse::where('user_id',$request->college_id)->get();
         $collegCourse = [];
         foreach($courses as $course)
         {
@@ -234,13 +245,13 @@ class AuthController extends Controller
     }
     public function getSemesterAganistCourse(Request $request)
     {
-        $course = CollegeCourse::find($request->course_id);  
+        $course = CollegeCourse::find($request->course_id);
         $semsters = Semester::where('course_id',$course->course_id)->get();
         return response()->json($semsters);
     }
     public function getSubjectAganistSemester(Request $request)
     {
-        $semester = Semester::find($request->semester_id);  
+        $semester = Semester::find($request->semester_id);
         $subjects = Subject::where('semester_id',$semester->id)->get();
         return response()->json($subjects);
     }

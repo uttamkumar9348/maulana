@@ -107,6 +107,9 @@
 .team{
     text-align: center
 }
+.team-name:hover {
+    color: #125875;
+}
 </style>
 
 
@@ -285,10 +288,10 @@
 
 
                                 <div class="ta-info">
-                                   <a href="{{route('web.team',$team->id)}}"><h4 style="border-bottom:1px dotted #c0c0c0;padding-bottom:5px">{{ $team->name}}</h4></a>
+                                   <a href="{{route('web.team',$team->id)}}"><h4 class="team-name" style="border-bottom:1px dotted #c0c0c0;padding-bottom:5px">{{ $team->name}}</h4></a>
                                     <h6 style="height:70px">{{ $team->designation }}</h6>
                                 </div>
-                                
+
                                 <div class="social mt-4" style="margin-top:0px !important">
                                     <a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a>
                                     <a style="padding: 10px" target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a>

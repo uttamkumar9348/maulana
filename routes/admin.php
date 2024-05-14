@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************TEACHER ROUTE START*************/
     Route::resource('teacher', TeacherController::class);
     /*******************TEACHER ROUTE END*************/
+
+    /*******************ADMIN USER ROUTE START*************/
+    Route::get('adminuser/list',[AdminUserController::class,'list'])->name('AdminUser.list');
+    Route::get('adminuser/add',[AdminUserController::class,'add'])->name('AdminUser.add');
+    Route::post('adminuser/store',[AdminUserController::class,'store'])->name('AdminUser.store');
+    Route::get('adminuser/edit{id}',[AdminUserController::class,'edit'])->name('AdminUser.edit');
+    Route::post('adminuser/update',[AdminUserController::class,'update'])->name('AdminUser.update');
+    /*******************ADMIN USER ROUTE END*************/
+
     /*******************COURSE ROUTE START*************/
     // Route::resource('course', CourseController::class);
     Route::resource('course', WebCourseController::class);
@@ -124,7 +134,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::get('/notice/edit{id}',[noticeController::class,'edit'])->name('Notice.edit');
     Route::post('/notice/update',[noticeController::class,'update'])->name('Notice.update');
     Route::get('/notice/delete{id}',[noticeController::class,'delete'])->name('Notice.delete');
-    
+
     /*******************Notice END*************/
     // Route::resource('team', TeamController::class);
 

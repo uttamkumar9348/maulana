@@ -74,6 +74,7 @@ class Kernel extends HttpKernel
         'college' => \App\Http\Middleware\College::class,
         'teacher' => \App\Http\Middleware\Teacher::class,
         'prospect' => \App\Http\Middleware\Prospect::class,
+        // 'frontwebuser' => \App\Http\Middleware\Frontwebuser::class,
 
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'XSS' => \App\Http\Middleware\XSSProtection::class,
