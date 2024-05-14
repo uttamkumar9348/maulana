@@ -285,11 +285,8 @@
 
 
                                 <div class="ta-info">
-                                    <a href="{{route('web.team',$team->id)}}"><h3>{{ $team->name}}</h3></a>
-                                    <h5>{{ $team->designation }}</h5>
-                                </div>
-                                <div class="team-sdisc">
-                                    <p class="para mt-3">{{ $team->s_description }}</p>
+                                   <a href="{{route('web.team',$team->id)}}"><h4 style="border-bottom:1px dotted #c0c0c0;padding-bottom:5px">{{ $team->name}}</h4></a>
+                                    <h6 style="height:70px">{{ $team->designation }}</h6>
                                 </div>
                                 
                                 <div class="social mt-4" style="margin-top:0px !important">
