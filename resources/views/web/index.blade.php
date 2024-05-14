@@ -291,11 +291,7 @@
                                 <div class="team-sdisc">
                                     <p class="para mt-3">{{ $team->s_description }}</p>
                                 </div>
-                                {{-- <ul class="social mt-3">
-                                    <li><a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a></li>
-                                    <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
-                                    <li><a target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a></li>
-                                </ul> --}}
+                                
                                 <div class="social mt-4" style="margin-top:0px !important">
                                     <a target="blank" href="{{$team->facebook}}" class="fab fa-facebook-f"></a>
                                     <a style="padding: 10px" target="blank" href="{{$team->instagram}}" class="fab fa-instagram"></a>
