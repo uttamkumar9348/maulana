@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Prospect;
+namespace App\Http\Controllers\Frontwebuser;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    
+
     // public function register(Request $request)
     // {
     //     try{

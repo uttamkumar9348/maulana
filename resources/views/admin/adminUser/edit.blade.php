@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label for="notice_type" class="form-label">Password<span style="color: red">*</span></label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter New Password" >
-                        <span style="color: red">Do you Want to Change Your Old Password!</span>
+                        <input type="text" class="form-control" name="password" placeholder="Enter New Password">
+                        <span style="color: red">Do you Want to Change Old Password!</span>
                     </div>
                 </div>
                 <div class="mb-3">

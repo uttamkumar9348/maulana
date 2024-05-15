@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Prospect;
+namespace App\Http\Controllers\Frontwebuser;
 
 use App\Helpers\PaymentGateway;
 use App\Http\Controllers\Controller;

@@ -14,18 +14,18 @@
                 <div class="media mb-0">
                     <div class="media-body">
                         <h6 class="font-weight-semibold mb-0 text-center">
-                            Welcome To Prospect Panel!
+                            Welcome To Front Web User Panel!
                         </h6>
                     </div>
                 </div>
             </div>
-            
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        
-        <div class="card">
+
+        {{-- <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Addmission Form For {{Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_name.' (Fee '.Auth::user()->entrance_fee->exam_fee.' )':''}}</h6>
                 <div class="header-elements">
@@ -73,7 +73,7 @@
                 </fieldset>
             </form>
             @endif
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

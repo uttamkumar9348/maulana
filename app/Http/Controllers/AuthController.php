@@ -64,10 +64,6 @@ class AuthController extends Controller
                 {
                     return redirect()->intended(route('college.dashboard.index'));
                 }
-                else if($user->role->name == 'Front Web User')
-                {
-                    return redirect()->intended(route('frontwebuser.dashboard.index'));
-                }
                 else
                 {
                     return redirect()->intended(route('teacher.dashboard.index'));

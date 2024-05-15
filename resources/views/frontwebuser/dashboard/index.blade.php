@@ -18,13 +18,13 @@
                     </div>
                 </div>
             </div>
-            
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        
-        <div class="card">
+
+        {{-- <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Addmission Form {{Auth::user()->studentProfile && Auth::user()->studentProfile->course ?'For '.Auth::user()->studentProfile->course->name:''}}</h6>
                 <div class="header-elements">
@@ -49,8 +49,8 @@
                     <div @if(@$active_tab == 'registration')  class="tab-pane fade show active" @else class="tab-pane fade" @endif id="top-tab1">
                         <div class="card-body">
                             @if(Auth::user()->studentProfile)
-                                {{-- @include('prospect.dashboard.partials.registration') --}}
-                            @else 
+
+                            @else
                                 @include('prospect.dashboard.partials.new_registration')
                             @endif
                         </div>
@@ -59,8 +59,8 @@
                         <div class="card-body">
                             @if(Auth::user()->studentProfile)
                                 @if(Auth::user()->studentProfile && Auth::user()->studentTemparoryAddress() && Auth::user()->studentPermenantAddress())
-                                {{-- @include('prospect.dashboard.partials.basic_information') --}}
-                                @else 
+
+                                @else
                                 @include('prospect.dashboard.partials.new_basic_information')
                                 @endif
                             @endif
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Basic layout-->
 
     </div>

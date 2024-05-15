@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Prospect;
+namespace App\Http\Controllers\Frontwebuser;
 
 use App\Http\Controllers\Controller;
 use App\Models\StudentAcademicQualification;
@@ -82,7 +82,7 @@ class StudentAcademicQualificationController extends Controller
         $studentAcademicQualification = StudentAcademicQualification::find($id);
         $studentAcademicQualification->update($request->all());
         toastr()->success('Student Academic Qualification Updated successfully');
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
     /**

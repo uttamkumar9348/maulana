@@ -56,7 +56,7 @@
 				<!-- Login card -->
 				<form class="flex-fill" method="POST" action="{{route('register')}}" enctype="multipart/form-data">
                     @csrf
-					
+
 					<div class="row">
 						<div class="col-lg-8 offset-lg-2">
 							<div class="card mb-0">
@@ -146,7 +146,7 @@
 										<button type="submit" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>
 									</div>
 									<p  class="text-center">OR</p>
-									
+
 									<a href="{{url('/')}}"><button type="button" class="btn btn-primary btn-block">Sign In <i class="icon-circle-right2 ml-2"></i></button></a>
 								</div>
 							</div>
@@ -193,7 +193,7 @@
 	@toastr_render
     <script>
         function validatePassword(password) {
-            
+
             // Do not show anything when the length of password is zero.
             if (password.length === 0) {
                 document.getElementById("msg").innerHTML = "";
@@ -236,7 +236,7 @@
             document.getElementById("msg").style.color = color;
         }
 		function confirmPassword(password) {
-            
+
             // Do not show anything when the length of password is zero.
             if (password.length === 0) {
                 document.getElementById("confirmmsg").innerHTML = "";
@@ -256,9 +256,9 @@
             document.getElementById("confirmmsg").innerHTML = strength;
             document.getElementById("confirmmsg").style.color = color;
         }
-		
+
     </script>
-	
+
     <script>
         $(document).on('change', '#role_id', function () {
 			role_id = $(this).val();

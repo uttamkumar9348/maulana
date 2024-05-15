@@ -137,7 +137,7 @@ class User extends Authenticatable
     }
 
     static public function getAdminUser(){
-        return User::select('users.*')
+        return self::select('users.*')
                     ->where('role_id','=',6)
                     ->get();
     }

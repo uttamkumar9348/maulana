@@ -23,8 +23,10 @@ class AdminUserController extends Controller
         $store_adminuser->name = $request->name;
         $store_adminuser->email = $request->email;
         $store_adminuser->role_id =6;
-        $store_adminuser->image = $request->file('image');
-        $store_adminuser->password = Hash::make($request->password);
+        if($request->hasFile('image')){
+        $store_adminuser->image = $request->image;
+        }
+        $store_adminuser->password =$request->password;
         $store_adminuser->save();
         toastr()->success('Admin User Added Successfully!');
         return redirect()->route('admin.AdminUser.list');
@@ -41,9 +43,19 @@ class AdminUserController extends Controller
         if($request->hasFile('image')){
         $update_adminuser->image = $request->image;
         }
-        $update_adminuser->password = Hash::make($request->password);
+        $update_adminuser->password =$request->password;
         $update_adminuser->save();
         toastr()->success('Admin User Updated Successfully!');
         return redirect()->route('admin.AdminUser.list');
+    }
+    public function delete($id){
+        $delete_adminuser = User::find($id);
+        if($delete_adminuser){
+            $delete_adminuser->delete();
+            toastr()->success('Admin User Deleted Successfully!');
+            return redirect()->back();
+        }
+        toastr()->error('Something Went Wrong');
+        return redirect()->back();
     }
 }

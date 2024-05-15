@@ -41,7 +41,8 @@
                     <td><img src="{{asset($adminuser->image)}}" width="80" alt=""></td>
                     <td>
                         <a class="btn btn-primary" href="{{route('admin.AdminUser.edit',$adminuser->id)}}">Edit</a>
-                        <a href="">Delete</a>
+                        <a class="btn btn-danger" onclick="confirmDelete('{{route('admin.AdminUser.delete',['id'=>$adminuser->id])}}')">Delete</a>
+                        {{-- <a class="btn btn-primary" href="{{route('admin.AdminUser.delete',$adminuser->id)}}">delete</a> --}}
                     </td>
                 </tr>
                 @php
@@ -53,6 +54,20 @@
 
     </div>
 </div>
+
+<script>
+    function confirmDelete(deleteUrl) {
+         var isConfirmed =confirm("Are you sure you want to delete this item?");
+
+          if (isConfirmed) {
+              window.location.href = deleteUrl;
+          } else {
+
+              alert("Deletion canceled");
+          }
+       }
+  </script>
+
 @endsection
 @section('scripts')
 @endsection

@@ -89,6 +89,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::post('adminuser/store',[AdminUserController::class,'store'])->name('AdminUser.store');
     Route::get('adminuser/edit{id}',[AdminUserController::class,'edit'])->name('AdminUser.edit');
     Route::post('adminuser/update',[AdminUserController::class,'update'])->name('AdminUser.update');
+    Route::get('adminuser/delete{id}',[AdminUserController::class,'delete'])->name('AdminUser.delete');
     /*******************ADMIN USER ROUTE END*************/
 
     /*******************COURSE ROUTE START*************/
