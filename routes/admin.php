@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DocumentCategoryController;
 use App\Http\Controllers\Admin\DocumentCategoryEntranceFeeController;
 use App\Http\Controllers\Admin\EntranceFeeController;
+use App\Http\Controllers\Admin\ExamCenterRegistrationController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeCategoryController;
 use App\Http\Controllers\Admin\GradeController;
@@ -120,6 +121,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************Document Category Entrance Fee ROUTE START*************/
     Route::resource('document_category_entrance_fee', DocumentCategoryEntranceFeeController::class);
     /*******************Document Category Entrance Fee ROUTE END*************/
+    /*******************Exam Center Registration ROUTE START*************/
+    Route::resource('exam_center_registration', ExamCenterRegistrationController::class);
+    /*******************Exam Center Registration ROUTE END*************/
     Route::prefix('web')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('slider', SliderController::class);

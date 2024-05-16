@@ -27,6 +27,15 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::view('payment/process','prospect.application.payment')->name('payment.process');
     /*******************DASHBOARD ROUTE END*************/ 
     Route::resource('academic_qualification',StudentAcademicQualificationController::class);
+
+
+    //  New Dashboard Routes Start
+    Route::post('dashboard/store_step_1',[DashboardController::class,'stepOneStore'])->name('dashboard.store_step_1');  
+    Route::post('dashboard/store_step_2',[DashboardController::class,'stepTwoStore'])->name('dashboard.store_step_2');  
+    Route::post('dashboard/store_step_3',[DashboardController::class,'stepThreeStore'])->name('dashboard.store_step_3');  
+    Route::post('dashboard/store_step_4',[DashboardController::class,'stepFourStore'])->name('dashboard.store_step_4');  
+    Route::get('dashboard/get-back',[DashboardController::class,'getBack'])->name('dashboard.get-back');  
+    //  New Dashboard Routes End
 });
 /****************** PROSPECT MIDDLEWARE PAGES ROUTES END****************/
 ?>
