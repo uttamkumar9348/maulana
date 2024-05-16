@@ -648,4 +648,15 @@ class DashboardController extends Controller
             ], 500);
         }
     }
+    public function processPayment()
+    {
+        try{
+            PaymentGateway::proccess();
+            return redirect()->route('prospect.payment.process'); 
+        }
+        catch (Exception $e) {
+            toastr()->error($e->getMessage());
+            return back(); 
+        }
+    }
 }
