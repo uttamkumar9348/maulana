@@ -611,6 +611,7 @@ class DashboardController extends Controller
         }catch (Exception $e)
         {
             DB::rollBack();
+            dd(__LINE__.$e->getMessage());
             toastr()->error($e->getMessage());
             return back(); 
         }
