@@ -150,7 +150,9 @@
             <div class="form-group">
                 <label>State <small style="color:red;">*</small></label>
                 <select  name="state_id[]" id="temparory_state_id"  class="form-control select-search" data-fouc>
-                    <option selected value="{{Auth::user()->studentTemparoryAddress()->state_id}}" >{{Auth::user()->studentTemparoryAddress()->state->name}}</option>
+                    @if(Auth::user()->studentTemparoryAddress()->state_id)
+                    <option selected value="{{Auth::user()->studentTemparoryAddress()->state_id}}" >{{Auth::user()->studentTemparoryAddress()->state ? Auth::user()->studentTemparoryAddress()->state->name : ''}}</option>
+                    @endif
                 </select>
             </div>
         </div>
