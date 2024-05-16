@@ -23,4 +23,8 @@ class StudentAcademicQualification extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
+    public function exam()
+    {
+        return $this->belongsTo(User::class,'name_of_exam');
+    }
 }
