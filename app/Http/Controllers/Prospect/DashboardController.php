@@ -603,11 +603,12 @@ class DashboardController extends Controller
                     ]);
                 }
             }
-            PaymentGateway::proccess();
+            // PaymentGateway::proccess();
             DB::commit();
             $request->session()->forget('application_process');
             toastr()->success('Student Application Store successfully');
-            return redirect()->route('prospect.payment.process'); 
+            // return redirect()->route('prospect.payment.process'); 
+            return redirect()->back(); 
         }catch (Exception $e)
         {
             DB::rollBack();
