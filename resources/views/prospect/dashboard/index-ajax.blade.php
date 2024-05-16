@@ -73,15 +73,6 @@
                 @include('prospect.dashboard.ajax_partials.documents_uploaded')
                 @endif
             </div>
-                {{-- 
-                <h6>Documents Uploaded</h6>
-                <fieldset>
-                    @include('prospect.dashboard.partials.documents_uploaded')
-                </fieldset>
-                <h6>Payment Of Fees</h6>
-                <fieldset>
-                    @include('prospect.dashboard.partials.payment_of_fees')
-                </fieldset> --}}
             </form>
             @endif
         </div>
