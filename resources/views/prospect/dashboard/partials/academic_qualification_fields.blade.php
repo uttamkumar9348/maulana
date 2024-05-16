@@ -4,10 +4,22 @@
         <button type="button"  class="btn btn-sm btn-danger" onclick="removeFields('{{ @$key }}')">Remove</button>
     </div>
     <div class="form-group col-md-2">
-        <input type="text" name="name_of_exam[]" class="form-control"  >
+        <!-- <input type="text" name="" class="form-control"  > -->
+        <select name="name_of_exam[]" id="" class="form-control">
+            <option value="">Select Exam</option>
+            @foreach (App\Models\Passed_exam::all() as $exam)
+            <option value="{{ $exam->id }}">{{ $exam->name }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group col-md-2">
-        <input type="text" name="name_of_board[]" class="form-control"  >
+        <!-- <input type="text" name="" class="form-control"  > -->
+        <select name="name_of_board[]" id="" class="form-control" >
+            <option value="">Select Board</option>
+            @foreach (App\Models\Board::all() as $board)
+            <option value="{{ $board->id }}">{{ $board->name }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group col-md-2">
         <input type="text" name="attended_school[]" class="form-control"  >

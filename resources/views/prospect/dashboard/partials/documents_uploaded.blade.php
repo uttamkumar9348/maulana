@@ -15,7 +15,7 @@
         </div>
     </div>      
     <div class="row">
-        @foreach (Auth::user()->getDocumentCategories()  as $key => $category)
+        @foreach (App\Models\DocumentCategory::all()  as $key => $category)
         <div class="form-group col-md-1">
             {{$key+1}}
         </div>

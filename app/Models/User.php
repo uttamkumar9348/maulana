@@ -53,7 +53,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function role()
     {
         return $this->belongsTo(Role::class,'role_id');
@@ -115,7 +115,7 @@ class User extends Authenticatable
     {
         return $this->role->name;
     }
-    
+
     public function setPasswordAttribute($value){
         if (!empty($value)){
             $this->attributes['password'] = Hash::make($value);
@@ -130,9 +130,15 @@ class User extends Authenticatable
         $documentCategoryIds = DocumentCategoryEntranceFee::where('entrance_fee_id',$this->entrance_fee_id)
                         ->get()
                         ->pluck('document_category_id')->toArray();
-        
+
         $documentCategories = DocumentCategory::whereIn('id',$documentCategoryIds)->get();
         return $documentCategories;
 
+    }
+
+    static public function getAdminUser(){
+        return self::select('users.*')
+                    ->where('role_id','=',6)
+                    ->get();
     }
 }
