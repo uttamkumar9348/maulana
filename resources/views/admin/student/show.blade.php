@@ -205,7 +205,7 @@
 											<div class="row">
 												<div class="col-md-4">
 													<label>Enrollment Year</label>
-													<select  name="enrollment_year"  class="form-control select-search" data-fouc>
+													<select  name="enrollment_year"  class="form-control">
 														<option selected disabled>Select Enrollment Year</option>
 														@for($i = 2015;$i < 2031;$i++)
 														<option @if($student->studentProfile->enrollment_year == $i) selected @endif  value="{{$i}}">{{$i}}</option>
