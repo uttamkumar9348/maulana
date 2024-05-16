@@ -612,7 +612,6 @@ class DashboardController extends Controller
         {
             DB::rollBack();
             toastr()->error($e->getMessage());
-            dd($e->getLine());
             return back(); 
         }
     }
