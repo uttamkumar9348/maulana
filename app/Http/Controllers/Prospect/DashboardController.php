@@ -555,11 +555,11 @@ class DashboardController extends Controller
             {
                 if($data->same_as_temparory && $key == 1)
                 {
-                    $country_id = $data->country_id[0];
-                    $state_id = $data->state_id[0];
+                    $country_id = @$data->country_id[0];
+                    $state_id = @$data->state_id[0];
                 }else{
                     $country_id = $data->country_id[$key];
-                    $state_id = $data->state_id[$key];
+                    $state_id = @$data->state_id[$key];
                 }
                 StudentProfileAddress::create([
                     'premise_name' => @$premise_name,
