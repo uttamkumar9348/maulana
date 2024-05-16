@@ -550,6 +550,7 @@ class DashboardController extends Controller
             $data = $request->session()->get('application_process');
             DB::beginTransaction();
             $dataArray = (array) $data;
+            dd($dataArray);
             $studentProfile = StudentProfile::create($dataArray);
             foreach($data->premise_name as $key => $premise_name)
             {
