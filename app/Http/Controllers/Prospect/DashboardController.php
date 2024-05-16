@@ -550,6 +550,7 @@ class DashboardController extends Controller
             $data = $request->session()->get('application_process');
             DB::beginTransaction();
             $dataArray = (array) $data;
+            $studentProfile = StudentProfile::create($dataArray);
             foreach($data->premise_name as $key => $premise_name)
             {
                 if($data->same_as_temparory && $key == 1)
@@ -560,60 +561,48 @@ class DashboardController extends Controller
                     $country_id = $data->country_id[$key];
                     $state_id = @$data->state_id[$key] ? $data->state_id[$key] : null;
                 }
+                StudentProfileAddress::create([
+                    'premise_name' => @$premise_name,
+                    'plot_no' => @$data->plot_no[$key],
+                    'type' => @$data->type[$key],
+                    'locality' => @$data->locality[$key],
+                    'sub_locality' => @$data->sub_locality[$key],
+                    'landmark' => @$data->landmark[$key],
+                    'village' => @$data->village[$key],
+                    'post_office' => @$data->post_office[$key],
+                    'police_station' => @$data->police_station[$key],
+                    'country_id' => @$country_id,
+                    'state_id' => @$state_id,
+                    'pin' => @$data->pin[$key],
+                    'student_profile_id' => @$studentProfile->id,
+                    'user_id' => Auth::user()->id,
+                ]);
             }
-            // $studentProfile = StudentProfile::create($dataArray);
-            // foreach($data->premise_name as $key => $premise_name)
-            // {
-            //     if($data->same_as_temparory && $key == 1)
-            //     {
-            //         $country_id = @$data->country_id[0];
-            //         $state_id = @$data->state_id[0];
-            //     }else{
-            //         $country_id = $data->country_id[$key];
-            //         $state_id = @$data->state_id[$key] ? $data->state_id[$key] : null;
-            //     }
-            //     StudentProfileAddress::create([
-            //         'premise_name' => @$premise_name,
-            //         'plot_no' => @$data->plot_no[$key],
-            //         'type' => @$data->type[$key],
-            //         'locality' => @$data->locality[$key],
-            //         'sub_locality' => @$data->sub_locality[$key],
-            //         'landmark' => @$data->landmark[$key],
-            //         'village' => @$data->village[$key],
-            //         'post_office' => @$data->post_office[$key],
-            //         'police_station' => @$data->police_station[$key],
-            //         'country_id' => @$country_id,
-            //         'state_id' => @$state_id,
-            //         'pin' => @$data->pin[$key],
-            //         'student_profile_id' => @$studentProfile->id,
-            //         'user_id' => Auth::user()->id,
-            //     ]);
-            // }
-            // foreach($data->name_of_exam as $index => $name_of_exam)
-            // {
-            //     StudentAcademicQualification::create([
-            //         'name_of_exam' => @$name_of_exam,
-            //         'name_of_board' => @$data->name_of_board[$index],
-            //         'attended_school' => @$data->attended_school[$index],
-            //         'passing_year' => @$data->passing_year[$index],
-            //         'total_marks' => @$data->total_marks[$index],
-            //         'marks' => @$data->marks[$index],
-            //         'percentage' => @$data->percentage[$index],
-            //         'user_id' => Auth::user()->id,
-            //     ]);
-            // }
-            // $files = $request->file('document');
-            // foreach($request->document_category_id as $category_index => $document_category_id)
-            // {
-            //     if(array_key_exists($document_category_id, $files))
-            //     {
-            //         StudentDocument::create([
-            //             'document_category_id' => @$document_category_id,
-            //             'document' => @$request->document[$document_category_id],
-            //             'user_id' => Auth::user()->id,
-            //         ]);
-            //     }
-            // }
+            foreach($data->name_of_exam as $index => $name_of_exam)
+            {
+                StudentAcademicQualification::create([
+                    'name_of_exam' => @$name_of_exam,
+                    'name_of_board' => @$data->name_of_board[$index],
+                    'attended_school' => @$data->attended_school[$index],
+                    'passing_year' => @$data->passing_year[$index],
+                    'total_marks' => @$data->total_marks[$index],
+                    'marks' => @$data->marks[$index],
+                    'percentage' => @$data->percentage[$index],
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
+            $files = $request->file('document');
+            foreach($request->document_category_id as $category_index => $document_category_id)
+            {
+                if(array_key_exists($document_category_id, $files))
+                {
+                    StudentDocument::create([
+                        'document_category_id' => @$document_category_id,
+                        'document' => @$request->document[$document_category_id],
+                        'user_id' => Auth::user()->id,
+                    ]);
+                }
+            }
             // PaymentGateway::proccess();
             DB::commit();
             $request->session()->forget('application_process');
