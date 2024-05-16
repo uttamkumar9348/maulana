@@ -604,10 +604,10 @@ class DashboardController extends Controller
                 }
             }
             DB::commit();
-            PaymentGateway::proccess();
+            // PaymentGateway::proccess();
             $request->session()->forget('application_process');
             toastr()->success('Student Application Store successfully');
-            return redirect()->route('prospect.payment.process'); 
+            // return redirect()->route('prospect.payment.process'); 
             return redirect()->back(); 
         }catch (Exception $e)
         {
