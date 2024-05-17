@@ -61,7 +61,7 @@
 				<!-- Login card -->
 				<form class="flex-fill" method="POST" action="{{route('prospect.register')}}" enctype="multipart/form-data">
                     @csrf
-					
+
 					<div class="row">
 						<div class="col-lg-8 offset-lg-2">
 							<div class="card mb-0">
@@ -121,7 +121,7 @@
 												<span id="confirmmsg"></span>
 											</div>
 										</div>
-										
+
 										<input type="hidden" name="role_id" value="{{App\Models\Role::where('name','Prospect')->first()?App\Models\Role::where('name','Prospect')->first()->id:''}}">
 
 									</div>
@@ -131,7 +131,7 @@
 									<div class="form-group" style="text-align:center;">
 										<button type="submit" class="">Sign Up <i class="icon-circle-right2 ml-2"></i></button> Or <a href="{{url('/login')}}"><button type="button" class="">Sign In <i class="icon-circle-right2 ml-2"></i></button></a>
 									</div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -178,7 +178,7 @@
 
     <script>
         function validatePassword(password) {
-            
+
             // Do not show anything when the length of password is zero.
             if (password.length === 0) {
                 document.getElementById("msg").innerHTML = "";
@@ -221,7 +221,7 @@
             document.getElementById("msg").style.color = color;
         }
 		function confirmPassword(password) {
-            
+
             // Do not show anything when the length of password is zero.
             if (password.length === 0) {
                 document.getElementById("confirmmsg").innerHTML = "";
@@ -241,9 +241,9 @@
             document.getElementById("confirmmsg").innerHTML = strength;
             document.getElementById("confirmmsg").style.color = color;
         }
-		
+
     </script>
-	
+
     <script>
         $(document).on('change', '#role_id', function () {
 			role_id = $(this).val();

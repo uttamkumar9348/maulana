@@ -25,6 +25,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Image</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -40,8 +41,15 @@
                     <td>{{$adminuser->email}}</td>
                     <td><img src="{{asset($adminuser->image)}}" width="80" alt=""></td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('admin.AdminUser.edit',$adminuser->id)}}">Edit</a>
-                        <a class="btn btn-danger" onclick="confirmDelete('{{route('admin.AdminUser.delete',['id'=>$adminuser->id])}}')">Delete</a>
+                        @if($adminuser->status == 1)
+                            <span class="badge badge-success">Active</span>
+                        @else
+                            <span class="badge badge-danger">Inactive</span>
+                        @endif
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{route('admin.AdminUser.edit',$adminuser->id)}}">Show</a>
+                        {{-- <a class="btn btn-danger" onclick="confirmDelete('{{route('admin.AdminUser.delete',['id'=>$adminuser->id])}}')">Delete</a> --}}
                         {{-- <a class="btn btn-primary" href="{{route('admin.AdminUser.delete',$adminuser->id)}}">delete</a> --}}
                     </td>
                 </tr>

@@ -50,8 +50,14 @@ class AuthController extends Controller
             }
             else if($user->role->name == 'Front Web User')
             {
-                toastr()->success('You Login Successfully');
-                return redirect()->intended(route('frontwebuser.dashboard.index'));
+                if($user->status ==1){
+                    toastr()->success('You Login Successfully');
+                    return redirect()->intended(route('frontwebuser.dashboard.index'));
+                }else{
+                    Auth::logout();
+                    toastr()->error('User is Inactive By Admin.');
+                    return redirect()->back();
+                }
             }
             else  if($user->is_verified && $user->is_active)
             {

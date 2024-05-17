@@ -1,4 +1,4 @@
-@extends('prospect.layout.index')
+@extends('frontwebuser.layout.index')
 
 @section('title')
     Dashboard
@@ -13,7 +13,7 @@
                 <div class="media mb-0">
                     <div class="media-body">
                         <h6 class="font-weight-semibold mb-0 text-center">
-                            Welcome To Prospect Panel!
+                            Welcome To Front Web User Panel !
                         </h6>
                     </div>
                 </div>
