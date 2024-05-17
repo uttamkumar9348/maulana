@@ -29,7 +29,7 @@ Add Entrance Fee Document Category
                             <label>Select Document Category</label>
                             <select name="document_category_id"  class="form-control" required>
                                 <option value="">Select</option>
-                                @foreach(App\Models\DocumentCategory::all() as $documentCategory)
+                                @foreach(App\Models\DocumentCategory::where('is_ex_service_man',0)->where('is_disabled_person',0)->get() as $documentCategory)
                                 <option value="{{ $documentCategory->id }}">{{ $documentCategory->name }}</option>
                                 @endforeach
                             </select>
@@ -97,7 +97,7 @@ Add Entrance Fee Document Category
                         <label>Select Document Category</label>
                         <select name="document_category_id" id="document_category_id"  class="form-control" required>
                             <option value="">Select</option>
-                            @foreach(App\Models\DocumentCategory::all() as $documentCategory)
+                            @foreach(App\Models\DocumentCategory::where('is_ex_service_man',0)->where('is_disabled_person',0)->get() as $documentCategory)
                             <option value="{{ $documentCategory->id }}">{{ $documentCategory->name }}</option>
                             @endforeach
                         </select>

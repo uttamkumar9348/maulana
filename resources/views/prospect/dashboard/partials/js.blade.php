@@ -197,8 +197,8 @@
         });
     });
     $(document).ready(function(){
-        var key_value = 1;
-        $('.add-more-fields').click(function(){
+        var key_value = "{{@request()->session()->get('application_process')->name_of_exam ? count(@request()->session()->get('application_process')->name_of_exam) : 1}}";
+        $(document).on('click', '.add-more-fields', function(){
             $.ajax({
                 url: "{{route('prospect.dashboard.get_qualification_fields')}}",
                 method: 'post',

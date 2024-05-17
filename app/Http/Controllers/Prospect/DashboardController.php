@@ -10,18 +10,20 @@ use App\Models\StudentAcademicQualification;
 use App\Models\StudentDocument;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
+use App\Services\ProspectApplicationService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('prospect.dashboard.index_testing');
+        return view('prospect.dashboard.index-ajax');
     }
     public function studentProfileUpdate(Request $request)
     {
@@ -427,5 +429,234 @@ class DashboardController extends Controller
         }
         toastr()->error('Something Went Wrong.');
         return redirect()->route("prospect.dashboard.index");
+    }
+    public function stepOneStore(Request $request)
+    {
+        try{
+            $this->validate($request,[
+                'first_name' => 'required',
+                'father_first_name' => 'required',
+                'mother_first_name' => 'required',
+                'day' => 'required|numeric',
+                'month' => 'required|numeric',
+                'year' => 'required|numeric',
+                'phone' => 'required',
+                'alternative_phone' => 'required',
+                'email' => 'required',
+                'aadhar_no' => 'required',
+                'user_id' => 'required',
+            ]);
+            $application_process = (new ProspectApplicationService())->mapStepOneData($request);
+            $request->session()->put('application_process', $application_process);
+            $html = view('prospect.dashboard.ajax_partials.new_basic_information')->render();
+            return response([
+                "success" => true,
+                "html" => $html,
+            ], 200);
+        }catch (Exception $e)
+        {
+            return response([
+                "success" => false,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function stepTwoStore(Request $request)
+    {
+        try{
+            if($request->same_as_temparory)
+            {
+                $this->validate($request,[
+                    'mother_tongue' => 'required',
+                    'locality.0' => 'required',
+                    'post_office.0' => 'required',
+                    'police_station.0' => 'required',
+                    'country_id.0' => 'required',
+                    'state_id.0' => 'required',
+                    'pin.0' => 'required',
+                ]);
+            }else{
+                $this->validate($request,[
+                    'mother_tongue' => 'required',
+                    'locality.*' => 'required',
+                    'post_office.*' => 'required',
+                    'police_station.*' => 'required',
+                    'country_id.*' => 'required',
+                    'state_id.*' => 'required',
+                    'pin.*' => 'required',
+                ]);
+            }
+            $application_process = (new ProspectApplicationService())->mapStepTwoData($request);
+            $request->session()->put('application_process', $application_process);
+            $html = view('prospect.dashboard.ajax_partials.academic_qualification')->render();
+            return response([
+                "success" => true,
+                "html" => $html,
+            ], 200);
+        }catch (Exception $e)
+        {
+            return response([
+                "success" => false,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function stepThreeStore(Request $request)
+    {
+        try{
+            $this->validate($request,[
+                'name_of_exam.*' => 'required',
+                'name_of_board.*' => 'required',
+                'attended_school.*' => 'required',
+                'passing_year.*' => 'required',
+                'total_marks.*' => 'required',
+                'marks.*' => 'required',
+                'percentage.*' => 'required',
+            ]);
+            $application_process = (new ProspectApplicationService())->mapStepThreeData($request);
+            $request->session()->put('application_process', $application_process);
+            $html = view('prospect.dashboard.ajax_partials.documents_uploaded')->render();
+            return response([
+                "success" => true,
+                "html" => $html,
+            ], 200);
+        }catch (Exception $e)
+        {
+            return response([
+                "success" => false,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function stepFourStore(Request $request)
+    {
+        try{
+            $this->validate($request,[
+                'document_category_id.*' => 'required',
+            ]);                
+            $files = $request->file('document');
+            foreach($request->document_category_id as $category_index => $document_category_id)
+            {
+                if(array_key_exists($document_category_id, $files))
+                {
+                    $fileTypes = explode(', ', $request->file_type[$category_index]);
+                    if(!in_array($files[$document_category_id]->extension(),$fileTypes))
+                    {
+                        toastr()->error($files[$document_category_id]->extension().' is not allowed for respective document category.');
+                        return redirect()->back(); 
+                    }
+                }
+            }
+            $data = $request->session()->get('application_process');
+            DB::beginTransaction();
+            $dataArray = (array) $data;
+            $studentProfile = StudentProfile::create($dataArray);
+            foreach($data->premise_name as $key => $premise_name)
+            {
+                if($data->same_as_temparory && $key == 1)
+                {
+                    $country_id = @$data->country_id[0];
+                    $state_id = @$data->state_id[0];
+                }else{
+                    $country_id = $data->country_id[$key];
+                    $state_id = @$data->state_id[$key] ? $data->state_id[$key] : null;
+                }
+                StudentProfileAddress::create([
+                    'premise_name' => @$premise_name,
+                    'plot_no' => @$data->plot_no[$key],
+                    'type' => @$data->type[$key],
+                    'locality' => @$data->locality[$key],
+                    'sub_locality' => @$data->sub_locality[$key],
+                    'landmark' => @$data->landmark[$key],
+                    'village' => @$data->village[$key],
+                    'post_office' => @$data->post_office[$key],
+                    'police_station' => @$data->police_station[$key],
+                    'country_id' => @$country_id,
+                    'state_id' => @$state_id,
+                    'pin' => @$data->pin[$key],
+                    'student_profile_id' => @$studentProfile->id,
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
+            foreach($data->name_of_exam as $index => $name_of_exam)
+            {
+                StudentAcademicQualification::create([
+                    'name_of_exam' => @$name_of_exam,
+                    'name_of_board' => @$data->name_of_board[$index],
+                    'attended_school' => @$data->attended_school[$index],
+                    'passing_year' => @$data->passing_year[$index],
+                    'total_marks' => @$data->total_marks[$index],
+                    'marks' => @$data->marks[$index],
+                    'percentage' => @$data->percentage[$index],
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
+            $files = $request->file('document');
+            foreach($request->document_category_id as $category_index => $document_category_id)
+            {
+                if(array_key_exists($document_category_id, $files))
+                {
+                    StudentDocument::create([
+                        'document_category_id' => @$document_category_id,
+                        'document' => @$request->document[$document_category_id],
+                        'user_id' => Auth::user()->id,
+                    ]);
+                }
+            }
+            DB::commit();
+            // PaymentGateway::proccess();
+            $request->session()->forget('application_process');
+            toastr()->success('Student Application Store successfully');
+            // return redirect()->route('prospect.payment.process'); 
+            return redirect()->back(); 
+        }catch (Exception $e)
+        {
+            DB::rollBack();
+            toastr()->error($e->getMessage());
+            return back(); 
+        }
+    }
+    public function getBack()
+    {
+        try{
+            $application_process = request()->session()->get('application_process');
+            $html = '';
+            if($application_process->step == 2)
+            {
+                $application_process->step = 1;
+                request()->session()->put('application_process', $application_process);
+                $html = view('prospect.dashboard.ajax_partials.new_registration')->render();
+                
+            }else if($application_process->step == 3){
+                $application_process->step = 2;
+                request()->session()->put('application_process', $application_process);
+                $html = view('prospect.dashboard.ajax_partials.new_basic_information')->render();
+            }else if($application_process->step == 4){
+                $application_process->step = 3;
+                request()->session()->put('application_process', $application_process);
+                $html = view('prospect.dashboard.ajax_partials.academic_qualification')->render();
+            }
+            return response([
+                "success" => true,
+                "html" => $html,
+            ], 200);
+        }catch (Exception $e)
+        {
+            return response([
+                "success" => false,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function processPayment()
+    {
+        try{
+            PaymentGateway::proccess();
+            return redirect()->route('prospect.payment.process'); 
+        }
+        catch (Exception $e) {
+            toastr()->error($e->getMessage());
+            return back(); 
+        }
     }
 }

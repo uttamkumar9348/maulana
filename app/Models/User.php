@@ -131,7 +131,10 @@ class User extends Authenticatable
                         ->get()
                         ->pluck('document_category_id')->toArray();
 
-        $documentCategories = DocumentCategory::whereIn('id',$documentCategoryIds)->get();
+        $documentCategories = DocumentCategory::whereIn('id',$documentCategoryIds)
+                ->where('is_ex_service_man',0)
+                ->where('is_disabled_person',0)
+                ->get();
         return $documentCategories;
 
     }

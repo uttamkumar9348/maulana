@@ -145,7 +145,7 @@
     </thead>
     <tbody id="documents">
    
-        @foreach (App\Models\DocumentCategory::all()  as $key => $category)
+        @foreach (App\Models\DocumentCategory::where('is_ex_service_man',0)->where('is_disabled_person',0)->get()  as $key => $category)
         @if($category->document())
         <tr>
             <td style="width: 10px">{{$key+1}}</td>

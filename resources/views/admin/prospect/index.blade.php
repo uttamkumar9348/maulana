@@ -61,7 +61,7 @@ Prospects
                     <div class="form-group">
                         <input type="hidden" name="user_id" id="user_id" required>
                         <label for="name">Status</label>
-                        <select  name="status"  class="form-control select-search" data-fouc required>
+                        <select  name="status"  class="form-control" required>
                             <option selected disabled>Select Status</option>
                             <option value="Admitted">Admitted</option>
                             <option value="Rejected">Rejected</option>

@@ -15,7 +15,7 @@
         </div>
     </div>      
     <div class="row">
-        @foreach (App\Models\DocumentCategory::all()  as $key => $category)
+        @foreach (App\Models\DocumentCategory::where('is_ex_service_man',0)->where('is_disabled_person',0)->get()  as $key => $category)
         <div class="form-group col-md-1">
             {{$key+1}}
         </div>
