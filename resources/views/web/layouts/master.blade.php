@@ -56,31 +56,39 @@
                 display: none; /* Hide dropdown by default */
                 position: absolute;
                 background-color: #f9f9f9;
-                min-width: 160px;
+                min-width: 200px;
+                max-width:400px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                left: 0; /* Align dropdown to the left */
+                text-align: left;
+
             }
 
             .dropdown li {
                 display: block;
+                border-bottom:1px dotted #c0c0c0;
+                min-width: 200px;
+                
             }
 
             .dropdown li a {
                 color: black;
-                padding: 12px 16px;
                 text-decoration: none;
                 display: block;
                 text-align: left; /* Align text to the left */
+                width:100%;
+                line-height:10px;
             }
 
             .dropdown li a:hover {
-                background-color: #f1f1f1;
+                background-color: #ff7350;
+                min-width: 200px;
             }
 
             /* Show dropdown when hovering over the parent item */
             ul li:hover > .dropdown {
                 display: block;
+                border-bottom:1px dotted #fff;
             }
 
 
@@ -196,7 +204,7 @@
                                             <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
                                             <ul class="dropdown">
                                                 @foreach($menu->childMenu as $childMenu)
-                                                <li><a href="{{$childMenu->url}}">{{$childMenu->name}}</a></li>
+                                                <li style="margin-left:0px;"><a href="{{$childMenu->url}}" style="padding-left:10px!important;">{{$childMenu->name}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>
