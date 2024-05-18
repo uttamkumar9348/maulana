@@ -308,7 +308,7 @@
 
         @isset($callToAction)
             <!-- cta-area -->
-            <section class="cta-area cta-bg pt-10 pb-40" style="background-color: #125875;">
+            <section class="cta-area cta-bg pt-10 pb-40" style="background-color: #125875; padding-top:30px">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -339,7 +339,7 @@
 
         @if (count($testimonials) > 0)
             <!-- testimonial-area -->
-            <section class="testimonial-area pt-120 pb-115 p-relative fix">
+            <section class="testimonial-area pt-120 pb-115 p-relative fix" style="padding-top:30px;padding-bottom:30px">
                 <div class="container">
                     <div class="row">
 
