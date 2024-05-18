@@ -213,7 +213,15 @@
                                         
                                         @endif
                                         @endforeach
-                                        <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">Notice</a></li>
+                                       <li class="{{ Request::is('about*') ? 'current' : '' }}"><a
+                                                href="#">Notice</a>
+                                            <ul class="dropdown">
+                                                @foreach ($notice_type as $noticetype)
+                                                    <li style="margin-left:0px;"><a href="#" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                         <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li>
                                         {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
