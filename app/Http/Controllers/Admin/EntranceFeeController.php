@@ -17,9 +17,10 @@ class EntranceFeeController extends Controller
      */
     public function index()
     {
+        $exam_statuses = EntranceFee::all();
         $courses = Course::all();
 
-        return view('admin.entrance_fee.index', compact('courses'));
+        return view('admin.entrance_fee.index', compact('courses','exam_statuses'));
     }
 
     /**
@@ -90,7 +91,7 @@ class EntranceFeeController extends Controller
         $entranceFee = EntranceFee::find($id);
         $entranceFee->update($request->all());
         toastr()->success('Entrance Fee Updated successfully');
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Models\Web\AboutUs;
 use App\Models\Web\Feature;
 use App\Models\Web\Slider;
 use App\Models\notice;
+use App\Models\NoticetypeModel;
 use App\Models\Team;
 use App\Models\Language;
 

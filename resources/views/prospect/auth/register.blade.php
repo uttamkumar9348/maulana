@@ -91,12 +91,15 @@
                                         <div class="col-md-4">
 											<label>Select Course</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
+                                               
 												<select name="entrance_fee_id" class="form-control select-search" required>
-													<option>Select</option>
-													@foreach(App\Models\EntranceFee::all() as $entrance_fee)
-													<option value="{{$entrance_fee->id}}">{{$entrance_fee->course->title}}</option>
-													@endforeach
-												</select>
+                                                    <option>Select</option>
+                                                    @foreach(App\Models\EntranceFee::all() as $entrance_fee)
+                                                        @if(date('Y-m-d') >= $entrance_fee->download_start_date && date('Y-m-d') <= $entrance_fee->download_end_date)
+                                                            <option value="{{$entrance_fee->id}}">{{$entrance_fee->course->title}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
 											</div>
 										</div>
 									</div>
