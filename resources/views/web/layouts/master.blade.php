@@ -213,23 +213,23 @@
                                         
                                         @endif
                                         @endforeach
-                                       <li class="{{ Request::is('about*') ? 'current' : '' }}"><a
+                                      <li class="{{ Request::is('about*') ? 'current' : '' }}"><a
                                                 href="#">Notice</a>
                                             <ul class="dropdown">
-                                                @foreach ($notice_type as $noticetype)
-                                                    <li style="margin-left:0px;"><a href="#" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                                @foreach (App\Models\NoticetypeModel::all(); as $noticetype)
+                                                    <li style="margin-left:0px;"><a href="" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li>
+                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="https://mlu.zpsdemo.in/page/contact-us">Contact</a></li>
                                         {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
                                         
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li> --}}
+                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="url">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
