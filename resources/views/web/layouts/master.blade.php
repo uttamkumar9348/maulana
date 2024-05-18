@@ -210,8 +210,11 @@
                                         </li>
                                         @else 
                                         <li class="{{ $isRequest }}"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
+                                        
                                         @endif
                                         @endforeach
+                                        <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">Notice</a></li>
+                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li>
                                         {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
