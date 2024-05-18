@@ -44,7 +44,7 @@ class HomeController extends Controller
         //team
         $teams = Team::all();
          // Notice Type
-        $notice_type = NoticetypeModel::all();
+
 
         // Call To Action
         $data['callToAction'] = CallToAction::where('language_id', Language::version()->id)
@@ -58,7 +58,7 @@ class HomeController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices','teams','notice_type'));
+        return view('web.index', $data, compact('notices','teams'));
     }
 
     /**
