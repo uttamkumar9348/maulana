@@ -5,14 +5,7 @@ Roles
 @endsection
 
 @section('content')
-{{-- <div class="row">
-    <div class="col-lg-6">
-        <h3>Manage Roles</h3>
-    </div>
-    <div class="col-lg-6" style="text-align: right">
-        <a data-toggle="modal" data-target="#add_role_modal" class="btn btn-primary" href="">Add New Roles</a>
-    </div>
-</div> --}}
+
 <div class="card">
     <div class="card-header header-elements-inline">
         <h5 class="card-title">Manage Roles</h5>
@@ -29,8 +22,6 @@ Roles
             <tr>
                 <th>#</th>
                 <th style="text-align: center;"> Name</th>
-                {{-- <th>Action</th> --}}
-                {{-- <th>Action</th> --}}
             </tr>
         </thead>
         <tbody>

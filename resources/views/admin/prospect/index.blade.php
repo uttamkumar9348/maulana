@@ -22,7 +22,7 @@ Prospects
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach ($prospects  as $key => $prospect)
                 <tr>
                     <td>{{$key+1}}</td>
@@ -31,9 +31,9 @@ Prospects
                     <td>{{ $prospect->entrance_fee?$prospect->entrance_fee->course->title:'' }}</td>
                     <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->status:'' }}</td>
                     <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->track_id:'' }}</td>
-           
+
                     <td>
-                        
+
                         <button data-toggle="modal" data-target="#edit_modal"
                             id="{{$prospect->id}}" class="edit-btn btn btn-primary">Edit</button>
                         {{-- <a href="{{route('admin.prospect.edit',$prospect->id)}}" class="btn btn-primary btn-sm">Edit</a> --}}
@@ -44,7 +44,7 @@ Prospects
                 </tr>
                 @endforeach
             </tbody>
-        </table> 
+        </table>
 
     </div>
 </div>
@@ -55,7 +55,7 @@ Prospects
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title mt-0" id="myModalLabel">Student Approval</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
