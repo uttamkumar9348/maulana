@@ -95,6 +95,13 @@ class ProspectController extends Controller
         $user = User::find($request->user_id);
         if($request->status == "Admitted")
         {
+            $studentProfile = $user->studentProfile;
+            $studentProfile->update([
+                'college_id' => $request->college_id,
+                'course_id' => $request->course_id,
+                'semester_id' => $request->semester_id,
+                'enrollment_year' => $request->enrollment_year,
+            ]);
             $user->update([
                 'role_id' => 3
             ]);
