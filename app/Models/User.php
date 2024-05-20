@@ -103,6 +103,11 @@ class User extends Authenticatable
         $history  =PaymentHistory::where('user_id',$this->id)->orderBy('id','DESC')->first();
         return $history;
     }
+    public function centerMapping()
+    {
+        $history  =CenterMapping::where('user_id',$this->id)->orderBy('id','DESC')->first();
+        return $history;
+    }
     public function studentTemparoryAddress()
     {
         return StudentProfileAddress::where('user_id',$this->id)->where('type','Temparory')->first();

@@ -384,7 +384,6 @@
 
 	<!-- toastr Js -->
 	<script src="{{ asset('dashboard/plugins/toastr/js/toastr.min.js') }}"></script>
-	@toastr_render
 
 	<script type="text/javascript">
 		@if($errors -> any())

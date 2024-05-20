@@ -3,6 +3,7 @@
 /****************** PROSPECT MIDDLEWARE PAGES ROUTES START****************/
 
 use App\Http\Controllers\Prospect\AuthController;
+use App\Http\Controllers\Prospect\CenterMappingController;
 use App\Http\Controllers\Prospect\DashboardController;
 use App\Http\Controllers\Prospect\StudentAcademicQualificationController;
 /*******************REGISTER ROUTE START*************/
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::get('dashboard/get-back',[DashboardController::class,'getBack'])->name('dashboard.get-back');  
     Route::get('process_payment',[DashboardController::class,'processPayment'])->name('process_payment');  
     //  New Dashboard Routes End
+    Route::resource('center_mapping',CenterMappingController::class);
 });
 /****************** PROSPECT MIDDLEWARE PAGES ROUTES END****************/
 ?>
