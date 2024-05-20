@@ -3,7 +3,7 @@
 @section('title')
     {{ $title }} | {{ $setting->meta_title ?? '' }}
 @endsection
-
+  
 <style>
     .teamimage img{
         height: 25rem;
@@ -21,6 +21,9 @@
 
     .team-icon i {
         font-size: 30px;
+    }
+    .fab {
+        line-height: unset !important;
     }
 </style>
 
