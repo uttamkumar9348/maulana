@@ -40,18 +40,21 @@ class AuthController extends Controller
         {
             if($user->role->name == 'Admin')
             {
-                toastr()->success('You Login Successfully');
                 return redirect()->intended(route('admin.dashboard.index'));
             }
             else if($user->role->name == 'Prospect')
             {
-                toastr()->success('You Login Successfully');
                 return redirect()->intended(route('prospect.dashboard.index'));
             }
             else if($user->role->name == 'Front Web User')
             {
-                toastr()->success('You Login Successfully');
-                return redirect()->intended(route('frontwebuser.dashboard.index'));
+                if($user->status ==1){
+                    return redirect()->intended(route('frontwebuser.dashboard.index'));
+                }else{
+                    Auth::logout();
+                    toastr()->error('User is Inactive By Admin.');
+                    return redirect()->back();
+                }
             }
             else  if($user->is_verified && $user->is_active)
             {
@@ -86,7 +89,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        toastr()->success('You Logout Successfully');
         return redirect('/');
     }
     public function register(Request $request)

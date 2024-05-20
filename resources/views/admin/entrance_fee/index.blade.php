@@ -93,7 +93,7 @@ Add Entrance Exam
                 <td>{{$entrance_fee->documentCategories->count()}}</td>
                 <td><a href="{{route('admin.entrance_fee.show',$entrance_fee->id)}}" class="btn btn-success btn-sm">Add Document Category</a></td>
                 <td>
-                    <button data-toggle="modal" data-target="#edit_modal" 
+                    <button data-toggle="modal" data-target="#edit_modal"
                     course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}"
                     download_start_date="{{$entrance_fee->download_start_date}}" download_end_date="{{$entrance_fee->download_end_date}}"
                     exam_status="{{$entrance_fee->exam_status}}"
@@ -145,9 +145,16 @@ Add Entrance Exam
                         <label>Download End Date</label>
                         <input name="download_end_date" id="download_end_date" type="date" class="form-control" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Exam Status</label>
                         <select name="exam_status"  id="exam_status" class="form-control"></select>
+                    </div> --}}
+                    <div class="form-group">
+                        <label>Exam Status</label>
+                        @foreach ($exam_statuses as $status)
+                            <input type="radio" name="exam_status" value="1" {{ $status->exam_status == 1 ? 'checked' : '' }}> Yes
+                            <input type="radio" name="exam_status" value="0" {{ $status->exam_status == 0 ? 'checked' : '' }}> No
+                        @endforeach
                     </div>
                 </div>
                 <div class="modal-footer">

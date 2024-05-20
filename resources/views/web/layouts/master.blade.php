@@ -56,31 +56,39 @@
                 display: none; /* Hide dropdown by default */
                 position: absolute;
                 background-color: #f9f9f9;
-                min-width: 160px;
+                min-width: 200px;
+                max-width:400px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                left: 0; /* Align dropdown to the left */
+                text-align: left;
+
             }
 
             .dropdown li {
                 display: block;
+                border-bottom:1px dotted #c0c0c0;
+                min-width: 200px;
+                
             }
 
             .dropdown li a {
                 color: black;
-                padding: 12px 16px;
                 text-decoration: none;
                 display: block;
                 text-align: left; /* Align text to the left */
+                width:100%;
+                line-height:10px;
             }
 
             .dropdown li a:hover {
-                background-color: #f1f1f1;
+                background-color: #ff7350;
+                min-width: 200px;
             }
 
             /* Show dropdown when hovering over the parent item */
             ul li:hover > .dropdown {
                 display: block;
+                border-bottom:1px dotted #fff;
             }
 
 
@@ -192,25 +200,36 @@
                                                 // dd($url);
                                         @endphp
                                         @if($menu->childMenu->count() > 0)
-                                        <li class="{{ $isRequest }}">
+                                        <li class="{{ $isRequest }}" style="margin-left:20px">
                                             <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
                                             <ul class="dropdown">
                                                 @foreach($menu->childMenu as $childMenu)
-                                                <li><a href="{{$childMenu->url}}">{{$childMenu->name}}</a></li>
+                                                <li style="margin-left:0px;"><a href="/page/{{$childMenu->url}}" style="padding-left:10px!important;">{{$childMenu->name}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>
                                         @else 
-                                        <li class="{{ $isRequest }}"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
+                                        <li class="{{ $isRequest }}" style="margin-left:20px"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
+                                        
                                         @endif
                                         @endforeach
+                                      <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
+                                                href="#">Notice</a>
+                                            <ul class="dropdown">
+                                                @foreach (App\Models\NoticetypeModel::all(); as $noticetype)
+                                                    <li style="margin-left:0px;"><a href="" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a href="https://mlu.zpsdemo.in/page/contact-us">Contact</a></li>
                                         {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
                                         
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="#">Contact</a></li> --}}
+                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="url">Contact</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>

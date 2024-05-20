@@ -44,18 +44,19 @@ class AdminUserController extends Controller
         $update_adminuser->image = $request->image;
         }
         $update_adminuser->password =$request->password;
+        $update_adminuser->status =$request->status;
         $update_adminuser->save();
         toastr()->success('Admin User Updated Successfully!');
         return redirect()->route('admin.AdminUser.list');
     }
-    public function delete($id){
-        $delete_adminuser = User::find($id);
-        if($delete_adminuser){
-            $delete_adminuser->delete();
-            toastr()->success('Admin User Deleted Successfully!');
-            return redirect()->back();
-        }
-        toastr()->error('Something Went Wrong');
-        return redirect()->back();
-    }
+    // public function delete($id){
+    //     $delete_adminuser = User::find($id);
+    //     if($delete_adminuser){
+    //         $delete_adminuser->delete();
+    //         toastr()->success('Admin User Deleted Successfully!');
+    //         return redirect()->back();
+    //     }
+    //     toastr()->error('Something Went Wrong');
+    //     return redirect()->back();
+    // }
 }

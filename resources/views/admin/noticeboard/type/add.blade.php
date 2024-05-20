@@ -5,12 +5,12 @@ NOTICE TYPE
 @endsection
 
 @section('content')
-<div class="row">
-    <div class="col-lg-6">
-        <h3>Add Notice Type</h3>
+
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h4 class="card-title">Add Notice Type</h4>
     </div>
-</div>
-<div>
+<div class="col-lg-12">
     <form action="{{route('admin.NoticeType.store')}}" method="post">
         @csrf
         <div class="mb-3">
@@ -23,6 +23,7 @@ NOTICE TYPE
     </form>
 
 
+</div>
 </div>
 
 @endsection

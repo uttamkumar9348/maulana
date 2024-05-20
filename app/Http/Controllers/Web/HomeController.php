@@ -11,7 +11,9 @@ use App\Models\Web\AboutUs;
 use App\Models\Web\Feature;
 use App\Models\Web\Slider;
 use App\Models\notice;
+use App\Models\NoticetypeModel;
 use App\Models\Team;
+use App\Models\NoticetypeModel;
 use App\Models\Language;
 
 class HomeController extends Controller
@@ -42,6 +44,8 @@ class HomeController extends Controller
 
         //team
         $teams = Team::all();
+         // Notice Type
+
 
         // Call To Action
         $data['callToAction'] = CallToAction::where('language_id', Language::version()->id)

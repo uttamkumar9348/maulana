@@ -57,7 +57,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::resource('application', ApplicationController::class);
 
   //Team
-  Route::get('/view-team{id}',[TeamController::class,'team'])->name('web.team');
+  Route::get('/view-team/{id}',[TeamController::class,'team'])->name('web.team');
 
 
   // SetCookie Route
