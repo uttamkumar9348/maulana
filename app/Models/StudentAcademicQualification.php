@@ -25,6 +25,10 @@ class StudentAcademicQualification extends Model
     }
     public function exam()
     {
-        return $this->belongsTo(User::class,'name_of_exam');
+        return $this->belongsTo(Passed_exam::class,'name_of_exam');
+    }
+    public function board()
+    {
+        return $this->belongsTo(Board::class,'name_of_board');
     }
 }

@@ -24,7 +24,7 @@
 
     <!-- Social Meta Tags -->
     <link rel="canonical" href="{{ route('home') }}">
-    
+
     @yield('social_meta_tags')
 
 
@@ -41,23 +41,65 @@
     <link rel="stylesheet" href="{{ asset('web/css/responsive.css') }}">
 
 
-    @php 
-    $version = App\Models\Language::version(); 
+    @php
+    $version = App\Models\Language::version();
     @endphp
     @if($version->direction == 1)
     <!-- RTL css -->
     <link rel="stylesheet" href="{{ asset('web/css/rtl.css') }}">
     @endif
+    <style>
+        .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            max-width:400px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            text-align: left;
+
+        }
+
+        .dropdown li {
+            display: block;
+            border-bottom:1px dotted #c0c0c0;
+            min-width: 200px;
+
+        }
+
+        .dropdown li a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            text-align: left; /* Align text to the left */
+            width:100%;
+            line-height:10px;
+        }
+
+        .dropdown li a:hover {
+            background-color: #ff7350;
+            min-width: 200px;
+        }
+
+        /* Show dropdown when hovering over the parent item */
+        ul li:hover > .dropdown {
+            display: block;
+            border-bottom:1px dotted #fff;
+        }
+
+
+</style>
  </head>
 
  <body>
 
  	<!-- header -->
-    <header class="header-area header-three">  
+    <header class="header-area header-three">
        <div class="header-top second-header d-none d-md-block">
             <div class="container">
-                <div class="row align-items-center">      
-                   
+                <div class="row align-items-center">
+
                     <div class="col-lg-4 col-md-4 d-none d-lg-block ">
                         @if(isset($topbarSetting) && $topbarSetting->social_status == 1)
                         <div class="header-social">
@@ -80,8 +122,8 @@
                             @if(isset($socialSetting->youtube))
                             <a href="{{ $socialSetting->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
                             @endif
-                           </span>                    
-                           <!--  /social media icon redux -->                               
+                           </span>
+                           <!--  /social media icon redux -->
                         </div>
                         @endif
                     </div>
@@ -114,15 +156,15 @@
                                </li>
                                @endisset
                             </ul>
-                        </div>                        
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
-        </div>    
+        </div>
 
 
-        <div id="header-sticky" class="menu-area">
+        {{-- <div id="header-sticky" class="menu-area">
             <div class="container">
                 <div class="second-menu">
                     <div class="row align-items-center">
@@ -150,8 +192,8 @@
                         </div>
 
                         <div class="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
-                            @php 
-                            $application = App\Models\ApplicationSetting::status(); 
+                            @php
+                            $application = App\Models\ApplicationSetting::status();
                             @endphp
                             @isset($application)
                             <div class="login">
@@ -165,7 +207,89 @@
                             </div>
                             @endisset
                         </div>
-                        
+
+                        <div class="col-12">
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div id="header-sticky" class="menu-area">
+            <div class="container">
+                <div class="second-menu">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-3">
+                            @if(isset($setting))
+                            <div class="logo">
+                                <a href="{{ route('home') }}"><img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="logo"></a>
+                            </div>
+                            @endif
+                        </div>
+
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="main-menu text-right text-xl-right">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        @foreach(App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
+                                        @php
+                                            $url  = $menu->url.'*';
+                                                $isRequest = Request::path() == $url ? 'current' : '';
+                                                // dd($url);
+                                        @endphp
+                                        @if($menu->childMenu->count() > 0)
+                                        <li class="{{ $isRequest }}" style="margin-left:20px">
+                                            <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
+                                            <ul class="dropdown">
+                                                @foreach($menu->childMenu as $childMenu)
+                                                <li style="margin-left:0px;"><a href="/page/{{$childMenu->url}}" style="padding-left:10px!important;">{{$childMenu->name}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @else
+                                        <li class="{{ $isRequest }}" style="margin-left:20px"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
+
+                                        @endif
+                                        @endforeach
+                                      <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
+                                                href="#">Notice</a>
+                                            <ul class="dropdown">
+                                                @foreach (App\Models\NoticetypeModel::all(); as $noticetype)
+                                                    <li style="margin-left:0px;"><a href="" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a href="https://mlu.zpsdemo.in/page/contact-us">Contact</a></li>
+                                        {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
+                                        <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
+                                        <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
+
+                                        <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
+                                        <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
+                                       <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="url">Contact</a></li> --}}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block text-right text-xl-right">
+                            @php
+                            $application = App\Models\ApplicationSetting::status();
+                            @endphp
+                            @isset($application)
+                            <div class="login">
+                                <ul>
+                                    <li>
+                                        <div class="second-header-btn">
+                                           <a href="{{ route('prospect.register') }}" class="btn">{{ __('navbar_admission') }}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            @endisset
+                        </div>
+
                         <div class="col-12">
                             <div class="mobile-menu"></div>
                         </div>
@@ -173,10 +297,11 @@
                 </div>
             </div>
         </div>
+
     </header>
     <!-- header-end -->
 
- 	
+
     <!-- Content Start -->
     			<div class="content">
 
@@ -191,13 +316,13 @@
         <div class="footer-top pb-70">
             <div class="container">
                 <div class="row justify-content-between">
-                    
+
                     <div class="col-xl-4 col-lg-4 col-sm-12">
                         <div class="footer-widget mb-30">
                             <div class="f-widget-title">
                                 <h2>{{ __('footer_socials') }}</h2>
                             </div>
-                            <div class="footer-social mt-10">                                    
+                            <div class="footer-social mt-10">
                                 @if(isset($socialSetting->facebook))
                                 <a href="{{ $socialSetting->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                                 @endif
@@ -216,7 +341,7 @@
                                 @if(isset($socialSetting->youtube))
                                 <a href="{{ $socialSetting->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
                                 @endif
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
@@ -234,8 +359,8 @@
                                     <li><a href="{{ route('login') }}" target="_blank">{{ __('field_staff') }} {{ __('field_login') }}</a></li>
                                     @endif
 
-                                    @php 
-                                    $application = App\Models\ApplicationSetting::status(); 
+                                    @php
+                                    $application = App\Models\ApplicationSetting::status();
                                     @endphp
                                     @isset($application)
                                     <li><a href="{{ route('application.index') }}" target="_blank">{{ __('navbar_admission') }}</a></li>
@@ -278,7 +403,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -300,8 +425,8 @@
                           </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12 text-center">          
-                        
+                    <div class="col-lg-4 col-md-4 col-12 text-center">
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 text-center text-md-right">
                         @isset($setting->copyright_text)

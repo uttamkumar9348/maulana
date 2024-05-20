@@ -13,9 +13,15 @@
 <table width="100%" style="margin-top:-45px;">
     <tr>
         <th width="20%">Candidate Name</th>
-        <td>{{ Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name }}</td>
-        <td rowspan="4"><img src="{{asset(Auth::user()->studentDocuments->where('document_category_id',1)->first()?Auth::user()->studentDocuments->where('document_category_id',1)->first()->document:'')}}" style="width: 100%; max-width: 120px"></td>
-        <td rowspan="4"><img src="{{asset(Auth::user()->studentDocuments->where('document_category_id',2)->first()?Auth::user()->studentDocuments->where('document_category_id',2)->first()->document:'')}}" style="max-height: 50px"></td>
+        <td>
+            {{ Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name }}
+        </td>
+        <td rowspan="4">
+            <img src="{{asset(Auth::user()->studentDocuments->where('document_category_id',3)->first()?Auth::user()->studentDocuments->where('document_category_id',3)->first()->document:'')}}" style="width: 100%; max-width: 120px">
+        </td>
+        <td rowspan="4">
+            <img src="{{asset(Auth::user()->studentDocuments->where('document_category_id',4)->first()?Auth::user()->studentDocuments->where('document_category_id',4)->first()->document:'')}}" style="max-height: 50px">
+        </td>
     </tr>
     <tr>
         <th width="20%">Mother Name</th>
@@ -37,7 +43,7 @@
     </tr>
     <tr>
         <th width="20%">Mobile No</th>
-        <td>{{Auth::user()->phone}}</td>
+        <td>{{Auth::user()->studentProfile->phone}}</td>
         <th width="20%">Email</th>
         <td>{{ Auth::user()->email }}</td>
     </tr>
@@ -117,12 +123,12 @@
         </tr>
     </thead>
     <tbody id="qualifications">
-   
+
         @foreach (Auth::user()->studentAcademicQualifications  as $key => $qualification)
         <tr>
             <td style="width: 10px">{{$key+1}}</td>
-            <td>{{$qualification->name_of_exam}}</td>
-            <td>{{$qualification->name_of_board}}</td>
+            <td>{{$qualification->exam->name}}</td>
+            <td>{{$qualification->board->name}}</td>
             <td>{{$qualification->attended_school}}</td>
             <td>{{$qualification->passing_year}}</td>
             <td>{{$qualification->total_marks}}</td>
@@ -144,13 +150,13 @@
         </tr>
     </thead>
     <tbody id="documents">
-   
+
         @foreach (App\Models\DocumentCategory::where('is_ex_service_man',0)->where('is_disabled_person',0)->get()  as $key => $category)
         @if($category->document())
         <tr>
             <td style="width: 10px">{{$key+1}}</td>
             <td  colspan="2">{{$category->name}}</td>
-            <td  colspan="2">                 
+            <td  colspan="2">
                 <a href="{{route('prospect.dashboard.download_document',$category->document()->id)}}" target="_blank" class="nav-link">
                     <i class="icon-download"></i>
                     Download Document
@@ -170,7 +176,7 @@
         </tr>
     </thead>
     <tbody id="payments">
-   
+
         <tr>
             <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->status:'' }}</td>
             <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->track_id:'' }}</td>
