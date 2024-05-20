@@ -82,7 +82,7 @@
             Post Office: {{Auth::user()->studentTemparoryAddress() ? Auth::user()->studentTemparoryAddress()->post_office : '' }}<br/>
             Police Station: {{Auth::user()->studentTemparoryAddress() ? Auth::user()->studentTemparoryAddress()->police_station : '' }}<br/>
             Country: {{Auth::user()->studentTemparoryAddress() ? Auth::user()->studentTemparoryAddress()->country->name : '' }}<br/>
-            State: {{Auth::user()->studentTemparoryAddress() ? Auth::user()->studentTemparoryAddress()->state->name : '' }}<br/>
+            State: {{Auth::user()->studentTemparoryAddress() && Auth::user()->studentTemparoryAddress()->state ? Auth::user()->studentTemparoryAddress()->state->name : '' }}<br/>
             Pin Code: {{Auth::user()->studentTemparoryAddress() ? Auth::user()->studentTemparoryAddress()->pin : '' }}<br/>
         </td>
         <td>
@@ -95,7 +95,7 @@
             Post Office: {{Auth::user()->studentPermenantAddress() ? Auth::user()->studentPermenantAddress()->post_office : '' }}<br/>
             Police Station: {{Auth::user()->studentPermenantAddress() ? Auth::user()->studentPermenantAddress()->police_station : '' }}<br/>
             Country: {{Auth::user()->studentPermenantAddress() ? Auth::user()->studentPermenantAddress()->country->name : '' }}<br/>
-            State: {{Auth::user()->studentPermenantAddress() ? Auth::user()->studentPermenantAddress()->state->name : '' }}<br/>
+            State: {{Auth::user()->studentPermenantAddress() && Auth::user()->studentPermenantAddress()->state ? Auth::user()->studentPermenantAddress()->state->name : '' }}<br/>
             Pin Code: {{Auth::user()->studentPermenantAddress() ? Auth::user()->studentPermenantAddress()->pin : '' }}<br/>
         </td>
     </tr>

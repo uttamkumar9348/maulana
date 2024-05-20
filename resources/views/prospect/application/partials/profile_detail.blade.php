@@ -29,15 +29,15 @@
         </tr>
     </tbody>
 </table>
-@if(!Auth::user()->centerMapping())
+{{-- @if(!Auth::user()->centerMapping())
 <br>
 <div class="row">
     <div class="col-md-12 text-right">
         <a href="{{route('prospect.center_mapping.index')}}" class="btn btn-primary text-right">Add Center Mapping</a>
     </div>
 </div>
-@endif
-<br>
+@endif --}}
+{{-- <br>
 <p><strong>Center Mapping </strong></p>
 <table class="table table-sm table-bordered">
     <thead>
@@ -57,4 +57,4 @@
             <td>{{Auth::user()->centerMapping() ? Auth::user()->centerMapping()->exam_time : ''}}</td>
         </tr>
     </tbody>
-</table>
+</table> --}}

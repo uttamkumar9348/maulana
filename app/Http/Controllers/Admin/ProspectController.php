@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Semester;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -97,10 +98,10 @@ class ProspectController extends Controller
         {
             $studentProfile = $user->studentProfile;
             $studentProfile->update([
-                'college_id' => $request->college_id,
-                'course_id' => $request->course_id,
-                'semester_id' => $request->semester_id,
-                'enrollment_year' => $request->enrollment_year,
+                'college_id' => @$request->college_id ? $request->college_id :$studentProfile->college_id,
+                // 'course_id' => @$request->course_id ? $request->course_id :$studentProfile->course_id,
+                'semester_id' => @$request->semester_id ? $request->semester_id :$studentProfile->semester_id,
+                'enrollment_year' => @$request->enrollment_year ? $request->enrollment_year :$studentProfile->enrollment_year,
             ]);
             $user->update([
                 'role_id' => 3
@@ -114,5 +115,31 @@ class ProspectController extends Controller
             toastr()->error('Something Went Wrong');
         }
         return redirect()->back(); 
+    }
+    public function getAdmitContent(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $course = $user->entrance_fee && $user->entrance_fee->course ? $user->entrance_fee->course : [];
+        $colleges = User::where('role_id',2)->where('entrance_fee_id',$user->entrance_fee_id)->where('is_verified',1)->where('is_active',1)->get();
+        $collegeWithCourses = [];
+        foreach($colleges as $college)
+        {
+            if($course && $college->entrance_fee && $college->entrance_fee->course && $course->id == $college->entrance_fee->course_id)
+            {
+                $collegeWithCourses[] = $college;
+            }
+        }
+        if($course)
+        {
+            $semsters = Semester::where('course_id',$course->id)->get();
+        }else{
+            $semsters = [];
+        }
+
+        $html = view('admin.prospect.partials.prospect_admitted_fields',compact('course','collegeWithCourses','semsters'))->render();
+
+        return  [
+            'html' => $html
+        ];
     }
 }

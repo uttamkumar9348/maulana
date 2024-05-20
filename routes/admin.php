@@ -2,6 +2,8 @@
 
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
+use App\Http\Controllers\Admin\CenterController;
+use App\Http\Controllers\Admin\CenterMappingController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CollegeController;
 use App\Http\Controllers\Admin\CollegeCourseController;
@@ -78,7 +80,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************STUDENT ROUTE END*************/
     /*******************PROSPECT ROUTE END*************/
     Route::post('status_update', [ProspectController::class, 'statusUpdate'])->name('prospect.status_update');
+    Route::post('get_admit_content', [ProspectController::class, 'getAdmitContent'])->name('prospect.get_admit_content');
     Route::resource('prospect', ProspectController::class);
+    Route::resource('center_mapping',CenterMappingController::class);
     /*******************PROSPECT ROUTE END*************/
     /*******************TEACHER ROUTE START*************/
     Route::resource('teacher', TeacherController::class);
@@ -172,6 +176,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************Exam Center Registration ROUTE START*************/
     Route::resource('exam_center_registration', ExamCenterRegistrationController::class);
     /*******************Exam Center Registration ROUTE END*************/
+    
+    /*******************Center ROUTE START*************/
+    Route::resource('center', CenterController::class);
+    /*******************Center ROUTE END*************/
     Route::prefix('web')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('slider', SliderController::class);

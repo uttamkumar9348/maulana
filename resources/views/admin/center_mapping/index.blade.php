@@ -1,14 +1,11 @@
-
-
-@extends('prospect.layout.index')
+@extends('admin.layout.index')
 
 @section('title')
-    Center Mapping
-@endsection
-@section('styles')
+    Add Center
 @endsection
 
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
         <!-- Basic layout-->
@@ -24,20 +21,20 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('prospect.center_mapping.store')}}" method="post" enctype="multipart/form-data" >
+                <form action="{{route('admin.center_mapping.store')}}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="row">
-                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <p><strong>Course : {{$user->entrance_fee && $user->entrance_fee->course ? $user->entrance_fee->course->title : '' }}</strong></p>
+                        <input type="hidden" name="entrance_fee_id" value="{{$user->entrance_fee_id}}" required>
+                    </div>
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <label>Center ID</label>
-                            <input name="center_id" type="text" class="form-control" placeholder="Enter Center ID" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Select Course</label>
-                            <select name="entrance_fee_id" class="form-control select-search" required>
+                            <select name="center_id" class="form-control " required>
                                 <option>Select</option>
-                                @foreach(App\Models\EntranceFee::all() as $entrance_fee)
-                                <option value="{{$entrance_fee->id}}">{{$entrance_fee->course->title}}</option>
+                                @foreach(App\Models\Center::all() as $center)
+                                <option value="{{$center->id}}">{{$center->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -61,4 +58,7 @@
 
     </div>
 </div>
+@endsection
+
+@section('scripts')
 @endsection

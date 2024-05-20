@@ -18,6 +18,7 @@ Prospects
                     <th>Status</th>
                     <th>Track ID</th>
                     <th>Action</th>
+                    <th>Center Mapping</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,6 +38,13 @@ Prospects
                         <button data-toggle="modal" data-target="#edit_modal"
                             id="{{$prospect->id}}" class="edit-btn btn btn-primary">Edit</button>
                         {{-- <a href="{{route('admin.prospect.edit',$prospect->id)}}" class="btn btn-primary btn-sm">Edit</a> --}}
+                    </td>
+                    <td>
+                        @if($prospect->centerMapping())
+                        <span class="badge badge-success">Already have Center Mapped</span>
+                        @else 
+                        <a href="{{route('admin.center_mapping.show',$prospect->id)}}" class="btn btn-success btn-sm">Add Center Mapping</a>
+                        @endif
                     </td>
                     <td>
                         <a href="{{route('admin.prospect.show',$prospect->id)}}" class="btn btn-info btn-sm">Show Application</a>
@@ -67,36 +75,7 @@ Prospects
                             <option value="Rejected">Rejected</option>
                         </select>
                     </div>
-                    <div class="form-group admitted_fields" style="display:none;">
-                        <label for="name">College</label>
-                        <select  name="college_id"  id="college_id" class="form-control">
-                            <option selected value="">Select College</option>
-                            @foreach(App\Models\User::where('role_id',2)->where('is_verified',1)->where('is_active',1)->get() as $college)
-                            <option value="{{$college->id}}">{{$college->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group admitted_fields" style="display:none;">
-                        <label for="name">Course</label>
-                        <select  name="course_id"  id="course_id" class="form-control" >
-                            <option selected value="">Select Course</option>
-                        </select>
-                    </div>
-                    <div class="form-group admitted_fields" style="display:none;">
-                        <label for="name">Semester</label>
-                        <select  name="semester_id"  id="semester_id" class="form-control" >
-                            <option selected value="">Select Semester</option>
-                        </select>
-                    </div>
-                    <div class="form-group admitted_fields" style="display:none;">
-                        <label>Enrollment Year</label>
-                        <select  name="enrollment_year" id="enrollment_year" class="form-control" >
-                            <option selected value="">Select Enrollment Year</option>
-                            @for($i = 2015;$i < 2031;$i++)
-                            <option  value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                </div>
+                    <div id="prospectAdmittedFields"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
@@ -120,17 +99,31 @@ Prospects
         status = $(this).val();    
         if(status == 'Admitted')
         {
-            $('.admitted_fields').show();
+            // $('.admitted_fields').show();
             $('#college_id').attr('required',true);
             $('#course_id').attr('required',true);
             $('#semester_id').attr('required',true);
             $('#enrollment_year').attr('required',true);
+            $.ajax({
+                url: '{{route("admin.prospect.get_admit_content")}}',
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+                dataType: 'JSON',
+                data: {
+                    'user_id': $('#user_id').val(),
+                },
+            })
+            .done(function (data) {
+                $('#prospectAdmittedFields').empty();
+                $('#prospectAdmittedFields').html(data.html);
+            })
         }else{
-            $('.admitted_fields').hide();
+            // $('.admitted_fields').hide();
             $('#college_id').attr('required',false);
             $('#course_id').attr('required',false);
             $('#semester_id').attr('required',false);
             $('#enrollment_year').attr('required',false);
+            $('#prospectAdmittedFields').empty();
         }
     });
     $(document).on('change', '#college_id', function (event) {
@@ -153,25 +146,25 @@ Prospects
             }
         })
     });
-    $(document).on('change', '#course_id', function (event) {
-        course_id = $(this).val();        
-        event.preventDefault();
-        $.ajax({
-            url: '{{url("get_semester_aganist_course")}}',
-            type: 'POST',
-            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-            dataType: 'JSON',
-            data: {
-                'course_id': course_id,
-            },
-        })
-        .done(function (data) {
-            $('#semester_id').empty();
-            $('#semester_id').append('<option selected value="">Select Semester</option>');
-            for (i=0;i<data.length;i++){
-            $('#semester_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
-            }
-        })
-    });
+    // $(document).on('change', '#course_id', function (event) {
+    //     course_id = $(this).val();        
+    //     event.preventDefault();
+    //     $.ajax({
+    //         url: '{{url("get_semester_aganist_course")}}',
+    //         type: 'POST',
+    //         headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+    //         dataType: 'JSON',
+    //         data: {
+    //             'course_id': course_id,
+    //         },
+    //     })
+    //     .done(function (data) {
+    //         $('#semester_id').empty();
+    //         $('#semester_id').append('<option selected value="">Select Semester</option>');
+    //         for (i=0;i<data.length;i++){
+    //         $('#semester_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+    //         }
+    //     })
+    // });
 </script>
 @endsection
