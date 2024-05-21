@@ -120,11 +120,11 @@ class ProspectController extends Controller
     {
         $user = User::find($request->user_id);
         $course = $user->entrance_fee && $user->entrance_fee->course ? $user->entrance_fee->course : [];
-        $colleges = User::where('role_id',2)->where('entrance_fee_id',$user->entrance_fee_id)->where('is_verified',1)->where('is_active',1)->get();
+        $colleges = User::where('role_id',2)->where('is_verified',1)->where('is_active',1)->get();
         $collegeWithCourses = [];
         foreach($colleges as $college)
         {
-            if($course && $college->entrance_fee && $college->entrance_fee->course && $course->id == $college->entrance_fee->course_id)
+            if($course && $college->collegeCourses->where('course_id',$course->id)->count() > 0)
             {
                 $collegeWithCourses[] = $college;
             }
