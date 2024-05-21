@@ -34,6 +34,10 @@
                             <input name="code" type="text" value="{{$subject->code}}" class="form-control" placeholder="Enter Subject Code" required>
                         </div>
                         <div class="form-group col-md-6">
+                            <label>Subject Credit</label>
+                            <input name="credit" type="text" value="{{$subject->credit}}" class="form-control" placeholder="Enter Subject Credit" >
+                        </div>
+                        <div class="form-group col-md-6">
                             <label>Subject Type</label>
                             <input name="type" type="text" value="{{$subject->type}}" class="form-control" placeholder="Enter Subject Type" required>
                         </div>
@@ -44,20 +48,20 @@
                                 @foreach (App\Models\Web\Course::all() as $course)
                                 <option @if($subject->course_id == $course->id) selected @endif value="{{$course->id}}">{{$course->title}}</option>
                                 @endforeach
-                            </select> 
-                        </div>   
+                            </select>
+                        </div>
                         <div class="form-group col-md-6">
                             <label>Select Semester</label>
                             <select name="semester_id" id="semester_id" class="form-control" required>
                                 <option selected value="{{$subject->semester_id}}">{{$subject->semester->name}}</option>
-                            </select> 
-                        </div>   
-                   
+                            </select>
+                        </div>
+
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Edit <i class="icon-paperplane ml-2"></i></button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>

@@ -32,7 +32,8 @@ class User extends Authenticatable
         'is_verified',
         'is_active',
         'steps',
-        'entrance_fee_id'
+        'entrance_fee_id',
+        'course_id'
     ];
 
     /**

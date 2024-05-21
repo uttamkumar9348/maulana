@@ -7,7 +7,7 @@ Manage Subjects
 @section('content')
 
 <div class="card">
-    
+
     <div class="card-header header-elements-inline">
         <h5 class="card-title">Manage Subjects</h5>
         <div class="header-elements">
@@ -25,6 +25,7 @@ Manage Subjects
                 <th>#</th>
                 <th>Subject Name</th>
                 <th>Subject Code</th>
+                <th>Subject Credit</th>
                 <th>Subject Type</th>
                 <th>Semester Name</th>
                 <th>Course Name</th>
@@ -38,6 +39,7 @@ Manage Subjects
                 <td>{{$key+1}}</td>
                 <td>{{$subject->name}}</td>
                 <td>{{$subject->code}}</td>
+                <td>{{$subject->credit}}</td>
                 <td>{{$subject->type}}</td>
                 <td>{{@$subject->semester->name}}</td>
                 <td>{{@$subject->course->title}}</td>
@@ -76,6 +78,10 @@ Manage Subjects
                         <input name="code" type="text" class="form-control" placeholder="Enter Subject Code" required>
                     </div>
                     <div class="form-group">
+                        <label>Subject Credit</label>
+                        <input name="credit" type="text" class="form-control" placeholder="Enter Subject Credit" required>
+                    </div>
+                    <div class="form-group">
                         <label>Subject Type (Theory / Practical)</label>
                         <input name="type" type="text" class="form-control" placeholder="Enter Subject Type" required>
                     </div>
@@ -86,14 +92,14 @@ Manage Subjects
                             @foreach (App\Models\Web\Course::all() as $course)
                             <option value="{{$course->id}}">{{$course->title}}</option>
                             @endforeach
-                        </select> 
-                    </div>   
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Select Semester</label>
                         <select name="semester_id" id="semester_id" class="form-control" required>
                             <option >Choose Semester</option>
-                        </select> 
-                    </div>   
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>

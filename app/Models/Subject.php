@@ -10,8 +10,8 @@ class Subject extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','course_id','code','type','semester_id'];
-    
+    protected $fillable = ['name','course_id','code','type','semester_id','credit'];
+
     public function course()
     {
         return $this->belongsTo(Course::class,'course_id');

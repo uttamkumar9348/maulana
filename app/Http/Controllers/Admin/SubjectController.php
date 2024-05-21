@@ -46,6 +46,7 @@ class SubjectController extends Controller
                 'code' => 'required',
                 'type' => 'required',
                 'semester_id' => 'required',
+                'credit' => 'required',
             ]);
             Subject::create($request->all());
             toastr()->success('Subject Added Successfully');
