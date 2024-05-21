@@ -2,6 +2,7 @@
 
 <div class="form-group admitted_fields" >
     <label for="name">Course</label>
+    <input type="hidden" readonly class="form-control" name="course_id" value="{{@$course->id}}" >
     <input type="text" readonly class="form-control" value="{{@$course->title}}" >
 </div>
 <div class="form-group admitted_fields" >

@@ -99,7 +99,7 @@ class ProspectController extends Controller
             $studentProfile = $user->studentProfile;
             $studentProfile->update([
                 'college_id' => @$request->college_id ? $request->college_id :$studentProfile->college_id,
-                // 'course_id' => @$request->course_id ? $request->course_id :$studentProfile->course_id,
+                'course_id' => @$request->course_id ? $request->course_id :$studentProfile->course_id,
                 'semester_id' => @$request->semester_id ? $request->semester_id :$studentProfile->semester_id,
                 'enrollment_year' => @$request->enrollment_year ? $request->enrollment_year :$studentProfile->enrollment_year,
             ]);
