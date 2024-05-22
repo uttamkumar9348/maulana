@@ -381,6 +381,10 @@ class DashboardController extends Controller
         return $pdf->stream(Auth::user()->name.'.pdf');
     }
     
+    public function admitCard(){
+        return view('prospect.application.admit_card');
+    }
+    
     public function payment_callback(Request $request){
         $merchant_id = config('services.razor_pay.merchant_id');
         $merchant_sub_id = config('services.razor_pay.merchant_sub_id');
@@ -557,9 +561,11 @@ class DashboardController extends Controller
                 {
                     $country_id = @$data->country_id[0];
                     $state_id = @$data->state_id[0];
+                    $city_id = @$data->city_id[0];
                 }else{
                     $country_id = $data->country_id[$key];
                     $state_id = @$data->state_id[$key] ? $data->state_id[$key] : null;
+                    $city_id = @$data->city_id[$key] ? $data->city_id[$key] : null;
                 }
                 StudentProfileAddress::create([
                     'premise_name' => @$premise_name,
@@ -573,6 +579,7 @@ class DashboardController extends Controller
                     'police_station' => @$data->police_station[$key],
                     'country_id' => @$country_id,
                     'state_id' => @$state_id,
+                    'city_id' => @$city_id,
                     'pin' => @$data->pin[$key],
                     'student_profile_id' => @$studentProfile->id,
                     'user_id' => Auth::user()->id,

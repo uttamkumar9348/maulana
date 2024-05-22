@@ -58,6 +58,7 @@ class ProspectApplicationService
         $application_process->police_station = $request->police_station;
         $application_process->country_id = $request->country_id;
         $application_process->state_id = $request->state_id;
+        $application_process->city_id = $request->city;
         $application_process->pin = $request->pin;
         $application_process->same_as_temparory = $request->same_as_temparory ? 1 : 0;
         return $application_process;

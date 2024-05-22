@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Helpers\ImageHelper;
 use App\Models\Web\Course;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -149,5 +150,30 @@ class User extends Authenticatable
                     ->where('role_id','=',6)
                     ->orderBy('id','desc')
                     ->get();
+    }
+    public function allowAdmitCard()
+    {
+        if ($this->entrance_fee && Carbon::today()->between(Carbon::parse($this->entrance_fee->download_start_date), Carbon::parse($this->entrance_fee->download_end_date))) {
+            return true;
+        }
+        return false;
+    }
+    public function getPassportPhoto()
+    {
+        $category = DocumentCategory::where('name','Passport Photo')->first();
+        if ($category) {
+            $studentDocument = StudentDocument::where('user_id',$this->id)->where('document_category_id',$category->id)->first();
+            return $studentDocument;
+        }
+        return null;
+    }
+    public function getSignaturePhoto()
+    {
+        $category = DocumentCategory::where('name','Signature')->first();
+        if ($category) {
+            $studentDocument = StudentDocument::where('user_id',$this->id)->where('document_category_id',$category->id)->first();
+            return $studentDocument;
+        }
+        return null;
     }
 }

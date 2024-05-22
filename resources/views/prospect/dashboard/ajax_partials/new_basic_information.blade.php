@@ -163,6 +163,18 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
+                <label>City <small style="color:red;">*</small></label>
+                <select  name="city[]" id="temparory_city_id"  class="form-control" >
+                    @if(@request()->session()->get('application_process')->state_id && @request()->session()->get('application_process')->state_id[0])
+                        @foreach(App\Models\City::where('state_id',@request()->session()->get('application_process')->state_id[0])->get() as $city)
+                            <option {{@request()->session()->get('application_process')->city_id &&  @request()->session()->get('application_process')->city_id[0] == $city->id  ? 'selected' : '' }}  value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <label>Pin Code<small style="color:red;">*</small></label>
                 <input type="text" name="pin[]" value="{{@request()->session()->get('application_process')->pin ? @request()->session()->get('application_process')->pin[0] : '' }}"  id="temparory_pin" class="form-control" placeholder="Pin Code">
             </div>
@@ -247,6 +259,19 @@
                     @if(@request()->session()->get('application_process')->country_id && @request()->session()->get('application_process')->country_id[1])
                         @foreach(App\Models\State::where('country_id',@request()->session()->get('application_process')->country_id[1])->get() as $state)
                             <option {{@request()->session()->get('application_process')->state_id &&  @request()->session()->get('application_process')->state_id[1] == $state->id  ? 'selected' : '' }}  value="{{$state->id}}">{{$state->name}}</option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>City <small style="color:red;">*</small></label>
+                <select  name="city[]"  id="permenant_city_id"  class="form-control">
+                    <option selected value="" >Select City</option>
+                    @if(@request()->session()->get('application_process')->state_id && @request()->session()->get('application_process')->state_id[1])
+                        @foreach(App\Models\City::where('state_id',@request()->session()->get('application_process')->state_id[1])->get() as $city)
+                            <option {{@request()->session()->get('application_process')->city_id &&  @request()->session()->get('application_process')->city_id[1] == $city->id  ? 'selected' : '' }}  value="{{$city->id}}">{{$city->name}}</option>
                         @endforeach
                     @endif
                 </select>

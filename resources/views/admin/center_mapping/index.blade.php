@@ -21,37 +21,18 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('admin.center_mapping.store')}}" method="post" enctype="multipart/form-data" >
-                    @csrf
-                    <div class="row">
-                        <input type="hidden" name="user_id" value="{{$user->id}}">
-                        <p><strong>Course : {{$user->entrance_fee && $user->entrance_fee->course ? $user->entrance_fee->course->title : '' }}</strong></p>
-                        <input type="hidden" name="entrance_fee_id" value="{{$user->entrance_fee_id}}" required>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>District</label>
+                        <select id="city_id" class="form-control ">
+                            <option value="">Select</option>
+                            @foreach(App\Models\City::all() as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Center ID</label>
-                            <select name="center_id" class="form-control " required>
-                                <option>Select</option>
-                                @foreach(App\Models\Center::all() as $center)
-                                <option value="{{$center->id}}">{{$center->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Exam Date</label>
-                            <input name="exam_date" type="date" class="form-control" placeholder="Enter Exam Date" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Exam Time</label>
-                            <input name="exam_time" type="time" class="form-control" placeholder="Enter Exam Time" required>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Create <i class="icon-paperplane ml-2"></i></button>
-                    </div>
-                    
-                </form>
+                </div>
+                <div id="centerMappingContent"></div>
             </div>
         </div>
         <!-- /basic layout -->
@@ -61,4 +42,33 @@
 @endsection
 
 @section('scripts')
+<script>
+    
+    $(document).on('change', '#city_id', function (event) {
+        city_id = $(this).val();
+        event.preventDefault();
+        $.ajax({
+            url: '{{url("get_student_profiles_against_cities")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'city_id': city_id,
+            },
+        })
+        .done(function (data) {
+            $('#centerMappingContent').html(data.html);
+        })
+    });
+    $(document).on('click', '#select-all-btn', function (event) {
+        $('.candidateList').prop('checked', true);
+        $('#select-all-btn').hide();
+        $('#unselect-all-btn').show();
+    });
+    $(document).on('click', '#unselect-all-btn', function (event) {
+        $('.candidateList').prop('checked', false);
+        $('#select-all-btn').show();
+        $('#unselect-all-btn').hide();
+    });
+</script>
 @endsection

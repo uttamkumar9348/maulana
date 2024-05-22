@@ -17,7 +17,7 @@ class CenterMappingController extends Controller
      */
     public function index()
     {
-        // return view('admin.center_mapping.index');
+        return view('admin.center_mapping.index');
     }
 
     /**
@@ -39,9 +39,30 @@ class CenterMappingController extends Controller
     public function store(Request $request)
     {
         try{
-            CenterMapping::create($request->all());
+            $this->validate($request,[
+                'center_id' => 'required',
+                'candidate' => 'required',
+            ]);
+            foreach($request->candidate as $candidate_id)
+            {
+                $alreadyHave = CenterMapping::where('user_id',$candidate_id)->first();
+                if($alreadyHave)
+                {
+                    $alreadyHave->update([
+                        'center_id' => $request->center_id,
+                    ]);
+
+                }else{
+                    
+                    CenterMapping::create([
+                        'user_id' => $candidate_id,
+                        'center_id' => $request->center_id,
+                    ]);
+                }
+
+            }
             toastr()->success('Center Mapping Added Successfully');
-            return redirect()->to(route('admin.prospect.index'));
+            return redirect()->back();
         }catch (Exception $e)
         {
             toastr()->error($e->getMessage());

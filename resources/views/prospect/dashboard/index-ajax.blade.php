@@ -60,6 +60,7 @@
                         <th>Phone</th>
                         <th>Gender</th>
                         <th>Status</th>
+                        <th>Admit Card</th>
                         <th>Payment</th>
                     </tr>
                 </thead>
@@ -86,6 +87,11 @@
                         </td>
                         <td>
                             <a target="blank" href="{{route('prospect.dashboard.generate_pdf')}}" class="btn btn-info btn-sm ">Download PDF</a>
+                        </td>
+                        <td>
+                            @if(Auth::user()->allowAdmitCard() && Auth::user()->centerMapping())
+                                <a target="blank" href="{{route('prospect.dashboard.admit_card')}}" class="btn btn-success btn-sm ">Admit Card</a>
+                            @endif
                         </td>
                         <td>
                             <a href="{{route('prospect.process_payment')}}" class="btn btn-primary btn-sm">Make Payment</a>

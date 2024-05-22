@@ -253,4 +253,11 @@ class AuthController extends Controller
         $subjects = Subject::where('semester_id',$semester->id)->get();
         return response()->json($subjects);
     }
+    public function getStudentProfilesAgainstCity(Request $request)
+    {
+        $studentIds = StudentProfileAddress::where('city_id',$request->city_id)->get()->pluck('user_id')->toArray();
+        $students = User::whereIn('id',$studentIds)->get();
+        $html = view('admin.center_mapping.partials.center_mapping_content',compact('students'))->render();
+        return ['html' => $html];
+    }
 }

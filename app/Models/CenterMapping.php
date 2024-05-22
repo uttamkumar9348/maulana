@@ -17,8 +17,8 @@ class CenterMapping extends Model
         'exam_time',
     ];
     
-    public function entrance_fee()
+    public function center()
     {
-        return $this->belongsTo(EntranceFee::class,'entrance_fee_id');
+        return $this->belongsTo(ExamCenterRegistration::class,'center_id');
     }
 }

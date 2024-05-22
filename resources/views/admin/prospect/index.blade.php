@@ -17,8 +17,8 @@ Prospects
                     <th>Exam</th>
                     <th>Status</th>
                     <th>Track ID</th>
-                    <th>Action</th>
                     <th>Center Mapping</th>
+                    <th>Action</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -34,17 +34,18 @@ Prospects
                     <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->track_id:'' }}</td>
 
                     <td>
+                        @if($prospect->centerMapping())
+                        <span class="badge badge-success">Have center mapped already</span>
+                        @else 
+                        <span class="badge badge-warning">Pending</span>
+                        {{-- <a href="{{route('admin.center_mapping.show',$prospect->id)}}" class="btn btn-success btn-sm">Add Center Mapping</a> --}}
+                        @endif
+                    </td>
+                    <td>
 
                         <button data-toggle="modal" data-target="#edit_modal"
                             id="{{$prospect->id}}" class="edit-btn btn btn-primary">Edit</button>
                         {{-- <a href="{{route('admin.prospect.edit',$prospect->id)}}" class="btn btn-primary btn-sm">Edit</a> --}}
-                    </td>
-                    <td>
-                        @if($prospect->centerMapping())
-                        <span class="badge badge-success">Already have Center Mapped</span>
-                        @else 
-                        <a href="{{route('admin.center_mapping.show',$prospect->id)}}" class="btn btn-success btn-sm">Add Center Mapping</a>
-                        @endif
                     </td>
                     <td>
                         <a href="{{route('admin.prospect.show',$prospect->id)}}" class="btn btn-info btn-sm">Show Application</a>

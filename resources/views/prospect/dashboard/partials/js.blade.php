@@ -13,7 +13,7 @@
         })
         .done(function (data) {
             $('#college_city_id').empty();
-            $('#college_city_id').append('<option disabled>Select City</option>');
+            $('#college_city_id').append('<option value="">Select City</option>');
             for (i=0;i<data.length;i++){
                 $('#college_city_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
             }
@@ -32,7 +32,7 @@
         })
         .done(function (data) {
         $('#temparory_city_id').empty();
-        $('#temparory_city_id').append('<option selected disabled>Select City</option>');
+        $('#temparory_city_id').append('<option selected value="">Select City</option>');
         for (i=0;i<data.length;i++){
             $('#temparory_city_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
         }
@@ -52,7 +52,7 @@
         })
         .done(function (data) {
             $('#temparory_state_id').empty();
-            $('#temparory_state_id').append('<option disabled>Select State</option>');
+            $('#temparory_state_id').append('<option value="">Select State</option>');
             for (i=0;i<data.length;i++){
                 $('#temparory_state_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
             }
@@ -71,7 +71,7 @@
         })
         .done(function (data) {
         $('#permenant_city_id').empty();
-        $('#permenant_city_id').append('<option selected disabled>Select City</option>');
+        $('#permenant_city_id').append('<option selected value="">Select City</option>');
         for (i=0;i<data.length;i++){
             $('#permenant_city_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
         }
@@ -91,7 +91,7 @@
         })
         .done(function (data) {
             $('#permenant_state_id').empty();
-            $('#permenant_state_id').append('<option selected disabled>Select State</option>');
+            $('#permenant_state_id').append('<option selected value="">Select State</option>');
             for (i=0;i<data.length;i++){
                 $('#permenant_state_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
             }

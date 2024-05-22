@@ -2,7 +2,6 @@
 
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
-use App\Http\Controllers\Admin\CenterController;
 use App\Http\Controllers\Admin\CenterMappingController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CollegeController;
@@ -177,9 +176,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::resource('exam_center_registration', ExamCenterRegistrationController::class);
     /*******************Exam Center Registration ROUTE END*************/
     
-    /*******************Center ROUTE START*************/
-    Route::resource('center', CenterController::class);
-    /*******************Center ROUTE END*************/
     Route::prefix('web')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('slider', SliderController::class);
