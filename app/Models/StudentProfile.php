@@ -63,4 +63,9 @@ class StudentProfile extends Model
     {
         return $this->belongsTo(User::class,'college_id');
     }
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class,'semester_id');
+    }
+
 }

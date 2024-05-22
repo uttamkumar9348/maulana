@@ -17,6 +17,9 @@
 	<link href="{{asset('user_asset/assets/css/toastr.css')}}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
+    <!-- Include FullCalendar and Moment.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.12/index.global.min.js" integrity="sha512-uzMWq+JTbb9mHRy/1xilIfNGGqKihLGzu+VlEmHaXlzaQqi5x4Itxu6mH090wjN7DtsNupVUuu4EG7XnGtndUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<!-- Core JS files -->
 	<script src="{{asset('user_asset/global_assets/js/main/jquery.min.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
@@ -243,7 +246,7 @@
 
 
 	<script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
-	@toastr_render
+	{{-- @toastr_render --}}
 	@yield('scripts')
 </body>
 </html>
