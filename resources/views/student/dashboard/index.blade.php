@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="card card-body" style="overflow: hidden ; max-height: 26rem;">
+            <div class="card card-body" style="overflow: hidden ; max-height: 27rem;">
                 <table class="table datatable-save-state">
                     <thead>
                         <tr>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="col-md-7">
-            <div class="card card-body" style="overflow: hidden ; max-height: 26rem;">
+            <div class="card card-body" style="overflow: hidden ; max-height: 27rem;">
                     <div id="calendar"></div>
             </div>
         </div>
