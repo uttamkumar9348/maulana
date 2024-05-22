@@ -34,8 +34,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="card card-body" style="overflow: hidden ; max-height: 27rem;">
+        <div class="col-md-6">
+            <div class="card card-body" style="overflow: hidden ;">
                 <table class="table datatable-save-state">
                     <thead>
                         <tr>
@@ -62,24 +62,25 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="card card-body" style="overflow: hidden ; max-height: 27rem;">
-                    <div id="calendar"></div>
+        <div class="col-md-6">
+            <div class="card card-body">
+                <div id="calendar"></div>
             </div>
         </div>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                fixedWeekCount: true, // Disables scrolling by fixing the number of weeks
-            });
-            calendar.render();
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            fixedWeekCount: true, // Disables scrolling by fixing the number of weeks
+            scrollTime: '00:00', // Disables vertical scrolling
+            height: 'auto' // Adjust the calendar's height dynamically based on its content
         });
-    </script>
+        calendar.render();
+    });
+</script>
 @endsection
 @section('scripts')
 @endsection
