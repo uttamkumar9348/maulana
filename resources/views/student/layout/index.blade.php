@@ -17,6 +17,9 @@
 	<link href="{{asset('user_asset/assets/css/toastr.css')}}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
+    <!-- Include FullCalendar and Moment.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.12/index.global.min.js" integrity="sha512-uzMWq+JTbb9mHRy/1xilIfNGGqKihLGzu+VlEmHaXlzaQqi5x4Itxu6mH090wjN7DtsNupVUuu4EG7XnGtndUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<!-- Core JS files -->
 	<script src="{{asset('user_asset/global_assets/js/main/jquery.min.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
@@ -32,7 +35,7 @@
 
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
     <script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
-    
+
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3.min.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
@@ -45,7 +48,7 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_layouts.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<!-- /theme JS files -->
-	
+
 	<!-- Theme JS files -->
 
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/job_list.js')}}"></script>
@@ -132,7 +135,7 @@
 					<div class="card-body">
 						<div class="media">
 							<div class="mr-3">
-								 <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a> 
+								 <a href="{{asset(Auth::user()->image)}}"><img src="{{asset(Auth::user()->image)}}" width="38" height="38" class="rounded-circle" alt=""></a>
 							</div>
 
 							<div class="media-body">
@@ -167,14 +170,20 @@
 								<span>Exam</span>
 							</a>
 						</li>
-						
+                        <li class="nav-item">
+							<a href="{{route('student.subject.index')}}" class="nav-link {{Request::is('student/subject')?'active':''}}">
+								<i class="icon-book"></i>
+								<span>Subjects</span>
+							</a>
+						</li>
+
 					</ul>
 				</div>
 				<!-- /main navigation -->
 
 			</div>
 			<!-- /sidebar content -->
-			
+
 		</div>
 		<!-- /main sidebar -->
 
@@ -223,7 +232,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text ml-lg-auto">
-						
+
 					</span>
 				</div>
 			</div>
@@ -237,7 +246,7 @@
 
 
 	<script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
-	@toastr_render
+	{{-- @toastr_render --}}
 	@yield('scripts')
 </body>
 </html>
