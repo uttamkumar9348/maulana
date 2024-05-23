@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ShiftController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -175,7 +176,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************Exam Center Registration ROUTE START*************/
     Route::resource('exam_center_registration', ExamCenterRegistrationController::class);
     /*******************Exam Center Registration ROUTE END*************/
-    
+    /*******************Exam Shift ROUTE START*************/
+    Route::resource('shift', ShiftController::class);
+    /*******************Exam Shift ROUTE END*************/
+
     Route::prefix('web')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('slider', SliderController::class);

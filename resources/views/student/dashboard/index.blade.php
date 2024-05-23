@@ -74,9 +74,9 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            fixedWeekCount: true, // Disables scrolling by fixing the number of weeks
-            scrollTime: '00:00', // Disables vertical scrolling
-            height: 'auto' // Adjust the calendar's height dynamically based on its content
+            fixedWeekCount: true,
+            scrollTime: '00:00',
+            height: 'auto'
         });
         calendar.render();
     });
