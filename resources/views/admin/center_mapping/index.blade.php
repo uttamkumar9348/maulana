@@ -22,13 +22,19 @@
 
             <div class="card-body">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
+                        <label>State</label>
+                        <select id="state_id" class="form-control ">
+                            <option value="">Select</option>
+                            @foreach(App\Models\State::all() as $state)
+                                <option value="{{$state->id}}">{{$state->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
                         <label>District</label>
                         <select id="city_id" class="form-control ">
                             <option value="">Select</option>
-                            @foreach(App\Models\City::all() as $city)
-                            <option value="{{$city->id}}">{{$city->name}}</option>
-                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -44,6 +50,25 @@
 @section('scripts')
 <script>
     
+    $(document).on('change', '#state_id', function (event) {
+        state_id = $(this).val();
+        $.ajax({
+            url: '{{url("get_city_against_states")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'state_id': state_id,
+            },
+        })
+        .done(function (data) {
+            $('#city_id').empty();
+            $('#city_id').append('<option value="">Select</option>');
+            for (i=0;i<data.length;i++){
+                $('#city_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+            }
+        });
+    });
     $(document).on('change', '#city_id', function (event) {
         city_id = $(this).val();
         event.preventDefault();

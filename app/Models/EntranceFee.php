@@ -15,7 +15,8 @@ class EntranceFee extends Model
         'exam_fee',
         'download_start_date',
         'download_end_date',
-        'exam_status'
+        'exam_status',
+        'exam_date'
     ];
 
     public function course(){

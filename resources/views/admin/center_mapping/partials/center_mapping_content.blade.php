@@ -8,12 +8,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label>Center ID</label>
             <select name="center_id" class="form-control " required>
                 <option value="">Select</option>
                 @foreach(App\Models\ExamCenterRegistration::all() as $center)
                 <option value="{{$center->id}}">{{$center->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Shift ID</label>
+            <select name="shift_id" class="form-control " required>
+                <option value="">Select</option>
+                @foreach(App\Models\Shift::all() as $shift)
+                <option value="{{$shift->id}}">{{$shift->name}}</option>
                 @endforeach
             </select>
         </div>
