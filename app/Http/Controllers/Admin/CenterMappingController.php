@@ -42,6 +42,7 @@ class CenterMappingController extends Controller
             $this->validate($request,[
                 'center_id' => 'required',
                 'candidate' => 'required',
+                'shift_id' => 'required',
             ]);
             foreach($request->candidate as $candidate_id)
             {
@@ -50,6 +51,7 @@ class CenterMappingController extends Controller
                 {
                     $alreadyHave->update([
                         'center_id' => $request->center_id,
+                        'shift_id' => $request->shift_id,
                     ]);
 
                 }else{
@@ -57,6 +59,7 @@ class CenterMappingController extends Controller
                     CenterMapping::create([
                         'user_id' => $candidate_id,
                         'center_id' => $request->center_id,
+                        'shift_id' => $request->shift_id,
                     ]);
                 }
 

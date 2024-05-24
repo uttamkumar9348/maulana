@@ -19,68 +19,55 @@
                     </div>
                 </div>
 
-                <div class="card-body">
-                    <div class="row col-lg-12">
-                        <div class="form-group col-md-6">
-                            <label>State</label>
-                            <select id="state_id" class="form-control ">
-                                <option value="">Select</option>
-                                @foreach (App\Models\State::all() as $state)
-                                    <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>District</label>
-                            <select id="city_id" class="form-control ">
-                                <option value="">Select</option>
-                                @foreach (App\Models\City::all() as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>District</label>
+                        <select id="city_id" class="form-control ">
+                            <option value="">Select</option>
+                            @foreach(App\Models\City::all() as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div id="centerMappingContent"></div>
                 </div>
+                <div id="centerMappingContent"></div>
             </div>
-            <!-- /basic layout -->
+        </div>
+        <!-- /basic layout -->
 
         </div>
     </div>
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function() {
+<script>
 
-            $(document).on('change', '#city_id', function(event) {
-                city_id = $(this).val();
-                event.preventDefault();
-                $.ajax({
-                        url: '{{ url('get_student_profiles_against_cities') }}',
-                        type: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        dataType: 'JSON',
-                        data: {
-                            'city_id': city_id,
-                        },
-                    })
-                    .done(function(data) {
-                        $('#centerMappingContent').html(data.html);
-                    })
-            });
-            $(document).on('click', '#select-all-btn', function(event) {
-                $('.candidateList').prop('checked', true);
-                $('#select-all-btn').hide();
-                $('#unselect-all-btn').show();
-            });
-            $(document).on('click', '#unselect-all-btn', function(event) {
-                $('.candidateList').prop('checked', false);
-                $('#select-all-btn').show();
-                $('#unselect-all-btn').hide();
-            });
-        });
-    </script>
+    $(document).on('change', '#city_id', function (event) {
+        city_id = $(this).val();
+        event.preventDefault();
+        $.ajax({
+            url: '{{url("get_student_profiles_against_cities")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            data: {
+                'city_id': city_id,
+            },
+        })
+        .done(function (data) {
+            $('#centerMappingContent').html(data.html);
+        })
+    });
+    $(document).on('click', '#select-all-btn', function (event) {
+        $('.candidateList').prop('checked', true);
+        $('#select-all-btn').hide();
+        $('#unselect-all-btn').show();
+    });
+    $(document).on('click', '#unselect-all-btn', function (event) {
+        $('.candidateList').prop('checked', false);
+        $('#select-all-btn').show();
+        $('#unselect-all-btn').hide();
+    });
+</script>
 @endsection

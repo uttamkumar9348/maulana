@@ -15,6 +15,7 @@ class CenterMapping extends Model
         'entrance_fee_id',
         'exam_date',
         'exam_time',
+        'shift_id',
     ];
     
     public function center()

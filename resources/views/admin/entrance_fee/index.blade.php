@@ -47,6 +47,10 @@ Add Entrance Exam
                             <input name="download_end_date" type="date" class="form-control" required>
                         </div>
                         <div class="form-group col-md-6">
+                            <label>Exam Date</label>
+                            <input name="exam_date" type="date" class="form-control" >
+                        </div>
+                        <div class="form-group col-md-6">
                             <label>Exam Status</label>
                             <input type="radio" name="exam_status" value="1"> Yes
                             <input type="radio" name="exam_status" checked value="0"> No
@@ -74,6 +78,7 @@ Add Entrance Exam
                 <th>Exam Fee</th>
                 <th>Download Start Date</th>
                 <th>Download End Date</th>
+                <th>Exam Date</th>
                 <th>Exam Status</th>
                 <th>Document Category</th>
                 <th>Action</th>
@@ -89,6 +94,7 @@ Add Entrance Exam
                 <td>{{$entrance_fee->exam_fee}}</td>
                 <td>{{$entrance_fee->download_start_date}}</td>
                 <td>{{$entrance_fee->download_end_date}}</td>
+                <td>{{$entrance_fee->exam_date}}</td>
                 <td>{{$entrance_fee->exam_status ? 'Active' : 'Inactive'}}</td>
                 <td>{{$entrance_fee->documentCategories->count()}}</td>
                 <td><a href="{{route('admin.entrance_fee.show',$entrance_fee->id)}}" class="btn btn-success btn-sm">Add Document Category</a></td>
@@ -96,7 +102,7 @@ Add Entrance Exam
                     <button data-toggle="modal" data-target="#edit_modal"
                     course_id="{{$entrance_fee->course_id}}" exam_fee="{{$entrance_fee->exam_fee}}"
                     download_start_date="{{$entrance_fee->download_start_date}}" download_end_date="{{$entrance_fee->download_end_date}}"
-                    exam_status="{{$entrance_fee->exam_status}}"
+                    exam_status="{{$entrance_fee->exam_status}}" exam_date="{{$entrance_fee->exam_date}}"
                      id="{{$entrance_fee->id}}" class="edit-btn btn btn-primary">Edit</button>
                 </td>
                 <td>
@@ -145,6 +151,10 @@ Add Entrance Exam
                         <label>Download End Date</label>
                         <input name="download_end_date" id="download_end_date" type="date" class="form-control" required>
                     </div>
+                    <div class="form-group ">
+                        <label>Exam Date</label>
+                        <input name="exam_date" id="exam_date" type="date" class="form-control">
+                    </div>
                     {{-- <div class="form-group">
                         <label>Exam Status</label>
                         <select name="exam_status"  id="exam_status" class="form-control"></select>
@@ -175,12 +185,14 @@ Add Entrance Exam
             let exam_fee = $(this).attr('exam_fee');
             let download_start_date = $(this).attr('download_start_date');
             let download_end_date = $(this).attr('download_end_date');
+            let exam_date = $(this).attr('exam_date');
             let exam_status = $(this).attr('exam_status');
             let id = $(this).attr('id');
 
             $("#course_id option[value='" + course_id + "']").prop("selected", true);
             $('#download_start_date').val(download_start_date);
             $('#download_end_date').val(download_end_date);
+            $('#exam_date').val(exam_date);
             $('#exam_status').val(exam_status);
             $('#exam_fee').val(exam_fee);
             $('#id').val(id);
