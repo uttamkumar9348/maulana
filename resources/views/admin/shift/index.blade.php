@@ -10,7 +10,7 @@
             <h5 class="card-title">Manage Shift</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{route('admin.shift.create')}}">Add New Shift</a>
+                    <a class="btn btn-primary" href="{{route('admin.shift.create')}}">Add Shift<i class="fas fa-plus-circle ml-2"></i></a>
                 </div>
             </div>
         </div>

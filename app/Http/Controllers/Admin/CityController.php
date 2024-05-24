@@ -86,7 +86,7 @@ class CityController extends Controller
         $city = City::find($id);
         $city->update($request->all());
         toastr()->success('City Updated successfully');
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
     /**
