@@ -114,7 +114,7 @@
                                 <div class="row border-single">
                                     <div class="col-md-12">
                                         <h1 class="text-center">
-                                            Exam Date: 25th July 2022
+                                            Exam Date: {{\Carbon\Carbon::parse(Auth::user()->entrance_fee->exam_date)->format('d M , Y')}}
                                         </h1>
                                     </div>
                                 </div>
@@ -171,8 +171,8 @@
                                                     </td>
                                                 </tr> --}}
                                                 <tr class="border-single">
-                                                    <td  class="border-single text-center">Admission Test</td>
-                                                    <td  class="border-single text-center">10:30 AM to 12:00 PM </td>
+                                                    <td  class="border-single text-center">{{Auth::user()->centerMapping()->shift ? Auth::user()->centerMapping()->shift->name : ''}}</td>
+                                                    <td  class="border-single text-center">{{Auth::user()->centerMapping()->shift ? Auth::user()->centerMapping()->shift->time_from : ''}} to {{Auth::user()->centerMapping()->shift ? Auth::user()->centerMapping()->shift->time_to : ''}} </td>
                                                     {{-- <td  class="border-single text-center">ENGLISH</td> --}}
                                                 </tr>
                                                 {{-- <tr class="border-single">

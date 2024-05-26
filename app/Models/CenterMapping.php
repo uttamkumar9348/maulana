@@ -22,4 +22,8 @@ class CenterMapping extends Model
     {
         return $this->belongsTo(ExamCenterRegistration::class,'center_id');
     }
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class,'shift_id');
+    }
 }
