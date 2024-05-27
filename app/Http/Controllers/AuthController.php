@@ -44,7 +44,15 @@ class AuthController extends Controller
             }
             else if($user->role->name == 'Prospect')
             {
-                return redirect()->intended(route('prospect.dashboard.index'));
+                
+                if(!empty($user->email_verified_at)){
+                    return redirect()->intended(route('prospect.dashboard.index'));
+                }else{
+                    Auth::logout();
+                    toastr()->error('Please Verify Your Email first');
+                    return redirect()->back();
+                }
+
             }
             else if($user->role->name == 'Front Web User')
             {

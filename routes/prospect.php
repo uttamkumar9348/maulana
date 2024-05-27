@@ -9,6 +9,8 @@ use App\Http\Controllers\Prospect\StudentAcademicQualificationController;
 /*******************REGISTER ROUTE START*************/
 Route::view('prospect/register','prospect.auth.register');
 Route::post('prospect/register',[AuthController::class,'register'])->name('prospect.register');
+
+Route::get('verify/{token}',[AuthController::class,'verify'])->name('prospect.verify');
 Route::post('prospect/payment_callback', [DashboardController::class, 'payment_callback'])->name('prospect.dashboard.payment_callback');
 Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:user','prospect'], function () {
     /*******************DASHBOARD ROUTE START*************/
@@ -32,12 +34,12 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
 
 
     //  New Dashboard Routes Start
-    Route::post('dashboard/store_step_1',[DashboardController::class,'stepOneStore'])->name('dashboard.store_step_1');  
-    Route::post('dashboard/store_step_2',[DashboardController::class,'stepTwoStore'])->name('dashboard.store_step_2');  
-    Route::post('dashboard/store_step_3',[DashboardController::class,'stepThreeStore'])->name('dashboard.store_step_3');  
-    Route::post('dashboard/store_step_4',[DashboardController::class,'stepFourStore'])->name('dashboard.store_step_4');  
-    Route::get('dashboard/get-back',[DashboardController::class,'getBack'])->name('dashboard.get-back');  
-    Route::get('process_payment',[DashboardController::class,'processPayment'])->name('process_payment');  
+    Route::post('dashboard/store_step_1',[DashboardController::class,'stepOneStore'])->name('dashboard.store_step_1');
+    Route::post('dashboard/store_step_2',[DashboardController::class,'stepTwoStore'])->name('dashboard.store_step_2');
+    Route::post('dashboard/store_step_3',[DashboardController::class,'stepThreeStore'])->name('dashboard.store_step_3');
+    Route::post('dashboard/store_step_4',[DashboardController::class,'stepFourStore'])->name('dashboard.store_step_4');
+    Route::get('dashboard/get-back',[DashboardController::class,'getBack'])->name('dashboard.get-back');
+    Route::get('process_payment',[DashboardController::class,'processPayment'])->name('process_payment');
     //  New Dashboard Routes End
     Route::resource('center_mapping',CenterMappingController::class);
 });

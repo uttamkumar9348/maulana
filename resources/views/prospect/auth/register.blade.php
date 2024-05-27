@@ -61,6 +61,7 @@
 				<!-- Login card -->
 				<form class="flex-fill" method="POST" action="{{route('prospect.register')}}" enctype="multipart/form-data">
                     @csrf
+                    {{-- <input type="hidden" name="remember_token" value="{{Str::random(40)}}"> --}}
 
 					<div class="row">
 						<div class="col-lg-8 offset-lg-2">
@@ -91,7 +92,7 @@
                                         <div class="col-md-4">
 											<label>Select Course</label>
 											<div class="form-group form-group-feedback form-group-feedback-left">
-                                               
+
 												<select name="entrance_fee_id" class="form-control select-search" required>
                                                     <option>Select</option>
                                                     @foreach(App\Models\EntranceFee::all() as $entrance_fee)
