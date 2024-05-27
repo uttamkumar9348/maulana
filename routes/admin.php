@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\GatewayDetailController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,7 @@ use App\Http\Controllers\Admin\Web\TopbarSettingController;
 use App\Http\Controllers\Admin\Web\WebEventController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PassedexamController;
+use App\Models\GatewayDetail;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user', 'admin'], function () {
     /*******************DASHBOARD ROUTE START*************/
@@ -179,6 +181,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************Exam Shift ROUTE START*************/
     Route::resource('shift', ShiftController::class);
     /*******************Exam Shift ROUTE END*************/
+    /*******************Gateway ROUTE START*************/
+    Route::resource('gateway', GatewayDetailController::class);
+    /*******************Gateway ROUTE END*************/
 
     Route::prefix('web')->group(function () {
         Route::resource('menu', MenuController::class);

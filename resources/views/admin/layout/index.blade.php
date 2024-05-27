@@ -214,6 +214,12 @@
 							</ul>
 						</li>
 						<li class="nav-item">
+							<a href="{{route('admin.gateway.index')}}" class="nav-link {{Request::is('admin/gateway')?'active':''}}">
+								<i class="icon-file-text"></i>
+								<span>Gateway</span>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="{{route('admin.student_attendance.index')}}" class="nav-link {{Request::is('admin/student_attendance')?'active':''}}">
 								<i class="icon-file-text"></i>
 								<span>Student Attendance</span>

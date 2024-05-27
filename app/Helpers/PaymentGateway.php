@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\GatewayDetail;
 use App\Models\PaymentHistory;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +14,14 @@ class PaymentGateway
     public static function proccess()
     {
         Log::info("Payment Page initiated");
-        $merchant_id = config('services.razor_pay.merchant_id');
-        $merchant_sub_id = config('services.razor_pay.merchant_sub_id');
-        $sign_key = config('services.razor_pay.sign_key');
-        $encryption_key = hash('sha256', config('services.razor_pay.encryption_key'), true);
-        $encryption_iv = config('services.razor_pay.encryption_iv');
-        $token_generation_url = config('services.razor_pay.token_generate_url');
-        $txn_initiation_url = config('services.razor_pay.txn_initiation_url');
+        $gateway = GatewayDetail::whereNull('user_id')->first();
+        $merchant_id = $gateway->merchant_id;
+        $merchant_sub_id = $gateway->merchant_sub_id;
+        $sign_key = $gateway->sign_key;
+        $encryption_key = hash('sha256', $gateway->encryption_key, true);
+        $encryption_iv = $gateway->encryption_iv;
+        $token_generation_url = $gateway->token_generation_url;
+        $txn_initiation_url = $gateway->txn_initiation_url;
         $feetype = "ALL FEES";
 
         $merchantreplyurl = "https://atdemo.online/prospect/payment_callback"; # merchant reply url to be replaced here
