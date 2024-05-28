@@ -37,7 +37,13 @@
                         <tr>
                             <td>{{ $i }}</td>
                             <td><b>{{ $notice->title }}</b></td>
-                            <td>{!! $notice->description !!}</td>
+                            <td>
+                                @if(strlen($notice->description) > 300)
+                                    {!! substr($notice->description, 0, 300) !!}...
+                                @else
+                                    {!! $notice->description !!}
+                                @endif
+                            </td>
                             <td><a target="blank" class="btn btn-success btn-sm"
                                     href="{{ asset('file/' . $notice->file) }}">View</a></td>
                             <td>{{ $notice->notice_type }}</td>

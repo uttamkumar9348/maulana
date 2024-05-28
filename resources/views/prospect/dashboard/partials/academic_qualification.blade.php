@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="form-group col-md-1">
-            
+
         </div>
         <div class="form-group col-md-2">
             Name of Examination
@@ -30,7 +30,7 @@
         <div class="form-group col-md-1">
             Percentage
         </div>
-    </div>      
+    </div>
     <div class="row">
         <div class="form-group col-md-1">
         </div>
@@ -68,12 +68,12 @@
         <div class="form-group col-md-1">
             <input type="text" name="percentage[]" class="form-control" required value="">
         </div>
-    </div>  
+    </div>
     <div id="academic_qualification_fields">
-        
-    </div>    
+
+    </div>
     {{-- <div class="text-right" style="margin-top:10px;">
         <button type="button" id="back-button" class="btn btn-info">Back <i class="icon-paperplane ml-2"></i></button>
         <button type="submit" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
-    </div> 
+    </div>
 </form> --}}

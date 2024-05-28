@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\GalleryController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\TeamController;
+use App\Http\Controllers\Web\NoticeListController;
 use App\Http\Controllers\FrontWeb\DashboardController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Artisan;
@@ -60,6 +61,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'team'])->name('web.team');
 
+  //Notice-list
+  Route::get('/view-notice-list/{type}',[NoticeListController::class,'noticeList'])->name('web.noticeList');
+  Route::get('/noticelist-single{id}',[NoticeListController::class,'viewNotice'])->name('web.viewNotice');
 
   // SetCookie Route
   Route::get('/set-cookie', [HomeController::class, 'setCookie'])->name('setCookie');

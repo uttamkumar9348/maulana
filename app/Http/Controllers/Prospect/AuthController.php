@@ -49,7 +49,7 @@ class AuthController extends Controller
 
             Mail::to($save->email)->send(new ProspectRegisterMail($save));
 
-            toastr()->success('Your Account Has Been successfully Created, Please Verify first then Login and See Next Step Guides.');
+            toastr()->success('Your Account Has Been successfully Created, Please Verify first then Login and See Next Step Guides.'); 
             return redirect(url('/login'));
         }catch (Exception $e)
         {

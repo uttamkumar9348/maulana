@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div class="form-group col-md-1">
-            
+
         </div>
         <div class="form-group col-md-2">
             Name of Examination
@@ -39,16 +39,16 @@
         <div class="form-group col-md-1">
             Percentage
         </div>
-    </div>      
+    </div>
     @if(@request()->session()->get('application_process')->name_of_exam)
-        @foreach(@request()->session()->get('application_process')->name_of_exam as $key => $name_of_exam)          
+        @foreach(@request()->session()->get('application_process')->name_of_exam as $key => $name_of_exam)
             <div class="row" id="remove-{{$key}}">
                 <div class="form-group col-md-1">
-                    @if($key != 0)  
+                    @if($key != 0)
                         <button type="button"  class="btn btn-sm btn-danger" onclick="removeFields('{{ @$key }}')">Remove</button>
                     @endif
                 </div>
-                
+
                 <div class="form-group col-md-2">
                     <!-- <input type="text" name="" class="form-control"  > -->
                     <select name="name_of_exam[]" id="" class="form-control" required>
@@ -83,9 +83,9 @@
                 <div class="form-group col-md-1">
                     <input type="text" name="percentage[]" value="{{@request()->session()->get('application_process')->percentage[$key]}}" class="form-control"  value="">
                 </div>
-            </div> 
+            </div>
         @endforeach
-    @else 
+    @else
         <div class="row">
             <div class="form-group col-md-1">
             </div>
@@ -114,23 +114,38 @@
                 <input type="text" name="passing_year[]" class="form-control"  >
             </div>
             <div class="form-group col-md-1">
-                <input type="text" name="total_marks[]" class="form-control" >
+                <input type="text" name="total_marks[]" class="form-control total_marks" >
 
             </div>
             <div class="form-group col-md-1">
-                <input type="text" name="marks[]" class="form-control"  >
+                <input type="text" name="marks[]" class="form-control marks"  >
             </div>
             <div class="form-group col-md-1">
-                <input type="text" name="percentage[]" class="form-control"  value="">
+                <input type="text" name="percentage[]" class="form-control percentage">
             </div>
-        </div> 
-    @endif 
+        </div>
+    @endif
     <div id="academic_qualification_fields">
-        
-    </div>    
+
+    </div>
     <p id="step-response"></p>
     <div class="text-right" style="margin-top:10px;">
         <button type="button" id="back-button" class="btn btn-info">Back <i class="icon-paperplane ml-2"></i></button>
         <button type="button"  id="step-3-btn" class="btn btn-primary">Next <i class="icon-paperplane ml-2"></i></button>
-    </div> 
+    </div>
 </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.total_marks').on('change', function() {
+            var total_marks = $('.total_marks').val();
+            console.log(total_marks);
+            $('.marks').on('keyup', function() {
+                var marks = $('.marks').val();
+                // var divide = marks/total_marks;
+                var percentage = (marks/total_marks)*100;
+                $('.percentage').val(percentage);
+            });
+        });
+    });
+</script>

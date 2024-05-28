@@ -27,7 +27,7 @@
 
     <!-- Social Meta Tags -->
     <link rel="canonical" href="{{ route('home') }}">
-    
+
     @yield('social_meta_tags')
 
 
@@ -44,8 +44,8 @@
     <link rel="stylesheet" href="{{ asset('web/css/responsive.css') }}">
 
 
-    @php 
-    $version = App\Models\Language::version(); 
+    @php
+    $version = App\Models\Language::version();
     @endphp
     @if($version->direction == 1)
     <!-- RTL css -->
@@ -68,7 +68,7 @@
                 display: block;
                 border-bottom:1px dotted #c0c0c0;
                 min-width: 200px;
-                
+
             }
 
             .dropdown li a {
@@ -98,11 +98,11 @@
  <body>
 
  	<!-- header -->
-    <header class="header-area header-three">  
+    <header class="header-area header-three">
        <div class="header-top second-header d-none d-md-block">
             <div class="container">
-                <div class="row align-items-center">      
-                   
+                <div class="row align-items-center">
+
                     <div class="col-lg-4 col-md-4 d-none d-lg-block ">
                         @if(isset($topbarSetting) && $topbarSetting->social_status == 1)
                         <div class="header-social">
@@ -125,8 +125,8 @@
                             @if(isset($socialSetting->youtube))
                             <a href="{{ $socialSetting->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
                             @endif
-                           </span>                    
-                           <!--  /social media icon redux -->                               
+                           </span>
+                           <!--  /social media icon redux -->
                         </div>
                         @endif
                     </div>
@@ -169,12 +169,12 @@
                                </li>
                                @endisset
                             </ul>
-                        </div>                        
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
-        </div>    
+        </div>
 
 
         <div id="header-sticky" class="menu-area">
@@ -194,7 +194,7 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         @foreach(App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
-                                        @php 
+                                        @php
                                             $url  = $menu->url.'*';
                                                 $isRequest = Request::path() == $url ? 'current' : '';
                                                 // dd($url);
@@ -208,16 +208,17 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        @else 
+                                        @else
                                         <li class="{{ $isRequest }}" style="margin-left:20px"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
-                                        
+
                                         @endif
                                         @endforeach
                                       <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
                                                 href="#">Notice</a>
                                             <ul class="dropdown">
                                                 @foreach (App\Models\NoticetypeModel::all(); as $noticetype)
-                                                    <li style="margin-left:0px;"><a href="" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                                    <li style="margin-left:0px;">
+                                                        <a href="{{route('web.noticeList', $noticetype->notice_type)}}" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -226,7 +227,7 @@
                                         {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
                                         <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
                                         <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
-                                        
+
                                         <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
                                         <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
                                        <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="url">Contact</a></li> --}}
@@ -236,8 +237,8 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 text-right d-none d-lg-block text-right text-xl-right">
-                            @php 
-                            $application = App\Models\ApplicationSetting::status(); 
+                            @php
+                            $application = App\Models\ApplicationSetting::status();
                             @endphp
                             @isset($application)
                             <div class="login">
@@ -251,7 +252,7 @@
                             </div>
                             @endisset
                         </div>
-                        
+
                         <div class="col-12">
                             <div class="mobile-menu"></div>
                         </div>
@@ -262,7 +263,7 @@
     </header>
     <!-- header-end -->
 
- 	
+
     <!-- Content Start -->
     @yield('content')
     <!-- Content End -->
@@ -273,13 +274,13 @@
         <div class="footer-top pb-70">
             <div class="container">
                 <div class="row justify-content-between">
-                    
+
                     <div class="col-xl-4 col-lg-4 col-sm-12">
                         <div class="footer-widget mb-30">
                             <div class="f-widget-title">
                                 <h2>{{ __('footer_socials') }}</h2>
                             </div>
-                            <div class="footer-social mt-10">                                    
+                            <div class="footer-social mt-10">
                                 @if(isset($socialSetting->facebook))
                                 <a href="{{ $socialSetting->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                                 @endif
@@ -298,7 +299,7 @@
                                 @if(isset($socialSetting->youtube))
                                 <a href="{{ $socialSetting->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
                                 @endif
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
@@ -319,8 +320,8 @@
                                     <li><a href="{{ route('login') }}" target="_blank">{{ __('field_staff') }} {{ __('field_login') }}</a></li>
                                     @endif
 
-                                    @php 
-                                    $application = App\Models\ApplicationSetting::status(); 
+                                    @php
+                                    $application = App\Models\ApplicationSetting::status();
                                     @endphp
                                     @isset($application)
                                     <li><a href="{{ route('application.index') }}" target="_blank">{{ __('navbar_admission') }}</a></li>
@@ -363,7 +364,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -385,8 +386,8 @@
                           </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12 text-center">          
-                        
+                    <div class="col-lg-4 col-md-4 col-12 text-center">
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 text-center text-md-right">
                         @isset($setting->copyright_text)
