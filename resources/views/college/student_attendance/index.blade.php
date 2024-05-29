@@ -22,33 +22,32 @@
                     </div>
                 </div>
             </div>
-
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label>Course</label>
-                        <select  name="course_id" id="course_id" class="form-control select-search" data-fouc>
+                        <select  name="course_id" id="course_id" class="form-control">
                             <option selected disabled>Select Course</option>
                             @foreach(Auth::user()->collegeCourses as $course)
-                            <option value="{{$course->id}}">{{$course->course->name}}</option>
+                            <option value="{{$course->id }}">{{$course->course->title}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label>Semester</label>
-                        <select  name="semester_id" id="semester_id"  class="form-control select-search" required data-fouc>
+                        <select  name="semester_id" id="semester_id"  class="form-control" required>
                             <option selected disabled>Select Semester</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label>Subject</label>
-                        <select  name="subject_id" id="subject_id"  class="form-control select-search" required data-fouc>
+                        <select  name="subject_id" id="subject_id"  class="form-control" required>
                             <option selected disabled>Select Subject</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label>Month</label>
-                        <select  name="month" class="form-control select-search" data-fouc required>
+                        <select  name="month" class="form-control" required>
                             <option selected disabled>Select Month</option>
                             <option value="Jan">Jan</option>
                             <option value="Feb">Feb</option>
@@ -85,9 +84,9 @@
 @endsection
 
 @section('scripts')
-<script> 
+<script>
     $(document).on('change', '#course_id', function (event) {
-        course_id = $(this).val();        
+        course_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_semester_aganist_course")}}',
@@ -107,7 +106,7 @@
         })
     });
     $(document).on('change', '#semester_id', function (event) {
-        semester_id = $(this).val();        
+        semester_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_subject_aganist_semester")}}',

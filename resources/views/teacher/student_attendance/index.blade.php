@@ -31,7 +31,7 @@
                         <select  name="course_id" id="course_id" class="form-control select-search" data-fouc>
                             <option selected disabled>Select Course</option>
                             @foreach(Auth::user()->teacherProfile->college->collegeCourses as $course)
-                            <option value="{{$course->id}}">{{$course->course->name}}</option>
+                            <option value="{{$course->id}}">{{$course->course->title}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -86,9 +86,9 @@
 @endsection
 
 @section('scripts')
-<script> 
+<script>
     $(document).on('change', '#course_id', function (event) {
-        course_id = $(this).val();        
+        course_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_semester_aganist_course")}}',
@@ -108,7 +108,7 @@
         })
     });
     $(document).on('change', '#semester_id', function (event) {
-        semester_id = $(this).val();        
+        semester_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_subject_aganist_semester")}}',

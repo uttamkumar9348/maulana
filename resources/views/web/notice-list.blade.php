@@ -10,8 +10,10 @@
     }
 
     .evit-notice-list {
-        width: 700px;
+        width: 100%;
+        max-width: 700px;
         margin: 0 auto;
+        padding: 0 15px;
     }
 
     .evit-notice-list h3 {
@@ -28,6 +30,8 @@
         padding: 15px 30px 15px 40px;
         box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.08);
         font-weight: 600;
+        border-radius: 8px;
+        margin-bottom: 15px;
     }
 
     .evit-notice-list .evit-notice .evit-date {
@@ -79,7 +83,6 @@
 </style>
 
 @section('content')
-
     <section class="breadcrumb-area d-flex  p-relative align-items-center">
         <div class="container">
             <div class="row align-items-center">
@@ -105,27 +108,27 @@
     <section class="pt-40 pb-40">
         <div class="container">
             @foreach ($notice as $notices)
-                    <div class='evit-notice-list pb-3'>
-                        <h3>{{ \Carbon\Carbon::parse($notices->created_at)->format('F Y') }}</h3>
-                        <div class='evit-notice'>
-                            <div class='evit-date'>
-                                <span class='date'>{{ \Carbon\Carbon::parse($notices->created_at)->format('d') }}</span>
-                                <span class='day'>{{ \Carbon\Carbon::parse($notices->created_at)->format('D') }}</span>
-                            </div>
-                            <div class='evit-desc'>
-                                <p>{{ $notices->title }}</p>
-                                <a href="{{route('web.viewNotice',$notices->id)}}">
-                                    <p style="font-size: 12px;">
-                                        @if (strlen($notices->description) > 370)
-                                            {!! substr($notices->description, 0, 370) !!}...
-                                        @else
-                                            {!! $notices->description !!}
-                                        @endif
-                                    </p>
-                                </a>
-                            </div>
+                <div class='evit-notice-list pb-3'>
+                    <h3>{{ \Carbon\Carbon::parse($notices->created_at)->format('F Y') }}</h3>
+                    <div class='evit-notice'>
+                        <div class='evit-date'>
+                            <span class='date'>{{ \Carbon\Carbon::parse($notices->created_at)->format('d') }}</span>
+                            <span class='day'>{{ \Carbon\Carbon::parse($notices->created_at)->format('D') }}</span>
+                        </div>
+                        <div class='evit-desc'>
+                            <p>{{ $notices->title }}</p>
+                            <a href="{{ route('web.viewNotice', $notices->id) }}">
+                                <p style="font-size: 12px;">
+                                    @if (strlen($notices->description) > 370)
+                                        {!! substr($notices->description, 0, 370) !!}...
+                                    @else
+                                        {!! $notices->description !!}
+                                    @endif
+                                </p>
+                            </a>
                         </div>
                     </div>
+                </div>
             @endforeach
         </div>
     </section>

@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach ($students  as $key => $student)
                 <tr>
                     <td>{{$key+1}}</td>
@@ -33,14 +33,14 @@
                     <td>{{@$student->college->name}}</td>
                     <td>{{@$student->fathers_name}}</td>
                     <td>
-                        @if($student->is_verified)
+                        @if($student->student->is_verified)
                             <span class="badge badge-success">Verified</span>
                         @else
                             <span class="badge badge-danger">Not Verified</span>
                         @endif
                     </td>
                     <td>
-                        @if($student->is_active)
+                        @if($student->student->is_active)
                             <span class="badge badge-success">Active</span>
                         @else
                             <span class="badge badge-danger">Pending</span>
@@ -52,7 +52,7 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table> 
+        </table>
 
     </div>
 </div>
