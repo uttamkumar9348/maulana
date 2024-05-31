@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form action="{{route('teacher.student_attendance.store')}}" id="studentAttendanceForm" method="post" enctype="multipart/form-data" >
+<form action="{{route('teacher.student_attendance.store')}}" id="studentAttendanceForm" method="post" enctype="multipart/form-data">
 @csrf
 <input type="hidden" name="college_id" value="{{Auth::user()->teacherProfile->college_id}}">
 <input type="hidden" name="teacher_id" value="{{Auth::user()->id}}">
@@ -45,6 +45,12 @@
                         <label>Subject</label>
                         <select  name="subject_id" id="subject_id"  class="form-control select-search" required data-fouc>
                             <option selected disabled>Select Subject</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Student</label>
+                        <select  name="student_id " id="student_id "  class="form-control select-search" required data-fouc>
+                            <option selected disabled>Select Student</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
