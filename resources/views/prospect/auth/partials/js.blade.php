@@ -1,5 +1,5 @@
 <script>
-    
+
     $(document).on('change', '#college_state_id', function (event) {
         state_id = $(this).val();
         $.ajax({
@@ -39,7 +39,7 @@
         });
     });
     $(document).on('change', '#temparory_country_id', function (event) {
-        country_id = $(this).val();        
+        country_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_state_against_countries")}}',
@@ -78,7 +78,7 @@
         });
     });
     $(document).on('change', '#permenant_country_id', function (event) {
-        country_id = $(this).val();        
+        country_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_state_against_countries")}}',
@@ -98,7 +98,7 @@
         })
     });
     $(document).on('change', '#college_id', function (event) {
-        college_id = $(this).val();        
+        college_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_course_aganist_college")}}',
@@ -110,6 +110,7 @@
             },
         })
         .done(function (data) {
+            console.log(data);
             $('#student_course_id').empty();
             $('#student_course_id').append('<option selected value="">Select College Course</option>');
             for (i=0;i<data.length;i++){
@@ -118,7 +119,7 @@
         })
     });
     $(document).on('change', '#student_course_id', function (event) {
-        course_id = $(this).val();        
+        course_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_semester_aganist_course")}}',

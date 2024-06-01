@@ -1,5 +1,5 @@
 <script>
-    
+
     $(document).on('change', '#college_state_id', function (event) {
         state_id = $(this).val();
         $.ajax({
@@ -39,7 +39,7 @@
         });
     });
     $(document).on('change', '#temparory_country_id', function (event) {
-        country_id = $(this).val();        
+        country_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_state_against_countries")}}',
@@ -78,7 +78,7 @@
         });
     });
     $(document).on('change', '#permenant_country_id', function (event) {
-        country_id = $(this).val();        
+        country_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_state_against_countries")}}',
@@ -215,7 +215,7 @@
             });
         });
     });
-    
+
     function removeFields(index)
     {
         $('#remove-'+index).remove();

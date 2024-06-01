@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form action="{{route('teacher.student_attendance.store')}}" id="studentAttendanceForm" method="post" enctype="multipart/form-data" >
+<form action="{{route('teacher.student_attendance.store')}}" id="studentAttendanceForm" method="post" enctype="multipart/form-data">
 @csrf
 <input type="hidden" name="college_id" value="{{Auth::user()->teacherProfile->college_id}}">
 <input type="hidden" name="teacher_id" value="{{Auth::user()->id}}">
@@ -31,7 +31,7 @@
                         <select  name="course_id" id="course_id" class="form-control select-search" data-fouc>
                             <option selected disabled>Select Course</option>
                             @foreach(Auth::user()->teacherProfile->college->collegeCourses as $course)
-                            <option value="{{$course->id}}">{{$course->course->name}}</option>
+                            <option value="{{$course->id}}">{{$course->course->title}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -45,6 +45,12 @@
                         <label>Subject</label>
                         <select  name="subject_id" id="subject_id"  class="form-control select-search" required data-fouc>
                             <option selected disabled>Select Subject</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Student</label>
+                        <select  name="student_id " id="student_id "  class="form-control select-search" required data-fouc>
+                            <option selected disabled>Select Student</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -86,9 +92,9 @@
 @endsection
 
 @section('scripts')
-<script> 
+<script>
     $(document).on('change', '#course_id', function (event) {
-        course_id = $(this).val();        
+        course_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_semester_aganist_course")}}',
@@ -108,7 +114,7 @@
         })
     });
     $(document).on('change', '#semester_id', function (event) {
-        semester_id = $(this).val();        
+        semester_id = $(this).val();
         event.preventDefault();
         $.ajax({
             url: '{{url("get_subject_aganist_semester")}}',

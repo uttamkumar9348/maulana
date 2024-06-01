@@ -136,7 +136,7 @@
 									<div class="row student_profile_fields" {{old('role_id')?old('role_id') == 3:'hidden'}}>
 										@include('auth.partials.student_profile_fields')
 									</div>
-									<div class="row all_teacher_fields" {{old('role_id')?old('role_id') == 4:'hidden'}}>
+									<div id="course_subject_fields" class="row all_teacher_fields" {{old('role_id')?old('role_id') == 4:'hidden'}}>
 										@include('auth.partials.teacher_profile_fields')
 									</div>
 									<div class="form-group">
@@ -310,6 +310,7 @@
 				$('.permenant_fields').show();
 			}
         });
+
     </script>
 </body>
 </html>

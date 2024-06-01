@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\GalleryController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\TeamController;
+use App\Http\Controllers\Web\NoticeListController;
 use App\Http\Controllers\FrontWeb\DashboardController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Artisan;
@@ -60,6 +61,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'team'])->name('web.team');
 
+  //Notice-list
+  Route::get('/view-notice-list/{type}',[NoticeListController::class,'noticeList'])->name('web.noticeList');
+  Route::get('/noticelist-single{id}',[NoticeListController::class,'viewNotice'])->name('web.viewNotice');
 
   // SetCookie Route
   Route::get('/set-cookie', [HomeController::class, 'setCookie'])->name('setCookie');
@@ -97,6 +101,7 @@ Route::post('get_semester_aganist_course', [AuthController::class, 'getSemesterA
 Route::post('get_subject_aganist_semester', [AuthController::class, 'getSubjectAganistSemester'])->name('get_subject_aganist_semester');
 Route::get('get_course_fields', [AuthController::class, 'getCourseFields'])->name('get_course_fields');
 Route::post('razor/callback', [AuthController::class, 'razorCallback'])->name('razor.callback');
+Route::post('get_subject_aganist_course', [AuthController::class, 'getSubjectAganistCourse'])->name('get_subject_aganist_course');
 
 Route::post('get_student_profiles_against_cities', [AuthController::class, 'getStudentProfilesAgainstCity'])->name('get_student_profiles_against_cities');
 

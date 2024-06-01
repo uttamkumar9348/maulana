@@ -45,7 +45,7 @@ class AuthController extends Controller
             }
             else if($user->role->name == 'Prospect')
             {
-                
+
                 if(!empty($user->email_verified_at)){
                     return redirect()->intended(route('prospect.dashboard.index'));
                 }else{
@@ -246,7 +246,8 @@ class AuthController extends Controller
         $collegCourse = [];
         foreach($courses as $course)
         {
-            $collegCourse[] = ['id' => $course->id,'name' => $course->course->name];
+            $collegCourse[] = ['id' => $course->id,'name' => $course->course->title];
+            $subjects = Subject::where('course_id', $course->course_id)->get();
         }
         return response()->json($collegCourse);
     }
@@ -285,8 +286,13 @@ class AuthController extends Controller
             toastr()->error('Payment Created Successfully!');
             return redirect()->to(route('prospect.dashboard.index'));
         }
-        dd($request);
         toastr()->error('Something Went Wrong.');
         return redirect()->to(route('prospect.dashboard.index'));
+    }
+    public function getSubjectAganistCourse(Request $request){
+        // dd($request->all());
+        $course_id = CollegeCourse::find($request->course_id);
+        $subjects = Subject::where('course_id', $course_id->course_id)->get();
+        return response()->json($subjects);
     }
 }

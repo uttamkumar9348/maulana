@@ -28,13 +28,28 @@
         <input type="text" name="passing_year[]" class="form-control"  >
     </div>
     <div class="form-group col-md-1">
-        <input type="text" name="total_marks[]" class="form-control" value="0" >
+        <input type="text" name="total_marks[]" id="totalMarks" class="form-control" >
 
     </div>
     <div class="form-group col-md-1">
-        <input type="text" name="marks[]" class="form-control"  >
+        <input type="text" name="marks[]" id="Marks" class="form-control"  >
     </div>
     <div class="form-group col-md-1">
-        <input type="text" name="percentage[]" class="form-control"  value="">
+        <input type="text" name="percentage[]" id="Percentage" class="form-control">
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#totalMarks').on('change', function() {
+            var total_marks = $('#totalMarks').val();
+            console.log(total_marks);
+            $('#Marks').on('keyup', function() {
+                var marks = $('#Marks').val();
+                var percentage = (marks/total_marks)*100;
+                $('#Percentage').val(percentage);
+            });
+        });
+    });
+</script>

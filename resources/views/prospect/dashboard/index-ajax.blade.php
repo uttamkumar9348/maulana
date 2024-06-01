@@ -34,7 +34,6 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Addmission Form For {{Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_name.' (Fee '.Auth::user()->entrance_fee->exam_fee.' )':''}}</h6>
