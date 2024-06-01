@@ -49,6 +49,7 @@ class StudentProfile extends Model
         'other_nationality_1',
         'other_nationality_2',
         'mother_tongue',
+        'order_id',
     ];
 
     public function student()

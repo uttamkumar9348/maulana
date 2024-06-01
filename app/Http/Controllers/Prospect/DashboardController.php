@@ -11,6 +11,7 @@ use App\Models\StudentDocument;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
 use App\Services\ProspectApplicationService;
+use App\Services\RazorPayService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -664,6 +665,45 @@ class DashboardController extends Controller
         catch (Exception $e) {
             toastr()->error($e->getMessage());
             return back(); 
+        }
+    }
+    public function createOrder()
+    {
+        try{
+            if(!Auth::user()->studentProfile->order_id)
+            {
+                $response = RazorPayService::storeOrder();
+                if($response['success'])
+                {
+                    return response([
+                        "success" => true,
+                        "order_id" => $response['order_id'],
+                        "phone" => Auth::user()->studentProfile->phone,
+                        'email' => Auth::user()->email,
+                        'name' => Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name,
+                    ], 200);
+                }else{
+                    return response([
+                        "success" => true,
+                        "message" => $response['message'],
+                    ], 500);
+
+                }
+            }else{
+                return response([
+                    "success" => true,
+                    "order_id" => Auth::user()->studentProfile->order_id,
+                    "phone" => Auth::user()->studentProfile->phone,
+                    'email' => Auth::user()->email,
+                    'name' => Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name,
+                ], 200);
+            }
+        }
+        catch (Exception $e) {
+            return response([
+                "success" => true,
+                "message" => $e->getMessage(),
+            ], 500);
         }
     }
 }

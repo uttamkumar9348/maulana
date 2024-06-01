@@ -94,7 +94,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('prospect.process_payment')}}" class="btn btn-primary btn-sm">Make Payment</a>
+                            <button id="create-order-btn" class="btn btn-primary btn-sm">Pay</button>
                         </td>
                     </tr>
                 </tbody>
@@ -140,4 +140,6 @@
 @section('scripts')
 @include('prospect.dashboard.ajax_partials.js')
 @include('prospect.dashboard.partials.js')
+@include('prospect.dashboard.ajax_partials.payment_js')
+@include('razor.js')
 @endsection
