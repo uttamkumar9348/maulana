@@ -20,7 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>College</th>
-                        <th>Merchant ID</th>
+                        <th>Type</th>
                         <th>Merchant Name</th>
                         <th>Action</th>
                         <th>Action</th>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ @$gateway->user->name }}</td>
-                            <td>{{$gateway->merchant_id}}</td>
+                            <td>{{$gateway->type}}</td>
                             <td>{{$gateway->merchant_name}}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.gateway.edit',$gateway->id)}}">Edit<i class="fas fa-edit ml-2"></i></a>

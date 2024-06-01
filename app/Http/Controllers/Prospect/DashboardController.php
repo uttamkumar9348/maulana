@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Prospect;
 use App\Helpers\PaymentGateway;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
+use App\Models\GatewayDetail;
 use App\Models\PaymentHistory;
 use App\Models\StudentAcademicQualification;
 use App\Models\StudentDocument;
@@ -670,6 +671,7 @@ class DashboardController extends Controller
     public function createOrder()
     {
         try{
+            $gateway = GatewayDetail::where('type','Normal')->whereNull('user_id')->first();
             if(!Auth::user()->studentProfile->order_id)
             {
                 $response = RazorPayService::storeOrder();
@@ -677,9 +679,12 @@ class DashboardController extends Controller
                 {
                     return response([
                         "success" => true,
+                        "key_id" => $gateway ? $gateway->key_id : 'rzp_live_7K6wvuUTFOGlx9',
+                        "merchant_name" => $gateway ? $gateway->merchant_name : 'MADHUSUDAN LAW UNIVERSITY',
                         "order_id" => $response['order_id'],
                         "phone" => Auth::user()->studentProfile->phone,
                         'email' => Auth::user()->email,
+                        'amount' => Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_fee:0,
                         'name' => Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name,
                     ], 200);
                 }else{
@@ -692,6 +697,9 @@ class DashboardController extends Controller
             }else{
                 return response([
                     "success" => true,
+                    "key_id" => $gateway ? $gateway->key_id : 'rzp_live_7K6wvuUTFOGlx9',
+                    "merchant_name" => $gateway ? $gateway->merchant_name : 'MADHUSUDAN LAW UNIVERSITY',
+                    'amount' => Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_fee:0,
                     "order_id" => Auth::user()->studentProfile->order_id,
                     "phone" => Auth::user()->studentProfile->phone,
                     'email' => Auth::user()->email,

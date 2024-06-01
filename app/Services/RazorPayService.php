@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\GatewayDetail;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -12,34 +13,47 @@ class RazorPayService
     public static function storeOrder()
     {
         try{
-            $key_id = 'rzp_live_7K6wvuUTFOGlx9';
-            $secret = 'Edbmp2uSnI4IE7jHx4holFxy';
-            $api = new Api($key_id, $secret);
-            $order = $api->order->create(
-                array(
-                    'amount' => 10*100, 
-                    'currency' => 'INR', 
-                    'notes'=> array(
-                        'key1'=> 'Student Profile Order For Admission',
-                        'key2'=> ''
-                    )
-                )
-            );
-            if($order && $order->id)
+            $amount = Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_fee:0;
+            if($amount > 0)
             {
-                $studentProfile = Auth::user()->studentProfile;
-                $studentProfile->update([
-                    'order_id' => $order->id
-                ]);
+                $gateway = GatewayDetail::where('type','Normal')->whereNull('user_id')->first();
+                $key_id = $gateway ? $gateway->key_id : 'rzp_live_7K6wvuUTFOGlx9';
+                $secret = $gateway ? $gateway->key_secret :'Edbmp2uSnI4IE7jHx4holFxy';
+                $api = new Api($key_id, $secret);
+                $order = $api->order->create(
+                    array(
+                        'amount' => $amount*100, 
+                        'currency' => 'INR', 
+                        'notes'=> array(
+                            'key1'=> 'Student Profile Order For Admission',
+                            'key2'=> ''
+                        )
+                    )
+                );
+                if($order && $order->id)
+                {
+                    $studentProfile = Auth::user()->studentProfile;
+                    $studentProfile->update([
+                        'order_id' => $order->id
+                    ]);
+                    return [
+                        'success' => true,
+                        'order_id' => $order->id,
+                        'amount' => $amount,
+                        'key_id' => $key_id,
+                    ];
+                }
                 return [
-                    'success' => true,
-                    'order_id' => $order->id
+                    'success' => false,
+                    'message' => 'Something Went Wrong',
+                ];
+
+            }else{
+                return [
+                    'success' => false,
+                    'message' => 'Contact Admin!',
                 ];
             }
-            return [
-                'success' => false,
-                'message' => 'Something Went Wrong',
-            ];
         }catch (Exception $e)
         {
             return [

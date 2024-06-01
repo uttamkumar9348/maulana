@@ -41,9 +41,11 @@ class GatewayDetailController extends Controller
         try{
             if($request->user_id)
             {
-                $isAlready = GatewayDetail::where('user_id',$request->user_id)->first();
+                $isAlready = GatewayDetail::where('user_id',$request->user_id)
+                                        ->where('type',$request->type)->first();
             }else{
-                $isAlready = GatewayDetail::whereNull('user_id')->first();
+                $isAlready = GatewayDetail::whereNull('user_id')
+                            ->where('type',$request->type)->first();
             }
             if($isAlready)
             {

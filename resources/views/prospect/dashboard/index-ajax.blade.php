@@ -93,7 +93,9 @@
                             @endif
                         </td>
                         <td>
-                            <button id="create-order-btn" class="btn btn-primary btn-sm">Pay</button>
+                            @if(!Auth::user()->studentPaymentLastest())
+                                <button id="create-order-btn" class="btn btn-primary btn-sm">Pay</button>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

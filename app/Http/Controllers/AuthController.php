@@ -283,7 +283,7 @@ class AuthController extends Controller
                 'status' => 'AWAITED',
                 'user_id' => $studentProfile->user_id,
             ]);
-            toastr()->error('Payment Created Successfully!');
+            toastr()->success('Payment Created Successfully!');
             return redirect()->to(route('prospect.dashboard.index'));
         }
         toastr()->error('Something Went Wrong.');

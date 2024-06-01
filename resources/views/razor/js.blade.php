@@ -2,10 +2,10 @@
 <script>
     function openRazorPayment(data) {
         var options = {
-            "key": "rzp_live_7K6wvuUTFOGlx9", // Enter the Key ID generated from the Dashboard
-            "amount": "1", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "key": data.key_id, // Enter the Key ID generated from the Dashboard
+            "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Madhusudan Law University", //your business name
+            "name": data.merchant_name, //your business name
             "description": "Test Transaction",
             "image": "{{asset('uploads/logo/logo.png')}}",
             "order_id": data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
