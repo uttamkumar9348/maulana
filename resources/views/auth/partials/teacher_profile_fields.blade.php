@@ -20,10 +20,10 @@
     </div>
 </div>
 
-<div class="col-md-4">
+{{-- <div class="col-md-4">
     <br>
     <button class="btn btn-sm btn-primary" type="button" id="add_row_for_course_subject">Add More Course & Subject Field</button>
-</div>
+</div> --}}
 
 <div class="col-md-6">
     <label>Course</label>
