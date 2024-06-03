@@ -34,7 +34,8 @@ class RazorPayService
                 {
                     $studentProfile = Auth::user()->studentProfile;
                     $studentProfile->update([
-                        'order_id' => $order->id
+                        'order_id' => $order->id,
+                        'amount' => $amount
                     ]);
                     return [
                         'success' => true,
