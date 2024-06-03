@@ -12,15 +12,17 @@ class TeacherProfile extends Model
     protected $fillable = [
         'user_id',
         'college_id',
-        'phone'
+        'phone',
+        'course_id',
+        'subject_id',
     ];
-    
+
     public function teacher()
     {
         return $this->belongsTo(User::class,'user_id');
     }
     public function college()
     {
-        return $this->belongsTo(User::class,'college_id');
+        return $this->belongsTo(User::class,'college_id');         
     }
 }

@@ -215,6 +215,8 @@ class AuthController extends Controller
                 TeacherProfile::create([
                     'college_id' => $request->teacher_college_id,
                     'phone' => $request->teacher_phone,
+                    'course_id' => $request->teacher_course_id,
+                    'subject_id' => $request->teacher_subject_id,
                     'user_id' => $user->id,
                 ]);
             }

@@ -25,7 +25,7 @@
     <button class="btn btn-sm btn-primary" type="button" id="add_row_for_course_subject">Add More Course & Subject Field</button>
 </div> --}}
 
-<div class="col-md-6">
+<div class="col-md-6"> 
     <label>Course</label>
     <div class="form-group form-group-feedback form-group-feedback-left">
         <select name="teacher_course_id[]" id="course_id" class="form-control select-search" data-fouc>
