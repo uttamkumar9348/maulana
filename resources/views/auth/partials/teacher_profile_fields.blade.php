@@ -20,29 +20,33 @@
     </div>
 </div>
 
-{{-- <div class="col-md-4">
+<div class="col-md-4">
     <br>
-    <button class="btn btn-sm btn-primary" type="button" id="add_row_for_course_subject">Add More Course & Subject Field</button>
-</div> --}}
-
-<div class="col-md-6"> 
-    <label>Course</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <select name="teacher_course_id[]" id="course_id" class="form-control select-search" data-fouc>
-            <option selected disabled>Select Courses</option>
-        </select>
-    </div>
+    <button class="btn btn-sm btn-primary add_row_course_subject" type="button">Add More Course & Subject
+        Field</button>
 </div>
 
-<div class="col-md-6">
-    <label>Subject</label>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <select name="teacher_subject_id[]" id="subject_id" class="form-control select-search" data-fouc multiple>
-            <option>Select Subjects</option>
-        </select>
+<div class="col-md-12" id="course_field">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Course</label>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <select name="teacher_course_id[]" id="course_id" class="form-control select-search course_id" data-fouc>
+                    <option selected disabled>Select Courses</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label>Subject</label>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <select name="teacher_subject_id[]" id="subject_id" class="form-control select-search" data-fouc>
+                    <option>Select Subjects</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
-
 <script>
     $(document).on('change', '#collegee_id', function(event) {
         college_id = $(this).val();
@@ -58,10 +62,10 @@
                 'college_id': college_id,
             },
             success: function(res) {
-                $('#course_id').empty();
-                $('#course_id').html('<option value="">Select College Course</option>');
+                $('.course_id').empty();
+                $('.course_id').html('<option value="">Select College Course</option>');
                 $.each(res, function(key, value) {
-                    $('#course_id').append('<option value="' + value
+                    $('.course_id').append('<option value="' + value
                         .id + '">' + value.name + '</option>');
                 });
             }
@@ -91,5 +95,15 @@
             }
         });
     });
+</script>
 
+<script>
+    $(document).ready(function() {
+    $(document).on('click', '.add_row_course_subject', function() {
+        html = $('#AppendSize').html();
+            console.log(html);
+        $('#course_field').append(html);
+        $('.select-2').addClass('select-search');
+    });
+});
 </script>

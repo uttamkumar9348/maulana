@@ -51,6 +51,8 @@ use App\Http\Controllers\Admin\Web\TopbarSettingController;
 use App\Http\Controllers\Admin\Web\WebEventController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PassedexamController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\QuizController;
 use App\Models\GatewayDetail;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user', 'admin'], function () {
@@ -169,6 +171,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************ENTRANCE FEE ROUTE START*************/
     Route::resource('entrance_fee', EntranceFeeController::class);
     /*******************ENTRANCE FEE ROUTE END*************/
+
+    //Quiz
+    Route::get('/add-quiz', [QuizController::class, 'addQuiz'])->name('add.quiz');
+
+    Route::get('/add-question/{id}', [QuestionController::class, 'addQuestion'])->name('add.question');
+
+    Route::post('/store-quiz', [QuizController::class, 'storeQuiz'])->name('store.quiz');
+
+    Route::post('/store-question', [QuestionController::class, 'storeQuestion'])->name('store.question');
+
     /*******************Document Category ROUTE START*************/
     Route::resource('document_category', DocumentCategoryController::class);
     /*******************Document Category ROUTE END*************/

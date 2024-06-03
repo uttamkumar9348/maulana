@@ -204,6 +204,18 @@
 								<li class="nav-item"><a href="{{route('admin.center_mapping.index')}}" class="nav-link {{Request::is('admin/center_mapping')?'active':''}}">Center Mapping</a></li>
 							</ul>
 						</li>
+
+                        <li class="nav-item nav-item-submenu {{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Quiz</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'display:block':''}}">
+
+								<li class="nav-item"><a href="{{route('admin.add.quiz')}}" class="nav-link {{Request::is('admin/noticetype*')?'active':''}}">Add Quiz</a></li>
+                                
+								<li class="nav-item"><a href="" class="nav-link {{Request::is('admin/notice*')?'active':''}}">Results</a></li>
+							</ul>
+						</li>
+
 						<li class="nav-item nav-item-submenu {{Request::is('admin/course*') || Request::is('admin/semester*') || Request::is('admin/subject*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-books"></i> <span>Academics</span></a>
 
