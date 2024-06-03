@@ -15,17 +15,17 @@
 <table class="table table-sm table-bordered">
     <thead>
         <tr>
-            <th>Payment Status</th>
-            <th>Reference ID</th>
+            <th>Order ID</th>
+            <th>Payment ID</th>
             <th>Fees</th>
         </tr>
     </thead>
     <tbody >
    
         <tr>
-            <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->status:'' }}</td>
-            <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->track_id:'' }}</td>
-            <td>10</td>
+            <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->razorpay_order_id:'' }}</td>
+            <td>{{ Auth::user()->studentPaymentLastest()?Auth::user()->studentPaymentLastest()->razorpay_payment_id:'' }}</td>
+            <td>{{Auth::user()->studentProfile ? Auth::user()->studentProfile->amount : @Auth::user()->entrance_fee->exam_fee}}</td>
         </tr>
     </tbody>
 </table>

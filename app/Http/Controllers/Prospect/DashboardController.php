@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Prospect;
 use App\Helpers\PaymentGateway;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
+use App\Models\GatewayDetail;
 use App\Models\PaymentHistory;
 use App\Models\StudentAcademicQualification;
 use App\Models\StudentDocument;
 use App\Models\StudentProfile;
 use App\Models\StudentProfileAddress;
 use App\Services\ProspectApplicationService;
+use App\Services\RazorPayService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -664,6 +666,52 @@ class DashboardController extends Controller
         catch (Exception $e) {
             toastr()->error($e->getMessage());
             return back(); 
+        }
+    }
+    public function createOrder()
+    {
+        try{
+            $gateway = GatewayDetail::where('type','Normal')->whereNull('user_id')->first();
+            if(!Auth::user()->studentProfile->order_id)
+            {
+                $response = RazorPayService::storeOrder();
+                if($response['success'])
+                {
+                    return response([
+                        "success" => true,
+                        "key_id" => $gateway ? $gateway->key_id : 'rzp_live_7K6wvuUTFOGlx9',
+                        "merchant_name" => $gateway ? $gateway->merchant_name : 'MADHUSUDAN LAW UNIVERSITY',
+                        "order_id" => $response['order_id'],
+                        "phone" => Auth::user()->studentProfile->phone,
+                        'email' => Auth::user()->email,
+                        'amount' => Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_fee:0,
+                        'name' => Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name,
+                    ], 200);
+                }else{
+                    return response([
+                        "success" => true,
+                        "message" => $response['message'],
+                    ], 500);
+
+                }
+            }else{
+                return response([
+                    "success" => true,
+                    "key_id" => $gateway ? $gateway->key_id : 'rzp_live_7K6wvuUTFOGlx9',
+                    "merchant_name" => $gateway ? $gateway->merchant_name : 'MADHUSUDAN LAW UNIVERSITY',
+                    'amount' => Auth::user()->entrance_fee?Auth::user()->entrance_fee->exam_fee:0,
+                    "order_id" => Auth::user()->studentProfile->order_id,
+                    "phone" => Auth::user()->studentProfile->phone,
+                    'email' => Auth::user()->email,
+                    'name' => Auth::user()->studentProfile->first_name.' '.Auth::user()->studentProfile->middle_name.' '.Auth::user()->studentProfile->last_name,
+                ], 200);
+            }
+        }
+        catch (Exception $e) {
+            return response([
+                "success" => true,
+                "message" => $e->getMessage(),
+            ], 500);
         }
     }
 }

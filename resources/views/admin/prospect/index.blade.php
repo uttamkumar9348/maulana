@@ -15,8 +15,8 @@ Prospects
                     <th>Name</th>
                     <th>Email</th>
                     <th>Exam</th>
-                    <th>Status</th>
-                    <th>Track ID</th>
+                    <th>Payment ID#</th>
+                    <th>Order ID#</th>
                     <th>Center Mapping</th>
                     <th>Action</th>
                     <th>Action</th>
@@ -30,8 +30,8 @@ Prospects
                     <td>{{$prospect->name}}</td>
                     <td>{{$prospect->email}}</td>
                     <td>{{ $prospect->entrance_fee?$prospect->entrance_fee->course->title:'' }}</td>
-                    <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->status:'' }}</td>
-                    <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->track_id:'' }}</td>
+                    <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->razorpay_payment_id:'' }}</td>
+                    <td>{{ $prospect->studentPaymentLastest()?$prospect->studentPaymentLastest()->razorpay_order_id:'' }}</td>
 
                     <td>
                         @if($prospect->centerMapping())

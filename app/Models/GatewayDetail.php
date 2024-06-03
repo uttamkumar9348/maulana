@@ -21,6 +21,9 @@ class GatewayDetail extends Model
         'txn_initiation_url',
         'tnx_status_url',
         'user_id',
+        'type',
+        'key_id',
+        'key_secret',
     ];
     public function user()
     {

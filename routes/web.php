@@ -100,6 +100,7 @@ Route::post('get_course_aganist_college', [AuthController::class, 'getCourseAgan
 Route::post('get_semester_aganist_course', [AuthController::class, 'getSemesterAganistCourse'])->name('get_semester_aganist_course');
 Route::post('get_subject_aganist_semester', [AuthController::class, 'getSubjectAganistSemester'])->name('get_subject_aganist_semester');
 Route::get('get_course_fields', [AuthController::class, 'getCourseFields'])->name('get_course_fields');
+Route::post('razor/callback', [AuthController::class, 'razorCallback'])->name('razor.callback');
 Route::post('get_subject_aganist_course', [AuthController::class, 'getSubjectAganistCourse'])->name('get_subject_aganist_course');
 
 Route::post('get_student_profiles_against_cities', [AuthController::class, 'getStudentProfilesAgainstCity'])->name('get_student_profiles_against_cities');

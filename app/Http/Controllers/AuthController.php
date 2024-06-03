@@ -6,6 +6,7 @@ use App\Helpers\Helpers;
 use App\Models\City;
 use App\Models\CollegeCourse;
 use App\Models\CollegeProfile;
+use App\Models\PaymentHistory;
 use App\Models\Role;
 use App\Models\Semester;
 use App\Models\State;
@@ -271,7 +272,25 @@ class AuthController extends Controller
         $html = view('admin.center_mapping.partials.center_mapping_content',compact('students'))->render();
         return ['html' => $html];
     }
-
+    public function razorCallback(Request $request)
+    {
+     
+        if($request->razorpay_order_id)
+        {
+            $studentProfile = StudentProfile::where('order_id',$request->razorpay_order_id)->first(); 
+            PaymentHistory::create([
+                'razorpay_payment_id' => $request->razorpay_order_id,
+                'razorpay_order_id' => $request->razorpay_order_id,
+                'razorpay_signature' => $request->razorpay_signature,
+                'status' => 'AWAITED',
+                'user_id' => $studentProfile->user_id,
+            ]);
+            toastr()->success('Payment Created Successfully!');
+            return redirect()->to(route('prospect.dashboard.index'));
+        }
+        toastr()->error('Something Went Wrong.');
+        return redirect()->to(route('prospect.dashboard.index'));
+    }
     public function getSubjectAganistCourse(Request $request){
         // dd($request->all());
         $course_id = CollegeCourse::find($request->course_id);

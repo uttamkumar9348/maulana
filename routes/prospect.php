@@ -40,6 +40,7 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::post('dashboard/store_step_4',[DashboardController::class,'stepFourStore'])->name('dashboard.store_step_4');
     Route::get('dashboard/get-back',[DashboardController::class,'getBack'])->name('dashboard.get-back');
     Route::get('process_payment',[DashboardController::class,'processPayment'])->name('process_payment');
+    Route::get('create_order',[DashboardController::class,'createOrder'])->name('dashboard.create_order');
     //  New Dashboard Routes End
     Route::resource('center_mapping',CenterMappingController::class);
 });
