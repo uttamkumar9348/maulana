@@ -52,7 +52,11 @@ class QuizController extends Controller
     public function joinQuiz($id)
     {
 
+        // $check = (ExamCandidate::where('quiz_id', $id)->where('user_id', '=', Auth::user()->id)->get());
+        // dd($check);
+
         if (count(ExamCandidate::where('quiz_id', $id)->where('user_id', '=', Auth::user()->id)->get()) > 0) {
+
             return redirect()->back()->with('error', 'You already participated this quiz');
         }
 
@@ -60,10 +64,10 @@ class QuizController extends Controller
             return redirect()->back()->with('error', 'Quiz is no longer available');
         }
         if (time() < strtotime(Quiz::where('id', $id)->value('from_time'))) {
-            return redirect()->back()->with('error', 'Quiz is not available now. Wait for its availability ');
+            return redirect()->back()->with('error', 'Quiz is not available now. Wait for its availability');
         }
 
-        if (Auth::user()->role->name == 'Prospect' && count(Result::where('user_id', Auth::user()->id)->get()) > 0) {
+        if (Auth::user()->role->name == 'Prospect' && count(Result::where('user_id', Auth::user()->id)->where('quiz_id', $id)->get()) > 0) {
             return redirect()->back()->with('error', 'You already participated this quiz');
         }
 
@@ -72,7 +76,7 @@ class QuizController extends Controller
             'quiz_id' => $id
         ]);
 
-        return view('user.give-quiz')->with('quiz', Quiz::where('id', $id)->first())
+        return view('prospect.quiz.give-quiz')->with('quiz', Quiz::where('id', $id)->first())
             ->with('questions', Question::where('quiz_id', $id)->get())
             ->with('start_time', Carbon::now());
     }

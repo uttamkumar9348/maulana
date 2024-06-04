@@ -53,6 +53,7 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PassedexamController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Prospect\ResultController;
 use App\Models\GatewayDetail;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user', 'admin'], function () {
@@ -180,6 +181,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::post('/store-quiz', [QuizController::class, 'storeQuiz'])->name('store.quiz');
 
     Route::post('/store-question', [QuestionController::class, 'storeQuestion'])->name('store.question');
+    Route::get('/results', [ResultController::class, 'index'])->name('results');
 
     /*******************Document Category ROUTE START*************/
     Route::resource('document_category', DocumentCategoryController::class);

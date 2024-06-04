@@ -23,4 +23,7 @@ class Result extends Model
     public function user(){
         $this->belongsToMany(User::class);
     }
+    public function getUser(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

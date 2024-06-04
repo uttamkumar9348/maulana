@@ -44,18 +44,22 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header header-elements-inline">
+        {{-- <div class="card-header header-elements-inline">
             <h4 class="card-title">Quiz List</h4>
-        </div>
-        <div class="card-body">
-            <table class="table">
+        </div> --}}
+        {{-- <div class="card-body"> --}}
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">Quiz List</h5>
+            </div>
+            <div class="table-responsive">
+            <table class="table datatable-save-state">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">From</th>
-                        <th scope="col">To</th>
-                        <th scope="col">Duration</th>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Duration</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,8 +70,9 @@
                         <tr>
                             <th scope="row">{{ $sl++ }}</th>
                             <td><a href="{{ url('admin/add-question', $quiz->id) }}" target="_blank">{{ $quiz->title }}</a></td>
-                            <td>{{ $quiz->from_time }}</td>
-                            <td>{{ $quiz->to_time }}</td>
+                            <td>{{ \Carbon\Carbon::parse($quiz->from_time)->format('d M Y h:i A') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($quiz->to_time)->format('d M Y h:i A') }}</td>
+                            {{-- <td>{{ $quiz->to_time }}</td> --}}
                             <td>{{ $quiz->duration }} minutes</td>
                         </tr>
                     @endforeach

@@ -7,6 +7,8 @@ use App\Http\Controllers\Prospect\CenterMappingController;
 use App\Http\Controllers\Prospect\DashboardController;
 use App\Http\Controllers\Prospect\StudentAcademicQualificationController;
 use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Prospect\AnswerController;
+use App\Http\Controllers\Prospect\ResultController;
 
 /*******************REGISTER ROUTE START*************/
 Route::view('prospect/register','prospect.auth.register');
@@ -49,6 +51,9 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     //Quiz
     Route::get('/quiz-list', [QuizController::class, 'index'])->name('list.quiz');
     Route::get('/give-quiz/{id}', [QuizController::class, 'joinQuiz'])->name('join.quiz');
+    Route::post('/store-answer', [AnswerController::class, 'store'])->name('store.answer');
+    Route::get('/results', [ResultController::class, 'index'])->name('results');
+
 });
 /****************** PROSPECT MIDDLEWARE PAGES ROUTES END****************/
 ?>

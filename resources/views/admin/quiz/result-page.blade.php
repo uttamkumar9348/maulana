@@ -1,4 +1,4 @@
-@extends('prospect.layout.index')
+@extends('admin.layout.index')
 @section('title')
     My Results
 @endsection
@@ -9,13 +9,15 @@
         </div>
         <div class="card-body">
             <div class="text-center">
+                {{-- @dd($results) --}}
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">Quiz Score</th>
-                            <th scope="col">My Score</th>
+                            <th scope="col">User Score</th>
+                            <th scope="col">User Name</th>
                             <th scope="col">Date</th>
                         </tr>
                     </thead>
@@ -29,9 +31,7 @@
                                 <td>{{ $result->title }}</td>
                                 <td>{{ $result->quiz_score }}</td>
                                 <td>{{ $result->achieved_score }}</td>
-                                @if (session('user_role') == 'admin')
-                                    <td>{{ $result->username }}</td>
-                                @endif
+                                <td>{{ $result->getUser->name }}</td>
                                 <td>{{ $result->created_at }}</td>
                             </tr>
                         @endforeach

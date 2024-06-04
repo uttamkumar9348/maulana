@@ -205,14 +205,14 @@
 							</ul>
 						</li>
 
-                        <li class="nav-item nav-item-submenu {{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'nav-item-open':''}}">
+                        <li class="nav-item nav-item-submenu {{Request::is('admin/add-quiz*') || Request::is('admin/results*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Quiz</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'display:block':''}}">
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/add-quiz*') || Request::is('admin/results*') ?'display:block':''}}">
 
-								<li class="nav-item"><a href="{{route('admin.add.quiz')}}" class="nav-link {{Request::is('admin/noticetype*')?'active':''}}">Add Quiz</a></li>
-                                
-								<li class="nav-item"><a href="" class="nav-link {{Request::is('admin/notice*')?'active':''}}">Results</a></li>
+								<li class="nav-item"><a href="{{route('admin.add.quiz')}}" class="nav-link {{Request::is('admin/add-quiz*')?'active':''}}">Add Quiz</a></li>
+
+								<li class="nav-item"><a href="{{route('admin.results')}}" class="nav-link {{Request::is('admin/results*')?'active':''}}">Results</a></li>
 							</ul>
 						</li>
 

@@ -51,8 +51,8 @@
             <h4 class="card-title">Question List</h4>
         </div>
         <div class="card-body">
-            <div class="text-center">
-                <table class="table">
+            <div class="table-responsive">
+                <table class="table datatable-save-state">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

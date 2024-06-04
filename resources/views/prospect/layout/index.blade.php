@@ -165,12 +165,12 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
-                        <li class="nav-item nav-item-submenu {{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'nav-item-open':''}}">
+                        <li class="nav-item nav-item-submenu {{Request::is('prospect/quiz-list*') || Request::is('prospect/results*') ?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Quiz</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('admin/noticetype*') || Request::is('admin/notice*') ?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('prospect.list.quiz')}}" class="nav-link {{Request::is('admin/notice*')?'active':''}}">Quiz List</a></li>
-								<li class="nav-item"><a href="" class="nav-link {{Request::is('admin/notice*')?'active':''}}">Results</a></li>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('prospect/quiz-list*') || Request::is('prospect/results*') ?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('prospect.list.quiz')}}" class="nav-link {{Request::is('prospect/quiz-list*')?'active':''}}">Quiz List</a></li>
+								<li class="nav-item"><a href="{{route('prospect.results')}}" class="nav-link {{Request::is('prospect/results*')?'active':''}}">Results</a></li>
 							</ul>
 						</li>
 					</ul>
