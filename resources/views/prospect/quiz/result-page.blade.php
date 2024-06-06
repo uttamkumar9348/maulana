@@ -32,7 +32,7 @@
                                 {{-- @if (session('user_role') == 'admin')
                                     <td>{{ $result->username }}</td>
                                 @endif --}}
-                                <td>{{ $result->created_at}}</td>
+                                <td>{{ $result->created_at->format('Y-m-d H:i:s') }}</td>
                             </tr>
                         @endforeach
                     </tbody>
