@@ -179,6 +179,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::get('/add-question/{id}', [QuestionController::class, 'addQuestion'])->name('add.question');
 
     Route::post('/store-quiz', [QuizController::class, 'storeQuiz'])->name('store.quiz');
+    Route::get('/edit-quiz/{id}', [QuizController::class, 'editQuiz'])->name('edit.quiz');
+    Route::post('/update-quiz', [QuizController::class, 'updateQuiz'])->name('update.quiz');
+    Route::get('/delete-quiz/{id}', [QuizController::class, 'deleteQuiz'])->name('delete.quiz');
 
     Route::post('/store-question', [QuestionController::class, 'storeQuestion'])->name('store.question');
     Route::get('/results', [ResultController::class, 'index'])->name('results');

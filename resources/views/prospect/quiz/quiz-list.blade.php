@@ -16,7 +16,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">From</th>
                             <th scope="col">To</th>
-                            <th scope="col">Duration</th>
+                            <th scope="col">Duration</th>    
                         </tr>
                     </thead>
                     <tbody>

@@ -62,6 +62,8 @@
                             <th scope="col">C</th>
                             <th scope="col">D</th>
                             <th scope="col">Correct</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +79,12 @@
                                 <td>{{ $question->option_c }}</td>
                                 <td>{{ $question->option_d }}</td>
                                 <td>{{ $question->correct_option }}</td>
+                                <td>
+                                    <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

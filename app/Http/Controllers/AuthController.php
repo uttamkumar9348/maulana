@@ -274,10 +274,10 @@ class AuthController extends Controller
     }
     public function razorCallback(Request $request)
     {
-     
+
         if($request->razorpay_order_id)
         {
-            $studentProfile = StudentProfile::where('order_id',$request->razorpay_order_id)->first(); 
+            $studentProfile = StudentProfile::where('order_id',$request->razorpay_order_id)->first();
             PaymentHistory::create([
                 'razorpay_payment_id' => $request->razorpay_order_id,
                 'razorpay_order_id' => $request->razorpay_order_id,

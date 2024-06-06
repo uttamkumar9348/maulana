@@ -10,6 +10,7 @@ class Quiz extends Model
     use HasFactory;
     protected $fillable=[
       'title',
+      'quiz_type',
       'duration',
       'from_time',
       'to_time'

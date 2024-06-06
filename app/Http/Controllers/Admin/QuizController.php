@@ -40,6 +40,7 @@ class QuizController extends Controller
     {
         if (Quiz::create([
             'title' => $request->title,
+            'quiz_type' => $request->quiz_type,
             'from_time' => $request->from_time,
             'to_time' => $request->to_time,
             'duration' => $request->duration,
@@ -49,26 +50,58 @@ class QuizController extends Controller
         return redirect()->back()->with('error', 'Quiz: ' . $request->title . ' was not added. Something wrong!');
     }
 
+    public function editQuiz($id)
+    {
+        $edit_quiz = Quiz::find($id);
+        return view('admin.quiz.edit-quiz', compact('edit_quiz'));
+    }
+
+    public function updateQuiz(Request $request)
+    {
+        $update_quiz = Quiz::find($request->id);
+
+        $update_quiz->title = $request->title;
+        $update_quiz->from_time = $request->from_time;
+        $update_quiz->to_time = $request->to_time;
+        $update_quiz->duration = $request->duration;
+        $update_quiz->save();
+        return redirect()->back()->with('success', 'Edited Successfully!');
+    }
+
+    public function deleteQuiz($id)
+    {
+        $delete_quiz = Quiz::find($id);
+        if ($delete_quiz) {
+            // $delete_quiz->delete();
+
+            Question::where('quiz_id', $id)->delete();
+            Result::where('quiz_id', $id)->delete();
+            ExamCandidate::where('quiz_id', $id)->delete();
+
+            $delete_quiz->delete();
+            return redirect()->back()->with('success', 'Deleted Successfully.');
+        }
+        return redirect()->back()->with('error', 'Something Wents Wrong !');
+    }
+
     public function joinQuiz($id)
     {
+        if (Quiz::where('id', $id)->where('quiz_type', 'live')->first()) {
+            if (count(ExamCandidate::where('quiz_id', $id)->where('user_id', '=', Auth::user()->id)->get()) > 0) {
 
-        // $check = (ExamCandidate::where('quiz_id', $id)->where('user_id', '=', Auth::user()->id)->get());
-        // dd($check);
+                return redirect()->back()->with('error', 'You already participated this quiz');
+            }
 
-        if (count(ExamCandidate::where('quiz_id', $id)->where('user_id', '=', Auth::user()->id)->get()) > 0) {
+            if (time() >= strtotime(Quiz::where('id', $id)->value('to_time'))) {
+                return redirect()->back()->with('error', 'Quiz is no longer available');
+            }
+            if (time() < strtotime(Quiz::where('id', $id)->value('from_time'))) {
+                return redirect()->back()->with('error', 'Quiz is not available now. Wait for its availability');
+            }
 
-            return redirect()->back()->with('error', 'You already participated this quiz');
-        }
-
-        if (time() >= strtotime(Quiz::where('id', $id)->value('to_time'))) {
-            return redirect()->back()->with('error', 'Quiz is no longer available');
-        }
-        if (time() < strtotime(Quiz::where('id', $id)->value('from_time'))) {
-            return redirect()->back()->with('error', 'Quiz is not available now. Wait for its availability');
-        }
-
-        if (Auth::user()->role->name == 'Prospect' && count(Result::where('user_id', Auth::user()->id)->where('quiz_id', $id)->get()) > 0) {
-            return redirect()->back()->with('error', 'You already participated this quiz');
+            if (Auth::user()->role->name == 'Prospect' && count(Result::where('user_id', Auth::user()->id)->where('quiz_id', $id)->get()) > 0) {
+                return redirect()->back()->with('error', 'You already participated this quiz');
+            }
         }
 
         ExamCandidate::create([
