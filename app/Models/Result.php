@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Result extends Model
 {
     use HasFactory;
-
+protected $dateFormat = 'Y-m-d';
     protected $fillable=[
       'user_id',
       'quiz_id',
