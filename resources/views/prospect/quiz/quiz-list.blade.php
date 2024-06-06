@@ -24,8 +24,9 @@
                         @foreach ($quiz_list as $quiz)
                             <tr>
                                 <th scope="row">{{ $sl++ }}</th>
-                                <td><a href="{{ url('prospect/give-quiz', $quiz->id) }}">{{ $quiz->title }}</a></td>
+                                <td><a>{{ $quiz->title }}</a></td>
                                 <td>{{ $quiz->duration }} minutes</td>
+                                <td><a href="{{ url('prospect/give-quiz', $quiz->id) }}">Give Test</a></td>
                             </tr>
                         @endforeach
                     </tbody>
