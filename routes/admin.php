@@ -184,6 +184,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::get('/delete-quiz/{id}', [QuizController::class, 'deleteQuiz'])->name('delete.quiz');
 
     Route::post('/store-question', [QuestionController::class, 'storeQuestion'])->name('store.question');
+    Route::get('/edit-question/{id}', [QuestionController::class, 'editQuestion'])->name('edit.question');
+    Route::post('/update-question', [QuestionController::class, 'updateQuestion'])->name('update.question');
+    Route::get('/delete-question/{id}', [QuestionController::class, 'deleteQuestion'])->name('delete.question');
     Route::get('/results', [ResultController::class, 'index'])->name('results');
 
     /*******************Document Category ROUTE START*************/

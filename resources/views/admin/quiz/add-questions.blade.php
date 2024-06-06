@@ -6,6 +6,7 @@
     <div class="card">
         <div class="card-header header-elements-inline">
             <h4 class="card-title">Add Question for the Quiz: {{ $quiz_list->title }}</h4>
+            {{-- @dd($quiz_list) --}}
         </div>
         <div class="card-body">
             <div class="text-center">
@@ -80,10 +81,10 @@
                                 <td>{{ $question->option_d }}</td>
                                 <td>{{ $question->correct_option }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{route('admin.edit.question',$question->id)}}" class="btn btn-primary btn-sm">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <a onclick="confirmDelete('{{route('admin.delete.question',$question->id)}}')" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -96,6 +97,17 @@
         function correctAnswer() {
             let a = document.getElementsByName('option_a')
             alert('a');
+        }
+    </script>
+
+    <script>
+        function confirmDelete(deleteUrl){
+            var isConfirmed = confirm("Are You Sure You Want to Delete This Item ?")
+        if(isConfirmed){
+            window.location.href =deleteUrl;
+        }else{
+            alert("Deletion canceled");
+        }
         }
     </script>
 @endsection

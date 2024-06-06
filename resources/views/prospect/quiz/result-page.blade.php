@@ -29,10 +29,10 @@
                                 <td>{{ $result->title }}</td>
                                 <td>{{ $result->quiz_score }}</td>
                                 <td>{{ $result->achieved_score }}</td>
-                                @if (session('user_role') == 'admin')
+                                {{-- @if (session('user_role') == 'admin')
                                     <td>{{ $result->username }}</td>
-                                @endif
-                                <td>{{ $result->created_at }}</td>
+                                @endif --}}
+                                <td>{{ $result->created_at->format('d-F-Y h:i A') }}</td>
                             </tr>
                         @endforeach
                     </tbody>
