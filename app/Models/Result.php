@@ -14,13 +14,6 @@ class Result extends Model
       'quiz_score',
       'achieved_score'
     ];
-use Carbon\Carbon;
-
-protected $dates = ['created_at','updated_at'];
-
-protected function serializeDate(DateTimeInterface $dates)
-{
-    return Carbon::createFromFormat('Y-m-d H:i:s', $dates)->diffForHumans();
 
     public function quiz(){
         $this->belongsTo(Quiz::class);
