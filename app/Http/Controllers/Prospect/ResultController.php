@@ -15,7 +15,7 @@ class ResultController extends Controller
                 ->join('users','results.user_id','=','users.id')
                 ->get());
         }
-        return view('Prospect.quiz.result-page')->with('results',Result::join('quizzes','results.quiz_id','quizzes.id')
+        return view('prospect.quiz.result-page')->with('results',Result::join('quizzes','results.quiz_id','quizzes.id')
             ->where('user_id',Auth::user()->id)->get());
     }
 }
