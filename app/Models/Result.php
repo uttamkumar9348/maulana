@@ -15,7 +15,11 @@ class Result extends Model
       'quiz_score',
       'achieved_score'
     ];
-
+use use DateTimeInterface;
+protected function serializeDate(DateTimeInterface $date): string
+{
+    return $date->format('Y-m-d H:i:s');
+}
     public function quiz(){
         $this->belongsTo(Quiz::class);
     }
