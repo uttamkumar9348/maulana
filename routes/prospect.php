@@ -53,6 +53,7 @@ Route::group(['prefix' => 'prospect', 'as'=>'prospect.','middleware' => 'auth:us
     Route::get('/give-quiz/{id}', [QuizController::class, 'joinQuiz'])->name('join.quiz');
     Route::post('/store-answer', [AnswerController::class, 'store'])->name('store.answer');
     Route::get('/results', [ResultController::class, 'index'])->name('results');
+    Route::get('/mock-results', [ResultController::class, 'mockResults'])->name('mock-results');
 
 });
 /****************** PROSPECT MIDDLEWARE PAGES ROUTES END****************/

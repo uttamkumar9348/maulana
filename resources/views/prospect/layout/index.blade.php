@@ -166,12 +166,13 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
-                        <li class="nav-item nav-item-submenu {{Request::is('prospect/quiz-list*') || Request::is('prospect/results*') ?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Mock Test</span></a>
+                        <li class="nav-item nav-item-submenu {{Request::is('prospect/quiz-list*') || Request::is('prospect/mock-results*') || Request::is('prospect/results*') ?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Test</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('prospect/quiz-list*') || Request::is('prospect/results*') ?'display:block':''}}">
-								<li class="nav-item"><a href="{{route('prospect.list.quiz')}}" class="nav-link {{Request::is('prospect/quiz-list*')?'active':''}}">Mock Tests</a></li>
-								<li class="nav-item"><a href="{{route('prospect.results')}}" class="nav-link {{Request::is('prospect/results*')?'active':''}}">Results</a></li>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('prospect/quiz-list*') || Request::is('prospect/mock-results*') || Request::is('prospect/results*') ?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('prospect.list.quiz')}}" class="nav-link {{Request::is('prospect/quiz-list*')?'active':''}}">Tests</a></li>
+								<li class="nav-item"><a href="{{route('prospect.results')}}" class="nav-link {{Request::is('prospect/results*')?'active':''}}">Live Results</a></li>
+								<li class="nav-item"><a href="{{route('prospect.mock-results')}}" class="nav-link {{Request::is('prospect/mock-results*')?'active':''}}">Mock Results</a></li>
 							</ul>
 						</li>
 					</ul>

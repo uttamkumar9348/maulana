@@ -36,7 +36,7 @@ class AnswerController extends Controller
         if ($quiz->quiz_type == 'mock') {
             MockResult::create([
                 'user_id' => Auth::user()->id,
-                'quiz_id' => $request->quiz_id,
+                'quiz_id' => $request->quiz_id,  
                 'quiz_score' => $total,
                 'achieved_score' => $correct
             ]);
