@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Prospect;
 
 use App\Http\Controllers\Controller;
+use App\Models\MockResult;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Result;
@@ -30,12 +31,24 @@ class AnswerController extends Controller
             $i++;
             $total++;
         }
-        Result::create([
-            'user_id' => Auth::user()->id,
-            'quiz_id' => $request->quiz_id,
-            'quiz_score' => $total,
-            'achieved_score' => $correct
-        ]);
+        $quiz = Quiz::where('id', $request->quiz_id)->first();
+        // dd($request->all());
+        if ($quiz->quiz_type == 'mock') {
+            MockResult::create([
+                'user_id' => Auth::user()->id,
+                'quiz_id' => $request->quiz_id,
+                'quiz_score' => $total,
+                'achieved_score' => $correct
+            ]);
+        } else {
+            Result::create([
+                'user_id' => Auth::user()->id,
+                'quiz_id' => $request->quiz_id,
+                'quiz_score' => $total,
+                'achieved_score' => $correct
+            ]);
+        }
+
 
         return redirect()->route('prospect.results')->with('success', 'Quiz done and result published');
     }
