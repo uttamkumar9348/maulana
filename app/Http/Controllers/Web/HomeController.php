@@ -13,7 +13,9 @@ use App\Models\Web\Slider;
 use App\Models\notice;
 use App\Models\NoticetypeModel;
 use App\Models\Team;
+// use App\Models\Web\WebEvent;
 use App\Models\Language;
+use App\Models\Web\WebEvent;
 
 class HomeController extends Controller
 {
@@ -45,6 +47,8 @@ class HomeController extends Controller
         $teams = Team::all();
          // Notice Type
 
+        //Event
+        $events = WebEvent::orderBy('id','desc')->get();
 
         // Call To Action
         $data['callToAction'] = CallToAction::where('language_id', Language::version()->id)
@@ -58,7 +62,7 @@ class HomeController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices','teams'));
+        return view('web.index', $data, compact('notices','teams','events'));
     }
 
     /**

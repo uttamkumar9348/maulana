@@ -21,7 +21,8 @@
     @endif
 @endsection
 
-{{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
     .latest-notice {
         background: #191d33;
@@ -139,7 +140,7 @@
     .single-feature .title {
         background: #000000;
         border: 1px solid #ffffff;
-        padding: 10px 0px;
+        /* padding: 10px 0px; */
         -webkit-transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
@@ -165,6 +166,77 @@
         margin-bottom: 10px;
     }
 
+    .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .vcBox-content h4 {
+        font-size: 16px;
+        margin-bottom: 4px;
+        margin-top: 5px;
+        color: #e77815;
+        text-align: left;
+    }
+
+    .vcBox-content h5 {
+        font-size: 13px;
+        margin-bottom: 4px;
+        margin-top: 5px;
+        color: #e77815;
+        text-align: left;
+    }
+
+    .vcBox-content h6 {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 3px;
+        text-align: left;
+    }
+
+    .vcBox-content a {
+        background: #125875;
+        color: #fff !important;
+        font-size: 12px !important;
+        padding: 2px 7px;
+        margin-top: 7px;
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    .whiteBox {
+        padding: 8px 7px;
+        width: 100%;
+        border-radius: 4px;
+        float: left;
+        margin-bottom: 12px;
+    }
+
+    .whiteBox-bg {
+        background: #f6f6f6;
+        box-shadow: 0px 1px 2px #939393;
+    }
+
+    .whiteBox img {
+        float: left;
+        margin-right: 6px;
+        border: 1px solid #ccc;
+        padding: 3px;
+    }
+
+    .vcBox-content a:hover {
+        background: #ff7350;
+    }
+
+    .vcBox-content p {
+        line-height: 18px;
+    }
+
+    .vcBox-content a {
+        margin-top: 0px;
+    }
+
     .single-feature .desc-wrap a {
         font-size: 14px;
         font-weight: 500;
@@ -174,6 +246,45 @@
         transition: all 0.3s ease 0s;
         color: #000000;
         text-align: left;
+    }
+
+    .admsnBox {
+        max-height: 225px;
+        overflow: hidden;
+    }
+
+    .theUniBox {
+        max-height: 225px;
+        overflow: hidden;
+    }
+
+    .items {
+        width: 90%;
+        margin: 0px auto;
+        margin-top: 10px;
+        max-height: 520px;
+        overflow: scroll;
+    }
+
+    .items div h6 {
+        font-size: 13px;
+    }
+
+    .slick2 .items2 .slick-prev {
+        left: -38px;
+        bottom: 0px;
+        top: 38%;
+        z-index: 11111;
+    }
+
+    .slick2 .items2 .slick-next {
+        right: -23px;
+        bottom: 0px;
+        top: 38%;
+    }
+
+    .eventBox {
+        padding: 0 !important;
     }
 
     .single-feature .desc-wrap a:hover {
@@ -223,6 +334,41 @@
 
     .uniBox .desc-wrap a {
         color: #fff !important;
+    }
+
+    .uniAdminBox {
+        max-height: 520px;
+        overflow: scroll;
+        /* border: 1px solid #ccc; */
+        /* Optional: to give the box a border */
+    }
+
+    /* WebKit browsers (Chrome, Safari) */
+    .uniAdminBox::-webkit-scrollbar {
+        width: 0px;
+        /* Hide the scrollbar */
+    }
+
+    .uniAdminBox::-webkit-scrollbar-track {
+        background: transparent;
+        /* Make the track transparent */
+    }
+
+    .uniAdminBox::-webkit-scrollbar-thumb {
+        background: transparent;
+        /* Make the thumb transparent */
+    }
+
+    /* Firefox */
+    .uniAdminBox {
+        scrollbar-width: none;
+        /* Hide the scrollbar */
+    }
+
+    /* IE and Edge */
+    .uniAdminBox {
+        -ms-overflow-style: none;
+        /* Hide the scrollbar */
     }
 
     .marquee_text ul {
@@ -276,80 +422,262 @@
     }
 
     .fourBtnBox a {
-    background: linear-gradient(45deg, #125875, #587512);
-    color: #fff;
-    width: 100%;
-    display: block;
-    margin-bottom: 12px;
-    padding: 18px 10px;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
-.fourBtnBox a:hover {
-    background: linear-gradient(45deg, #587512, #125875);
-}
-
-.counterBox {
-    text-align: center;
-    background: #ffe6dc;
-    padding-top: 15px;
-    padding-bottom: 8px;
-    border-radius: 10%;
-    border: 2px solid #ff7350;
-}
-
-.counterSection {
-    margin-bottom: 30px;
-}
-
-.counterBox h6 {
-    color: #125875;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 7px;
-    font-size: 14px;
-}
-
-.counterBox h2 {
-    color: #125875;
-    margin-top: 6px;
-    letter-spacing: 1px;
-}
-
-.counterBox i {
-    color: #ffffff;
-    background: #125875;
-    font-size: 21px;
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    line-height: 45px;
-    border-radius: 10px;
-}
-@media only screen and (min-width: 200px) and (max-width: 480px) {
-    .counterBox {
-        width: 70%;
-        margin: 0 auto;
-        margin-bottom: 13px;
-    }
-    .j_middleBox {
-        background: #fff2cc;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border: 1px solid #fff5eb;
+        background: linear-gradient(45deg, #125875, #587512);
+        color: #fff;
         width: 100%;
+        display: block;
+        margin-bottom: 12px;
+        padding: 18px 10px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 8px;
+        font-weight: 600;
     }
-    .j_left_topBox ul li a {
-        font-size: 1rem !important;
-        line-height: 2;
+
+    .fourBtnBox a:hover {
+        background: linear-gradient(45deg, #587512, #125875);
     }
-}
 
+    .counterBox {
+        text-align: center;
+        background: #ffe6dc;
+        padding-top: 15px;
+        padding-bottom: 8px;
+        border-radius: 10%;
+        border: 2px solid #ff7350;
+    }
 
+    .counterSection {
+        margin-bottom: 30px;
+    }
+
+    .counterBox h6 {
+        color: #125875;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 7px;
+        font-size: 14px;
+    }
+
+    .counterBox h2 {
+        color: #125875;
+        margin-top: 6px;
+        letter-spacing: 1px;
+    }
+
+    .counterBox i {
+        color: #ffffff;
+        background: #125875;
+        font-size: 21px;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        line-height: 45px;
+        border-radius: 10px;
+    }
+
+    @media only screen and (min-width: 200px) and (max-width: 480px) {
+        .counterBox {
+            width: 70%;
+            margin: 0 auto;
+            margin-bottom: 13px;
+        }
+
+        .j_middleBox {
+            background: #fff2cc;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 1px solid #fff5eb;
+            width: 100%;
+        }
+
+        .j_left_topBox ul li a {
+            font-size: 1rem !important;
+            line-height: 2;
+        }
+    }
+
+    .administartionBox .icon-box {
+        border-radius: 10px;
+    }
+
+    .administartionBox .icon-box h4 {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .pr-5 {
+        padding-right: 5px !important;
+    }
+
+    .border-orglight {
+        border: 1px solid #E16734 !important;
+        box-shadow: 0px 5px 10px 0px rgb(153 153 153);
+    }
+
+    .text-center {
+        text-align: center
+    }
+
+    .icon-box .icon {
+        display: inline-block;
+        height: 30px;
+        margin-bottom: 0;
+        -webkit-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+        width: 50px;
+        text-align: center;
+        margin-top: 0px;
+    }
+
+    .icon-box .icon.icon-md {
+        height: 45px;
+        width: 45px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .icon-box .icon.icon-circled {
+        border-radius: 50%;
+    }
+
+    .icon-box .icon.icon-md i {
+        font-size: 20px;
+        line-height: 45px;
+    }
+
+    .icon-box.hover-effect:hover {
+        /*  box-shadow: 0px 5px 10px 0px rgb(153 153 153);
+    margin-top: -10px;*/
+    }
+
+    .bg-gray-lighter:hover {
+        background-color: #ffe6dc !important;
+    }
+
+    .icon-box.hover-effect {
+        -webkit-transition: all 120ms ease-in-out 0s;
+        -o-transition: all 120ms ease-in-out 0s;
+        transition: all 120ms ease-in-out 0s;
+        /* box-shadow: 0px 5px 10px 0px rgb(153 153 153);*/
+    }
+
+    .icon-box {
+        margin-bottom: 0;
+    }
+
+    .icon-box-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #E16734;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .icon-box div a {
+        color: #f90;
+    }
+
+    .icon-box i {
+        display: inline-block;
+        font-size: 30px;
+        -webkit-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    .icn-box {
+        height: 55px;
+        width: 55px;
+        border: 1px solid #ececec;
+        padding-top: 10px;
+        border-radius: 50%;
+        color: #fff;
+        margin-bottom: 4px;
+    }
+
+    .icon-box-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: #000000;
+        transition: color .3s linear, background .3s linear;
+        height: 20px;
+    }
+
+    .otherboxSection .icon-box {
+        min-height: 160px;
+    }
+
+    .administartionBox .icon-box {
+        border-radius: 10px;
+    }
+
+    .administartionBox .icon-box h4 {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .icon-box-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #E16734;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .boxbg {
+        background: #e1e1e1;
+        border-bottom: 1px solid #E16734;
+        box-shadow: 0px 5px 10px 0px rgb(153 153 153);
+    }
+
+    .uniSectionBox {
+        height: 235px;
+    }
+
+    .hvr-grow {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-transition-duration: .3s;
+        transition-duration: .3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+    }
+
+    .hvr-grow:active,
+    .hvr-grow:focus,
+    .hvr-grow:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    .bg-light-blue {
+        background-color: #125875 !important;
+    }
+
+    .bg-blue {
+        background-color: #125875 !important;
+        /* Change this to your desired blue color */
+    }
+
+    .bg-dark-blue {
+        background-color: #125875 !important;
+        /* Change this to your desired dark blue color */
+    }
+
+    .icon-box-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #000000;
+        transition: color .3s linear, background .3s linear;
+        height: 20px;
+    }
 </style>
 
 
@@ -524,7 +852,7 @@
                                     </div>
                                     <div class="desc-wrap marquee_text admsnBox">
                                         <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
-                                            onmouseover="this.stop();" onmouseout="this.start();" height="215">
+                                            onmouseover="this.stop();" onmouseout="this.start();" height="177">
                                             <ul>
                                                 <li>
                                                     <i class="fa fa-caret-right"></i>
@@ -671,7 +999,7 @@
                     </div>
 
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    {{-- <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="university col-md-12 col-xs-12">
                                 <div class="single-feature mb-10 uniBox">
@@ -733,8 +1061,8 @@
                                         <h5>Vice Chancellor Message</h5>
                                     </div>
                                     <div class="desc-wrap vcBox">
-                                        <img src="images/vc_1.jpg" class="pull-left img-responsive uniImg"
-                                            style="height: 90px;">
+                                        <img src="{{ asset('Team/1718253910_echarts.png') }}"
+                                            class="pull-left img-responsive uniImg" style="height: 90px;">
                                         <div class="vcBox-content text-justify">
                                             <h5>Prof. Sanjay Srivastava</h5>
                                             <p class="Vice text-justify mb-0">महात्मा गाँधी केन्द्रीय विश्वविद्यालय,
@@ -749,8 +1077,8 @@
                                             <a href="#" class="marquee-btn btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#HVCModal">
                                                 Vice-Chancellor's </a>
-                                            <a href="" class="marquee-btn btn-sm"
-                                                style="float: right;">Read More</a>
+                                            <a href="" class="marquee-btn btn-sm" style="float: right;">Read
+                                                More</a>
                                         </div>
 
                                     </div>
@@ -758,9 +1086,9 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <div class="mb-10">
@@ -768,17 +1096,20 @@
                                         <h5>University Administrators</h5>
                                     </div>
                                     <div class="desc-wrap uniAdminBox">
-                                        <div class="whiteBox whiteBox-bg">
-                                            <img src="images/poi1.png" alt="Smt. Droupadi Murmu"
-                                                class="img-responsive" />
-                                            <div class="vcBox-content">
-                                                <h5>Smt. Droupadi Murmu</h5>
-                                                <h6>The President of India, Hon'ble Visitor</h6>
-                                                <a href="https://presidentofindia.nic.in/Profile" target="_blank">Read
-                                                    more</a>
+                                        @foreach ($teams as $team)
+                                            <div class="whiteBox whiteBox-bg">
+                                                <img src="{{ asset('Team/' . $team->photo) }}"
+                                                    class="pull-left img-responsive uniImg" />
+                                                <div class="vcBox-content">
+                                                    <h5>{{ $team->name }}</h5>
+                                                    <h6> {{ $team->designation }} </h6>
+                                                    <h6> {{ $team->s_description }} </h6>
+                                                    <a href="{{ route('web.team', $team->id) }}" target="_blank">Read
+                                                        more</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="whiteBox whiteBox-bg">
+                                        @endforeach
+                                        {{-- <div class="whiteBox whiteBox-bg">
                                             <img src="images/Dharmendra_Pradhan.png" alt="Shri Dharmendra Pradhan"
                                                 class="img-responsive" />
                                             <div class="vcBox-content">
@@ -805,7 +1136,7 @@
                                                 <h6>Hon'ble Vice-Chancellor</h6>
                                                 <a href="">Read more</a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -824,26 +1155,19 @@
                                         {{-- <link rel="stylesheet" type="text/css" href="{{asset('web/css/slick-theme.css')}}"/>
                                         <link rel="stylesheet" type="text/css" href="web/css/slick.css" /> --}}
                                         <div class="items">
-                                            <div>
-                                                <a href="pdf/event/20240413072954853fb1c735.jpg" target="_blank">
-                                                    <img src="pdf/event/20240413072954853fb1c735.jpg">
-                                                    <h6>National seminar on the occasion of Dr. B. R. Ambedkar
-                                                        Jayanti.<br>[14th April 2024]
-                                                        <img src="images/new.gif" alt="new image"
-                                                            style="    height: auto !important; width: unset; border: none;" />
-                                                    </h6>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="pdf/event/20240322200632aa809ac16b.jpeg" target="_blank">
-                                                    <img src="pdf/event/20240322200632aa809ac16b.jpeg">
-                                                    <h6>Contribution of Shankaracharya in National Integration<br>[22
-                                                        March 2024]
-                                                        <img src="images/new.gif" alt="new image"
-                                                            style="    height: auto !important; width: unset; border: none;" />
-                                                    </h6>
-                                                </a>
-                                            </div>
+                                            @foreach ($events as $event)
+                                                <div>
+                                                    <a href="{{ asset('uploads/web-event/' . $event->attach) }}"
+                                                        target="_blank">
+                                                        <img src="{{ asset('uploads/web-event/' . $event->attach) }}"
+                                                            width="100%" style="height: 90px">
+                                                        <h6>{{ $event->title }}<br>[ {{ $event->date }} ]
+                                                            <img src="{{ asset('web/img/icon/new.gif') }}"
+                                                                style="height: auto !important; width: unset; border: none;" />
+                                                        </h6>
+                                                    </a>
+                                                </div>
+                                            @endforeach
 
                                         </div>
                                         <a href="" class="viewAll-btn">View All</a>
@@ -963,8 +1287,297 @@
             </div>
         </section>
 
-        <section>
-            
+        <section class="" id="about">
+            <div class="container">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12 mb-10 administartionBox pr-5">
+                            <div class="icon-box border-orglight text-center pb-10">
+                                <h4 class="icon-box-title mt-0 pt-1 pb-1 boxbg">University Campus Section</h4>
+                                <div class="row pl-10 pr-10 pt-2 uniSectionBox">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-university icn-box bg-light-blue"></i>
+                                                <h5 class="icon-box-text">Recruitment</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-newspaper-o icn-box bg-blue"></i>
+                                                <h5 class="icon-box-text">News Letter</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fas fa-certificate icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">Alumni</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-gavel icn-box bg-light-blue"></i>
+                                                <h5 class="icon-box-text">RTI</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class=""
+                                                href="download/Office Order dated 10.05.2020 regarding Academic Calendars 2019-20_and_2020-21.pdf">
+                                                <i class="fa fa-book icn-box bg-blue"></i>
+                                                <h5 class="icon-box-text">Academic calendar</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-handshake-o icn-box icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">MoUs</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 mb-10 administartionBox pr-5">
+                            <div class="icon-box border-orglight text-center pb-10">
+                                <h4 class="icon-box-title mt-0 pt-1 pb-1 boxbg">Administration</h4>
+                                <div class="row pl-15 pr-5 pt-2 uniSectionBox">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-user icn-box bg-light-blue"></i>
+                                                <h5 class="icon-box-text">Visitor</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-gavel icn-box bg-blue"></i>
+                                                <h5 class="icon-box-text">University Authorities</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-users icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">University Officers</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 ">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-user-secret icn-box bg-light-blue"></i>
+                                                <h5 class="icon-box-text">COE</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-user-plus icn-box bg-blue"></i>
+                                                <h5 class="icon-box-text">DSW</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-users icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">Proctor</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 mb-10 administartionBox pr-5">
+                            <div class="icon-box border-orglight text-center pb-10">
+                                <h4 class="icon-box-title mt-0 pt-1 pb-1 boxbg">Student Section</h4>
+                                <div class="row pl-15 pr-5 pt-2 uniSectionBox">
+
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-pencil-square-o icn-box bg-light-blue"></i>
+                                                <h5 class="icon-box-text">Admission</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-calendar icn-box bg-blue"></i>
+                                                <h5 class="icon-box-text">Examination</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-bar-chart icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">Result</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-file-pdf-o icn-box  bg-light-blue"></i>
+                                                <h5 class="icon-box-text"> Syllabus</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="#">
+                                                <i class="fa fa-pencil-square-o icn-box  bg-blue"></i>
+                                                <h5 class="icon-box-text"> Anti Ragging</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 ">
+                                        <div class="icon-box hvr-grow">
+                                            <a class="" href="">
+                                                <i class="fa fa-graduation-cap icn-box bg-dark-blue"></i>
+                                                <h5 class="icon-box-text">Scholarship</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 mb-10 administartionBox">
+                            <div class="single-feature">
+                                <div class="title latest_bg ">
+                                    <h4 style="text-align: left">Content / Research <span><a href="content_research.php"
+                                                class="float-right content_research_view_all">View All</a></span></h4>
+                                </div>
+                                <div class="abt_box">
+                                    <div class="row pl-15 pr-5">
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://ugcmoocs.inflibnet.ac.in/" target="_blank"><img
+                                                    src="images/imp_logos/ugc_moocs.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://epgp.inflibnet.ac.in/" target="_blank"><img
+                                                    src="images/imp_logos/epgp.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://www.swayamprabha.gov.in/" target="_blank"><img
+                                                    src="images/imp_logos/swayam_prabha.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://shodhganga.inflibnet.ac.in/" target="_blank"><img
+                                                    src="images/imp_logos/sodhganga.gif"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://swayam.gov.in/" target="_blank"><img
+                                                    src="images/imp_logos/swayam.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://shodhshuddhi.inflibnet.ac.in/" target="_blank"><img
+                                                    src="images/imp_logos/sodh_shuddhi.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="https://vidyamitra.inflibnet.ac.in/" target="_blank"><img
+                                                    src="images/imp_logos/vidhya_mitra.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="" target="_blank"><img src="images/imp_logos/vidwan.png"
+                                                    class="img img-responsive img-thumbnail content_img"></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="single-feature">
+                            <div class="title twitterBg">
+                                <h4>
+                                    <i class="fa fa-twitter"></i> Twitter
+                                </h4>
+                            </div>
+                            <div class="desc-wrap" style="padding: 0px !important;">
+                                <a class="twitter-timeline" data-width="100%" data-height="350" data-theme="light"
+                                    href="https://twitter.com/MGCUBihar?ref_src=twsrc%5Etfw">Tweets by MGCUBihar</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="single-feature">
+                            <div class="title facebookBg">
+                                <h4>
+                                    <i class="fa fa-facebook"></i> Facebook
+                                </h4>
+                            </div>
+                            <div class="desc-wrap" style="padding: 0px !important;">
+                                <iframe
+                                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FMGCUB2016%2F&tabs=timeline&width=305&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                    width="100%" height="350" style="border:none;overflow:hidden" scrolling="no"
+                                    frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="single-feature">
+                            <div class="title bg-dark-blue">
+                                <h4>
+                                    <i class="fa fa-youtube"></i> Youtube
+                                </h4>
+                            </div>
+                            <div class="desc-wrap" style="padding: 0px !important;">
+                                <iframe width="100%" height="350"
+                                    src="https://www.youtube.com/embed/watch?v=Si5WOGhEPsQ&list=UUX35-ZgGBrtFKwZ131_Su1Q&index=1"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="single-feature">
+                            <div class="title latest_bg">
+                                <h4>News media</h4>
+                            </div>
+                            <div class="desc-wrap newsImg_box vcBox-content">
+                                <!--<h5>text to be added</h5>-->
+                                <img src="images/news/202212171432010e10f7ad22.JPG" class="img-responsive">
+                                <a href="newspaper_clippings.php" class="newsall-btn">View all</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
         </section>
 
         @isset($callToAction)
