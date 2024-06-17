@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\GatewayDetailController;
+use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
 use Illuminate\Support\Facades\Route;
@@ -212,6 +213,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::resource('about-us', AboutUsController::class);
         // Route::resource('course', WebCourseController::class);
         Route::resource('web-event', WebEventController::class);
+
+        //Overview
+        Route::get('/overview/list',[OverviewController::class,'list'])->name('Overview.list');
+        Route::post('/overview/store',[OverviewController::class,'store'])->name('Overview.store');
 
         //team
         Route::get('/team/list',[TeamController::class,'list'])->name('Team.list');

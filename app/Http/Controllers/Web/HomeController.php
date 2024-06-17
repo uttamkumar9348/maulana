@@ -11,10 +11,10 @@ use App\Models\Web\AboutUs;
 use App\Models\Web\Feature;
 use App\Models\Web\Slider;
 use App\Models\notice;
-use App\Models\NoticetypeModel;
 use App\Models\Team;
 // use App\Models\Web\WebEvent;
 use App\Models\Language;
+use App\Models\Overview;
 use App\Models\Web\WebEvent;
 
 class HomeController extends Controller
@@ -38,6 +38,10 @@ class HomeController extends Controller
         //Notice
         $notices = notice::orderBy('id', 'desc')->get();
 
+        $admission_notice = notice::where('notice_type','=','Admission Notice')->orderBy('id', 'desc')->get();
+
+        $exam_notice = notice::where('notice_type','=','Exam Result')->orderBy('id', 'desc')->get();
+
         // About Us
         $data['about'] = AboutUs::where('language_id', Language::version()->id)
                             ->where('status', '1')
@@ -49,6 +53,9 @@ class HomeController extends Controller
 
         //Event
         $events = WebEvent::orderBy('id','desc')->get();
+
+        //Overviews
+        $overview = Overview::first();
 
         // Call To Action
         $data['callToAction'] = CallToAction::where('language_id', Language::version()->id)
@@ -62,7 +69,7 @@ class HomeController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices','teams','events'));
+        return view('web.index', $data, compact('notices','admission_notice','exam_notice','teams','events','overview'));
     }
 
     /**

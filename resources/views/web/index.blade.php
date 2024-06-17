@@ -266,6 +266,33 @@
         overflow: scroll;
     }
 
+    .items::-webkit-scrollbar {
+        width: 0px;
+        /* Hide the scrollbar */
+    }
+
+    .items::-webkit-scrollbar-track {
+        background: transparent;
+        /* Make the track transparent */
+    }
+
+    .items::-webkit-scrollbar-thumb {
+        background: transparent;
+        /* Make the thumb transparent */
+    }
+
+    /* Firefox */
+    .items {
+        scrollbar-width: none;
+        /* Hide the scrollbar */
+    }
+
+    /* IE and Edge */
+    .items {
+        -ms-overflow-style: none;
+        /* Hide the scrollbar */
+    }
+
     .items div h6 {
         font-size: 13px;
     }
@@ -337,7 +364,7 @@
     }
 
     .uniAdminBox {
-        max-height: 520px;
+        max-height: 555px;
         overflow: scroll;
         /* border: 1px solid #ccc; */
         /* Optional: to give the box a border */
@@ -617,14 +644,6 @@
         border-radius: 10px 10px 0 0;
     }
 
-    .icon-box-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #E16734;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
     .boxbg {
         background: #e1e1e1;
         border-bottom: 1px solid #E16734;
@@ -633,6 +652,25 @@
 
     .uniSectionBox {
         height: 235px;
+    }
+
+    @media (max-width: 673px) {
+        .uniSectionBox {
+            height: 335px;
+        }
+
+        .icon-box .icon {
+            margin-top: 0px;
+        }
+
+        .mt-15 {
+            margin-top: 8px;
+        }
+
+        .otherboxSection .icon-box {
+            min-height: 125px;
+            margin-bottom: 12px;
+        }
     }
 
     .hvr-grow {
@@ -678,6 +716,7 @@
         transition: color .3s linear, background .3s linear;
         height: 20px;
     }
+
 </style>
 
 
@@ -854,80 +893,21 @@
                                         <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
                                             onmouseover="this.stop();" onmouseout="this.start();" height="177">
                                             <ul>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406101618267ede64ede1.pdf">
-                                                        <span>
-                                                            Notice reg. Open Counseling of M.Sc Botany, Session 2024-25.
-                                                        </span>
-                                                    </a>
-                                                    {{-- <img src="images/new.gif" alt="new image" /> --}}
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406101618267ede64ede1.pdf">
-                                                        <span>
-                                                            Notice reg. Open Counseling of M.Sc Botany, Session 2024-25.
-                                                        </span>
-                                                    </a>
-                                                    {{-- <img src="images/new.gif" alt="new image" /> --}}
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406101618267ede64ede1.pdf">
-                                                        <span>
-                                                            Notice reg. Open Counseling of M.Sc Botany, Session 2024-25.
-                                                        </span>
-                                                    </a>
-                                                    {{-- <img src="images/new.gif" alt="new image" /> --}}
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="JavaScript:void(0);">
-                                                        <span>
-                                                            Merit List for 6th round of Counselling: </span>
-                                                    </a>
-                                                    <a class="orange-text" href="pdf/20240609203224786f972cd9.pdf">
-                                                        <span class="orange-text">M.Sc. (Botany)</span>
-                                                    </a>
-                                                    || <a class="orange-text" href="pdf/202406101118451bf7549d23.pdf">
-                                                        <span class="orange-text">MBA</span>
-                                                    </a>
-                                                    || <a class="orange-text" href="pdf/20240610161634807083e6a6.pdf">
-                                                        <span class="orange-text">M.Sc. (Mathematics)</span>
-                                                    </a>
-                                                    || <a class="orange-text" href="pdf/20240611061451e50a8ec81e.pdf">
-                                                        <span class="orange-text">M.Sc. (Biotechnology)</span>
-                                                    </a>
-                                                    <img src="images/new.gif" alt="new image" />
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406101618267ede64ede1.pdf">
-                                                        <span>
-                                                            Notice reg. Open Counseling of M.Sc Botany, Session 2024-25.
-                                                        </span>
-                                                    </a>
-                                                    {{-- <img src="images/new.gif" alt="new image" /> --}}
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406101618267ede64ede1.pdf">
-                                                        <span>
-                                                            Notice reg. Open Counseling of M.Sc Botany, Session 2024-25.
-                                                        </span>
-                                                    </a>
-                                                    {{-- <img src="images/new.gif" alt="new image" /> --}}
-                                                </li>
-                                                <hr>
+                                                @foreach ($admission_notice as $admission)
+                                                    <li>
+                                                        <i class="fa fa-caret-right"></i>
+                                                        <a href="{{ asset('file/' . $admission->file) }}">
+                                                            <span>
+                                                                {{ $admission->title }}
+                                                            </span>
+                                                        </a>
+                                                        <img src="{{ asset('web/img/icon/new.gif') }}" alt="new image" />
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </marquee>
-                                        <a href="" class="viewAll-btn">View all</a>
+                                        <a href="{{ route('web.noticeList', 'Admission Notice') }}"
+                                            class="viewAll-btn">View all</a>
                                     </div>
                                 </div>
                             </div>
@@ -938,31 +918,23 @@
                                     </div>
                                     <div class="desc-wrap marquee_text resultBox">
                                         <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
-                                            onmouseover="this.stop();" onmouseout="this.start();" height="250">
+                                            onmouseover="this.stop();" onmouseout="this.start();" height="245">
                                             <ul>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/20240606074354b89de6c1b3.pdf">
-                                                        <span>
-                                                            Back Paper Result of Semester III and revised result of
-                                                            Semester IV of M. Sc. Chemistry, batch: 2020-22. </span>
-                                                    </a>
-                                                    <img src="images/new.gif" alt="new image" />
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <i class="fa fa-caret-right"></i>
-                                                    <a href="pdf/202406060742356e3a396970.pdf">
-                                                        <span>
-                                                            Revised result of M. Sc. Chemistry, Semester IV (Back
-                                                            Paper), Batch: 2020-22. </span>
-                                                    </a>
-                                                    <img src="images/new.gif" alt="new image" />
-                                                </li>
-                                                <hr>
+                                                @foreach ($exam_notice as $exam)
+                                                    <li>
+                                                        <i class="fa fa-caret-right"></i>
+                                                        <a href="{{ asset('file/' . $exam->file) }}">
+                                                            <span>
+                                                                {{ $exam->title }}
+                                                            </span>
+                                                        </a>
+                                                        <img src="{{ asset('web/img/icon/new.gif') }}">
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </marquee>
-                                        <a href="" class="viewAll-btn">View all</a>
+                                        <a href="{{ route('web.noticeList', 'Exam Result') }}" class="viewAll-btn">View
+                                            all</a>
                                     </div>
                                 </div>
                             </div>
@@ -1109,34 +1081,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        {{-- <div class="whiteBox whiteBox-bg">
-                                            <img src="images/Dharmendra_Pradhan.png" alt="Shri Dharmendra Pradhan"
-                                                class="img-responsive" />
-                                            <div class="vcBox-content">
-                                                <h5>Shri Dharmendra Pradhan</h5>
-                                                <h6>Hon'ble Education Minister</h6>
-                                                <a href="https://www.msde.gov.in/en/ministers/profile-honble-minister"
-                                                    target="_blank">Read more</a>
-                                            </div>
-                                        </div>
-                                        <div class="whiteBox whiteBox-bg">
-                                            <img src="images/Mahesh Sharma_vc.jpg" alt="Padma Shri Dr Mahesh Sharma"
-                                                class="img-responsive" />
-                                            <div class="vcBox-content">
-                                                <h5>Padma Shri Dr Mahesh Sharma </h5>
-                                                <h6>Hon'ble Chancellor</h6>
-                                                <a href="chancellor.php">Read more</a>
-                                            </div>
-                                        </div>
-                                        <div class="whiteBox whiteBox-bg">
-                                            <img src="images/vc_1.jpg" alt="Prof. Sanjay Srivastava"
-                                                class="img img-responsive" />
-                                            <div class="vcBox-content">
-                                                <h5>Prof. Sanjay Srivastava</h5>
-                                                <h6>Hon'ble Vice-Chancellor</h6>
-                                                <a href="">Read more</a>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -1225,28 +1169,28 @@
                                 <div class="counterBox">
                                     <h6>Faculties</h6>
                                     <i class="fa fa-users"></i>
-                                    <h2 data-max="120">120+</h2>
+                                    <h2 data-max="120">{{ $overview->faculties }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>Departments</h6>
                                     <i class="fa fa-building"></i>
-                                    <h2 data-max="20">20+</h2>
+                                    <h2 data-max="20">{{ $overview->departments }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>Centres</h6>
                                     <i class="fa fa-building"></i>
-                                    <h2 data-max="11">16</h2>
+                                    <h2 data-max="11">{{ $overview->centres }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>Programmes</h6>
                                     <i class="fa fa-laptop f-25"></i>
-                                    <h2 data-max="65">65+</h2>
+                                    <h2 data-max="65">{{ $overview->programmes }}+</h2>
                                 </div>
                             </div>
                         </div>
@@ -1257,28 +1201,28 @@
                                 <div class="counterBox">
                                     <h6>e-Resources</h6>
                                     <i class="fa fa-graduation-cap"></i>
-                                    <h2 data-max="1200" id="test">1200+</h2>
+                                    <h2 data-max="1200" id="test">{{ $overview->e_resources }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>MOU</h6>
                                     <i class="fa fa-graduation-cap"></i>
-                                    <h2 data-max="12" id="test">12+</h2>
+                                    <h2 data-max="12" id="test">{{ $overview->mou }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>Students</h6>
                                     <i class="fa fa-graduation-cap"></i>
-                                    <h2 data-max="1300" id="test">1300+</h2>
+                                    <h2 data-max="1300" id="test">{{ $overview->students }}+</h2>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 plr-5">
                                 <div class="counterBox">
                                     <h6>Scholars</h6>
                                     <i class="fa fa-book"></i>
-                                    <h2 data-max="350" id="test">350+</h2>
+                                    <h2 data-max="350" id="test">{{ $overview->scholars }}+</h2>
                                 </div>
                             </div>
                         </div>

@@ -326,6 +326,13 @@
 						</li>
 
                         <li class="nav-item">
+							<a href="{{ route('admin.Overview.list') }}" class="nav-link {{Request::is('admin/web/overview*')?'active':''}}">
+								<i class="fas fa-chart-pie"></i>
+								<span>Institution Overview</span>
+							</a>
+						</li>
+
+                        <li class="nav-item">
 							<a href="{{ route('admin.Team.list') }}" class="nav-link {{Request::is('admin/web/team/list')?'active':''}}">
 								<i class="fas fa-users"></i>
 								<span>Team</span>
