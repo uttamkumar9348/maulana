@@ -420,7 +420,7 @@
     }
 
     .viewAll-btn {
-        background: #5bc0de;
+        background: #ff7350;
         color: #fff;
         padding: 5px;
         text-align: center;
@@ -449,7 +449,7 @@
     }
 
     .fourBtnBox a {
-        background: linear-gradient(45deg, #125875, #587512);
+        background: linear-gradient(45deg, #ff7350, #125875);
         color: #fff;
         width: 100%;
         display: block;
@@ -462,7 +462,7 @@
     }
 
     .fourBtnBox a:hover {
-        background: linear-gradient(45deg, #587512, #125875);
+        background: linear-gradient(45deg, #125875, #ff7350);
     }
 
     .counterBox {
