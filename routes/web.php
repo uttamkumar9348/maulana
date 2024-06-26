@@ -8,7 +8,7 @@ use App\Http\Controllers\Web\ApplicationController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\FaqController;
 use App\Http\Controllers\Web\GalleryController;
-use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\TeamController;
 use App\Http\Controllers\Web\NoticeListController;
@@ -19,7 +19,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontwebuser\DashbController;
 use App\Http\Controllers\Admin\CityController;
-
+use App\Http\Controllers\Web\AboutController;
+use App\Http\Controllers\Web\AcademicsController;
+use App\Http\Controllers\Web\ActStatuesController;
+use App\Http\Controllers\Web\AdministrationController;
+use App\Http\Controllers\Web\ChancellorController;
+use App\Http\Controllers\Web\LegacyController;
+use App\Http\Controllers\Web\LogoController;
+use App\Http\Controllers\Web\MissionVisionController;
+use App\Http\Controllers\Web\OrdinancesController;
+use App\Http\Controllers\Web\VcController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +47,46 @@ use App\Http\Controllers\Admin\CityController;
 Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   // Home Route
-  Route::get('/', [HomeController::class, 'index'])->name('home');
+  Route::get('/', [IndexController::class, 'index'])->name('index');
+
+  //about
+  Route::get('/about', [AboutController::class,'about'])->name('about');
+
+  //mission & vision
+  Route::get('/vision_mission', [MissionVisionController::class,'missionVision'])->name('missionVision');
+
+  //Chancellor
+  Route::get('/chancellor', [ChancellorController::class, 'chancellor'])->name('chancellor');
+
+  //legacy
+  Route::get('/legacy',[LegacyController::class,'legacy'])->name('legacy');
+
+  //Logo
+  Route::get('logo',[LogoController::class,'logo'])->name('logo');
+
+  //act_statutes
+  Route::get('/act_statutes',[ActStatuesController::class,'actStatutes'])->name('actStatutes');
+
+  //ordinances
+  Route::get('/ordinances',[OrdinancesController::class,'ordinances'])->name('ordinances');
+
+  //Administration
+  Route::get('/chancellor_1', [AdministrationController::class,'chancellor_1'])->name('chancellor_1');
+
+  Route::get('/vc', [AdministrationController::class,'vc'])->name('vc');
+
+  Route::get('/university_authority', [AdministrationController::class,'universityAuthority'])->name('universityAuthority');
+
+  Route::get('/statutory_bodies', [AdministrationController::class,'statutoryBodies'])->name('statutoryBodies');
+
+  Route::get('/university_officers', [AdministrationController::class,'universityOfficers'])->name('universityOfficers');
+
+  Route::get('/directory', [AdministrationController::class,'directory'])->name('directory');
+
+  //Academics
+  Route::get('/department_arabic', [AcademicsController::class,'departmentArabic'])->name('departmentArabic');
+
+
   // Course Route
   Route::get('/course', [CourseController::class, 'index'])->name('course');
   Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.single');
