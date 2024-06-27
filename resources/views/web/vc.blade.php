@@ -29,7 +29,7 @@
                         <div class="desc-wrap marquee_text">
                             <div class="whiteBox" style="float: none;">
                                 <img src="{{ asset('web/images/vc.jpg') }}" alt="Prof. Sanjay Srivastava"
-                                    class="img img-responsive" style="width: 300px;">
+                                    class="img img-responsive" style="width: 300px; height:220px;">
                                 <div class="vcBox-content text-justify">
                                     <h5>Prof. Sanjay Srivastava</h5>
                                     <h5>Vice-Chancellor</h5>
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            @include('web.administration')
+            @include('web.layouts.quick-link-about')
 
         </div>
     </div>

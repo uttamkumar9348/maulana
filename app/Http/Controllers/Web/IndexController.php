@@ -38,6 +38,8 @@ class IndexController extends Controller
         //Notice
         $notices = notice::orderBy('id', 'desc')->get();
 
+        $office_orders_notice = notice::where('notice_type','=','Office Orders Notice')->orderBy('id','desc')->get();
+
         $admission_notice = notice::where('notice_type','=','Admission Notice')->orderBy('id', 'desc')->get();
 
         $exam_notice = notice::where('notice_type','=','Exam Result')->orderBy('id', 'desc')->get();
@@ -69,7 +71,7 @@ class IndexController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices','admission_notice','exam_notice','teams','events','overview'));
+        return view('web.index', $data, compact('notices','admission_notice', 'office_orders_notice','exam_notice','teams','events','overview'));
     }
 
     /**
