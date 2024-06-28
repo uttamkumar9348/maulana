@@ -24,6 +24,7 @@ use App\Http\Controllers\Web\AcademicsController;
 use App\Http\Controllers\Web\ActStatuesController;
 use App\Http\Controllers\Web\AdministrationController;
 use App\Http\Controllers\Web\ChancellorController;
+use App\Http\Controllers\Web\ContactusController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\LogoController;
 use App\Http\Controllers\Web\MissionVisionController;
@@ -62,7 +63,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::get('/legacy',[LegacyController::class,'legacy'])->name('legacy');
 
   //Logo
-  Route::get('logo',[LogoController::class,'logo'])->name('logo');
+  Route::get('/logo',[LogoController::class,'logo'])->name('logo');
 
   //act_statutes
   Route::get('/act_statutes',[ActStatuesController::class,'actStatutes'])->name('actStatutes');
@@ -85,6 +86,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //Academics
   Route::get('/department_arabic', [AcademicsController::class,'departmentArabic'])->name('departmentArabic');
+
+  //Contact Us
+  Route::get('/contact_us', [ContactusController::class,'contactUs'])->name('contact_us');
 
 
   // Course Route

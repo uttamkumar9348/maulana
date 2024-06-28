@@ -53,7 +53,9 @@ use App\Http\Controllers\Admin\Web\WebEventController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PassedexamController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\QuicklinkController;
 use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Admin\TopbarController;
 use App\Http\Controllers\Prospect\ResultController;
 use App\Models\GatewayDetail;
 
@@ -80,7 +82,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************COLLEGE ROUTE END*************/
     /*******************STUDENT ROUTE START*************/
     /*******************COLLEGE PROFILE ROUTE START*************/
-    Route::resource('student_profile', StudentProfileController::class);
+
+    // Route::resource('student_profile', StudentProfileController::class);
+    
     /*******************COLLEGE PROFILE ROUTE END*************/
     Route::resource('student', StudentController::class);
     /*******************STUDENT ROUTE END*************/
@@ -221,10 +225,26 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         //team
         Route::get('/team/list',[TeamController::class,'list'])->name('Team.list');
         Route::get('/team/add',[TeamController::class,'add'])->name('Team.add');
-        Route::post('/team/add',[TeamController::class,'store'])->name('Team.store');
+        Route::post('/team/store',[TeamController::class,'store'])->name('Team.store');
         Route::get('/team/edit{id}',[TeamController::class,'edit'])->name('Team.edit');
         Route::post('/team/update',[TeamController::class,'update'])->name('Team.update');
         Route::get('/team/delete{id}',[TeamController::class,'delete'])->name('Team.delete');
+
+        //Quick-links
+        Route::get('/quick_link/list',[QuicklinkController::class,'list'])->name('Quicklink.list');
+        Route::get('/quick_link/add',[QuicklinkController::class,'add'])->name('Quicklink.add');
+        Route::post('/quick_link/store',[QuicklinkController::class,'store'])->name('Quicklink.store');
+        Route::get('/quick_link/edit{id}',[QuicklinkController::class,'edit'])->name('Quicklink.edit');
+        Route::post('/quick_link/update',[QuicklinkController::class,'update'])->name('Quicklink.update');
+        Route::get('/quick_link/delete{id}',[QuicklinkController::class,'delete'])->name('Quicklink.delete');
+
+        //Top Bar
+        Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');
+        Route::get('/top_bar/add',[TopbarController::class,'add'])->name('Topbar.add');
+        Route::post('/top_bar/store',[TopbarController::class,'store'])->name('Topbar.store');
+        Route::get('/top_bar/edit{id}',[TopbarController::class,'edit'])->name('Topbar.edit');
+        Route::post('/top_bar/update',[TopbarController::class,'update'])->name('Topbar.update');
+        Route::get('/top_bar/delete{id}',[TopbarController::class,'delete'])->name('Topbar.delete');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

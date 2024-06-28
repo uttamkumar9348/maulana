@@ -1,4 +1,4 @@
-<?php $this->load->view("frontend/header.php");?>
+@include('web.layouts.header')
 
 <style>
     .contact-bg{
@@ -31,13 +31,13 @@
                     <h2><span>Contact</span> Us</h2>
                 </div>
                 <section class="popular-courses-area section-gap courses-page">
-                    <div class="container">				
+                    <div class="container">
                         <div class="row">
                             <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>  
-                                        <img class="img-fluid" src="<?php echo base_url(); ?>images/faculty/Sachidanand.jpg" alt="Sachidanand" style="height: 280px;">
+                                        <div class="overlay overlay-bg"></div>
+                                        <img class="img-fluid" src="{{asset('web/images/faculty/Sachidanand.jpg')}}" style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -54,7 +54,7 @@
                             <!-- <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
+                                        <div class="overlay overlay-bg"></div>
                                         <img class="img-fluid" src="images/faculty/Rajeev Kumar.jpg" alt="Rajeev Kumar" style="height: 280px;">
                                     </div>
                                 </div>
@@ -72,8 +72,8 @@
                             <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
-                                        <img class="img-fluid" src="<?php echo base_url(); ?>images/faculty/Vikas Pareek.jpg" alt="Vikas Pareek" style="height: 280px;">
+                                        <div class="overlay overlay-bg"></div>
+                                        <img class="img-fluid" src="{{asset('web/images/faculty/Vikas Pareek.jpg')}}" alt="Vikas Pareek" style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -86,11 +86,11 @@
                                         <!-- <li><i class="fa fa-phone"></i> 9828373081</li> -->
                                     </ul>
                                 </div>
-                            </div>	
+                            </div>
                             <!-- <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
+                                        <div class="overlay overlay-bg"></div>
                                         <img class="img-fluid" src="images/faculty/Sachidanand.jpg" alt="Sachidanand" style="height: 280px;">
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
                             <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
-                                        <img class="img-fluid" src="<?php echo base_url(); ?>images/faculty/Shephalika Mishra.jpg" alt="Shephalika Mishra" style="height: 280px;">
+                                        <div class="overlay overlay-bg"></div>
+                                        <img class="img-fluid" src="{{asset('web/images/faculty/Shephalika Mishra.jpg')}}" style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -122,11 +122,11 @@
                                         <li><i class="fa fa-phone"></i> 9654598288</li>
                                     </ul>
                                 </div>
-                            </div>	
+                            </div>
                             <!--<div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
+                                        <div class="overlay overlay-bg"></div>
                                         <img class="img-fluid" src="images/faculty/Deepak Dinkar.jpg" alt="Deepak Dinkar" style="height: 280px;">
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                            <!--  <div class="single-popular-carusel col-lg-4 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>	
+                                        <div class="overlay overlay-bg"></div>
                                         <img class="img-fluid" src="images/default.png" alt="default image" style="height: 280px;">
                                     </div>
                                 </div>
@@ -154,17 +154,17 @@
                                     </h5>
                                     <h5>
                                         Ms. Kavita Joshi
-                                    </h5> 
+                                    </h5>
                                     <ul>
                                         <li>Private Secretary to Vice-Chancellor</li>
                                         <li class="break-line"><i class="fa fa-envelope"></i> pstovc@mgcub.ac.in</li>
-                                        <li><i class="fa fa-phone"></i> 6287086666</li> 
+                                        <li><i class="fa fa-phone"></i> 6287086666</li>
                                         <li><i class="fa fa-phone"></i> 9742788132</li>
                                     </ul>
                                 </div>
                             </div>	 -->
                         </div>
-                    </div>	
+                    </div>
                 </section>
                 <h4>Address</h4>
                 <ul class="mb-20">
@@ -183,11 +183,11 @@
                     </div>
                     <div class="desc-wrap marquee_text">
                         <ul class="custom-list-style">
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="<?php echo base_url(); ?>frontend/contact_us"> Contact Us</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/contact_us"> Contact Us</a></li>
                             <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="<?php echo base_url(); ?>frontend/address"> Address</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/address"> Address</a></li>
                             <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="<?php echo base_url(); ?>frontend/how_to_reach"> How to reach</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/how_to_reach"> How to reach</a></li>
                         </ul>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
 
 
 
- <?php $this->load->view("frontend/footer.php");?>
+@include('web.layouts.footer')
 
 
  <script type="text/javascript">

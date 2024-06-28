@@ -32,10 +32,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 header-top-right no-padding">
-                        <a href="frontend/admission">Admission <img src="{{ asset('web/images/new.gif') }} "
-                                alt="new image" /></a> &nbsp;|&nbsp;
-                        <a href="frontend/./rti">RTI</a> &nbsp;|&nbsp;
-                        <!--  <a href="frontend/recruitments">Recruitment  <img src="images/new.gif" alt="new image"/></a> &nbsp;|&nbsp; -->
+                        @foreach (App\Models\Topbar::all() as $topbar)
+
+                        <a href="{{ url($topbar->url) }}"> {{$topbar->title}} </a> &nbsp;|&nbsp;
+                        {{-- <a href="frontend/./rti">RTI</a> &nbsp;|&nbsp;
                         <a href="frontend/iqac">IQAC</a> &nbsp;|&nbsp;
                         <a href="frontend/committees">Committees </a> &nbsp;|&nbsp;
                         <a href="frontend/eResources">eResources</a> &nbsp;|&nbsp;
@@ -46,7 +46,9 @@
                         <a href="frontend/./downloads">Notification</a> &nbsp;|&nbsp;
                         <a href="frontend/sc_st">SC/ST Cell</a> &nbsp;|&nbsp;
                         <a href="frontend/./contact_us">Contact Us</a> &nbsp;|&nbsp;
-                        <a href="https://www.mmhapu.ac.in/">Old Website</a>
+                        <a href="https://www.mmhapu.ac.in/">Old Website</a> --}}
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -69,8 +71,6 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="col-md-8 col-xs-12 plr5">
-                                <!--   <img class="img-responsive gandhiji_img mr-20 mt10 pull-right" src="images/slok.jpg" alt="slok" title="slok" /> -->
-                                <!--<a class="hindiWebsite" href="hindi/index.php">हिंदी वेबसाइट</a>-->
                             </div>
                             <div class="col-md-4 col-xs-12 plr5">
                                 <img class="img-responsive gandhiji_img" src="{{ asset('web/images/aazadi.png') }}"
@@ -87,44 +87,43 @@
                 <div class="row align-items-center justify-content-between d-flex">
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                            @foreach(App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
-                            @php
-                                $url  = $menu->url.'*';
+                            @foreach (App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
+                                @php
+                                    $url = $menu->url . '*';
                                     $isRequest = Request::path() == $url ? 'current' : '';
-                                    // dd($url);
-                            @endphp
-                            @if($menu->childMenu->count() > 0)
-                            <li class="{{ $isRequest }}" style="margin-left:20px">
-                                <a href="{{ url($menu->url) }}">{{$menu->name}}</a>
-                                <ul class="dropdown">
-                                    @foreach($menu->childMenu as $childMenu)
-                                    <li style="margin-left:0px;"><a href="{{url($childMenu->url)}}" style="padding-left:10px!important;">{{$childMenu->name}}</a></li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            @else
-                            <li class="{{ $isRequest }}" style="margin-left:20px"><a href="{{ url($menu->url) }}">{{$menu->name}}</a></li>
-
-                            @endif
+                                @endphp
+                                @if ($menu->childMenu->count() > 0)
+                                    <li class="{{ $isRequest }}" style="margin-left:20px">
+                                        <a href="{{ url($menu->url) }}">{{ $menu->name }}</a>
+                                        <ul class="dropdown">
+                                            @foreach ($menu->childMenu as $childMenu)
+                                                <li style="margin-left:0px;"><a href="{{ url($childMenu->url) }}"
+                                                        style="padding-left:10px!important;">{{ $childMenu->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li class="{{ $isRequest }}" style="margin-left:20px"><a
+                                            href="{{ url($menu->url) }}">{{ $menu->name }}</a></li>
+                                @endif
                             @endforeach
-                          <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
+                            <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
                                     href="#">Notice</a>
                                 <ul class="dropdown">
-                                    @foreach (App\Models\NoticetypeModel::all(); as $noticetype)
+                                    @foreach (App\Models\NoticetypeModel::all() as $noticetype)
                                         <li style="margin-left:0px;">
-                                            <a href="{{route('web.noticeList', $noticetype->notice_type)}}" style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
+                                            <a href="{{ route('web.noticeList', $noticetype->notice_type) }}"
+                                                style="padding-left:10px!important;">{{ $noticetype->notice_type }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="{{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a href="">Contact</a></li>
-                            {{-- <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="#">About</a></li>
-                            <li class="{{ Request::is('faq*') ? 'current' : '' }}"><a href="#">Academics</a></li>
-                            <li class="{{ Request::is('course*') ? 'current' : '' }}"><a href="{{ route('course') }}">{{ __('navbar_course') }}</a></li>
+                            <li class="{{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a
+                                    href="{{route('contact_us')}}">Contact Us</a>
+                            </li>
 
-                            <li class="{{ Request::is('gallery*') ? 'current' : '' }}"><a href="{{ route('gallery') }}">{{ __('navbar_gallery') }}</a></li>
-                            <li class="{{ Request::is('news*') ? 'current' : '' }}"><a href="{{ route('news') }}">{{ __('navbar_news') }}</a></li>
-                           <li class="{{ Request::is('contact*') ? 'current' : '' }}"><a href="url">Contact</a></li> --}}
+
                         </ul>
                     </nav>
                     <!-- #nav-menu-container -->
