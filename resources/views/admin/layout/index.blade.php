@@ -383,7 +383,7 @@
 
                         <li class="nav-item">
 							<a href="{{ route('admin.Topbar.list') }}" class="nav-link {{Request::is('admin/web/top_bar*')?'active':''}}">
-								<i class="fas fa-bell"></i>
+								<i class="fa fa-navicon"></i>
 								<span>Top Bar</span>
 							</a>
 						</li>
@@ -397,7 +397,7 @@
 
                         <li class="nav-item">
 							<a href="{{route('admin.Quicklink.list')}}" class="nav-link {{Request::is('admin/web/quick_link*')?'active':''}}">
-								<i class="fas fa-bars"></i>
+								<i class="fa fa-external-link"></i>
 								<span>Quick Link</span>
 							</a>
 						</li>

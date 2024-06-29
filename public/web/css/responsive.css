@@ -20,6 +20,9 @@
     .latestBox {
         height: 315px !important;
     }
+    .latestbo {
+        height: 464px !important;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1320px) {

@@ -5116,6 +5116,10 @@ dl.toggle.time-line:before {
     height: 92%;
 }
 
+/* .marque_text marquee {
+    height:360px;
+} */
+
 .marquee_text marquee ul {
     padding-left: 0px;
     margin-bottom: 0px;
@@ -6518,6 +6522,9 @@ a.slide_btn {
 .about-area{
     max-height: 31.375rem;
     overflow: hidden;
+}
+.event-area{
+    height: 460px;
 }
 
 .link-style {

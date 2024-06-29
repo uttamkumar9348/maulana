@@ -204,8 +204,8 @@
                                     <div class="whiteBox whiteBox-bg">
                                         <img src="{{ asset('Team/' . $team->photo) }}" class="img-responsive" />
                                         <div class="vcBox-content">
-                                            <h5>Shri Rajendra Vishwanath Arlekar</h5>
-                                            <h6>The Governor of Bihar, Hon'ble Chancellor</h6>
+                                            <h5> {{$team->name}} </h5>
+                                            <h6> {{$team->designation}} </h6>
                                             <a href="https://governor.bih.nic.in/h-e-s-profile/" target="_blank">Read
                                                 more</a>
                                         </div>
@@ -326,7 +326,7 @@
                 </div>
             </div>
 
-            <div class="about-area col-md-3 col-sm-3 col-xs-12">
+            <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <div class="single-feature mb-10">
@@ -404,11 +404,7 @@
                 </div>
             </div>
 
-
-
-
-
-            <div class="about-area col-md-3 col-sm-3 col-xs-12">
+            {{-- <div class="about-area col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <div class="single-feature mb-10">
@@ -439,7 +435,41 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="single-feature mb-10">
+                            <div class="admissoinBox">
+                                <h4>Events</h4>
+                            </div>
+                            <div class="desc-wrap marquee_text latestbo" style="height: 400px">
+                                <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
+                                    onmouseover="this.stop();" onmouseout="this.start();" style="height: 425px">
+                                    <ul>
+                                        @foreach ($events as $event)
+                                            <li>
+                                                <i class="fa fa-caret-right"></i>
+                                                <a target="blank" href="{{ asset('uploads/web-event/' . $event->attach) }}">
+                                                    <img src="{{ asset('uploads/web-event/' . $event->attach) }}" style="height: 6rem; width:10rem">
+                                                    <h6>{{ $event->title }}<br>[ {{ $event->date }} ]
+                                                        <img src="{{ asset('web/images/new.gif') }}"
+                                                            style="height: auto !important; width: unset; border: none;" />
+                                                    </h6>
+                                                </a>
+                                            </li>
+                                            <hr>
+                                        @endforeach
+                                    </ul>
+                                </marquee>
+                                <a href="latest" class="viewAll-btn">View all</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="clearfix"></div>
     </div>

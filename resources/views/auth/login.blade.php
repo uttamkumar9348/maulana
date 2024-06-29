@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LOGIN | Madhusudan Law University </title>
+    <title>LOGIN | Maulana Mazharul Haque Arabic and Persian University </title>
 
 	<!-- Global stylesheets -->
     <link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">
@@ -50,8 +50,8 @@
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
-								<img src="uploads/logo/logo.png" style="width:100px">
-								<h5 class="mb-0">Madhusudan Law University</h5>
+								<img src="{{asset('uploads/logo/logo1.png')}}" style="width:100px">
+								<h5 class="mb-0">Maulana Mazharul Haque Arabic and Persian University</h5>
 								<span class="d-block text-muted">Login to your account</span>
 							</div>
 
@@ -71,7 +71,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
-										
+
 						</div>
 					</div>
 				</form>
