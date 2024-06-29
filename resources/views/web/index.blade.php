@@ -192,15 +192,15 @@
 <section class="feature-area">
     <div class="container">
         <div class="row">
-            <div class="about-area col-md-3 col-sm-3 col-xs-12">
+            <div class="administrators-area col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <div class="mb-10">
                             <div class="admissoinBox">
                                 <h4>University Administrators</h4>
                             </div>
-                            <div class="desc-wrap uniAdminBox">
-                                @foreach ($teams as $team)
+                            <div class="desc-wrap uniAdminBox team-area">
+                                @foreach ($teams->take(4) as $team)
                                     <div class="whiteBox whiteBox-bg">
                                         <img src="{{ asset('Team/' . $team->photo) }}" class="img-responsive" />
                                         <div class="vcBox-content">
@@ -212,46 +212,9 @@
                                     </div>
                                 @endforeach
 
-                                {{-- <div class="whiteBox whiteBox-bg">
-                                    <img src="{{ asset('web/images/03.jpg') }}" alt="Smt. Droupadi Murmu"
-                                        class="img-responsive" />
-                                    <div class="vcBox-content">
-                                        <h5>Shri Nitish Kumar</h5>
-                                        <h6>The Government of Bihar, Hon'ble Chief Minister</h6>
-                                        <a href="https://state.bihar.gov.in/educationbihar/CitizenHome.html"
-                                            target="_blank">Read more</a>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="whiteBox whiteBox-bg">
-                                    <img src="{{ asset('web/images/04.jpg') }}" alt="Shri Dharmendra Pradhan"
-                                        class="img-responsive" />
-                                    <div class="vcBox-content">
-                                        <h5>Shri Sunil Kumar</h5>
-                                        <h6>Hon'ble Education Minister</h6>
-                                        <a href="https://state.bihar.gov.in/educationbihar/CitizenHome.html"
-                                            target="_blank">Read more</a>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="whiteBox whiteBox-bg">
-                                    <img src="{{ asset('web/images/Mahesh Sharma_vc.jpg') }}"
-                                        alt="Padma Shri Dr Mahesh Sharma" class="img-responsive" />
-                                    <div class="vcBox-content">
-                                        <h5>Dr. Mohammad Alamgeer </h5>
-                                        <h6>Hon'ble Vice Chancellor</h6>
-                                        <a href="chancellor">Read more</a>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="whiteBox whiteBox-bg">
-                                 <img src="{{asset('web/images/vc_1.jpg')}}" alt="Prof. Sanjay Srivastava" class="img img-responsive" />
-                                 <div class="vcBox-content">
-                                    <h5>Prof. Sanjay Srivastava</h5>
-                                    <h6>Hon'ble Vice-Chancellor</h6>
-                                    <a href="vc">Read more</a>
-                                 </div>
-                              </div> --}}
+                            </div>
+                            <div class="text-center">
+                                <a href="admission" class="viewAll-btn">View all</a>
                             </div>
                         </div>
                     </div>
