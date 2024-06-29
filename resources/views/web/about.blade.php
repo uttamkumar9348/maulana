@@ -26,7 +26,7 @@
                 <div class="mb-20">
                     <div class="detials">
                         {{-- <p class="text-justify">{!! $aboutUs->description !!}</p> --}}
-                        <div class="desc-wrap marquee_text">
+                        <div class="desc-wrap ">
                             <div class="whiteBox" style="float: none;">
                                 <img src="{{ asset('uploads/about-us/' . $aboutUs->attach) }}" class="img-responsive"
                                     style="height: 225px; width: 200px;">

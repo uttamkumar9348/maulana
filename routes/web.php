@@ -28,6 +28,7 @@ use App\Http\Controllers\Web\ContactusController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\LogoController;
 use App\Http\Controllers\Web\MissionVisionController;
+use App\Http\Controllers\Web\NotificationsController;
 use App\Http\Controllers\Web\OrdinancesController;
 use App\Http\Controllers\Web\VcController;
 
@@ -73,16 +74,17 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //Administration
   Route::get('/chancellor_1', [AdministrationController::class,'chancellor_1'])->name('chancellor_1');
-
   Route::get('/vc', [AdministrationController::class,'vc'])->name('vc');
-
   Route::get('/university_authority', [AdministrationController::class,'universityAuthority'])->name('universityAuthority');
-
   Route::get('/statutory_bodies', [AdministrationController::class,'statutoryBodies'])->name('statutoryBodies');
-
   Route::get('/university_officers', [AdministrationController::class,'universityOfficers'])->name('universityOfficers');
-
   Route::get('/directory', [AdministrationController::class,'directory'])->name('directory');
+
+  //Notifications
+  Route::get('/notifications', [NotificationsController::class,'notifications'])->name('notification');
+
+  //Latest Notice
+  Route::get('/latest', [NotificationsController::class,'latest'])->name('latest');
 
   //Academics
   Route::get('/department_arabic', [AcademicsController::class,'departmentArabic'])->name('departmentArabic');

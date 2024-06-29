@@ -1,4 +1,4 @@
-<?php $this->load->view("frontend/header.php");?>
+@include('web.layouts.header')
 
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
@@ -6,7 +6,7 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    Admission 
+                    Admission
                 </h1>
                 <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a href=""> Student Section</a> <span class="lnr lnr-arrow-right"></span> <a class="orange-text">Admission</a></p>
             </div>
@@ -25,16 +25,11 @@
                     <div class="detials">
                         <div class="box-tab">
                             <ul>
-                                <!--                                <li><a href="pdf/Admission noticce 2021.JPG"  class="btn btn-primary">Admission Notice</a></li>
-                                                                <li><a href="pdf/20210802154943764c217762.pdf"  class="btn btn-primary">Brochure 2021-22</a></li>
-                                                                <li><a href="ordinances.php" class="btn btn-primary">Ordinance No 20 & 35</a></li>
-                                                                <li><a href="pdf/FEES STRUCTURE FOR VARIOUS PROGRAMMES OF STUDIES DURING ACADEMIC SESSION 2021.pdf"  class="btn btn-primary">Fee Structure</a></li>-->
-                                                                <!-- <li><a href="https://cuet.samarth.ac.in/"  class="btn btn-primary">Apply online <img src="images/new.gif" alt="new image"/></a></li>  -->                               
-                                <li><a href="https://mgcubcuet.samarth.edu.in/"  class="btn btn-primary">Academic Session 2023-24 <img src="<?php echo base_url(); ?>images/new.gif" alt="new image"/></a></li> 
+                                <li><a href="https://mgcubcuet.samarth.edu.in/"  class="btn btn-primary">Academic Session 2023-24 <img src="<?php echo base_url(); ?>images/new.gif" alt="new image"/></a></li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
-                        <h6 class="text-rigth mb-10"><a href="admission_archive.php">Archives</a></h6>      
+                        <h6 class="text-rigth mb-10"><a href="admission_archive.php">Archives</a></h6>
                         <!--<h5 style="color: red">Download Admit Card for Entrance Examination for admission into various Ph.D. Programmes of Study <a href="http://admission.mgcub.ac.in/"><font color="blue">[please click here]</font></a> <img src="images/new.gif" alt="new image"/></h5><br>-->
                         <ul class="text-justify">
                                                                 <li class="text-justify mb-10">
@@ -757,7 +752,7 @@
                                             Extension of Last Date of Registration in U. G. Programmes.                                        </a>
                                                                                     <img src="images/new.gif" alt="new image"/>
                                                                             </li>
-                                                                
+
                         </ul>
                     </div>
                 </div>
@@ -799,7 +794,7 @@
 
 
 
- <?php $this->load->view("frontend/footer.php");?>
+@include('web.layouts.footer')
 
 
 <script type="text/javascript">

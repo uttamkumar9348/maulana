@@ -83,7 +83,7 @@
                                 @endforeach
                             </ul>
                         </marquee>
-                        <a href="notification" class="viewAll-btn">View all</a>
+                        <a href="{{route('notification')}}" class="viewAll-btn">View all</a>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                                 @endforeach
                             </ul>
                         </marquee>
-                        <a href="latest" class="viewAll-btn">View all</a>
+                        <a href="{{route('latest')}}" class="viewAll-btn">View all</a>
                     </div>
                 </div>
             </div>
@@ -280,7 +280,7 @@
                                         & Persian University, Patna. The University has a distinct identity,...</p>
                                     <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#HVCModal">Hon'ble Vice-Chancellor's </a>
-                                    <a href="frontend/vc_message" class="btn btn-primary btn-sm"
+                                    <a href="{{route('vc')}}" class="btn btn-primary btn-sm"
                                         style="float: right;">Read More</a>
                                 </div>
                             </div>
