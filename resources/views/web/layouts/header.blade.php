@@ -32,10 +32,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 header-top-right no-padding">
+                        <a href="#">Admission <img src="web/images/new.gif" alt="new image"/></a>
                         @foreach (App\Models\Topbar::all() as $topbar)
-
-                        <a href="{{ url($topbar->url) }}"> {{$topbar->title}} </a> &nbsp;|&nbsp;
-                        {{-- <a href="frontend/./rti">RTI</a> &nbsp;|&nbsp;
+                            <a href="{{ url($topbar->url) }}"> {{ $topbar->title }} </a> &nbsp;|&nbsp;
+                            {{-- <a href="frontend/./rti">RTI</a> &nbsp;|&nbsp;
                         <a href="frontend/iqac">IQAC</a> &nbsp;|&nbsp;
                         <a href="frontend/committees">Committees </a> &nbsp;|&nbsp;
                         <a href="frontend/eResources">eResources</a> &nbsp;|&nbsp;
@@ -47,8 +47,8 @@
                         <a href="frontend/sc_st">SC/ST Cell</a> &nbsp;|&nbsp;
                         <a href="frontend/./contact_us">Contact Us</a> &nbsp;|&nbsp;
                         <a href="https://www.mmhapu.ac.in/">Old Website</a> --}}
-
                         @endforeach
+                        <a href="#">Old Website</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                                     $isRequest = Request::path() == $url ? 'current' : '';
                                 @endphp
                                 @if ($menu->childMenu->count() > 0)
-                                    <li class="{{ $isRequest }}" style="margin-left:20px">
+                                    <li class=" menu-has-children {{ $isRequest }}" style="margin-left:20px">
                                         <a href="{{ url($menu->url) }}">{{ $menu->name }}</a>
                                         <ul class="dropdown">
                                             @foreach ($menu->childMenu as $childMenu)
@@ -108,7 +108,7 @@
                                             href="{{ url($menu->url) }}">{{ $menu->name }}</a></li>
                                 @endif
                             @endforeach
-                            <li class="{{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
+                            <li class="menu-has-children {{ Request::is('about*') ? 'current' : '' }}" style="margin-left:20px"><a
                                     href="#">Notice</a>
                                 <ul class="dropdown">
                                     @foreach (App\Models\NoticetypeModel::all() as $noticetype)
