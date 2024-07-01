@@ -35,18 +35,6 @@
                         <a href="#">Admission <img src="web/images/new.gif" alt="new image"/></a>
                         @foreach (App\Models\Topbar::all() as $topbar)
                             <a href="{{ url($topbar->url) }}"> {{ $topbar->title }} </a> &nbsp;|&nbsp;
-                            {{-- <a href="frontend/./rti">RTI</a> &nbsp;|&nbsp;
-                        <a href="frontend/iqac">IQAC</a> &nbsp;|&nbsp;
-                        <a href="frontend/committees">Committees </a> &nbsp;|&nbsp;
-                        <a href="frontend/eResources">eResources</a> &nbsp;|&nbsp;
-                        <a href="frontend/tender">Tender</a> &nbsp;|&nbsp;
-                        <a href="frontend/./archives">Archives</a> &nbsp;|&nbsp;
-                        <a href="frontend/alumni">Alumni</a> &nbsp;|&nbsp;
-                        <a href="frontend/./downloads">Downloads</a> &nbsp;|&nbsp;
-                        <a href="frontend/./downloads">Notification</a> &nbsp;|&nbsp;
-                        <a href="frontend/sc_st">SC/ST Cell</a> &nbsp;|&nbsp;
-                        <a href="frontend/./contact_us">Contact Us</a> &nbsp;|&nbsp;
-                        <a href="https://www.mmhapu.ac.in/">Old Website</a> --}}
                         @endforeach
                         <a href="#">Old Website</a>
                     </div>

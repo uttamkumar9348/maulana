@@ -45,7 +45,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="description">{{ __('field_description') }} <span>*</span></label>
-                            <textarea class="form-control texteditor" name="description" id="description" required>{{ $row->description }}</textarea>
+                            <textarea class="form-control " name="description" id="description" required>{{ $row->description }}</textarea>
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_description') }}
@@ -74,5 +74,25 @@
     </div>
 </div>
 <!-- End Content-->
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<script>
+    let editor;
+
+    ClassicEditor
+        .create(document.querySelector('#description'))
+        .then(createdEditor => {
+            editor = createdEditor;
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        // Ensure the editor data is in the textarea before submitting
+        document.querySelector('#description').value = editor.getData();
+    });
+</script>
 
 @endsection

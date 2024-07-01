@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\Web\Page;
 use App\Models\Language;
 use Toastr;
+use Yoeunes\Toastr\Facades\Toastr as FacadesToastr;
+use Yoeunes\Toastr\Toastr as ToastrToastr;
 
 class PageController extends Controller
 {
@@ -80,7 +82,6 @@ class PageController extends Controller
             'description' => 'required',
             'attach' => 'nullable|image',
         ]);
-
         //Data Insert
         $page = new Page;
         $page->language_id = Language::version()->id;
@@ -91,7 +92,7 @@ class PageController extends Controller
         $page->save();
 
 
-        Toastr::success(__('msg_created_successfully'), __('msg_success'));
+        FacadesToastr::success(__('msg_created_successfully'), __('msg_success'));
 
         return redirect()->route($this->route.'.index');
     }
