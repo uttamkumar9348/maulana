@@ -86,6 +86,10 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   //Latest Notice
   Route::get('/latest', [NotificationsController::class,'latest'])->name('latest');
 
+  //Team
+  Route::get('/teams',[TeamController::class,'team'])->name('team');
+  Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
+
   //Academics
   Route::get('/department_arabic', [AcademicsController::class,'departmentArabic'])->name('departmentArabic');
 
@@ -111,9 +115,6 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   // Application Route
   Route::resource('application', ApplicationController::class);
-
-  //Team
-  Route::get('/view-team/{id}',[TeamController::class,'team'])->name('web.team');
 
   //Notice-list
   Route::get('/view-notice-list/{type}',[NoticeListController::class,'noticeList'])->name('web.noticeList');

@@ -24,7 +24,7 @@
                         <th>Notice Type</th>
                         <th>Created Date</th>
                         <th>Action</th>
-                        <th>Action</th>
+                        {{-- <th>Action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -40,10 +40,10 @@
                                 <a class="btn btn-primary"
                                     href="{{ route('admin.NoticeType.edit', ['id' => $noticetype->id]) }}">Edit</a>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <a class="btn btn-danger"
                                     onclick="confirmDelete('{{ route('admin.NoticeType.delete', ['id' => $noticetype->id]) }}')">Delete</a>
-                            </td>
+                            </td> --}}
                         </tr>
                         @php
                             $i++;

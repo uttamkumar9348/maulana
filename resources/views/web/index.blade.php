@@ -214,7 +214,7 @@
 
                             </div>
                             <div class="text-center">
-                                <a href="admission" class="viewAll-btn">View all</a>
+                                <a href="{{route('team')}}" class="viewAll-btn">View all</a>
                             </div>
                         </div>
                     </div>

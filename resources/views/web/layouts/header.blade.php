@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('web/css/jquery-ui.css') }} ">
     <link rel="stylesheet" href="{{ asset('web/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/teams.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -32,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 header-top-right no-padding">
-                        <a href="#">Admission <img src="web/images/new.gif" alt="new image"/></a>
+                        <a href="#">Admission <img src="{{asset('web/images/new.gif')}}"/></a>
                         @foreach (App\Models\Topbar::all() as $topbar)
                             <a href="{{ url($topbar->url) }}"> {{ $topbar->title }} </a> &nbsp;|&nbsp;
                         @endforeach
