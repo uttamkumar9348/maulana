@@ -117,7 +117,7 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    Vice Chancellor
+                    University Administrators
                 </h1>
                 <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a class="orange-text">University Administrators</a></p>
             </div>
