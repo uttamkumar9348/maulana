@@ -56,6 +56,8 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\QuicklinkController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\TopbarController;
+use App\Http\Controllers\Admin\Web\ViewgalleryController;
+use App\Http\Controllers\Frontwebuser\Web\GalleryController;
 use App\Http\Controllers\Prospect\ResultController;
 use App\Models\GatewayDetail;
 
@@ -84,7 +86,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     /*******************COLLEGE PROFILE ROUTE START*************/
 
     // Route::resource('student_profile', StudentProfileController::class);
-    
+
     /*******************COLLEGE PROFILE ROUTE END*************/
     Route::resource('student', StudentController::class);
     /*******************STUDENT ROUTE END*************/
@@ -245,6 +247,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/top_bar/edit{id}',[TopbarController::class,'edit'])->name('Topbar.edit');
         Route::post('/top_bar/update',[TopbarController::class,'update'])->name('Topbar.update');
         Route::get('/top_bar/delete{id}',[TopbarController::class,'delete'])->name('Topbar.delete');
+
+        //View-Gallery
+        Route::get('galleries/list',[ViewgalleryController::class,'list'])->name('Viewgalleries.list');
+        Route::get('galleries/add',[ViewgalleryController::class,'add'])->name('Viewgalleries.add');
+        Route::post('galleries/store',[ViewgalleryController::class,'store'])->name('Viewgalleries.store');
+        Route::get('galleries/edit{id}',[ViewgalleryController::class,'edit'])->name('Viewgalleries.edit');
+        Route::post('galleries/update',[ViewgalleryController::class,'update'])->name('Viewgalleries.update');
+        Route::get('galleries/delete{id}',[ViewgalleryController::class,'delete'])->name('Viewgalleries.delete');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

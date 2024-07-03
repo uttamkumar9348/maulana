@@ -106,7 +106,8 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   // Faq Route
   Route::get('/faq', [FaqController::class, 'index'])->name('faq');
   // Gallery Route
-  Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+  Route::get('/gallery_thum', [GalleryController::class, 'index'])->name('galleryThum');
+  Route::get('/view_gallery/{id}', [GalleryController::class, 'viewGallery'])->name('viewGallery');
   // News Route
   Route::get('/news', [NewsController::class, 'index'])->name('news');
   Route::get('/news/{id}/{slug}', [NewsController::class, 'show'])->name('news.single');

@@ -32,11 +32,11 @@
             <div class="row">
                <div class="col-md-2 col-xs-12">
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">
-                     <a href="gallery_thum.php" class="icon icon-circled icon-md" data-bg-color="#FC9928" style="background: rgb(252, 153, 40) !important;">
+                     <a href=" {{route('galleryThum')}} " class="icon icon-circled icon-md" data-bg-color="#FC9928" style="background: rgb(252, 153, 40) !important;">
                      <i class="fa fa-photo text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase mt-15">
-                        <a href="frontend/gallery_thum">Photo Gallery</a>
+                        <a href="{{route('galleryThum')}}">Photo Gallery</a>
                      </h4>
                   </div>
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">

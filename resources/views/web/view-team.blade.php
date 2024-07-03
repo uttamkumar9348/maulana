@@ -38,10 +38,10 @@
                                     <br />
                                     <p class="text-justify">{!!$view_team->details!!}</p>
                                 </div>
-                                <div class="text-justify">
-                                    <a href="{{$view_team->facebook}}"><i class="fa fa-facebook-f"></i></a>
-                                    <a href="{{$view_team->x}}"><i class="fa fa-twitter"></i></a>
-                                    <a href="{{$view_team->instagram}}"><i class="fa fa-instagram"></i></a>
+                                <div class="text-justify" style="font-size: 22px; padding: 10px 10px 10px 10px; text-align: center;">
+                                    <a href="{{$view_team->facebook}}" style="padding: 5px"><i class="fa fa-facebook-f"></i></a>
+                                    <a href="{{$view_team->x}}" style="padding: 5px"><i class="fa fa-twitter"></i></a>
+                                    <a href="{{$view_team->instagram}}" style="padding: 5px"><i class="fa fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>

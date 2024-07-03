@@ -76,6 +76,9 @@
                 <div class="row align-items-center justify-content-between d-flex">
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
+                            <li class="active">
+                                <a href="{{route('index')}}"><i class="fa fa-home" aria-hidden="true" style="font-size:22px;"></i></a>
+                             </li>
                             @foreach (App\Models\Menu::whereNull('menu_id')->orderBy('display_order')->get() as $menu)
                                 @php
                                     $url = $menu->url . '*';

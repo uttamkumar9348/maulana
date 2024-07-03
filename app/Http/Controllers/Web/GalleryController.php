@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Web\Gallery;
 use App\Models\Language;
+use App\Models\Web\Viewgallery;
 
 class GalleryController extends Controller
 {
@@ -20,6 +21,11 @@ class GalleryController extends Controller
                             ->orderBy('id', 'desc')
                             ->get();
 
-        return view('web.gallery', $data);
+        return view('web.gallery_thum', $data);
+    }
+
+    public function viewGallery($id){
+        $view_gallery = Viewgallery::where('galleries_id',$id)->get();
+        return view('web.gallery',compact('view_gallery'));
     }
 }
