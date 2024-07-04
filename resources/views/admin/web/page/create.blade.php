@@ -51,7 +51,7 @@
 
                                     <div class="form-group col-md-12">
                                         <label for="description">{{ __('field_description') }} <span>*</span></label>
-                                        <textarea class="form-control" name="description"  id="description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control" name="description"  id="Editor">{{ old('description') }}</textarea>
 
                                         <div class="invalid-feedback">
                                             {{ __('required_field') }} {{ __('field_description') }}

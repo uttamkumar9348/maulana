@@ -25,7 +25,7 @@ class GalleryController extends Controller
     }
 
     public function viewGallery($id){
-        $view_gallery = Viewgallery::where('galleries_id',$id)->get();
+        $view_gallery = Viewgallery::where('galleries_id',$id)->with('getGalleryTitle')->get();
         return view('web.gallery',compact('view_gallery'));
     }
 }

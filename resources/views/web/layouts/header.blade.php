@@ -111,8 +111,20 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="{{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a
-                                    href="{{route('contact_us')}}">Contact Us</a>
+
+                            <li class=" menu-has-children {{ Request::is('contact*') ? 'current' : '' }}" style="margin-left:20px"><a
+                                    href="#">Contact Us</a>
+                                    <ul class="dropdown">
+                                        <li style="margin-left:0px;">
+                                            <a href="{{route('contact_us')}}">Contact Us</a>
+                                        </li>
+                                        <li style="margin-left:0px;">
+                                            <a href="{{route('address')}}">Address</a>
+                                        </li>
+                                        <li style="margin-left:0px;">
+                                            <a href="{{route('howtoReach')}}">How to Reach</a>
+                                        </li>
+                                    </ul>
                             </li>
 
 

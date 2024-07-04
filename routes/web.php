@@ -95,6 +95,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //Contact Us
   Route::get('/contact_us', [ContactusController::class,'contactUs'])->name('contact_us');
+  Route::get('/address', [ContactusController::class,'address'])->name('address');
+  Route::get('/how_to_reach', [ContactusController::class,'howtoReach'])->name('howtoReach');
+
 
 
   // Course Route

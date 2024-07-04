@@ -1,10 +1,11 @@
 @include('web.layouts.header')
 
 <style>
-    .contact-bg{
+    .contact-bg {
         padding: 10px;
         background-color: #eeeeee;
     }
+
     h5 {
         color: #ff6262 !important;
     }
@@ -17,7 +18,9 @@
                 <h1 class="text-white">
                     Contact Us
                 </h1>
-                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Contact Us</a> <span class="lnr lnr-arrow-right"></span> <a class="orange-text">Address</a></p>
+                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+                        href="#"> Contact Us</a> <span class="lnr lnr-arrow-right"></span> <a
+                        class="orange-text">Address</a></p>
             </div>
         </div>
     </div>
@@ -37,7 +40,8 @@
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="{{asset('web/images/faculty/Sachidanand.jpg')}}" style="height: 280px;">
+                                        <img class="img-fluid" src="{{ asset('web/images/faculty/Sachidanand.jpg') }}"
+                                            style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -73,7 +77,8 @@
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="{{asset('web/images/faculty/Vikas Pareek.jpg')}}" alt="Vikas Pareek" style="height: 280px;">
+                                        <img class="img-fluid" src="{{ asset('web/images/faculty/Vikas Pareek.jpg') }}"
+                                            alt="Vikas Pareek" style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -82,7 +87,8 @@
                                     </h5>
                                     <ul>
                                         <li>OSD (Finance)</li>
-                                        <li class="break-line"><i class="fa fa-envelope"></i> osdfinance@mgcub.ac.in</li>
+                                        <li class="break-line"><i class="fa fa-envelope"></i> osdfinance@mgcub.ac.in
+                                        </li>
                                         <!-- <li><i class="fa fa-phone"></i> 9828373081</li> -->
                                     </ul>
                                 </div>
@@ -109,7 +115,9 @@
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="{{asset('web/images/faculty/Shephalika Mishra.jpg')}}" style="height: 280px;">
+                                        <img class="img-fluid"
+                                            src="{{ asset('web/images/faculty/Shephalika Mishra.jpg') }}"
+                                            style="height: 280px;">
                                     </div>
                                 </div>
                                 <div class="details contact-bg">
@@ -123,46 +131,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!--<div class="single-popular-carusel col-lg-4 col-md-6">
-                                <div class="thumb-wrap relative">
-                                    <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="images/faculty/Deepak Dinkar.jpg" alt="Deepak Dinkar" style="height: 280px;">
-                                    </div>
-                                </div>
-                                <div class="details contact-bg">
-                                    <h5>
-                                        Mr Deepak Dinkar
-                                    </h5>
-                                    <ul>
-                                        <li>System Analyst</li>
-                                        <li class="break-line"><i class="fa fa-envelope"></i> systemanalyst@mgcub.ac.in</li>
-                                        <li><i class="fa fa-phone"></i> 9971759398</li>
-                                    </ul>
-                                </div>
-                            </div>-->
-                           <!--  <div class="single-popular-carusel col-lg-4 col-md-6">
-                                <div class="thumb-wrap relative">
-                                    <div class="thumb relative">
-                                        <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="images/default.png" alt="default image" style="height: 280px;">
-                                    </div>
-                                </div>
-                                <div class="details contact-bg">
-                                    <h5>
-                                       Mr. Siddharth Chakrabarti
-                                    </h5>
-                                    <h5>
-                                        Ms. Kavita Joshi
-                                    </h5>
-                                    <ul>
-                                        <li>Private Secretary to Vice-Chancellor</li>
-                                        <li class="break-line"><i class="fa fa-envelope"></i> pstovc@mgcub.ac.in</li>
-                                        <li><i class="fa fa-phone"></i> 6287086666</li>
-                                        <li><i class="fa fa-phone"></i> 9742788132</li>
-                                    </ul>
-                                </div>
-                            </div>	 -->
                         </div>
                     </div>
                 </section>
@@ -176,22 +144,7 @@
                 </ul>
                 <a href="directory.php" class="btn btn-primary">Directory</a>
             </div>
-            <div class="col-sm-3 col-md-3 col-xs-12">
-                <div class="single-feature">
-                    <div class="title MGCUB_bg">
-                        <h4>Quick Links</h4>
-                    </div>
-                    <div class="desc-wrap marquee_text">
-                        <ul class="custom-list-style">
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/contact_us"> Contact Us</a></li>
-                            <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/address"> Address</a></li>
-                            <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="frontend/how_to_reach"> How to reach</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @include('web.layouts.quick-link-contact')
         </div>
     </div>
 </section>
@@ -201,8 +154,8 @@
 @include('web.layouts.footer')
 
 
- <script type="text/javascript">
-    $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function() {
         document.title = "Contact Us - Mahatma Gandhi Central University, Motihari (Bihar)";
     });
 </script>

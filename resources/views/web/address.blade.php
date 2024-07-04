@@ -1,4 +1,4 @@
-<?php $this->load->view("frontend/header.php");?>
+@include('web.layouts.header')
 
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
@@ -8,7 +8,9 @@
                 <h1 class="text-white">
                     Address
                 </h1>
-                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Contact Us</a> <span class="lnr lnr-arrow-right"></span> <a class="orange-text">Address</a></p>
+                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+                        href="#"> Contact Us</a> <span class="lnr lnr-arrow-right"></span> <a
+                        class="orange-text">Address</a></p>
             </div>
         </div>
     </div>
@@ -25,7 +27,7 @@
                     <div class="container">
                         <div class="row align-items-center mb-20">
                             <div class="col-sm-5 col-md-5 thumb galleryThum">
-                                <img class="img-fluid img-thumbnail" src="<?php echo base_url(); ?>images/address1.jpg" alt="address1">
+                                <img class="img-fluid img-thumbnail" src="{{asset('web/images/address1.jpg')}}" alt="address1">
                                 <h5 class="text-center">Dr. Ambedkar Administrative Building </h5>
                             </div>
                             <div class="detials col-12 col-md-7">
@@ -40,10 +42,10 @@
                                     <li>Working Days/Hours: Mon-Sat / 09:30 AM- 6:00 PM</li>
                                 </ul>
                             </div>
-                        </div>                            
+                        </div>
                         <div class="row align-items-center mb-20">
                             <div class="col-12 col-md-5 thumb galleryThum">
-                                <img class="img-fluid img-thumbnail" src="<?php echo base_url(); ?>images/address2.jpg" alt="address2">
+                                <img class="img-fluid img-thumbnail" src="{{asset('web/images/address2.jpg')}}" alt="address2">
                                 <h5 class="text-center">Chanakya Parisar</h5>
                             </div>
                             <div class="detials col-12 col-md-7">
@@ -59,7 +61,7 @@
                         </div>
                         <div class="row align-items-center mb-20">
                             <div class="col-12 col-md-5 thumb galleryThum">
-                                <img class="img-fluid img-thumbnail" src="<?php echo base_url(); ?>images/Gandhi Bhawan.jpg" alt="address3">
+                                <img class="img-fluid img-thumbnail" src="{{asset('web/images/Gandhi Bhawan.jpg')}}" alt="address3">
                                 <h5 class="text-center">Gandhi Bhawan</h5>
                             </div>
                             <div class="detials col-12 col-md-7">
@@ -75,7 +77,8 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-12 col-md-5 thumb galleryThum">
-                                <img class="img-fluid" src="<?php echo base_url(); ?>images/Pt. Deean Dayal Building.jpg" alt="address4" style="width: 100%">
+                                <img class="img-fluid" src="{{asset('web/images/Pt. Deean Dayal Building.jpg')}}" alt="address4"
+                                    style="width: 100%">
                                 <h5 class="text-center">Pt. Deen Dayal Upadhayaya Parisar</h5>
                             </div>
                             <div class="detials col-12 col-md-7">
@@ -91,34 +94,19 @@
                             </div>
                         </div>
                     </div>
-                </section>                
+                </section>
             </div>
-            <div class="col-sm-3 col-md-3 col-xs-12">
-                <div class="single-feature">
-                    <div class="title MGCUB_bg">
-                        <h4>Quick Links</h4>
-                    </div>
-                    <div class="desc-wrap marquee_text">
-                        <ul class="custom-list-style">
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="contact_us.php"> Contact Us</a></li>
-                            <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="address.php"> Address</a></li>
-                            <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="how_to_reach.php"> How to reach</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @include('web.layouts.quick-link-contact')
         </div>
     </div>
 </section>
 
 
- <?php $this->load->view("frontend/footer.php");?>
+@include('web.layouts.footer')
 
 
- <script type="text/javascript">
-    $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function() {
         document.title = "Address - Mahatma Gandhi Central University, Motihari (Bihar)";
     });
 </script>
