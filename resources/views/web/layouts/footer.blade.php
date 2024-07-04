@@ -44,7 +44,7 @@
                      <i class="fa fa-file-video-o text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase font-18 mt-15">
-                        <a href="https://www.youtube.com/channel/UCX35-ZgGBrtFKwZ131_Su1Q" target="_blank">Video</a>
+                        <a href="https://www.youtube.com/channel/UCI2nuBogMri6fRbWlrFiGxQ" target="_blank">Video</a>
                      </h4>
                   </div>
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">
@@ -52,7 +52,7 @@
                      <i class="fa fa-newspaper-o text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase font-18 mt-15">
-                        <a href="frontend/newspaper_clippings">News Paper Clippings</a>
+                        <a href="page/news-clipping">News Paper Clippings</a>
                      </h4>
                   </div>
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">
@@ -60,7 +60,7 @@
                      <i class="fa fa-phone text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase font-18 mt-15">
-                        <a href="frontend/directory">Directory</a>
+                        <a href="directory">Directory</a>
                      </h4>
                   </div>
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">
@@ -68,7 +68,7 @@
                      <i class="fa fa-file-text-o text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase font-18 mt-15">
-                        <a href="frontend/tender">Tenders</a>
+                        <a href="page/tender">Tenders</a>
                      </h4>
                   </div>
                   <div class="icon-box hover-effect border-1px border-radius-10px text-center bg-gray-lighter p-8">
@@ -76,7 +76,7 @@
                      <i class="fa fa-download text-white font-45"></i>
                      </a>
                      <h4 class="icon-box-title text-uppercase font-18 mt-15">
-                        <a href="frontend/downloads">Downloads</a>
+                        <a href="page/downloads">Downloads</a>
                      </h4>
                   </div>
                </div>
