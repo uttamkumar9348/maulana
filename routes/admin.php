@@ -56,6 +56,9 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\QuicklinkController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\TopbarController;
+use App\Http\Controllers\Admin\Web\AdministrationController;
+use App\Http\Controllers\Admin\Web\CampusController;
+use App\Http\Controllers\Admin\Web\StudentsectionController;
 use App\Http\Controllers\Admin\Web\ViewgalleryController;
 use App\Http\Controllers\Frontwebuser\Web\GalleryController;
 use App\Http\Controllers\Prospect\ResultController;
@@ -255,6 +258,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('galleries/edit{id}',[ViewgalleryController::class,'edit'])->name('Viewgalleries.edit');
         Route::post('galleries/update',[ViewgalleryController::class,'update'])->name('Viewgalleries.update');
         Route::get('galleries/delete{id}',[ViewgalleryController::class,'delete'])->name('Viewgalleries.delete');
+
+        //Campus
+        Route::get('/campus/list',[CampusController::class,'list'])->name('campus.list');
+        Route::get('/campus/add',[CampusController::class,'add'])->name('campus.add');
+        Route::post('/campus/store',[CampusController::class,'store'])->name('campus.store');
+        Route::get('/campus/edit{id}',[CampusController::class,'edit'])->name('campus.edit');
+        Route::post('/campus/update',[CampusController::class,'update'])->name('campus.update');
+        Route::get('/campus/delete{id}',[CampusController::class,'delete'])->name('campus.delete');
+
+        //Administration
+        Route::get('/administration/list',[AdministrationController::class,'list'])->name('administration.list');
+        Route::get('/administration/add',[AdministrationController::class,'add'])->name('administration.add');
+        Route::post('/administration/store',[AdministrationController::class,'store'])->name('administration.store');
+        Route::get('/administration/edit{id}',[AdministrationController::class,'edit'])->name('administration.edit');
+        Route::post('/administration/update',[AdministrationController::class,'update'])->name('administration.update');
+        Route::get('/administration/delete{id}',[AdministrationController::class,'delete'])->name('administration.delete');
+
+        //STUDENT Section
+        Route::get('/student/list',[StudentsectionController::class,'list'])->name('student.list');
+        Route::get('/student/add',[StudentsectionController::class,'add'])->name('student.add');
+        Route::post('/student/store',[StudentsectionController::class,'store'])->name('student.store');
+        Route::get('/student/edit{id}',[StudentsectionController::class,'edit'])->name('student.edit');
+        Route::post('/student/update',[StudentsectionController::class,'update'])->name('student.update');
+        Route::get('/student/delete{id}',[StudentsectionController::class,'delete'])->name('student.delete');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

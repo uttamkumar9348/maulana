@@ -375,12 +375,27 @@
                             </a>
                         </li>
 
-                        {{-- <li class="nav-item">
-							<a href="{{ route('admin.gallery.index') }}" class="nav-link {{Request::is('admin/web/gallery')?'active':''}}">
-								<i class="fas fa-images"></i>
-								<span>Gallery</span>
-							</a>
-						</li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin.campus.list') }}"
+                                class="nav-link {{ Request::is('admin/web/campus*') ? 'active' : '' }}">
+                                <i class="fa fa-graduation-cap"></i>
+                                <span>Campus Section</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.administration.list') }}"
+                                class="nav-link {{ Request::is('admin/web/administration*') ? 'active' : '' }}">
+                                <i class="fa fa-graduation-cap"></i>
+                                <span>Administration Section</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.student.list') }}"
+                                class="nav-link {{ Request::is('admin/web/student*') ? 'active' : '' }}">
+                                <i class="fa fa-graduation-cap"></i>
+                                <span>Student Section</span>
+                            </a>
+                        </li>
 
                         <li
                             class="nav-item nav-item-submenu {{ Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">

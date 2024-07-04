@@ -564,16 +564,19 @@
                         <h4 class="icon-box-title mt-0 pt-5 pb-5 boxbg">University Campus Section</h4>
                         <div class="row pl-10 pr-10 pt-5 uniSectionBox">
 
-                            <!--  <div class="col-md-4 col-sm-4 col-xs-4 p-5">
-                              <div class="icon-box p-5 hvr-grow">
-                                 <a class="" href="recruitments">
-                                    <i class="fa fa-university icn-box bg-light-blue"></i>
-                                    <h5 class="icon-box-text">Recruitment</h5>
-                                 </a>
-                              </div>
-                           </div> -->
+                            @foreach ($campus as $campuses)
 
                             <div class="col-md-4 col-sm-4 col-xs-4 p-5">
+                              <div class="icon-box p-5 hvr-grow">
+                                 <a class="" href="{{ $campuses->url }}">
+                                    {!! $campuses->icon !!}
+                                    <h5 class="icon-box-text">{{$campuses->heading}}</h5>
+                                 </a>
+                              </div>
+                           </div>
+
+                           @endforeach
+                            {{-- <div class="col-md-4 col-sm-4 col-xs-4 p-5">
                                 <div class="icon-box p-5 hvr-grow">
                                     <a class="" href="e_news_letter">
                                         <i class="fa fa-newspaper-o icn-box bg-blue"></i>
@@ -615,7 +618,7 @@
                                         <h5 class="icon-box-text">MoUs</h5>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -628,16 +631,19 @@
                         <h4 class="icon-box-title mt-0 pt-5 pb-5 boxbg">Administration</h4>
                         <div class="row pl-15 pr-5 pt-5 uniSectionBox">
 
-                            <!--  <div class="col-md-4 col-sm-4 col-xs-4 p-5">
-                              <div class="icon-box p-5 hvr-grow">
-                                 <a class="" href="visitor">
-                                    <i class="fa fa-user icn-box bg-light-blue"></i>
-                                    <h5 class="icon-box-text">Visitor</h5>
-                                 </a>
-                              </div>
-                           </div> -->
+                            @foreach ($administration as $administrations)
 
                             <div class="col-md-4 col-sm-4 col-xs-4 p-5">
+                              <div class="icon-box p-5 hvr-grow">
+                                 <a class="" href="{{$administrations->url}}">
+                                    {!! $administrations->icon !!}
+                                    <h5 class="icon-box-text"> {{ $administrations->heading }} </h5>
+                                 </a>
+                              </div>
+                            </div>
+
+                            @endforeach
+                            {{-- <div class="col-md-4 col-sm-4 col-xs-4 p-5">
                                 <div class="icon-box p-5 hvr-grow">
                                     <a class="" href="university_authority">
                                         <i class="fa fa-gavel icn-box bg-blue"></i>
@@ -676,7 +682,7 @@
                                         <h5 class="icon-box-text">Proctor</h5>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -686,15 +692,21 @@
                     <div class="icon-box border-orglight text-center pb-10">
                         <h4 class="icon-box-title mt-0 pt-5 pb-5 boxbg">Student Section</h4>
                         <div class="row pl-15 pr-5 pt-5 uniSectionBox">
+
+                            @foreach ($student as $students)
+
                             <div class="col-md-4 col-sm-4 col-xs-4 p-5">
                                 <div class="icon-box p-5 hvr-grow">
-                                    <a class="" href="admission">
-                                        <i class="fa fa-pencil-square-o icn-box bg-light-blue"></i>
-                                        <h5 class="icon-box-text">Admission</h5>
+                                    <a class="" href="{{$students->url}}">
+                                        {!! $students->icon !!}
+                                        <h5 class="icon-box-text"> {{$students->heading}} </h5>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4 p-5">
+
+                            @endforeach
+
+                            {{-- <div class="col-md-4 col-sm-4 col-xs-4 p-5">
                                 <div class="icon-box p-5 hvr-grow">
                                     <a class="" href="examination">
                                         <i class="fa fa-calendar icn-box bg-blue"></i>
@@ -733,7 +745,7 @@
                                         <h5 class="icon-box-text">Scholarship</h5>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

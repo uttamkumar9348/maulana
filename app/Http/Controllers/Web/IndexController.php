@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\Controller;
+use App\Models\Administration;
+use App\Models\Campus;
 use App\Models\Web\CallToAction;
 use App\Models\Web\Testimonial;
 use Illuminate\Http\Request;
@@ -15,6 +17,7 @@ use App\Models\Team;
 // use App\Models\Web\WebEvent;
 use App\Models\Language;
 use App\Models\Overview;
+use App\Models\Student;
 use App\Models\Web\WebEvent;
 
 class IndexController extends Controller
@@ -56,6 +59,14 @@ class IndexController extends Controller
         //Event
         $events = WebEvent::orderBy('id','desc')->get();
 
+        //campus section
+        $campus = Campus::all();
+
+        //campus section
+        $administration = Administration::all();
+        //Student section
+        $student = Student::all();
+
         //Overviews
         $overview = Overview::first();
 
@@ -71,7 +82,7 @@ class IndexController extends Controller
                             ->get();
 
 
-        return view('web.index', $data, compact('notices','admission_notice', 'office_orders_notice','exam_notice','teams','events','overview'));
+        return view('web.index', $data, compact('notices','admission_notice', 'office_orders_notice','exam_notice','teams','events','overview', 'campus', 'administration', 'student'));
     }
 
     /**

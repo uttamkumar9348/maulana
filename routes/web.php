@@ -100,6 +100,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
 
 
+
   // Course Route
   Route::get('/course', [CourseController::class, 'index'])->name('course');
   Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.single');
